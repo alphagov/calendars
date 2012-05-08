@@ -5,7 +5,7 @@ class CalendarController < ApplicationController
   rescue_from Calendar::CalendarNotFound, with: :simple_404
 
   def index
-    expires_in 24.hours, :public => true unless Rails.env.development?
+    expires_in 60.minute, :public => true unless Rails.env.development?
     if @scope
       @divisions = @repository.all_grouped_by_division
       respond_to do |format|
