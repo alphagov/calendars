@@ -5,7 +5,7 @@ gem 'rails', '3.1.3'
 gem 'gds-warmup-controller'
 
 group :router do
-  gem 'router-client', '2.0.3', require: 'router/client'
+  gem 'router-client', '~> 3.0.1', require: 'router'
 end
 
 # passenger compatability
