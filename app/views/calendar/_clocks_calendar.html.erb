@@ -1,23 +1,17 @@
-<table>
+<table class="clocks-calendar">
   <tbody>
     <tr>
-      <th></th>
-      <% calendars.each do |year,c| -%>
-        <th><%= c.year %></th>
-      <% end -%>
+      <th>Year</th>
+      <th class="equal-width">Clocks go forward</th>
+      <th class="equal-width">Clocks go back</th>
     </tr>
+    <% calendars.each do |year,c| -%>
     <tr>
-      <th scope="row">Clocks go forward</th>
-      <% calendars.each do |year,c| -%>
-        <td><%= c.events[0].date.strftime('%d %B') %></td>
-      <% end -%>
+      <th scope="row"><%= c.year %></th>
+      <td><%= c.events[0].date.strftime('%d %B') %></td>
+      <td><%= c.events[1].date.strftime('%d %B') %></td>
     </tr>
-    <tr>
-      <th scope="row">Clocks go back</th>
-      <% calendars.each do |year,c| -%>
-        <td><%= c.events[1].date.strftime('%d %B') %></td>
-      <% end -%>
-    </tr>
+    <% end -%>
   </tbody>
 </table>
 
