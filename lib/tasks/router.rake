@@ -20,7 +20,7 @@ namespace :router do
     Calendar.all_slugs.each do |slug|
       path = "#{slug}".gsub('_', '-')
       @logger.info "Registering #{path}"
-      @router.create_route path, "full", @application_name
+      @router.create_route path, "prefix", @application_name
       @router.create_route "#{path}.json", "full", @application_name
     end
   end
