@@ -1,13 +1,10 @@
 .subscribe {
-  border: 1px solid #93A1A1;
-  margin: 1em auto;
-  padding: 0.5em 0.75em;
-/*  width: 25em;*/
+  background-color:#d5e8f3;
+  margin: 1em -1em 1.5em -1em;
+  padding: 1em 1em 1em 1em;
 }
 
 .subscribe p {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 0.85em;
   margin: 0;
 }
 
@@ -15,7 +12,6 @@
 .ui-widget-content,
 .ui-tabs .ui-tabs-nav {
   background-color: transparent;
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   padding-left:8px;
 }
 
@@ -33,31 +29,30 @@
 }
 
 .ui-corner-top, .ui-corner-left, .ui-corner-tl {
-    border-top-left-radius: 0px;
-    border:none;
+  border-top-left-radius: 0px;
+  border:none;
 }
 .ui-corner-top, .ui-corner-right, .ui-corner-tr {
-    border-top-right-radius: 0px;
-    border:none;
+  border-top-right-radius: 0px;
+  border:none;
 }
 .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
-    border-bottom-left-radius: 0px;
-    border:none;
+  border-bottom-left-radius: 0px;
+  border:none;
 }
 .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
-    border-bottom-right-radius: 0px;
-    border:none;
+  border-bottom-right-radius: 0px;
+  border:none;
 }
 .answer .ui-tabs .ui-tabs-nav li {
-    border-bottom: 0 none;
-    float: left;
-    list-style: none outside none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 1px;
-    
-    white-space: nowrap;
+  border-bottom: 0 none;
+  float: left;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 1px;
+  white-space: nowrap;
 }
 .ui-tabs {
     font-size: inherit;
@@ -92,24 +87,37 @@
 .ui-widget-header{
   padding-left:4px;
 }
+
+
+.highlight-answer p {
+  line-height:2.3em;
+  color:#fff;
+}
+.highlight-answer p em {
+  font-size:2.45em;
+  font-style:normal;
+  font-weight:400;
+  display:block;
+  margin-bottom:0.5em;
+  color:#fff;
+}
+
 .highlighted-event{
-  background-color:#D33883;
+  background-color:#28a197;
   color:#fff;
   text-align:center;
   padding:0.1em 2em 0.2em 2em;
-  margin-bottom:1em;
+  margin:0 -1em 1em -1em;
 }
 .highlighted-event p{
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size:4.8em;
-  font-weight:bold;
+  font-weight:400;
   line-height:0.70em;
 }
 .highlighted-event p span{
   font-size:0.4em;
-  font-weight: normal;
+  font-weight: 300;
   display:block;
-/*  opacity:0.4;*/
   margin-top:-0.7em;
   margin-bottom: 0.2em;
 }
@@ -121,16 +129,12 @@
   overflow:visible;
 }
 .epic-bunting span{
-    background-image: url(<%= asset_path "bunting.png" %>);
-    background-color:transparent;
-    background-repeat:repeat-x;
-    width:99.9%;
-    position:absolute;
-    height:60px;
- /*   -webkit-transform: rotate(-3deg); 
-    -moz-transform: rotate(-3deg); 
-    -webkit-backface-visibility:hidden;
-    z-index:3; */
+  background-image: url(<%= asset_path "bunting.png" %>);
+  background-color:transparent;
+  background-repeat:repeat-x;
+  width:99.9%;
+  position:absolute;
+  height:60px;
 }
 .bank-holiday .ui-tabs,
 .bank-holiday .inner{
@@ -139,7 +143,6 @@
 .bank-holiday article{
   position:static;
 }
-/* hover background-color: #97C5E5; */
 
 .clocks-calendar .equal-width {
   width: 50%;
