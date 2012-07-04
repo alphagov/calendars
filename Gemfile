@@ -29,13 +29,13 @@ gem 'graylog2_exceptions'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '1.1.39'
+  gem 'slimmer', '1.1.42'
 end
 
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '0.0.43'
+  gem 'gds-api-adapters', '~> 0.1.1'
 end
 
 group :test do
