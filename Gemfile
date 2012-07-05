@@ -21,7 +21,6 @@ gem 'exception_notification'
 gem 'aws-ses', require: 'aws/ses'
 gem "ri_cal", "~> 0.8.8"
 gem 'plek', '~> 0'
-gem 'rummageable', git: 'git@github.com:alphagov/rummageable.git'
 
 gem 'gelf'
 gem 'graylog2_exceptions'
