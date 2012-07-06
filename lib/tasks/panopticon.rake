@@ -1,4 +1,4 @@
-require 'ostruct'
+require 'registerable_calendar'
 
 namespace :panopticon do
   desc "Register application metadata with panopticon"
@@ -8,14 +8,9 @@ namespace :panopticon do
     logger.info "Registering with panopticon..."
     
     registerer = GdsApi::Panopticon::Registerer.new(owning_app: "calendars")
-    calendars = {
-      :'bank-holidays' => "UK bank holidays",
-      :'when-do-the-clocks-change' => "When do the clocks change?"
-    }
-    
-    calendars.each do |slug, title|
-      record = OpenStruct.new(slug: slug, title: title)
-      registerer.register(record)
+    Dir.glob(Rails.root.join("lib/data/*.json")).each do |file|
+      details = RegisterableCalendar.new(file)
+      registerer.register(details)
     end
   end
 end

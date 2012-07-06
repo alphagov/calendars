@@ -21,7 +21,6 @@ gem 'exception_notification'
 gem 'aws-ses', require: 'aws/ses'
 gem "ri_cal", "~> 0.8.8"
 gem 'plek', '~> 0'
-gem 'rummageable', git: 'git@github.com:alphagov/rummageable.git'
 
 gem 'gelf'
 gem 'graylog2_exceptions'
@@ -35,7 +34,7 @@ end
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '0.0.43'
+  gem 'gds-api-adapters', '~> 0.1.1'
 end
 
 group :test do
