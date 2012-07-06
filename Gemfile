@@ -28,7 +28,7 @@ gem 'graylog2_exceptions'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '1.1.39'
+  gem 'slimmer', '1.1.42'
 end
 
 if ENV['API_DEV']
