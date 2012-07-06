@@ -16,6 +16,7 @@ class PanopticonRegistrationTest < ActiveSupport::TestCase
 
       [:name, :description, :slug].each do |key|
         assert artefact.has_key?(key), "Missing attribute: #{key}"
+        assert ! artefact[key].nil?, "Attribute #{key} is nil"
       end
 
       assert artefact[:live], "Is not live"
