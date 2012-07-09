@@ -68,7 +68,7 @@ class Calendar
       end
     end
 
-    def combined_calendar_for_division(division) 
+    def combined_calendar_for_division(division)
       calendar = all_grouped_by_division[division]
 
       if calendar
@@ -93,6 +93,10 @@ class Calendar
 
   def event_today?
     upcoming_event.date == Date.today
+  end
+
+  def allowed_bunting_today?
+    ALLOWED_BUNTING_DAYS.include?(upcoming_event.title.to_s) && self.event_today?
   end
 
   def formatted_division(str = division)
@@ -125,13 +129,13 @@ class Calendar
 
   def self.combine_inside_division(calendars)
     info = calendars.first[1]
-    
+
     combined_calendar = Calendar.new(:division => info.division)
     calendars.each do |year, cal|
       combined_calendar.events += cal.events
     end
     combined_calendar.format_output
-  end  
+  end
 
   def format_output
     remove_instance_variable(:@year)

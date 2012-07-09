@@ -99,6 +99,17 @@ class CalendarTest < ActiveSupport::TestCase
       end
     end
 
-  end
+    should "only show bunting if allowed" do
+      repository = Calendar::Repository.new("bank-holidays")
+      @calendar = repository.find_by_division_and_year( 'england-and-wales', '2012' )
 
+      Timecop.freeze(Date.parse('2nd January 2012')) do
+        assert_equal true, @calendar.allowed_bunting_today?
+      end
+
+      Timecop.freeze(Date.parse('12 July 2012')) do
+        assert_equal false, @calendar.allowed_bunting_today?
+      end
+    end
+  end
 end
