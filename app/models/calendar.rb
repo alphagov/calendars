@@ -47,7 +47,7 @@ class Calendar
                   title: event['title'],
                   date:  Date.strptime(event['date'], "%d/%m/%Y"),
                   notes: event['notes'],
-                  bunting: event['bunting']
+                  bunting: event['bunting'] || "false"
                 )
               }
             )
