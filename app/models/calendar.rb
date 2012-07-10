@@ -46,7 +46,8 @@ class Calendar
                 Event.new(
                   title: event['title'],
                   date:  Date.strptime(event['date'], "%d/%m/%Y"),
-                  notes: event['notes']
+                  notes: event['notes'],
+                  bunting: event['bunting']
                 )
               }
             )
@@ -95,8 +96,8 @@ class Calendar
     upcoming_event.date == Date.today
   end
 
-  def allowed_bunting_today?
-    ALLOWED_BUNTING_DAYS.include?(upcoming_event.title.to_s) && self.event_today?
+  def bunting?
+    upcoming_event.bunting == "true" && self.event_today?
   end
 
   def formatted_division(str = division)

@@ -46,7 +46,7 @@
                   <p><span><%= item[:whole_calendar].upcoming_event.title %></span>
                   <%= item[:whole_calendar].event_today? ? "today" : item[:whole_calendar].upcoming_event.date.strftime("%e %B") %></p>
                 </div>
-                <% if item[:whole_calendar].allowed_bunting_today? %>
+                <% if item[:whole_calendar].bunting? %>
                 <div class="epic-bunting"><span></span></div>
                 <% end %>
              <% end %>
