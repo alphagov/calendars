@@ -17,6 +17,9 @@ class PanopticonRegistrationTest < ActiveSupport::TestCase
         assert ! artefact[key].nil?, "Attribute #{key} is nil"
       end
 
+      assert_equal ["bank-holidays.json"], artefact[:paths]
+      assert_equal ["bank-holidays"], artefact[:prefixes]
+
       assert artefact[:live], "Is not live"
     end
   end

@@ -18,4 +18,12 @@ class RegisterableCalendar
   def live
     true
   end
+
+  def paths
+    ["#{@slug}.json"]
+  end
+
+  def prefixes
+    [@slug]
+  end
 end
