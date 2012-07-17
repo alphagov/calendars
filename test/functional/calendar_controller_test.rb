@@ -32,7 +32,6 @@ class CalendarControllerTest < ActionController::TestCase
 
       repository = Calendar::Repository.new("bank-holidays")
       repository.all_grouped_by_division.each do |division, item|
-
         item[:calendars].each do |year,cal|
           assert_select "##{division} table" do
             cal.events.each do |event|
@@ -99,35 +98,35 @@ class CalendarControllerTest < ActionController::TestCase
     end
   end
 
-  context "GET /calendars/<calendar>.icl" do
-     should "contain all calendar events with an individual calendar" do
-       get :show, :division => "england-and-wales", :year => "2011", :scope => "bank-holidays", :format => :ics
+  context "GET /calendars/<calendar>.ics" do
+    should "contain all calendar events with an individual calendar" do
+      get :show, :division => "england-and-wales", :year => "2011", :scope => "bank-holidays", :format => :ics
 
-       output = "BEGIN:VCALENDAR\nPRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN\nCALSCALE:GREGORIAN\nVERSION:2.0\n"
+      output = "BEGIN:VCALENDAR\nPRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN\nCALSCALE:GREGORIAN\nVERSION:2.0\n"
 
-       repository = Calendar::Repository.new("bank-holidays")
-       repository.find_by_division_and_year('england-and-wales','2011').events.each do |event|
-         output += "BEGIN:VEVENT\nDTEND;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nDTSTART;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nSUMMARY:#{event.title}\nEND:VEVENT\n"
-       end
-
-       output += "END:VCALENDAR\n"
-
-       assert_equal output, @response.body
-     end
-
-     should "contain all calendar events for combined calendars" do
-        get :index, :division => "england-and-wales", :scope => "bank-holidays", :format => :ics
-
-        output = "BEGIN:VCALENDAR\nPRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN\nCALSCALE:GREGORIAN\nVERSION:2.0\n"
-
-        repository = Calendar::Repository.new("bank-holidays")
-        Calendar.combine(repository.all_grouped_by_division, 'england-and-wales').events.each do |event|
-          output += "BEGIN:VEVENT\nDTEND;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nDTSTART;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nSUMMARY:#{event.title}\nEND:VEVENT\n"
-        end
-
-        output += "END:VCALENDAR\n"
-
-        assert_equal output, @response.body
+      repository = Calendar::Repository.new("bank-holidays")
+      repository.find_by_division_and_year('england-and-wales','2011').events.each do |event|
+        output += "BEGIN:VEVENT\nDTEND;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nDTSTART;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nSUMMARY:#{event.title}\nEND:VEVENT\n"
       end
+
+      output += "END:VCALENDAR\n"
+
+      assert_equal output, @response.body
+    end
+
+    should "contain all calendar events for combined calendars" do
+      get :index, :division => "england-and-wales", :scope => "bank-holidays", :format => :ics
+
+      output = "BEGIN:VCALENDAR\nPRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN\nCALSCALE:GREGORIAN\nVERSION:2.0\n"
+
+      repository = Calendar::Repository.new("bank-holidays")
+      Calendar.combine(repository.all_grouped_by_division, 'england-and-wales').events.each do |event|
+        output += "BEGIN:VEVENT\nDTEND;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nDTSTART;VALUE=DATE:#{event.date.strftime('%Y%m%d')}\nSUMMARY:#{event.title}\nEND:VEVENT\n"
+      end
+
+      output += "END:VCALENDAR\n"
+
+      assert_equal output, @response.body
+     end
   end
 end
