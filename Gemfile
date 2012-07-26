@@ -20,6 +20,7 @@ gem 'plek', '~> 0'
 
 gem 'gelf'
 gem 'graylog2_exceptions'
+gem 'lograge'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
