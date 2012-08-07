@@ -63,11 +63,11 @@ class CalendarControllerTest < ActionController::TestCase
 
       output = {
         "events" => [
-          {"date"=>"2011-01-03", "notes"=>"Substitute day", "title"=>"New Year's Day"},
-          {"date"=>"2011-04-22", "notes"=>"", "title"=>"Good Friday"},
-          {"date"=>"2011-04-29", "notes"=>"", "title"=>"Royal wedding"},
-          {"date"=>"2011-12-26", "notes"=>"Substitute day", "title"=>"Christmas Day"},
-          {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Boxing Day"}
+          {"date"=>"2011-01-03", "notes"=>"Substitute day", "title"=>"New Year's Day", "bunting"=>"true"},
+          {"date"=>"2011-04-22", "notes"=>"", "title"=>"Good Friday", "bunting"=>"true"},
+          {"date"=>"2011-04-29", "notes"=>"", "title"=>"Royal wedding", "bunting"=>"true"},
+          {"date"=>"2011-12-26", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>"true"},
+          {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Boxing Day", "bunting"=>"true"}
         ],
         "division"=>"england-and-wales",
         "year"=>"2011"
@@ -82,15 +82,15 @@ class CalendarControllerTest < ActionController::TestCase
       output = {
         "division" => "england-and-wales",
         "events" => [
-          {"date"=>"2011-01-03", "notes"=>"Substitute day", "title"=>"New Year's Day"},
-          {"date"=>"2011-04-22", "notes"=>"", "title"=>"Good Friday"},
-          {"date"=>"2011-04-29", "notes"=>"", "title"=>"Royal wedding"},
-          {"date"=>"2011-12-26", "notes"=>"Substitute day", "title"=>"Christmas Day"},
-          {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Boxing Day"},
-          {"date"=>"2012-01-02", "notes"=>"Substitute day", "title"=>"New Year's Day"},
-          {"date"=>"2012-05-07", "notes"=>"", "title"=>"Early May Bank Holiday"},
-          {"date"=>"2012-12-25", "notes"=>"", "title"=>"Christmas Day"},
-          {"date"=>"2012-12-26", "notes"=>"", "title"=>"Boxing Day"}
+          {"date"=>"2011-01-03", "notes"=>"Substitute day", "title"=>"New Year's Day", "bunting"=>"true"},
+          {"date"=>"2011-04-22", "notes"=>"", "title"=>"Good Friday", "bunting"=>"true"},
+          {"date"=>"2011-04-29", "notes"=>"", "title"=>"Royal wedding", "bunting"=>"true"},
+          {"date"=>"2011-12-26", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>"true"},
+          {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Boxing Day", "bunting"=>"true"},
+          {"date"=>"2012-01-02", "notes"=>"Substitute day", "title"=>"New Year's Day", "bunting"=>"true"},
+          {"date"=>"2012-05-07", "notes"=>"", "title"=>"Early May Bank Holiday", "bunting"=>"true"},
+          {"date"=>"2012-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>"true"},
+          {"date"=>"2012-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>"true"}
         ]
       }
 

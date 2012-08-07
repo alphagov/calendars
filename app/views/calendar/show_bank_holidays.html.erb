@@ -4,7 +4,7 @@
   <meta name="x-section-name" content="Work" />
   <meta name="x-section-link" content="/browse/work" />
   <meta name="x-section-format" content="answer" />
-  
+
   <link rel="alternate" type="application/json" href="/bank-holidays/england-and-wales.json" />
   <link rel="alternate" type="application/json" href="/bank-holidays/scotland.json" />
   <link rel="alternate" type="application/json" href="/bank-holidays/ni.json" />
@@ -38,9 +38,7 @@
               <li><a href="#ni" class="ni">Northern Ireland</a></li>
             </ul>
           </div>
-
           <% @divisions.each do |division, item| -%>
-
             <div id="<%= division %>">
               <% if item[:whole_calendar].upcoming_event %>
               <p>The next bank holiday in <%= item[:whole_calendar].formatted_division(division) %> is:</p>
@@ -48,6 +46,9 @@
                   <p><span><%= item[:whole_calendar].upcoming_event.title %></span>
                   <%= item[:whole_calendar].event_today? ? "today" : item[:whole_calendar].upcoming_event.date.strftime("%e %B") %></p>
                 </div>
+                <% if item[:whole_calendar].bunting? %>
+                <div class="epic-bunting"><span></span></div>
+                <% end %>
              <% end %>
 
               <% item[:calendars].each do |year, c| -%>
@@ -74,7 +75,7 @@
         </div>
       </div>
     </div>
-   
+
   </section>
 
   <%= javascript_include_tag 'publisher-tabs.js', :defer=>"defer" %>
