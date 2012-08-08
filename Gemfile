@@ -1,14 +1,8 @@
 source 'http://rubygems.org'
 source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.1.7'
 gem 'gds-warmup-controller'
-
-# passenger compatability
-group :passenger_compatibility do
-  gem 'rack', '1.3.5'
-  gem 'rake', '0.9.2'
-end
 
 gem 'json'
 gem 'jquery-rails'
