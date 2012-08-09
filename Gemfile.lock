@@ -46,9 +46,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    capybara-webkit (0.12.1)
-      capybara (>= 1.0.0, < 1.2)
-      json
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
     ci_reporter (1.6.5)
@@ -181,7 +178,6 @@ PLATFORMS
 DEPENDENCIES
   aws-ses (= 0.4.4)
   capybara (= 1.1.2)
-  capybara-webkit (= 0.12.1)
   ci_reporter (= 1.6.5)
   exception_notification (= 2.5.2)
   factory_girl_rails (= 1.4.0)
