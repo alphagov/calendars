@@ -14,8 +14,10 @@
 <% end %>
 <% content_for :wrapper_class, "wrapper" %>
 
-<% if item[:whole_calendar].bunting? %>
-<div class="epic-bunting"><span></span></div>
+<% @divisions.each do |division, item| -%>
+  <% if item[:whole_calendar].upcoming_event && item[:whole_calendar].bunting? %>
+    <div class="epic-bunting"><span></span></div>
+  <% end %>
 <% end %>
 
 <section id="content" role="main" class="group bank-holiday">
