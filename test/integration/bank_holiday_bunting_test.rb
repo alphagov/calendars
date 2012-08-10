@@ -10,14 +10,14 @@ class BankHolidayBuntingTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse("3rd Feb 2012"))
     visit "/bank-holidays"
     assert_equal 200, page.status_code
-    assert ! page.has_css?('.epic-bunting')
+    assert page.has_no_css?('.epic-bunting')
   end
 
   should "not have bunting if it's not allowed (Orangemen's Day)" do
     Timecop.travel(Date.parse("12th July 2012"))
     visit "/bank-holidays"
     assert_equal 200, page.status_code
-    assert ! page.has_css?('.epic-bunting')
+    assert page.has_no_css?('.epic-bunting')
   end
 
   should "have bunting if set to have bunting allowed" do
