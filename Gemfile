@@ -19,7 +19,7 @@ gem 'lograge', '0.0.6'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '1.2.4'
+  gem 'slimmer', '2.0.0'
 end
 
 if ENV['API_DEV']
