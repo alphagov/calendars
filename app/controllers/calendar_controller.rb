@@ -1,4 +1,8 @@
+require 'gds_api/helpers'
+
 class CalendarController < ApplicationController
+  include GdsApi::Helpers
+
   before_filter :find_scope
   before_filter :find_calendar, :only => :show
 
@@ -14,7 +18,11 @@ class CalendarController < ApplicationController
           format.ics  { render :text => @repository.combined_calendar_for_division(params[:division]).to_ics }
           format.html { simple_404 }
         else
-          format.html { render "show_#{@scope_view_name}" }
+          format.html do
+            @artefact = fetch_artefact(:slug => @scope)
+            set_slimmer_artefact(@artefact)
+            render "show_#{@scope_view_name}"
+          end
           format.json { @divisions.each {|key, i| @divisions[key].delete(:whole_calendar) }
             render :json => @divisions.to_json }
         end
