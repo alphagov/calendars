@@ -22,8 +22,8 @@ class CalendarsTest < ActionDispatch::IntegrationTest
 
       repository = Calendar::Repository.new("bank-holidays")
       repository.all_grouped_by_division.each do |division, item|
-        assert_select "#tabs li a.#{division}"
-        assert_select "#guide-nav ##{division}"
+        assert_select ".nav-tabs li a.#{division}"
+        assert_select ".tab-content ##{division}"
       end
     end
 
