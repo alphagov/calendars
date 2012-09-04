@@ -35,54 +35,53 @@
 
         <p>These are the dates of UK bank holidays for 2012 and 2013.</p>
 
-        <div id="guide-nav" class="group">
+        <nav class="js-tabs nav-tabs" role="navigation">
+          <ul>
+            <li><a href="#england-and-wales" class="england-and-wales">England and Wales</a></li>
+            <li><a href="#scotland" class="scotland">Scotland</a></li>
+            <li><a href="#ni" class="ni">Northern Ireland</a></li>
+          </ul>
+        </nav>
 
-          <div id="tabs">
-            <ul>
-              <li><a href="#england-and-wales" class="england-and-wales">England and Wales</a></li>
-              <li><a href="#scotland" class="scotland">Scotland</a></li>
-              <li><a href="#ni" class="ni">Northern Ireland</a></li>
-            </ul>
-          </div>
+        <div class="js-tab-content tab-content">
           <% @divisions.each do |division, item| -%>
-            <div id="<%= division %>">
+            <div class="js-tab-pane tab-pane" id="<%= division %>">
               <% if item[:whole_calendar].upcoming_event %>
               <p>The next bank holiday in <%= item[:whole_calendar].formatted_division(division) %> is:</p>
-                <div class="highlighted-event">
-                  <p><span><%= item[:whole_calendar].upcoming_event.title %></span>
-                  <%= item[:whole_calendar].event_today? ? "today" : item[:whole_calendar].upcoming_event.date.strftime("%e %B") %></p>
-                </div>
-             <% end %>
+              <div class="highlighted-event">
+                <p><span><%= item[:whole_calendar].upcoming_event.title %></span>
+                <%= item[:whole_calendar].event_today? ? "today" : item[:whole_calendar].upcoming_event.date.strftime("%e %B") %></p>
+              </div>
+              <% end %>
 
               <% item[:calendars].each do |year, c| -%>
                 <%= render :partial => 'calendar', :locals => {
                   :calendar => c,
                   :caption => "#{c.year} bank holidays in #{c.formatted_division}",
                   :ics_caption => "Bank holidays for #{c.year} in #{c.formatted_division}" } %>
-
-                <% end -%>
-
-              </div><!-- /england-and-wales -->
-            <% end -%>
-
-          </div>
-          <p>If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
-          <p>Your employer doesn’t have to give you paid leave on bank or public holidays.</p>
+              <% end -%>
+            </div>
+          <% end -%>
 
         </div>
-      </article>
 
-      <div class="meta-data group">
-        <div class="inner">
-          <p class="modified-date">Last updated: <%= last_updated_date.strftime('%d %B %Y') %></p>
-        </div>
+        <p>If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+        <p>Your employer doesn’t have to give you paid leave on bank or public holidays.</p>
+
+      </div>
+    </article>
+
+    <div class="meta-data group">
+      <div class="inner">
+        <p class="modified-date">Last updated: <%= last_updated_date.strftime('%d %B %Y') %></p>
       </div>
     </div>
+  </div>
 
-  </section>
+</section>
 
-  <%= javascript_include_tag 'publisher-tabs.js', :defer=>"defer" %>
+<%= javascript_include_tag 'bank-holiday.js', :defer => 'defer' %>
 
-  <% content_for :head do %>
-  <link rel="alternate" type="application/json" href="<%= calendars_path('bank-holidays', :format => :json) %>">
-  <% end %>
+<% content_for :head do %>
+<link rel="alternate" type="application/json" href="<%= calendars_path('bank-holidays', :format => :json) %>">
+<% end %>
