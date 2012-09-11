@@ -71,11 +71,7 @@
       </div>
     </article>
 
-    <div class="meta-data group">
-      <div class="inner">
-        <p class="modified-date">Last updated: <%= last_updated_date.strftime('%d %B %Y') %></p>
-      </div>
-    </div>
+    <%= render :partial => 'calendar_metadata' %>
   </div>
 
 </section>
