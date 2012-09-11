@@ -20,7 +20,7 @@ class PanopticonRegistrationTest < ActiveSupport::TestCase
       assert_equal ["bank-holidays.json"], artefact[:paths]
       assert_equal ["bank-holidays"], artefact[:prefixes]
 
-      assert artefact[:live], "Is not live"
+      assert_equal 'live', artefact[:state], "Is not live"
     end
   end
 end

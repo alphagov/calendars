@@ -15,8 +15,8 @@ class RegisterableCalendar
     @slug = File.basename(path, '.json')
   end
 
-  def live
-    true
+  def state
+    'live'
   end
 
   def paths
