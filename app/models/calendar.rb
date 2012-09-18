@@ -26,10 +26,6 @@ class Calendar
       parsed_data[:need_id]
     end
 
-    def section
-      parsed_data[:section]
-    end
-
     def parsed_data
       @parsed_data ||= JSON.parse(File.read(@json_path)).symbolize_keys
     rescue

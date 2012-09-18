@@ -37,10 +37,9 @@ class CalendarTest < ActiveSupport::TestCase
       end
     end
 
-    should "expose calendar need_id and section" do
+    should "expose calendar need_id" do
       repository = Calendar::Repository.new("single-calendar")
       assert_equal 42, repository.need_id
-      assert_equal "Curmudgeonship", repository.section
     end
 
     should "load individual calendar given division and year" do

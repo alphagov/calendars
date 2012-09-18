@@ -1,12 +1,12 @@
 require 'test_helper'
 require 'capybara/rails'
-require 'gds_api/test_helpers/panopticon'
+require 'gds_api/test_helpers/content_api'
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-  include GdsApi::TestHelpers::Panopticon
+  include GdsApi::TestHelpers::ContentApi
 
   setup do
-    stub_panopticon_default_artefact
+    stub_content_api_default_artefact
   end
 end

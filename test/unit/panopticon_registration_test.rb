@@ -12,7 +12,7 @@ class PanopticonRegistrationTest < ActiveSupport::TestCase
       calendar = RegisterableCalendar.new(file_path)
       artefact = registerer.record_to_artefact(calendar)
 
-      [:name, :description, :slug, :section].each do |key|
+      [:name, :description, :slug].each do |key|
         assert artefact.has_key?(key), "Missing attribute: #{key}"
         assert ! artefact[key].nil?, "Attribute #{key} is nil"
       end
