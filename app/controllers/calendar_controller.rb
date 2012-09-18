@@ -19,7 +19,7 @@ class CalendarController < ApplicationController
           format.html { simple_404 }
         else
           format.html do
-            @artefact = fetch_artefact(:slug => @scope)
+            @artefact = content_api.artefact(@scope)
             set_slimmer_artefact(@artefact)
             render "show_#{@scope_view_name}"
           end

@@ -1,12 +1,12 @@
 require 'test_helper'
-require 'gds_api/test_helpers/panopticon'
+require 'gds_api/test_helpers/content_api'
 
 class CalendarControllerTest < ActionController::TestCase
-  include GdsApi::TestHelpers::Panopticon
+  include GdsApi::TestHelpers::ContentApi
 
   context "GET 'index'" do
     setup do
-      stub_panopticon_default_artefact
+      stub_content_api_default_artefact
     end
 
     should "send analytics headers" do
@@ -19,12 +19,12 @@ class CalendarControllerTest < ActionController::TestCase
     end
 
     should "send artefact from panopticon to slimmer" do
-      mock_artefact = {'slug' => 'bank-holidays', "name" => "UK bank holidays"}
-      GdsApi::Panopticon.any_instance.expects(:artefact_for_slug).with('bank-holidays').returns(mock_artefact)
-
-      @controller.expects(:set_slimmer_artefact).with(mock_artefact)
+      artefact_data = artefact_for_slug('bank-holidays')
+      content_api_has_an_artefact('bank-holidays', artefact_data)
 
       get :index, :scope => "bank-holidays"
+
+      assert_equal artefact_data.to_json, @response.headers[Slimmer::Headers::ARTEFACT_HEADER]
     end
   end
 end
