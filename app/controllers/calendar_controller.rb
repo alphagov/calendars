@@ -19,7 +19,7 @@ class CalendarController < ApplicationController
           format.html { simple_404 }
         else
           format.html do
-            @artefact = fetch_artefact(:slug => @scope)
+            @artefact = content_api.artefact(@scope)
             set_slimmer_artefact(@artefact)
             render "show_#{@scope_view_name}"
           end
@@ -28,10 +28,7 @@ class CalendarController < ApplicationController
         end
       end
       set_slimmer_headers(
-        format:      "calendar",
-        proposition: "citizen",
-        need_id:     @repository.need_id,
-        section:     @repository.section
+        format:      "calendar"
       )
     else
       simple_404
