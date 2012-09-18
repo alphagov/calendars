@@ -28,10 +28,7 @@ class CalendarController < ApplicationController
         end
       end
       set_slimmer_headers(
-        format:      "calendar",
-        proposition: "citizen",
-        need_id:     @repository.need_id,
-        section:     @repository.section
+        format:      "calendar"
       )
     else
       simple_404
