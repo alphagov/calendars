@@ -11,6 +11,7 @@ gem 'exception_notification', '2.5.2'
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
 gem 'ri_cal', '0.8.8'
 gem 'plek', '0.3.0'
+gem 'govuk_frontend_toolkit', '0.3.3'
 
 gem 'graylog2_exceptions'
 gem 'gelf', '1.3.2'
@@ -41,12 +42,12 @@ group :test do
 
   # Pretty printed test output
   gem 'turn', '0.9.6', require: false
-    
   gem 'capybara', '1.1.2'
   gem 'timecop', '0.4.5'
 end
 
 group :assets do
+  gem 'sass-rails', '3.2.3'
   gem 'therubyracer', '0.10.2'
   gem 'uglifier'
 end
