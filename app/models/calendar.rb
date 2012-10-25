@@ -108,8 +108,9 @@ class Calendar
   end
 
   def to_ics
-    output = "BEGIN:VCALENDAR\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\n"
-    output << "CALSCALE:GREGORIAN\r\nVERSION:2.0\r\n"
+    output = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\n"
+    output << "PRODID:-//uk.gov/GOVUK calendars//EN\r\n"
+    output << "CALSCALE:GREGORIAN\r\n"
     self.events.each do |event|
       output << "BEGIN:VEVENT\r\n"
       output << "DTEND;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
