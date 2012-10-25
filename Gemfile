@@ -2,14 +2,12 @@ source 'http://rubygems.org'
 source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
 
 gem 'rails', '3.2.8'
-gem 'gds-warmup-controller'
 
 gem 'json', '1.7.4'
-gem 'jquery-rails', '1.0.19'
 gem 'exception_notification', '2.5.2'
-
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
 gem 'plek', '0.3.0'
+
 gem 'govuk_frontend_toolkit', '0.3.3'
 
 gem 'graylog2_exceptions'
