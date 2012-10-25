@@ -9,7 +9,6 @@ gem 'jquery-rails', '1.0.19'
 gem 'exception_notification', '2.5.2'
 
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
-gem 'ri_cal', '0.8.8'
 gem 'plek', '0.3.0'
 gem 'govuk_frontend_toolkit', '0.3.3'
 
