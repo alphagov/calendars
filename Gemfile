@@ -28,7 +28,6 @@ else
 end
 
 group :test do
-  gem 'factory_girl_rails', '1.4.0'
   gem 'mocha', '0.10.0', require: false
   gem 'shoulda', '2.11.3'
   gem 'simplecov', '0.4.2'
