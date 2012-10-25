@@ -15,7 +15,10 @@ class IcalendarTest < ActionDispatch::IntegrationTest
 
       expected << "END:VCALENDAR\r\n"
 
-      assert_equal expected, @response.body
+      assert_equal expected, response.body
+      assert_equal "text/calendar", response.content_type
+
+      assert_equal "max-age=86400, public", response.headers["Cache-Control"]
     end
 
     should "contain all calendar events for combined calendars" do
@@ -30,7 +33,9 @@ class IcalendarTest < ActionDispatch::IntegrationTest
 
       expected << "END:VCALENDAR\r\n"
 
-      assert_equal expected, @response.body
+      assert_equal expected, response.body
+      assert_equal "text/calendar", response.content_type
+      assert_equal "max-age=3600, public", response.headers["Cache-Control"]
      end
   end
 end
