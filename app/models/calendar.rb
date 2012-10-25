@@ -108,7 +108,7 @@ class Calendar
   end
 
   def to_ics
-    output = "BEGIN:VCALENDAR\r\nPRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN\r\n"
+    output = "BEGIN:VCALENDAR\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\n"
     output << "CALSCALE:GREGORIAN\r\nVERSION:2.0\r\n"
     self.events.each do |event|
       output << "BEGIN:VEVENT\r\n"
