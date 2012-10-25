@@ -108,15 +108,17 @@ class Calendar
   end
 
   def to_ics
-    RiCal.Calendar do |cal|
-      self.events.each do |bh|
-        cal.event do |event|
-          event.summary bh.title
-          event.dtstart bh.date
-          event.dtend   bh.date
-        end
-      end
-    end.export
+    output = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\n"
+    output << "PRODID:-//uk.gov/GOVUK calendars//EN\r\n"
+    output << "CALSCALE:GREGORIAN\r\n"
+    self.events.each do |event|
+      output << "BEGIN:VEVENT\r\n"
+      output << "DTEND;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
+      output << "DTSTART;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
+      output << "SUMMARY:#{ event.title }\r\n"
+      output << "END:VEVENT\r\n"
+    end
+    output << "END:VCALENDAR\r\n"
   end
 
   def self.combine(calendars, division)
