@@ -7,7 +7,7 @@
     "england-and-wales": {
       "2012": [
         {
-          "title": "New Year's Day",
+          "title": "New Year’s Day",
           "date": "02/01/2012",
           "notes": "Substitute day",
           "bunting": "true"
@@ -37,7 +37,7 @@
           "bunting": "true"
         },
         {
-          "title": "Queen's Diamond Jubilee",
+          "title": "Queen’s Diamond Jubilee",
           "date": "05/06/2012",
           "notes": "Extra bank holiday",
           "bunting": "true"
@@ -63,7 +63,7 @@
       ],
       "2013": [
         {
-          "title": "New Year's Day",
+          "title": "New Year’s Day",
           "date": "01/01/2013",
           "notes": "",
           "bunting": "true"
@@ -121,7 +121,7 @@
           "bunting": "true"
         },
         {
-          "title": "New Year's Day",
+          "title": "New Year’s Day",
           "date": "03/01/2012",
           "notes": "Substitute day",
           "bunting": "true"
@@ -145,7 +145,7 @@
           "bunting": "true"
         },
         {
-          "title": "Queen's Diamond Jubilee",
+          "title": "Queen’s Diamond Jubilee",
           "date": "05/06/2012",
           "notes": "Extra bank holiday",
           "bunting": "true"
@@ -157,7 +157,7 @@
           "bunting": "true"
         },
         {
-          "title": "St Andrew's Day",
+          "title": "St Andrew’s Day",
           "date": "30/11/2012",
           "notes": "",
           "bunting": "true"
@@ -177,7 +177,7 @@
       ],
       "2013": [
         {
-          "title": "New Year's Day",
+          "title": "New Year’s Day",
           "date": "01/01/2013",
           "notes": "",
           "bunting": "true"
@@ -213,7 +213,7 @@
           "bunting": "true"
         },
         {
-          "title": "St Andrew's Day",
+          "title": "St Andrew’s Day",
           "date": "02/12/2013",
           "notes": "Substitute day",
           "bunting": "true"
@@ -235,13 +235,13 @@
     "ni": {
       "2012": [
         {
-          "title": "New Year's Day",
+          "title": "New Year’s Day",
           "date": "02/01/2012",
           "notes": "Substitute day",
           "bunting": "true"
         },
         {
-          "title": "St Patrick's Day",
+          "title": "St Patrick’s Day",
           "date": "19/03/2012",
           "notes": "Substitute day",
           "bunting": "true"
@@ -271,13 +271,13 @@
           "bunting": "true"
         },
         {
-          "title": "Queen's Diamond Jubilee",
+          "title": "Queen’s Diamond Jubilee",
           "date": "05/06/2012",
           "notes": "Extra bank holiday",
           "bunting": "true"
         },
         {
-          "title": "Battle of the Boyne (Orangemen's Day)",
+          "title": "Battle of the Boyne (Orangemen’s Day)",
           "date": "12/07/2012",
           "notes": "",
           "bunting": "false"
@@ -303,13 +303,13 @@
       ],
       "2013": [
         {
-          "title": "New Year's Day",
+          "title": "New Year’s Day",
           "date": "01/01/2013",
           "notes": "",
           "bunting": "true"
         },
         {
-          "title": "St Patrick's Day",
+          "title": "St Patrick’s Day",
           "date": "18/03/2013",
           "notes": "Substitute day",
           "bunting": "true"
@@ -339,7 +339,7 @@
           "bunting": "true"
         },
         {
-          "title": "Battle of the Boyne (Orangemen's Day)",
+          "title": "Battle of the Boyne (Orangemen’s Day)",
           "date": "12/07/2013",
           "notes": "",
           "bunting": "false"
