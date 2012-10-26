@@ -2,15 +2,12 @@ source 'http://rubygems.org'
 source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
 
 gem 'rails', '3.2.8'
-gem 'gds-warmup-controller'
 
 gem 'json', '1.7.4'
-gem 'jquery-rails', '1.0.19'
 gem 'exception_notification', '2.5.2'
-
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
-gem 'ri_cal', '0.8.8'
 gem 'plek', '0.3.0'
+
 gem 'govuk_frontend_toolkit', '0.3.3'
 
 gem 'graylog2_exceptions'
@@ -31,7 +28,6 @@ else
 end
 
 group :test do
-  gem 'factory_girl_rails', '1.4.0'
   gem 'mocha', '0.10.0', require: false
   gem 'shoulda', '2.11.3'
   gem 'simplecov', '0.4.2'
