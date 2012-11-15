@@ -6,11 +6,12 @@ class CalendarTest < ActiveSupport::TestCase
   context "Calendar" do
 
     should "be able to access all calendars" do
-      assert_equal Calendar.all_slugs.size, 4
+      assert_equal Calendar.all_slugs.size, 5
       assert Calendar.all_slugs.include? '/bank-holidays'
       assert Calendar.all_slugs.include? '/combine-calendar'
       assert Calendar.all_slugs.include? '/multiple-divisions'
       assert Calendar.all_slugs.include? '/single-calendar'
+      assert Calendar.all_slugs.include? '/when-do-the-clocks-change'
     end
 
     should "load calendar item successfully" do

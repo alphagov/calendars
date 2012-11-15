@@ -1,0 +1,46 @@
+{
+  "title": "When do the clocks change?",
+  "need_id": 738,
+  "description": "In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the last Sunday in October.",
+  "indexable_content": "This clock change gives the UK an extra hour of daylight (sometimes called Daylight Saving Time). From March to October (when the clocks are 1 hour ahead) the UK is on British Summer Time (BST). From October to March, the UK is on Greenwich Mean Time (GMT).",
+  "divisions": {
+    "united-kingdom": {
+      "2012": [
+        {
+          "title": "Start of British Summer Time",
+          "date": "25/03/2012",
+          "notes": "Clocks advance one hour"
+        },
+        {
+          "title": "End of British Summer Time",
+          "date": "28/10/2012",
+          "notes": "Clocks go back one hour"
+        }
+      ],
+      "2013": [
+        {
+          "title": "Start of British Summer Time",
+          "date": "31/03/2013",
+          "notes": "Clocks advance one hour"
+        },
+        {
+          "title": "End of British Summer Time",
+          "date": "27/10/2013",
+          "notes": "Clocks go back one hour"
+        }
+      ],
+      "2014": [
+        {
+          "title": "Start of British Summer Time",
+          "date": "30/03/2014",
+          "notes": "Clocks go back one hour"
+        },
+        {
+          "title": "End of British Summer Time",
+          "date": "26/10/2014",
+          "notes": "Clocks go back one hour"
+        }
+      ]
+    }
+  }
+}
