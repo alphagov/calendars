@@ -25,7 +25,25 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
         assert page.has_link?("Clock changes in the UK", :href => "/when-do-the-clocks-change/united-kingdom.ics")
       end
     end
-
   end
 
+  should "display the correct upcoming event" do
+    Timecop.travel(Date.parse('2012-11-15')) do
+      visit "/when-do-the-clocks-change"
+
+      within ".highlighted-event" do
+        assert page.has_content?("The clocks advance")
+        assert page.has_content?("31 March")
+      end
+    end # Timecop
+
+    Timecop.travel(Date.parse('2013-04-01')) do
+      visit "/when-do-the-clocks-change"
+
+      within ".highlighted-event" do
+        assert page.has_content?("The clocks go back")
+        assert page.has_content?("27 October")
+      end
+    end # Timecop
+  end
 end

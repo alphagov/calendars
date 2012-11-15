@@ -83,11 +83,33 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             ])
             assert page.has_link?("Bank holidays for 2013 in Northern Ireland", :href => "/bank-holidays/ni-2013.ics")
           end
+        end # within .tab-content
+      end # within article
+    end # within #content
+  end
+
+  should "display the correct upcoming event" do
+    Timecop.travel(Date.parse('2012-01-03')) do
+      visit "/bank-holidays"
+
+      within ".tab-content" do
+
+        within '#england-and-wales .highlighted-event' do
+          assert page.has_content?("Spring bank holiday")
+          assert page.has_content?("4 June")
         end
 
-      end
-    end
+        within '#scotland .highlighted-event' do
+          assert page.has_content?("New Year’s Day")
+          assert page.has_content?("today")
+        end
 
+        within '#ni .highlighted-event' do
+          assert page.has_content?("St Patrick’s Day")
+          assert page.has_content?("19 March")
+        end
+      end # within .tab-content
+    end # Timecop
   end
 
 end
