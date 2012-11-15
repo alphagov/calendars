@@ -3,8 +3,11 @@ require 'gds_api/helpers'
 class CalendarController < ApplicationController
   include GdsApi::Helpers
 
-  before_filter :find_scope
+  before_filter :find_scope, :only => [:index, :show]
   before_filter :find_calendar, :only => :show
+
+  before_filter :validate_scope, :only => [:calendar]
+  before_filter :set_expiry, :only => [:calendar]
 
   rescue_from Calendar::CalendarNotFound, with: :simple_404
 
@@ -47,7 +50,28 @@ class CalendarController < ApplicationController
     end
   end
 
+  def calendar
+    @calendar = Calendar.find(params[:scope])
+
+    respond_to do |format|
+      format.html do
+        @artefact = content_api.artefact(params[:scope])
+        set_slimmer_artefact(@artefact)
+        set_slimmer_headers :format => "calendar"
+
+        render params[:scope].gsub('-', '_')
+      end
+      format.json do
+        render :json => @calendar.to_json
+      end
+    end
+  end
+
 private
+
+  def validate_scope
+    simple_404 unless params[:scope] =~ /\A[a-z-]+\z/
+  end
 
   def find_scope
     @scope = params[:scope]
