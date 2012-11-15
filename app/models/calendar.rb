@@ -2,7 +2,7 @@ class Calendar
 
   REPOSITORY_PATH = Rails.env.test? ? "test/fixtures/data" : "lib/data"
 
-  class CalendarNotFound < Exception
+  class CalendarNotFound < StandardError
   end
 
   def self.all_slugs
