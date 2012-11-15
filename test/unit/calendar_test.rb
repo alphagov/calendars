@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'test_helper'
 
 class CalendarTest < ActiveSupport::TestCase
@@ -5,9 +6,10 @@ class CalendarTest < ActiveSupport::TestCase
   context "Calendar" do
 
     should "be able to access all calendars" do
-      assert_equal Calendar.all_slugs.size, 3
+      assert_equal Calendar.all_slugs.size, 4
       assert Calendar.all_slugs.include? '/bank-holidays'
       assert Calendar.all_slugs.include? '/combine-calendar'
+      assert Calendar.all_slugs.include? '/multiple-divisions'
       assert Calendar.all_slugs.include? '/single-calendar'
     end
 
@@ -33,7 +35,7 @@ class CalendarTest < ActiveSupport::TestCase
 
     should "throw exception when calendar exists but division doesn't" do
       assert_raises Calendar::CalendarNotFound do
-        repository = Calendar.combine("bank-holidays", "fake-division")
+        repository = Calendar.combine("multiple-divisions", "fake-division")
       end
     end
 
@@ -43,7 +45,7 @@ class CalendarTest < ActiveSupport::TestCase
     end
 
     should "load individual calendar given division and year" do
-      repository = Calendar::Repository.new("bank-holidays")
+      repository = Calendar::Repository.new("multiple-divisions")
 
       @calendar = repository.find_by_division_and_year( 'england-and-wales', '2011' )
 
@@ -68,7 +70,7 @@ class CalendarTest < ActiveSupport::TestCase
     end
 
     should "give correct upcoming event" do
-      repository = Calendar::Repository.new("bank-holidays")
+      repository = Calendar::Repository.new("multiple-divisions")
       @calendar = repository.find_by_division_and_year( 'england-and-wales', '2011' )
 
       Timecop.freeze(Date.parse('1 April 2011')) do
@@ -77,7 +79,7 @@ class CalendarTest < ActiveSupport::TestCase
     end
 
     should "give correct upcoming event between multiple calendars" do
-      repository = Calendar::Repository.new("bank-holidays")
+      repository = Calendar::Repository.new("multiple-divisions")
       @calendar = repository.all_grouped_by_division['england-and-wales'][:whole_calendar]
 
       Timecop.freeze(Date.parse('1st January 2012')) do
@@ -86,7 +88,7 @@ class CalendarTest < ActiveSupport::TestCase
     end
 
     should "be able to check if an event is today" do
-      repository = Calendar::Repository.new("bank-holidays")
+      repository = Calendar::Repository.new("multiple-divisions")
       @calendar = repository.find_by_division_and_year( 'england-and-wales', '2011' )
 
       Timecop.freeze(Date.parse('22 April 2011')) do
@@ -99,7 +101,7 @@ class CalendarTest < ActiveSupport::TestCase
     end
 
     should "only show bunting if allowed" do
-      repository = Calendar::Repository.new("bank-holidays")
+      repository = Calendar::Repository.new("multiple-divisions")
       @calendar = repository.find_by_division_and_year("england-and-wales", "2011")
 
       Timecop.freeze(Date.parse("3rd January 2011")) do
