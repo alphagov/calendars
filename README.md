@@ -1,6 +1,6 @@
 ## Calendars
 
-A Rails application to format and display calendar data, starting with [Bank Holidays](http://www.direct.gov.uk/en/Employment/Employees/Timeoffandholidays/DG_073741) and Daylight Savings Time, in a clearer and more accessible format, along with JSON and iCal exports of the data.
+A Rails application to format and display calendar data, starting with [Bank Holidays](https://www.gov.uk/bank-holidays) and [Daylight Savings Time](https://www.gov.uk/when-do-the-clocks-change), in a clearer and more accessible format, along with JSON and iCal exports of the data.
 
 ### Usage
 
