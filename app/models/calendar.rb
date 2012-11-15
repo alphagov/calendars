@@ -102,7 +102,7 @@ class Calendar
       "England and Wales"
     when 'scotland'
       "Scotland"
-    when 'ni'
+    when 'northern-ireland'
       "Northern Ireland"
     end
   end

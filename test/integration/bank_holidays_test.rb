@@ -62,7 +62,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             assert page.has_link?("Bank holidays for 2013 in Scotland", :href => "/bank-holidays/scotland-2013.ics")
           end
 
-          within '#ni' do
+          within '#northern-ireland' do
             assert page.has_table?("2012 bank holidays in Northern Ireland", :rows => [
               ["02 January", "Monday", "New Year’s Day", "Substitute day"],
               ["19 March", "Monday", "St Patrick’s Day", "Substitute day"],
@@ -72,7 +72,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
             ])
-            assert page.has_link?("Bank holidays for 2012 in Northern Ireland", :href => "/bank-holidays/ni-2012.ics")
+            assert page.has_link?("Bank holidays for 2012 in Northern Ireland", :href => "/bank-holidays/northern-ireland-2012.ics")
 
             assert page.has_table?("2013 bank holidays in Northern Ireland", :rows => [
               ["01 January", "Tuesday", "New Year’s Day", ""],
@@ -81,7 +81,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
             ])
-            assert page.has_link?("Bank holidays for 2013 in Northern Ireland", :href => "/bank-holidays/ni-2013.ics")
+            assert page.has_link?("Bank holidays for 2013 in Northern Ireland", :href => "/bank-holidays/northern-ireland-2013.ics")
           end
         end # within .tab-content
       end # within article
@@ -104,7 +104,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           assert page.has_content?("today")
         end
 
-        within '#ni .highlighted-event' do
+        within '#northern-ireland .highlighted-event' do
           assert page.has_content?("St Patrick’s Day")
           assert page.has_content?("19 March")
         end
