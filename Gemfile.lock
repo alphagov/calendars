@@ -60,13 +60,9 @@ GEM
       lrucache (~> 0.1.1)
       null_logger
       plek
-    gelf (1.3.2)
-      json
     govuk_frontend_toolkit (0.3.3)
       rails (>= 3.1.0)
       sass (>= 3.2.0)
-    graylog2_exceptions (0.5.3)
-      gelf
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.4)
@@ -181,9 +177,7 @@ DEPENDENCIES
   ci_reporter (= 1.6.5)
   exception_notification (= 2.5.2)
   gds-api-adapters (= 2.1.0)
-  gelf (= 1.3.2)
   govuk_frontend_toolkit (= 0.3.3)
-  graylog2_exceptions
   json (= 1.7.4)
   lograge (= 0.0.6)
   mocha (= 0.10.0)
