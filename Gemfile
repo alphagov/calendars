@@ -34,10 +34,7 @@ group :test do
   gem 'simplecov-rcov', '0.2.3'
   gem 'webmock', '1.7.8', require: false
   gem 'ci_reporter', '1.6.5'
-  gem 'test-unit', '2.4.2'
-
-  # Pretty printed test output
-  gem 'turn', '0.9.6', require: false
+  gem 'test-unit', '2.5.2'
   gem 'capybara', '1.1.2'
   gem 'timecop', '0.4.5'
 end
