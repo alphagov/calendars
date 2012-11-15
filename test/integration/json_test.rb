@@ -43,5 +43,19 @@ class ApiTest < ActionDispatch::IntegrationTest
 
       assert_equal output, JSON.parse(@response.body)
     end
+
+    should "have redirects for old 'ni' division" do
+      get "/bank-holidays/ni.json"
+      assert_equal 301, response.status
+      assert_equal "http://www.example.com/bank-holidays/northern-ireland.json", response.location
+
+      get "/bank-holidays/ni-2012.json"
+      assert_equal 301, response.status
+      assert_equal "http://www.example.com/bank-holidays/northern-ireland-2012.json", response.location
+
+      get "/bank-holidays/ni-2013.json"
+      assert_equal 301, response.status
+      assert_equal "http://www.example.com/bank-holidays/northern-ireland-2013.json", response.location
+    end
   end
 end

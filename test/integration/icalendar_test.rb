@@ -1,4 +1,4 @@
-require 'integration_test_helper'
+require_relative '../integration_test_helper'
 
 class IcalendarTest < ActionDispatch::IntegrationTest
 
@@ -36,6 +36,20 @@ class IcalendarTest < ActionDispatch::IntegrationTest
       assert_equal expected, response.body
       assert_equal "text/calendar", response.content_type
       assert_equal "max-age=3600, public", response.headers["Cache-Control"]
-     end
+    end
+
+    should "have redirects for old 'ni' division" do
+      get "/bank-holidays/ni.ics"
+      assert_equal 301, response.status
+      assert_equal "http://www.example.com/bank-holidays/northern-ireland.ics", response.location
+
+      get "/bank-holidays/ni-2012.ics"
+      assert_equal 301, response.status
+      assert_equal "http://www.example.com/bank-holidays/northern-ireland-2012.ics", response.location
+
+      get "/bank-holidays/ni-2013.ics"
+      assert_equal 301, response.status
+      assert_equal "http://www.example.com/bank-holidays/northern-ireland-2013.ics", response.location
+    end
   end
 end
