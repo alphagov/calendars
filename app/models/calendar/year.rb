@@ -19,5 +19,8 @@ class Calendar
       end
     end
 
+    def upcoming_event
+      @upcoming_event ||= events.find {|e| e.date >= Date.today }
+    end
   end
 end

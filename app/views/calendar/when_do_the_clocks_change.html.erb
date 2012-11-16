@@ -11,10 +11,13 @@
   <div class="article-container group">
     <article role="article" class="group">
       <div class="inner">
-        <% if false and next_clock_change %>
-        <div class="highlighted-event">
-          <p>The <%=  next_clock_change_description %> <em><%= next_clock_change_date %></em></p>
-        </div>
+        <%- division = @calendar.divisions.first -%>
+
+        <% if division.upcoming_event %>
+          <div class="highlighted-event">
+            <p>The <%= division.upcoming_event.notes.gsub(' one hour', '').downcase %>
+              <em><%= division.upcoming_event.date.strftime("%e %B") %></em></p>
+          </div>
         <% end %>
 
         <table class="clocks-calendar">
@@ -24,7 +27,7 @@
               <th class="equal-width">Clocks go forward</th>
               <th class="equal-width">Clocks go back</th>
             </tr>
-            <% @calendar.divisions.first.years.each do |year| -%>
+            <% division.years.each do |year| -%>
               <tr>
                 <th scope="row"><%= year %></th>
                 <td><%= year.events[0].date.strftime('%d %B') %></td>
@@ -37,7 +40,7 @@
         <div class="subscribe">
           <p>Add dates to your calendar: <%=
           link_to("Clock changes in the UK",
-                  division_path(@calendar, @calendar.divisions.first, :format => 'ics'),
+                  division_path(@calendar, division, :format => 'ics'),
                   :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook')
                   %>.</p>
         </div>

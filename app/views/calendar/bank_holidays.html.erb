@@ -30,11 +30,11 @@
         <div class="js-tab-content tab-content">
           <% @calendar.divisions.each do |division| %>
             <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
-              <% if false and division.upcoming_event %>
+              <% if division.upcoming_event %>
                 <p>The next bank holiday in <%= division.title %> is:</p>
                 <div class="highlighted-event">
-                  <p><%= division.upcoming_event.title %></p>
-                  <em><%= division.upcoming_event.today? ? "today" : division.upcoming_event.date.strftime("%e %B") %></em>
+                  <p><%= division.upcoming_event.title %>
+                    <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em></p>
                 </div>
               <% end %>
 
