@@ -28,11 +28,12 @@ class CalendarControllerTest < ActionController::TestCase
   context "GET 'calendar'" do
     setup do
       stub_content_api_default_artefact
-      Calendar.stubs(:find).returns('something')
+      Calendar.stubs(:find).returns(Calendar.new('something', {"divisions" => []}))
     end
 
     context "HTML request (no format)" do
       should "load the calendar and assign it to @calendar" do
+        @controller.stubs(:render)
         Calendar.expects(:find).with('bank-holidays').returns(:a_calendar)
 
         get :calendar, :scope => 'bank-holidays'
