@@ -19,7 +19,10 @@ class JSONTest < ActionDispatch::IntegrationTest
         "year"=>"2012"
       }
 
-      assert_equal expected, JSON.parse(@response.body)
+      actual = JSON.parse(@response.body)
+      assert_equal expected["events"], actual["events"]
+      assert_equal expected["division"], actual["division"]
+      assert_equal expected["year"], actual["year"]
     end
 
     should "contain calendar with division" do
@@ -41,7 +44,9 @@ class JSONTest < ActionDispatch::IntegrationTest
         ]
       }
 
-      assert_equal expected, JSON.parse(@response.body)
+      actual = JSON.parse(@response.body)
+      assert_equal expected["events"], actual["events"]
+      assert_equal expected["division"], actual["division"]
     end
 
     should "have the full calendar json view" do

@@ -47,6 +47,7 @@ class Calendar
         calendars_for_division = {
           division:  division,
           calendars: Hash[by_year.sort.map { |year, events|
+            next unless year =~ /\A\d{4}\z/
             calendar = Calendar.new('', year: year, division: division, events:
               events.map { |event|
                 Event.new(
@@ -58,7 +59,7 @@ class Calendar
               }
             )
             [calendar.year, calendar]
-          }]
+          }.compact]
         }
         calendars_for_division[:whole_calendar] = Calendar.combine_inside_division calendars_for_division[:calendars]
         [division, calendars_for_division]
@@ -148,7 +149,7 @@ class Calendar
   def self.combine_inside_division(calendars)
     info = calendars.first[1]
 
-    combined_calendar = Calendar.new(:division => info.division)
+    combined_calendar = Calendar.new('',:division => info.division)
     calendars.each do |year, cal|
       combined_calendar.events += cal.events
     end
