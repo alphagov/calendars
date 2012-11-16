@@ -121,7 +121,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
     end
 
     should "not show bunting if today is a non-buntable bank holiday" do
-      Timecop.travel(Date.parse("12th July 2012")) do
+      Timecop.travel(Date.parse("12th July 2013")) do
         visit "/bank-holidays"
         assert page.has_no_css?('.epic-bunting')
       end
