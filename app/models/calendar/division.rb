@@ -13,6 +13,12 @@ class Calendar
       @years ||= @data.map { |year, events| Year.new(year, events) if year =~ /\A\d{4}\z/ }.compact
     end
 
+    def year(name)
+      yr = years.find {|y| y.to_s == name }
+      raise CalendarNotFound unless yr
+      yr
+    end
+
     def upcoming_event
       @upcoming_event ||= begin
         year = years.find {|y| y.upcoming_event }

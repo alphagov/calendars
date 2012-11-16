@@ -69,6 +69,20 @@ class DivisionTest < ActiveSupport::TestCase
 
       assert_equal [:y_2012, :y_2013], div.years
     end
+
+    context "finding a year by name" do
+      should "return the year with the matching name" do
+        y = @div.year('2013')
+        assert_equal Calendar::Year, y.class
+        assert_equal '2013', y.to_s
+      end
+
+      should "raise exception when division doesn't exist" do
+        assert_raises Calendar::CalendarNotFound do
+          @div.year('non-existent')
+        end
+      end
+    end
   end
 
   context "upcoming event" do
