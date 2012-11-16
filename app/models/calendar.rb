@@ -5,6 +5,16 @@ class Calendar
   class CalendarNotFound < StandardError
   end
 
+  def self.find(slug)
+    json_file = Rails.root.join(REPOSITORY_PATH, "#{slug}.json")
+    if File.exists?(json_file)
+      data = JSON.parse(File.read(json_file))
+      self.new(data)
+    else
+      raise CalendarNotFound
+    end
+  end
+
   def self.all_slugs
     slugs = []
     Dir.glob("#{REPOSITORY_PATH}/*.json").each do |path|
