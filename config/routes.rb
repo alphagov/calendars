@@ -8,7 +8,6 @@ Calendars::Application.routes.draw do
   end
 
   match '/:scope', :to => 'calendar#calendar', :as => :calendar
-  match '/:scope/:division-:year', :to => 'calendar#show', :as => :division_year, :constraints => { :year => /[0-9]{4}/ }
-  match '/:scope/:division', :to => 'calendar#index', :as => :division
-
+  match '/:scope/:division-:year', :to => 'calendar#division', :as => :division_year, :constraints => { :year => /\d{4}/ }
+  match '/:scope/:division', :to => 'calendar#division', :as => :division
 end
