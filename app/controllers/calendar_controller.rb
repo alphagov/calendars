@@ -6,8 +6,7 @@ class CalendarController < ApplicationController
   before_filter :find_scope, :only => [:index, :show]
   before_filter :find_calendar, :only => :show
 
-  before_filter :validate_scope, :only => [:calendar]
-  before_filter :set_expiry, :only => [:calendar]
+  before_filter :load_calendar, :only => [:calendar, :division]
 
   rescue_from Calendar::CalendarNotFound, with: :simple_404
 
@@ -51,7 +50,7 @@ class CalendarController < ApplicationController
   end
 
   def calendar
-    @calendar = Calendar.find(params[:scope])
+    set_expiry
 
     respond_to do |format|
       format.html do
@@ -67,10 +66,26 @@ class CalendarController < ApplicationController
     end
   end
 
+  def division
+    target = @calendar.division(params[:division])
+    if params[:year]
+      target = target.year(params[:year])
+    end
+
+    set_expiry 1.day
+
+    respond_to do |format|
+      format.json { render :json => target.to_json }
+      format.ics { render :text => target.to_ics }
+      format.all { simple_404 }
+    end
+  end
+
 private
 
-  def validate_scope
+  def load_calendar
     simple_404 unless params[:scope] =~ /\A[a-z-]+\z/
+    @calendar = Calendar.find(params[:scope])
   end
 
   def find_scope
