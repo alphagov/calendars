@@ -5,9 +5,9 @@ class CalendarTest < ActiveSupport::TestCase
 
   context "finding a calendar by slug" do
 
-    should "construct a calendar with the data from the corresponding JSON file" do
+    should "construct a calendar with the slug and data from the corresponding JSON file" do
       data_from_json = JSON.parse(File.read(Rails.root.join(Calendar::REPOSITORY_PATH, 'single-calendar.json')))
-      Calendar.expects(:new).with(data_from_json).returns(:a_calendar)
+      Calendar.expects(:new).with('single-calendar', data_from_json).returns(:a_calendar)
 
       cal = Calendar.find('single-calendar')
       assert_equal :a_calendar, cal
@@ -17,6 +17,50 @@ class CalendarTest < ActiveSupport::TestCase
       assert_raises Calendar::CalendarNotFound do
         Calendar.find('non-existent')
       end
+    end
+  end
+
+  should "return the slug" do
+    assert_equal 'a-slug', Calendar.new('a-slug', {}).slug
+  end
+
+  should "return the slug for to_param" do
+    assert_equal 'a-slug', Calendar.new('a-slug', {}).to_param
+  end
+
+  context "divisions" do
+    setup do
+      @cal = Calendar.new('a-calendar', {
+        "title" => "UK bank holidays",
+        "divisions" => {
+          "kablooie" => {
+            "2012" => [1],
+            "2013" => [3],
+          },
+          "fooey" => {
+            "2012" => [1,2],
+            "2013" => [3,4],
+          },
+          "gooey" => {
+            "2012" => [2],
+            "2013" => [4],
+          },
+        }
+      })
+    end
+
+    should "construct a division for each one in the data" do
+      Calendar::Division.expects(:new).with("kablooie", {"2012" => [1], "2013" => [3]}).returns(:kablooie)
+      Calendar::Division.expects(:new).with("fooey", {"2012" => [1,2], "2013" => [3,4]}).returns(:fooey)
+      Calendar::Division.expects(:new).with("gooey", {"2012" => [2], "2013" => [4]}).returns(:gooey)
+
+      assert_equal [:kablooie, :fooey, :gooey], @cal.divisions
+    end
+
+    should "cache the constructed instances" do
+      first = @cal.divisions
+      Calendar::Division.expects(:new).never
+      assert_equal first, @cal.divisions
     end
   end
 

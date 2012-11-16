@@ -9,7 +9,7 @@ class Calendar
     json_file = Rails.root.join(REPOSITORY_PATH, "#{slug}.json")
     if File.exists?(json_file)
       data = JSON.parse(File.read(json_file))
-      self.new(data)
+      self.new(slug, data)
     else
       raise CalendarNotFound
     end
@@ -47,7 +47,7 @@ class Calendar
         calendars_for_division = {
           division:  division,
           calendars: Hash[by_year.sort.map { |year, events|
-            calendar = Calendar.new(year: year, division: division, events:
+            calendar = Calendar.new('', year: year, division: division, events:
               events.map { |event|
                 Event.new(
                   title: event['title'],
@@ -86,12 +86,21 @@ class Calendar
     end
   end
 
+  attr_reader :slug
+  alias :to_param :slug
+
   attr_accessor :division, :year, :events
 
-  def initialize(attributes = nil)
-    self.year     = attributes[:year]
-    self.division = attributes[:division]
-    self.events   = attributes[:events] || []
+  def initialize(slug, data = {})
+    @slug = slug
+    @data = data
+    self.year     = data[:year]
+    self.division = data[:division]
+    self.events   = data[:events] || []
+  end
+
+  def divisions
+    @divisions ||= @data["divisions"].map {|slug, data| Division.new(slug, data) }
   end
 
   def upcoming_event
@@ -149,9 +158,5 @@ class Calendar
   def format_output
     remove_instance_variable(:@year)
     self
-  end
-
-  def to_param
-    "#{self.division}-#{self.year}"
   end
 end
