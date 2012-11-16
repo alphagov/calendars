@@ -90,18 +90,23 @@ class Calendar
   attr_reader :slug
   alias :to_param :slug
 
-  attr_accessor :division, :year, :events
+  attr_accessor :year, :events
 
   def initialize(slug, data = {})
     @slug = slug
     @data = data
     self.year     = data[:year]
-    self.division = data[:division]
     self.events   = data[:events] || []
   end
 
   def divisions
     @divisions ||= @data["divisions"].map {|slug, data| Division.new(slug, data) }
+  end
+
+  def division(slug)
+    div = divisions.find {|d| d.slug == slug }
+    raise CalendarNotFound unless div
+    div
   end
 
   def upcoming_event

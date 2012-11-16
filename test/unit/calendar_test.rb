@@ -62,6 +62,20 @@ class CalendarTest < ActiveSupport::TestCase
       Calendar::Division.expects(:new).never
       assert_equal first, @cal.divisions
     end
+
+    context "finding a division by slug" do
+      should "return the division with the matching slug" do
+        div = @cal.division('fooey')
+        assert_equal Calendar::Division, div.class
+        assert_equal 'Fooey', div.title
+      end
+
+      should "raise exception when division doesn't exist" do
+        assert_raises Calendar::CalendarNotFound do
+          @cal.division('non-existent')
+        end
+      end
+    end
   end
 
   context "Calendar" do
