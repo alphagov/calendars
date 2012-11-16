@@ -5,6 +5,7 @@
   "indexable_content": "",
   "divisions": {
     "england-and-wales": {
+      "title": "England and Wales",
       "2012": [
         {
           "title": "New Year’s Day",
@@ -149,6 +150,7 @@
       ]
     },
     "northern-ireland": {
+      "title": "Northern Ireland",
       "2012": [
         {
           "title": "New Year’s Day",

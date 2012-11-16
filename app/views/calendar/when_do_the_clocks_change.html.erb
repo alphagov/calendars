@@ -1,0 +1,55 @@
+<section id="content" role="main" class="group">
+  <header class="page-header group">
+    <hgroup>
+      <h1><span>Quick answer</span> When do the clocks change?</h1>
+    </hgroup>
+    <nav class="skip-to-related">
+      <a href="#related">Not what you're looking for? ↓</a>
+    </nav>
+  </header>
+
+  <div class="article-container group">
+    <article role="article" class="group">
+      <div class="inner">
+        <% if false and next_clock_change %>
+        <div class="highlighted-event">
+          <p>The <%=  next_clock_change_description %> <em><%= next_clock_change_date %></em></p>
+        </div>
+        <% end %>
+
+        <table class="clocks-calendar">
+          <tbody>
+            <tr>
+              <th>Year</th>
+              <th class="equal-width">Clocks go forward</th>
+              <th class="equal-width">Clocks go back</th>
+            </tr>
+            <% @calendar.divisions.first.years.each do |year| -%>
+              <tr>
+                <th scope="row"><%= year %></th>
+                <td><%= year.events[0].date.strftime('%d %B') %></td>
+                <td><%= year.events[1].date.strftime('%d %B') %></td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+
+        <div class="subscribe">
+          <p>Add dates to your calendar: <%=
+          link_to("Clock changes in the UK",
+                  division_path(@calendar, @calendar.divisions.first, :format => 'ics'),
+                  :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook')
+                  %>.</p>
+        </div>
+
+        <p>In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the last Sunday in October. </p>
+
+        <p>The period when the clocks are 1 hour ahead is called British Summer Time (BST). There's more daylight in the evenings and less in the mornings (sometimes called Daylight Saving Time).</p>
+
+        <p>When the clocks go back, the UK is on Greenwich Mean Time (GMT).</p>
+      </div>
+    </article>
+
+    <%= render :partial => 'calendar_metadata' %>
+  </div>
+</section>
