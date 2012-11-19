@@ -108,14 +108,17 @@ class Calendar
   end
 
   def to_ics
-    output = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\n"
+    output = "BEGIN:VCALENDAR\r\nMETHOD:PUBLISH\r\nVERSION:2.0\r\n"
     output << "PRODID:-//uk.gov/GOVUK calendars//EN\r\n"
     output << "CALSCALE:GREGORIAN\r\n"
-    self.events.each do |event|
+    self.events.each_with_index do |event,i|
       output << "BEGIN:VEVENT\r\n"
       output << "DTEND;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
       output << "DTSTART;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
       output << "SUMMARY:#{ event.title }\r\n"
+      output << "UID:GOVUK#{i+1}\r\n"
+      output << "SEQUENCE:1\r\n"
+      output << "DTSTAMP:20121017T0100Z\r\n"
       output << "END:VEVENT\r\n"
     end
     output << "END:VCALENDAR\r\n"
