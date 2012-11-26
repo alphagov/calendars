@@ -6,5 +6,9 @@ class Calendar
       attributes["date"] = Date.parse(attributes["date"]) unless attributes["date"].is_a?(Date)
       super(attributes)
     end
+
+    def as_json
+      @table.stringify_keys
+    end
   end
 end

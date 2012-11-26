@@ -10,7 +10,7 @@ class Calendar
     end
 
     def years
-      @years ||= @data.map { |year, events| Year.new(year, events) if year =~ /\A\d{4}\z/ }.compact
+      @years ||= @data.map { |year, events| Year.new(year, self, events) if year =~ /\A\d{4}\z/ }.compact
     end
 
     def year(name)
@@ -24,6 +24,13 @@ class Calendar
         year = years.find {|y| y.upcoming_event }
         year.upcoming_event if year
       end
+    end
+
+    def as_json(options = {})
+      {
+        "division" => @slug,
+        "events" => years.map {|y| y.events }.flatten,
+      }
     end
   end
 end

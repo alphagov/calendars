@@ -19,7 +19,7 @@ class CalendarController < ApplicationController
         render params[:scope].gsub('-', '_')
       end
       format.json do
-        render :json => @calendar.to_json
+        render :json => @calendar
       end
     end
   end
@@ -33,7 +33,7 @@ class CalendarController < ApplicationController
     set_expiry 1.day
 
     respond_to do |format|
-      format.json { render :json => target.to_json }
+      format.json { render :json => target }
       format.ics { render :text => target.to_ics }
       format.all { simple_404 }
     end

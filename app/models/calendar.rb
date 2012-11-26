@@ -109,6 +109,20 @@ class Calendar
     div
   end
 
+  def as_json(options = nil)
+    # TODO: review this representation
+    # This is kinda messy because the top-level JSON representation is inconsistent
+    # with the lower level representations
+    divisions.each_with_object({}) do |division, hash|
+      hash[division.slug] = {
+        "division" => division.slug,
+        "calendars" => division.years.each_with_object({}) do |year, years|
+          years[year.to_s] = year
+        end
+      }
+    end
+  end
+
   def upcoming_event
     @events.select{|e| e.date > Date.today-1.day }.first
   end

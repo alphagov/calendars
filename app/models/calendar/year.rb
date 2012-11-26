@@ -1,8 +1,9 @@
 class Calendar
   class Year
 
-    def initialize(year, data = [])
+    def initialize(year, division, data = [])
       @year = year
+      @division = division
       @data = data
     end
 
@@ -18,6 +19,14 @@ class Calendar
 
     def upcoming_event
       @upcoming_event ||= events.find {|e| e.date >= Date.today }
+    end
+
+    def as_json(options = nil)
+      {
+        "year" => @year,
+        "division" => @division.slug,
+        "events" => events,
+      }
     end
   end
 end
