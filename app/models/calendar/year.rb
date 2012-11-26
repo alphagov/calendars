@@ -1,5 +1,3 @@
-require 'ostruct'
-
 class Calendar
   class Year
 
@@ -14,8 +12,7 @@ class Calendar
 
     def events
       @events ||= @data.map do |e|
-        date = Date.parse(e["date"])
-        OpenStruct.new(e.merge("date" => date))
+        Event.new(e)
       end
     end
 

@@ -15,16 +15,16 @@ class YearTest < ActiveSupport::TestCase
       ])
     end
 
-    should "build an openstruct for each event in the data" do
-      foo = OpenStruct.new("title" => "foo", "date" => Date.civil(2012, 1, 2))
-      bar = OpenStruct.new("title" => "bar", "date" => Date.civil(2012, 8, 27))
+    should "build an event for each event in the data" do
+      foo = Calendar::Event.new("title" => "foo", "date" => Date.civil(2012, 1, 2))
+      bar = Calendar::Event.new("title" => "bar", "date" => Date.civil(2012, 8, 27))
 
       assert_equal [foo, bar], @y.events
     end
 
     should "cache the constructed instances" do
       first = @y.events
-      OpenStruct.expects(:new).never
+      Calendar::Event.expects(:new).never
       assert_equal first, @y.events
     end
   end
