@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative 'test_helper'
 require 'capybara/rails'
 require 'gds_api/test_helpers/content_api'
 

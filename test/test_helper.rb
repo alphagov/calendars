@@ -9,7 +9,6 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'mocha'
-require 'slimmer/skin'
 require 'slimmer/test'
 
 require 'webmock/test_unit'
