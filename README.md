@@ -12,15 +12,22 @@ JSON data files are stored in `lib/data/<scope>.json`, with a `divisions` hash f
 
 Each scope's data file contains a list of divisions, containing a list of years, each with a list of events:
 
-	{ "divisions": {
-		"england-and-wales": [{
-			"2011": [{
-				"title": "New Year's Day",
-				"date": "02/01/2011",
-				"notes": "Substitute day"
-			}]
-		}]
-	}}
+    {
+      "title": "UK bank holidays",
+      "description": "UK bank holidays calendar - see UK bank holidays and public holidays for 2012 and 2013",
+      "divisions": {
+        "england-and-wales": {
+          "title": "England and Wales",
+          "2011": [{
+            "title": "New Year's Day",
+            "date": "02/01/2011",
+            "notes": "Substitute day"
+          }]
+        }
+      }
+    }
+
+The division `title` attribute is optional.  If this is not present the slug will be humanized and used instead.
 
 ### API
 
