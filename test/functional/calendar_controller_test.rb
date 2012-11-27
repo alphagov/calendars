@@ -83,7 +83,7 @@ class CalendarControllerTest < ActionController::TestCase
 
     context "with no year specified" do
       setup do
-        @division = stub("Division", :to_json => "", :to_ics => "")
+        @division = stub("Division", :to_json => "", :events => [])
         @calendar = stub("Calendar")
         @calendar.stubs(:division).returns(@division)
         Calendar.stubs(:find).returns(@calendar)
@@ -99,9 +99,10 @@ class CalendarControllerTest < ActionController::TestCase
       end
 
       should "return the ics representation of the division" do
-        @division.expects(:to_ics).returns("ics_division")
+        @division.expects(:events).returns(:some_events)
         @calendar.expects(:division).with('a-division').returns(@division)
         Calendar.expects(:find).with('a-calendar').returns(@calendar)
+        ICSRenderer.expects(:new).with(:some_events).returns(mock("Renderer", :render => "ics_division"))
 
         get :division, :scope => "a-calendar", :division => "a-division", :format => "ics"
         assert_equal "ics_division", @response.body
@@ -144,7 +145,7 @@ class CalendarControllerTest < ActionController::TestCase
 
     context "with a year specified" do
       setup do
-        @year = stub("Year", :to_json => "", :to_ics => "")
+        @year = stub("Year", :to_json => "", :events => [])
         @division = stub("Division")
         @division.stubs(:year).returns(@year)
         @calendar = stub("Calendar")
@@ -163,10 +164,11 @@ class CalendarControllerTest < ActionController::TestCase
       end
 
       should "return the ics representation of the year" do
-        @year.expects(:to_ics).returns("ics_year")
+        @year.expects(:events).returns(:some_events)
         @division.expects(:year).with("2012").returns(@year)
         @calendar.expects(:division).with('a-division').returns(@division)
         Calendar.expects(:find).with('a-calendar').returns(@calendar)
+        ICSRenderer.expects(:new).with(:some_events).returns(mock("Renderer", :render => "ics_year"))
 
         get :division, :scope => "a-calendar", :division => "a-division", :year => "2012", :format => "ics"
         assert_equal "ics_year", @response.body

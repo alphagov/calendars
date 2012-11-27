@@ -1,4 +1,5 @@
 require 'gds_api/helpers'
+require 'ics_renderer'
 
 class CalendarController < ApplicationController
   include GdsApi::Helpers
@@ -34,7 +35,7 @@ class CalendarController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => target }
-      format.ics { render :text => target.to_ics }
+      format.ics { render :text => ICSRenderer.new(target.events).render }
       format.all { simple_404 }
     end
   end
