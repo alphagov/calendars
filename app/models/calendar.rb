@@ -90,13 +90,12 @@ class Calendar
   attr_reader :slug
   alias :to_param :slug
 
-  attr_accessor :year, :events
+  attr_accessor :year
 
   def initialize(slug, data = {})
     @slug = slug
     @data = data
     self.year     = data[:year]
-    self.events   = data[:events] || []
   end
 
   def divisions
@@ -107,6 +106,10 @@ class Calendar
     div = divisions.find {|d| d.slug == slug }
     raise CalendarNotFound unless div
     div
+  end
+
+  def events
+    divisions.map(&:events).flatten(1)
   end
 
   def as_json(options = nil)

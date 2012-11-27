@@ -19,6 +19,10 @@ class Calendar
       yr
     end
 
+    def events
+      years.map(&:events).flatten(1)
+    end
+
     def upcoming_event
       @upcoming_event ||= begin
         year = years.find {|y| y.upcoming_event }
@@ -29,7 +33,7 @@ class Calendar
     def as_json(options = {})
       {
         "division" => @slug,
-        "events" => years.map {|y| y.events }.flatten,
+        "events" => events,
       }
     end
   end

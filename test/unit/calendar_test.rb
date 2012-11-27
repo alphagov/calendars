@@ -78,6 +78,30 @@ class CalendarTest < ActiveSupport::TestCase
     end
   end
 
+  context "events" do
+    setup do
+      @divisions = []
+      @calendar = Calendar.new('a-calendar')
+      @calendar.stubs(:divisions).returns(@divisions)
+    end
+
+    should "merge events for all years into single array" do
+      @divisions << stub("Division1", :events => [1,2])
+      @divisions << stub("Division2", :events => [3,4,5])
+      @divisions << stub("Division3", :events => [6,7])
+
+      assert_equal [1,2,3,4,5,6,7], @calendar.events
+    end
+
+    should "handle years with no events" do
+      @divisions << stub("Division1", :events => [1,2])
+      @divisions << stub("Division2", :events => [])
+      @divisions << stub("Division3", :events => [6,7])
+
+      assert_equal [1,2,6,7], @calendar.events
+    end
+  end
+
   context "as_json" do
     setup do
       @y1 = stub("Year1", :to_s => '2012')

@@ -85,6 +85,30 @@ class DivisionTest < ActiveSupport::TestCase
     end
   end
 
+  context "events" do
+    setup do
+      @years = []
+      @div = Calendar::Division.new('something')
+      @div.stubs(:years).returns(@years)
+    end
+
+    should "merge events for all years into single array" do
+      @years << stub("Year1", :events => [1,2])
+      @years << stub("Year2", :events => [3,4,5])
+      @years << stub("Year3", :events => [6,7])
+
+      assert_equal [1,2,3,4,5,6,7], @div.events
+    end
+
+    should "handle years with no events" do
+      @years << stub("Year1", :events => [1,2])
+      @years << stub("Year2", :events => [])
+      @years << stub("Year3", :events => [6,7])
+
+      assert_equal [1,2,6,7], @div.events
+    end
+  end
+
   context "upcoming event" do
     setup do
       @years = []
