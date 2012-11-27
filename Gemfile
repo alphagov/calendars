@@ -10,15 +10,13 @@ gem 'plek', '0.3.0'
 
 gem 'govuk_frontend_toolkit', '0.3.3'
 
-gem 'graylog2_exceptions'
-gem 'gelf', '1.3.2'
 gem 'lograge', '0.0.6'
 gem 'unicorn', '4.3.1'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '3.3.2'
+  gem 'slimmer', '3.9.4'
 end
 
 if ENV['API_DEV']
@@ -34,10 +32,7 @@ group :test do
   gem 'simplecov-rcov', '0.2.3'
   gem 'webmock', '1.7.8', require: false
   gem 'ci_reporter', '1.6.5'
-  gem 'test-unit', '2.4.2'
-
-  # Pretty printed test output
-  gem 'turn', '0.9.6', require: false
+  gem 'test-unit', '2.5.2'
   gem 'capybara', '1.1.2'
   gem 'timecop', '0.4.5'
 end

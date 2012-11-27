@@ -14,24 +14,6 @@
           "bunting": "true"
         },
         {
-          "title": "Good Friday",
-          "date": "06/04/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Easter Monday",
-          "date": "09/04/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Early May bank holiday",
-          "date": "07/05/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
           "title": "Spring bank holiday",
           "date": "04/06/2012",
           "notes": "Substitute day",
@@ -76,30 +58,6 @@
           "bunting": "true"
         },
         {
-          "title": "Easter Monday",
-          "date": "01/04/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Early May bank holiday",
-          "date": "06/05/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Spring bank holiday",
-          "date": "27/05/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Summer bank holiday",
-          "date": "26/08/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
           "title": "Christmas Day",
           "date": "25/12/2013",
           "notes": "",
@@ -128,18 +86,6 @@
           "bunting": "true"
         },
         {
-          "title": "Good Friday",
-          "date": "06/04/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Early May bank holiday",
-          "date": "07/05/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
           "title": "Spring bank holiday",
           "date": "04/06/2012",
           "notes": "Substitute day",
@@ -154,12 +100,6 @@
         {
           "title": "Summer bank holiday",
           "date": "06/08/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "St Andrew’s Day",
-          "date": "30/11/2012",
           "notes": "",
           "bunting": "true"
         },
@@ -184,32 +124,8 @@
           "bunting": "true"
         },
         {
-          "title": "2nd January",
-          "date": "02/01/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
           "title": "Good Friday",
           "date": "29/03/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Early May bank holiday",
-          "date": "06/05/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Spring bank holiday",
-          "date": "27/05/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Summer bank holiday",
-          "date": "05/08/2013",
           "notes": "",
           "bunting": "true"
         },
@@ -249,24 +165,6 @@
           "bunting": "true"
         },
         {
-          "title": "Good Friday",
-          "date": "06/04/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Easter Monday",
-          "date": "09/04/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Early May bank holiday",
-          "date": "07/05/2012",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
           "title": "Spring bank holiday",
           "date": "04/06/2012",
           "notes": "",
@@ -277,12 +175,6 @@
           "date": "05/06/2012",
           "notes": "Extra bank holiday",
           "bunting": "true"
-        },
-        {
-          "title": "Battle of the Boyne (Orangemen’s Day)",
-          "date": "12/07/2012",
-          "notes": "",
-          "bunting": "false"
         },
         {
           "title": "Summer bank holiday",
@@ -311,32 +203,8 @@
           "bunting": "true"
         },
         {
-          "title": "St Patrick’s Day",
-          "date": "18/03/2013",
-          "notes": "Substitute day",
-          "bunting": "true"
-        },
-        {
           "title": "Good Friday",
           "date": "29/03/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Easter Monday",
-          "date": "01/04/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Early May bank holiday",
-          "date": "06/05/2013",
-          "notes": "",
-          "bunting": "true"
-        },
-        {
-          "title": "Spring bank holiday",
-          "date": "27/05/2013",
           "notes": "",
           "bunting": "true"
         },
@@ -345,12 +213,6 @@
           "date": "12/07/2013",
           "notes": "",
           "bunting": "false"
-        },
-        {
-          "title": "Summer bank holiday",
-          "date": "26/08/2013",
-          "notes": "",
-          "bunting": "true"
         },
         {
           "title": "Christmas Day",
