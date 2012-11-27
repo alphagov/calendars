@@ -4,8 +4,15 @@ require_relative '../integration_test_helper'
 class IcalendarTest < ActionDispatch::IntegrationTest
 
   context "getting ICS version" do
+    setup do
+      # This timestamp is used to generate the DTSTAMP entries
+      File.stubs(:mtime).with(Rails.root.join("REVISION")).returns(Time.parse("2012-10-17 01:00:00"))
+    end
+
     should "contain all events for the specified division and year" do
-      get "/bank-holidays/england-and-wales-2012.ics"
+      path = "/bank-holidays/england-and-wales-2012.ics"
+      path_hash = Digest::MD5.hexdigest(path)
+      get path
 
       expected_events = [
         {"date"=>"20120102", "title"=>"New Year’s Day"},
@@ -19,7 +26,7 @@ class IcalendarTest < ActionDispatch::IntegrationTest
       expected = "BEGIN:VCALENDAR\r\nMETHOD:PUBLISH\r\nVERSION:2.0\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
       expected_events.each_with_index do |event,i|
         expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{event["date"]}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
-        expected << "UID:GOVUK#{i+1}\r\nSEQUENCE:1\r\nDTSTAMP:20121017T0100Z\r\nEND:VEVENT\r\n"
+        expected << "UID:#{path_hash}-#{i}@gov.uk\r\nSEQUENCE:0\r\nDTSTAMP:20121017T010000Z\r\nEND:VEVENT\r\n"
       end
       expected << "END:VCALENDAR\r\n"
 
@@ -29,7 +36,9 @@ class IcalendarTest < ActionDispatch::IntegrationTest
     end
 
     should "contain all events for all yeads in the given division" do
-      get "/bank-holidays/england-and-wales.ics"
+      path = "/bank-holidays/england-and-wales.ics"
+      path_hash = Digest::MD5.hexdigest(path)
+      get path
 
       expected_events = [
         {"date"=>"20120102", "title"=>"New Year’s Day"},
@@ -47,7 +56,7 @@ class IcalendarTest < ActionDispatch::IntegrationTest
       expected = "BEGIN:VCALENDAR\r\nMETHOD:PUBLISH\r\nVERSION:2.0\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
       expected_events.each_with_index do |event,i|
         expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{event["date"]}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
-        expected << "UID:GOVUK#{i+1}\r\nSEQUENCE:1\r\nDTSTAMP:20121017T0100Z\r\nEND:VEVENT\r\n"
+        expected << "UID:#{path_hash}-#{i}@gov.uk\r\nSEQUENCE:0\r\nDTSTAMP:20121017T010000Z\r\nEND:VEVENT\r\n"
       end
       expected << "END:VCALENDAR\r\n"
 
