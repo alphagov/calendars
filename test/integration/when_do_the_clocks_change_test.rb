@@ -3,9 +3,19 @@ require_relative '../integration_test_helper'
 
 class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
 
-  should "display the bank holidays page" do
+  should "display the clocks change page" do
 
     visit "/when-do-the-clocks-change"
+
+    within 'head' do
+      assert page.has_selector?("title", :text => "When do the clocks change? - GOV.UK")
+      desc = page.find("meta[name=description]")
+      assert_equal "In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the last Sunday in October.", desc["content"]
+
+      #assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change.json']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change/united-kingdom.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/when-do-the-clocks-change/united-kingdom.ics']")
+    end
 
     within "#content" do
       within 'header' do

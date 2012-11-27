@@ -1,4 +1,15 @@
+<% content_for :title, "UK bank holidays" %>
 <% content_for :head do %>
+  <meta name="description" content="UK bank holidays calendar - see UK bank holidays and public holidays for 2012 and 2013">
+
+  <link rel="alternate" type="application/json" href="/bank-holidays.json" />
+  <link rel="alternate" type="application/json" href="/bank-holidays/england-and-wales.json" />
+  <link rel="alternate" type="application/json" href="/bank-holidays/scotland.json" />
+  <link rel="alternate" type="application/json" href="/bank-holidays/northern-ireland.json" />
+  <link rel="alternate" type="text/calendar" href="/bank-holidays/england-and-wales.ics" />
+  <link rel="alternate" type="text/calendar" href="/bank-holidays/scotland.ics" />
+  <link rel="alternate" type="text/calendar" href="/bank-holidays/northern-ireland.ics" />
+
   <%= javascript_include_tag 'bank-holiday.js', :defer => 'defer' %>
 <% end %>
 

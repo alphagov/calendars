@@ -7,6 +7,20 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
 
     visit "/bank-holidays"
 
+    within 'head' do
+      assert page.has_selector?("title", :text => "UK bank holidays - GOV.UK")
+      desc = page.find("meta[name=description]")
+      assert_equal "UK bank holidays calendar - see UK bank holidays and public holidays for 2012 and 2013", desc["content"]
+
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays.json']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/england-and-wales.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/england-and-wales.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/scotland.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']")
+    end
+
     within "#content" do
       within 'header' do
         assert page.has_content?("UK bank holidays")
