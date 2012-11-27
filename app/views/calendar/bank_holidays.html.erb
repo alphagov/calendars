@@ -1,7 +1,4 @@
 <%= render :partial => "calendar_head" %>
-<% content_for :head do %>
-  <%= javascript_include_tag 'bank-holiday.js', :defer => 'defer' %>
-<% end %>
 
 <% if @calendar.divisions.any? {|d| d.upcoming_event and d.upcoming_event.date == Date.today and d.upcoming_event.bunting == "true" } %>
   <div class="epic-bunting"><span></span></div>
@@ -69,3 +66,11 @@
     <%= render :partial => 'calendar_metadata' %>
   </div>
 </section>
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() {
+  $('article .inner').tabs();
+});
+//]]>
+</script>
