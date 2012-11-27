@@ -10,7 +10,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     within 'head' do
       assert page.has_selector?("title", :text => "When do the clocks change? - GOV.UK")
       desc = page.find("meta[name=description]")
-      assert_equal "In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the last Sunday in October.", desc["content"]
+      assert_equal "Dates when the clocks go back or forward in 2012, 2013, 2014 - includes British Summer Time, Greenwich Mean Time", desc["content"]
 
       #assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change.json']")
       assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change/united-kingdom.json']")
