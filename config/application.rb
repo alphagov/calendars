@@ -20,7 +20,7 @@ module Calendars
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib)
+    # config.autoload_paths += %W(#{config.root}/extras)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -43,19 +43,13 @@ module Calendars
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.assets.precompile += %w( bank-holiday.js )
+    # config.assets.precompile += %w( )
 
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Path within public/ where assets are compiled to
     config.assets.prefix = "calendars"
-    config.assets.manifest = Rails.root.join 'public/calendars'
-
-    # Paths used by helpers when generating links to assets
-    config.action_controller.assets_dir = Rails.root.join 'public/calendars'
-    config.action_controller.javascripts_dir = Rails.root.join 'public/calendars/javascripts'
-    config.action_controller.stylesheets_dir = Rails.root.join 'public/calendars/stylesheets'
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

@@ -1,0 +1,10 @@
+<% content_for :title, @calendar.title %>
+<% content_for :head do %>
+  <meta name="description" content="<%= @calendar.description %>">
+
+  <link rel="alternate" type="application/json" href="<%= calendar_path(@calendar, :format => :json) %>" />
+  <% @calendar.divisions.each do |division| %>
+    <link rel="alternate" type="application/json" href="<%= division_path(@calendar, division, :format => :json) %>" />
+    <link rel="alternate" type="text/calendar" href="<%= division_path(@calendar, division, :format => :ics) %>" />
+  <% end %>
+<% end %>

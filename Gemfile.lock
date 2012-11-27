@@ -31,7 +31,6 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
-    ansi (1.4.3)
     arel (3.0.2)
     aws-ses (0.4.4)
       builder
@@ -61,13 +60,9 @@ GEM
       lrucache (~> 0.1.1)
       null_logger
       plek
-    gelf (1.3.2)
-      json
     govuk_frontend_toolkit (0.3.3)
       rails (>= 3.1.0)
       sass (>= 3.2.0)
-    graylog2_exceptions (0.5.3)
-      gelf
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.4)
@@ -138,7 +133,7 @@ GEM
     simplecov-html (0.4.5)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    slimmer (3.3.2)
+    slimmer (3.9.4)
       json
       lrucache (~> 0.1.3)
       nokogiri (~> 1.5.0)
@@ -149,7 +144,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    test-unit (2.4.2)
+    test-unit (2.5.2)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
     thor (0.15.4)
@@ -158,8 +153,6 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    turn (0.9.6)
-      ansi
     tzinfo (0.3.33)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
@@ -184,9 +177,7 @@ DEPENDENCIES
   ci_reporter (= 1.6.5)
   exception_notification (= 2.5.2)
   gds-api-adapters (= 2.1.0)
-  gelf (= 1.3.2)
   govuk_frontend_toolkit (= 0.3.3)
-  graylog2_exceptions
   json (= 1.7.4)
   lograge (= 0.0.6)
   mocha (= 0.10.0)
@@ -196,11 +187,10 @@ DEPENDENCIES
   shoulda (= 2.11.3)
   simplecov (= 0.4.2)
   simplecov-rcov (= 0.2.3)
-  slimmer (= 3.3.2)
-  test-unit (= 2.4.2)
+  slimmer (= 3.9.4)
+  test-unit (= 2.5.2)
   therubyracer (= 0.10.2)
   timecop (= 0.4.5)
-  turn (= 0.9.6)
   uglifier
   unicorn (= 4.3.1)
   webmock (= 1.7.8)
