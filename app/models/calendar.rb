@@ -15,12 +15,14 @@ class Calendar
     end
   end
 
-  attr_reader :slug
+  attr_reader :slug, :title, :description
   alias :to_param :slug
 
   def initialize(slug, data = {})
     @slug = slug
     @data = data
+    @title = data["title"]
+    @description = data["description"]
   end
 
   def divisions

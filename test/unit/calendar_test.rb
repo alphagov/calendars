@@ -102,6 +102,23 @@ class CalendarTest < ActiveSupport::TestCase
     end
   end
 
+  context "attribute accessors" do
+    setup do
+      @cal = Calendar.new('a-calendar', {
+        "title" => "UK bank holidays",
+        "description" => "UK bank holidays description",
+      })
+    end
+
+    should "have an accessor for the title" do
+      assert_equal "UK bank holidays", @cal.title
+    end
+
+    should "have an accessor for the description" do
+      assert_equal "UK bank holidays description", @cal.description
+    end
+  end
+
   context "as_json" do
     setup do
       @y1 = stub("Year1", :to_s => '2012')
