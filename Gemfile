@@ -13,6 +13,8 @@ gem 'govuk_frontend_toolkit', '0.3.3'
 gem 'lograge', '0.0.6'
 gem 'unicorn', '4.3.1'
 
+gem 'r18n-rails'
+
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else

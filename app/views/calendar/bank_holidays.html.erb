@@ -7,7 +7,7 @@
 <section id="content" role="main" class="group">
   <header class="page-header group">
     <hgroup>
-      <h1><span>Quick answer</span> <%= @calendar.title %></h1>
+    <h1><span><%=t :format, :scope => :bank_holidays %></span> <%=t :title, :scope => :bank_holidays %></h1>
     </hgroup>
     <nav class="skip-to-related">
       <a href="#related">Not what you're looking for? ↓</a>
@@ -19,7 +19,7 @@
     <article role="article" class="group">
       <div class="inner">
 
-        <p>These are the dates of UK bank holidays for 2012 and 2013.</p>
+        <p><%=t :description, :scope => :bank_holidays %></p>
 
         <nav class="js-tabs nav-tabs" role="navigation">
           <ul>

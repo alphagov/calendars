@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  bank_holidays:
+    title: "UK bank holidays"
+    format: "Quick answer"
+    description: "These are the dates of UK bank holidays for 2012 and 2013."

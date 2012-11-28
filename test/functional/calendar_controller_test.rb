@@ -46,6 +46,13 @@ class CalendarControllerTest < ActionController::TestCase
       end
     end
 
+    context "with a locale param" do
+      should "set the I18n locale for translations" do
+         get :calendar, :scope => 'bank-holidays', :locale => 'cy'
+         assert_equal :cy, I18n.locale
+      end
+    end
+
     context "json request" do
       should "load the calendar and return its json representation" do
         Calendar.expects(:find).with('bank-holidays').returns(mock("Calendar", :to_json => 'json_calendar'))
