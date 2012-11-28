@@ -7,8 +7,8 @@ class ICSRenderer
 
   def render
     output =  "BEGIN:VCALENDAR\r\n"
-    output << "METHOD:PUBLISH\r\n"
     output << "VERSION:2.0\r\n"
+    output << "METHOD:PUBLISH\r\n"
     output << "PRODID:-//uk.gov/GOVUK calendars//EN\r\n"
     output << "CALSCALE:GREGORIAN\r\n"
     @events.each_with_index do |event,i|

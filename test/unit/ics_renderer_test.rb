@@ -9,8 +9,8 @@ class ICSRendererTest < ActiveSupport::TestCase
       r = ICSRenderer.new([], "/foo/ics")
 
       expected =  "BEGIN:VCALENDAR\r\n"
-      expected << "METHOD:PUBLISH\r\n"
       expected << "VERSION:2.0\r\n"
+      expected << "METHOD:PUBLISH\r\n"
       expected << "PRODID:-//uk.gov/GOVUK calendars//EN\r\n"
       expected << "CALSCALE:GREGORIAN\r\n"
       expected << "END:VCALENDAR\r\n"
@@ -24,8 +24,8 @@ class ICSRendererTest < ActiveSupport::TestCase
       r.expects(:render_event).with(:e2, 1).returns("Event2 ics\r\n")
 
       expected =  "BEGIN:VCALENDAR\r\n"
-      expected << "METHOD:PUBLISH\r\n"
       expected << "VERSION:2.0\r\n"
+      expected << "METHOD:PUBLISH\r\n"
       expected << "PRODID:-//uk.gov/GOVUK calendars//EN\r\n"
       expected << "CALSCALE:GREGORIAN\r\n"
       expected << "Event1 ics\r\n"

@@ -23,7 +23,7 @@ class IcalendarTest < ActionDispatch::IntegrationTest
         {"date"=>"20121226", "title"=>"Boxing Day"},
       ]
 
-      expected = "BEGIN:VCALENDAR\r\nMETHOD:PUBLISH\r\nVERSION:2.0\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
+      expected = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
       expected_events.each_with_index do |event,i|
         expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{event["date"]}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
         expected << "UID:#{path_hash}-#{i}@gov.uk\r\nSEQUENCE:0\r\nDTSTAMP:20121017T010000Z\r\nEND:VEVENT\r\n"
@@ -53,7 +53,7 @@ class IcalendarTest < ActionDispatch::IntegrationTest
         {"date"=>"20131226", "title"=>"Boxing Day"},
       ]
 
-      expected = "BEGIN:VCALENDAR\r\nMETHOD:PUBLISH\r\nVERSION:2.0\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
+      expected = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
       expected_events.each_with_index do |event,i|
         expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{event["date"]}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
         expected << "UID:#{path_hash}-#{i}@gov.uk\r\nSEQUENCE:0\r\nDTSTAMP:20121017T010000Z\r\nEND:VEVENT\r\n"
