@@ -35,7 +35,7 @@ class CalendarController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => target }
-      format.ics { render :text => ICSRenderer.new(target.events).render }
+      format.ics { render :text => ICSRenderer.new(target.events, request.path).render }
       format.all { simple_404 }
     end
   end

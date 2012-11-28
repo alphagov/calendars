@@ -102,7 +102,7 @@ class CalendarControllerTest < ActionController::TestCase
         @division.expects(:events).returns(:some_events)
         @calendar.expects(:division).with('a-division').returns(@division)
         Calendar.expects(:find).with('a-calendar').returns(@calendar)
-        ICSRenderer.expects(:new).with(:some_events).returns(mock("Renderer", :render => "ics_division"))
+        ICSRenderer.expects(:new).with(:some_events, "/a-calendar/a-division.ics").returns(mock("Renderer", :render => "ics_division"))
 
         get :division, :scope => "a-calendar", :division => "a-division", :format => "ics"
         assert_equal "ics_division", @response.body
@@ -168,7 +168,7 @@ class CalendarControllerTest < ActionController::TestCase
         @division.expects(:year).with("2012").returns(@year)
         @calendar.expects(:division).with('a-division').returns(@division)
         Calendar.expects(:find).with('a-calendar').returns(@calendar)
-        ICSRenderer.expects(:new).with(:some_events).returns(mock("Renderer", :render => "ics_year"))
+        ICSRenderer.expects(:new).with(:some_events, "/a-calendar/a-division-2012.ics").returns(mock("Renderer", :render => "ics_year"))
 
         get :division, :scope => "a-calendar", :division => "a-division", :year => "2012", :format => "ics"
         assert_equal "ics_year", @response.body
