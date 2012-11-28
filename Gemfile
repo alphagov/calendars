@@ -22,7 +22,7 @@ end
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '2.1.0'
+  gem 'gds-api-adapters', '4.1.3'
 end
 
 group :test do
@@ -30,7 +30,7 @@ group :test do
   gem 'shoulda', '2.11.3'
   gem 'simplecov', '0.4.2'
   gem 'simplecov-rcov', '0.2.3'
-  gem 'webmock', '1.7.8', require: false
+  gem 'webmock', '1.8.0', require: false
   gem 'ci_reporter', '1.6.5'
   gem 'test-unit', '2.5.2'
   gem 'capybara', '1.1.2'
