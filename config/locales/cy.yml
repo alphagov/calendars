@@ -1,6 +1,7 @@
 cy:
-  hello: "Helo Fyd"
-  bank_holidays:
-    title: "UK gwyliau banc"
-    format: "Ateb cyflym"
-    description: "Dyma'r dyddiadau y DU gwyliau banc ar gyfer 2012 a 2013."
+  events:
+    headings:
+      date: "Dyddiad"
+      day: "Diwrnod"
+      holiday_name: "Enw'r Gwyliau"
+      notes: "Nodiadau"

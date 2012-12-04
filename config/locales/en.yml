@@ -2,8 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  bank_holidays:
-    title: "UK bank holidays"
-    format: "Quick answer"
-    description: "These are the dates of UK bank holidays for 2012 and 2013."
+  events:
+    headings:
+      date: "Date"
+      day: "Day"
+      holiday_name: "Holiday Name"
+      notes: "Notes"
