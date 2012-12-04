@@ -147,58 +147,5 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
         assert page.has_no_css?('.epic-bunting')
       end
     end
-  end
-
-  should "display the welsh bank holidays page" do
-    
-    visit "/bank-holidays?locale=cy"
-
-    within 'head' do
-      assert page.has_selector?("title", :text => "UK bank holidays - GOV.UK")
-      desc = page.find("meta[name=description]")
-      assert_equal "UK bank holidays calendar - see UK bank holidays and public holidays for 2012 and 2013", desc["content"]
-
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays.json']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/england-and-wales.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/england-and-wales.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/scotland.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']")
-    end
-
-    within "#content" do
-      within 'header' do
-        assert page.has_content?("UK gwyliau banc"), "page heading should use welsh translation"
-        assert page.has_content?("Ateb cyflym")
-      end
-
-      within 'article' do
-
-        assert page.has_content?("Dyma'r dyddiadau y DU gwyliau banc ar gyfer 2012 a 2013.")
-
-        within '.tab-content' do
-          within '#england-and-wales' do
-            assert page.has_table?("2012 bank holidays in England and Wales", :rows => [
-              ["02 January", "Monday", "New Year’s Day", "Substitute day"],
-              ["04 June", "Monday", "Spring bank holiday", "Substitute day"],
-              ["05 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
-              ["27 August", "Monday", "Summer bank holiday", ""],
-              ["25 December", "Tuesday", "Christmas Day", ""],
-              ["26 December", "Wednesday", "Boxing Day", ""],
-            ])
-            assert page.has_link?("Bank holidays for 2012 in England and Wales", :href => "/bank-holidays/england-and-wales-2012.ics")
-
-            assert page.has_table?("2013 bank holidays in England and Wales", :rows => [
-              ["01 January", "Tuesday", "New Year’s Day", ""],
-              ["29 March", "Friday", "Good Friday", ""],
-              ["25 December", "Wednesday", "Christmas Day", ""],
-              ["26 December", "Thursday", "Boxing Day", ""],
-            ])
-            assert page.has_link?("Bank holidays for 2013 in England and Wales", :href => "/bank-holidays/england-and-wales-2013.ics")
-          end
-        end # within .tab-content
-      end # within article
-    end # within #content
-  end
+  end # within #content
 end

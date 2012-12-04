@@ -7,10 +7,10 @@
 <section id="content" role="main" class="group">
   <header class="page-header group">
     <hgroup>
-      <h1><span>Quick answer</span> <%= @calendar.title %></h1>
+    <h1><span>Ateb cyflym</span> Gwyliau banc y DU</h1>
     </hgroup>
     <nav class="skip-to-related">
-      <a href="#related">Not what you're looking for? ↓</a>
+      <a href="#related">Ddim beth rydych chi'n chwilio amdano? ↓</a>
     </nav>
   </header>
 
@@ -19,7 +19,7 @@
     <article role="article" class="group">
       <div class="inner">
 
-        <p>These are the dates of UK bank holidays for 2012 and 2013.</p>
+        <p>Dyma ddyddiadau gwyliau banc y DU ar gyfer 2012 a 2013.</p>
 
         <nav class="js-tabs nav-tabs" role="navigation">
           <ul>
@@ -33,7 +33,7 @@
           <% @calendar.divisions.each do |division| %>
             <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
               <% if division.upcoming_event %>
-                <p>The next bank holiday in <%= division.title %> is:</p>
+                <p>Gŵyl banc nesaf <%= division.title %> yw:</p>
                 <div class="highlighted-event">
                   <p><%= division.upcoming_event.title %>
                     <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em></p>
@@ -43,13 +43,13 @@
               <% division.years.each do |year| %>
                 <%= render :partial => 'calendar_year', :locals => {
                   :year => year,
-                  :caption => "#{year} bank holidays in #{division.title}" } %>
+                  :caption => "Gwyliau banc #{year} yng #{division.title}" } %>
 
                 <div class="subscribe">
                   <p>Add dates to your calendar: <%=
-                  link_to("Bank holidays for #{year} in #{division.title}",
+                  link_to("Gwyliau banc #{year} yng #{division.title}",
                           division_year_path(@calendar, division, year, :format => 'ics'),
-                          :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook')
+                          :title => 'Llwythwch y dyddiadau hyn i lawr i chi allu eu hychwanegu at raglen calendr fel iCal neu Outlook')
                           %>.</p>
                 </div>
               <% end %>
@@ -74,3 +74,4 @@ $(function() {
 });
 //]]>
 </script>
+
