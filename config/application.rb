@@ -37,6 +37,10 @@ module Calendars
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # This saves loading all 80-odd locales from the rails-i18n gem.  This doesn't affect the loading
+    # of locales from config/locales
+    config.i18n.available_locales = [:en, :cy]
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

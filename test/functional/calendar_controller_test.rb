@@ -46,6 +46,16 @@ class CalendarControllerTest < ActionController::TestCase
       end
     end
 
+    context "for a welsh language artefact" do
+      should "set the I18n locale" do
+        artefact_data = artefact_for_slug('gwyliau-banc')
+        artefact_data["details"].merge!(language: "cy")
+        content_api_has_an_artefact('gwyliau-banc', artefact_data)
+        get :calendar, :scope => 'gwyliau-banc'
+        assert_equal :cy, I18n.locale
+      end
+    end
+
     context "json request" do
       should "load the calendar and return its json representation" do
         Calendar.expects(:find).with('bank-holidays').returns(mock("Calendar", :to_json => 'json_calendar'))

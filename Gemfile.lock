@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/alphagov/rails-i18n.git
+  revision: 67ce6ca672ea05457a48c152ba9478b0755d6e94
+  branch: welsh_updates
+  specs:
+    rails-i18n (0.7.1)
+      i18n (~> 0.5)
+
 GEM
   remote: http://rubygems.org/
   remote: https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/
@@ -183,6 +191,7 @@ DEPENDENCIES
   mocha (= 0.10.0)
   plek (= 0.3.0)
   rails (= 3.2.8)
+  rails-i18n!
   sass-rails (= 3.2.3)
   shoulda (= 2.11.3)
   simplecov (= 0.4.2)
