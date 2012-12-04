@@ -5,11 +5,11 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
   setup do
     artefact_data = artefact_for_slug('gwyliau-banc')
-    artefact_data.merge!(language: :cy)
+    artefact_data["details"].merge!(language: :cy)
     content_api_has_an_artefact('gwyliau-banc', artefact_data)   
   end
 
-  should "display the Gwyliau Banc page (Bank Holidays page in Welsh)" do
+  should "display the Gwyliau Banc page" do
 
     visit "/gwyliau-banc"
 
@@ -19,12 +19,12 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
       assert_equal "Calendr gwyliau banc y DU – edrychwch ar wyliau banc a gwyliau cyhoeddus y DU ar gyfer 2012 a 2013", desc["content"]
 
       assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc.json']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/england-and-wales.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/england-and-wales.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/scotland.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/scotland.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/northern-ireland.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/northern-ireland.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/cymru-a-lloegr.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/cymru-a-lloegr.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/yr-alban.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/yr-alban.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/gogledd-iwerddon.json']")
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/gogledd-iwerddon.ics']")
     end
 
     within "#content" do
@@ -40,8 +40,9 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
         end
 
         within '.tab-content' do
-          within '#england-and-wales' do
-            assert page.has_table?("Gwyliau banc 2012 yng Cymru a Lloegr", :rows => [
+          within '#cymru-a-lloegr' do
+            assert page.has_table?("Gwyliau banc 2012 yng Nghymru a Lloegr", :headers => [
+              "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
               ["02 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
@@ -49,19 +50,21 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""]
             ])
-            assert page.has_link?("Gwyliau banc 2012 yng Cymru a Lloegr", :href => "/gwyliau-banc/england-and-wales-2012.ics")
+            assert page.has_link?("Gwyliau banc 2012 yng Nghymru a Lloegr", :href => "/gwyliau-banc/cymru-a-lloegr-2012.ics")
 
-            assert page.has_table?("Gwyliau banc 2013 yng Cymru a Lloegr", :rows => [
+            assert page.has_table?("Gwyliau banc 2013 yng Nghymru a Lloegr", :headers => [
+              "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
               ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
-            assert page.has_link?("Gwyliau banc 2013 yng Cymru a Lloegr", :href => "/gwyliau-banc/england-and-wales-2013.ics")
+            assert page.has_link?("Gwyliau banc 2013 yng Nghymru a Lloegr", :href => "/gwyliau-banc/cymru-a-lloegr-2013.ics")
           end
 
-          within '#scotland' do
-            assert page.has_table?("Gwyliau banc 2012 yng Yr Alban", :rows => [
+          within '#yr-alban' do
+            assert page.has_table?("Gwyliau banc 2012 yn yr Alban", :headers => [
+              "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
               ["02 Ionawr", "Dydd Llun", "2il Ionawr", ""],
               ["03 Ionawr", "Dydd Mawrth", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
@@ -70,20 +73,22 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
             ])
-            assert page.has_link?("Gwyliau banc 2012 yng Yr Alban", :href => "/gwyliau-banc/scotland-2012.ics")
+            assert page.has_link?("Gwyliau banc 2012 yn yr Alban", :href => "/gwyliau-banc/yr-alban-2012.ics")
 
-            assert page.has_table?("Gwyliau banc 2013 yng Yr Alban", :rows => [
+            assert page.has_table?("Gwyliau banc 2013 yn yr Alban", :headers => [
+              "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
               ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
               ["02 Rhagfyr", "Dydd Llun", "Gŵyl Andreas", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
-            assert page.has_link?("Gwyliau banc 2013 yng Yr Alban", :href => "/gwyliau-banc/scotland-2013.ics")
+            assert page.has_link?("Gwyliau banc 2013 yn yr Alban", :href => "/gwyliau-banc/yr-alban-2013.ics")
           end
 
-          within '#northern-ireland' do
-            assert page.has_table?("Gwyliau banc 2012 yng Gogledd Iwerddon", :rows => [
+          within '#gogledd-iwerddon' do
+            assert page.has_table?("Gwyliau banc 2012 yng Ngogledd Iwerddon", :headers => [
+              "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
               ["02 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["19 Mawrth", "Dydd Llun", "Gŵyl San Padrig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", ""],
@@ -92,16 +97,17 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
             ])
-            assert page.has_link?("Gwyliau banc 2012 yng Gogledd Iwerddon", :href => "/gwyliau-banc/northern-ireland-2012.ics")
+            assert page.has_link?("Gwyliau banc 2012 yng Ngogledd Iwerddon", :href => "/gwyliau-banc/gogledd-iwerddon-2012.ics")
 
-            assert page.has_table?("Gwyliau banc 2013 yng Gogledd Iwerddon", :rows => [
+            assert page.has_table?("Gwyliau banc 2013 yng Ngogledd Iwerddon", :headers => [
+              "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
               ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
               ["12 Gorffennaf", "Dydd Gwener", "Brwydr y Boyne (Diwrnod yr Orangemen)", ""],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
-            assert page.has_link?("Gwyliau banc 2013 yng Gogledd Iwerddon", :href => "/gwyliau-banc/northern-ireland-2013.ics")
+            assert page.has_link?("Gwyliau banc 2013 yng Ngogledd Iwerddon", :href => "/gwyliau-banc/gogledd-iwerddon-2013.ics")
           end
         end # within .tab-content
       end # within article
@@ -114,17 +120,17 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
       within ".tab-content" do
 
-        within '#england-and-wales .highlighted-event' do
+        within '#cymru-a-lloegr .highlighted-event' do
           assert page.has_content?("Gŵyl Banc y Gwanwyn")
           assert page.has_content?("4 Mehefin")
         end
 
-        within '#scotland .highlighted-event' do
+        within '#yr-alban .highlighted-event' do
           assert page.has_content?("Dydd Calan")
           assert page.has_content?("heddiw")
         end
 
-        within '#northern-ireland .highlighted-event' do
+        within '#gogledd-iwerddon .highlighted-event' do
           assert page.has_content?("Gŵyl San Padrig")
           assert page.has_content?("19 Mawrth")
         end
@@ -151,6 +157,17 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
       Timecop.travel(Date.parse("3rd Feb 2012")) do
         visit "/gwyliau-banc"
         assert page.has_no_css?('.epic-bunting')
+      end
+    end
+  end
+
+  context "last updated" do
+    should "be translated and localised" do
+      Timecop.travel(Date.parse("25th Dec 2012")) do
+        visit "/gwyliau-banc"
+        within ".meta-data" do
+          assert page.has_content?("Diweddarwyd ddiwethaf: 25 Rhagfyr 2012")
+        end
       end
     end
   end

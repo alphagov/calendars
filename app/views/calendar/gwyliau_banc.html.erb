@@ -19,7 +19,7 @@
     <article role="article" class="group">
       <div class="inner">
 
-        <p>Dyma ddyddiadau gwyliau banc y DU ar gyfer 2012 a 2013.</p>
+        <p>Dyma ddyddiadau gwyliau banc y DU ar gyfer 2012 a 2013. <%= @artefact.language %></p>
 
         <nav class="js-tabs nav-tabs" role="navigation">
           <ul>
@@ -33,7 +33,7 @@
           <% @calendar.divisions.each do |division| %>
             <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
               <% if division.upcoming_event %>
-                <p>Gŵyl banc nesaf <%= division.title %> yw:</p>
+                <p>Y gŵyl banc nesaf <%= yn_yng_variant(division.title) %> yw:</p>
                 <div class="highlighted-event">
                   <p><%= division.upcoming_event.title %>
                   <em><%= division.upcoming_event.date == Date.today ? "heddiw" : l(division.upcoming_event.date, :format => "%e %B") %></em></p>
@@ -43,11 +43,11 @@
               <% division.years.each do |year| %>
                 <%= render :partial => 'calendar_year', :locals => {
                   :year => year,
-                  :caption => "Gwyliau banc #{year} yng #{division.title}" } %>
+                  :caption => "Gwyliau banc #{year} #{yn_yng_variant(division.title)}" } %>
 
                 <div class="subscribe">
-                  <p>Add dates to your calendar: <%=
-                  link_to("Gwyliau banc #{year} yng #{division.title}",
+                  <p>Ychwanegwch ddyddiadau at eich calendr: <%=
+                  link_to("Gwyliau banc #{year} #{yn_yng_variant(division.title)}",
                           division_year_path(@calendar, division, year, :format => 'ics'),
                           :title => 'Llwythwch y dyddiadau hyn i lawr i chi allu eu hychwanegu at raglen calendr fel iCal neu Outlook')
                           %>.</p>
@@ -57,8 +57,8 @@
           <% end %>
         </div>
 
-        <p>If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
-        <p>Your employer doesn’t have to give you paid leave on bank or public holidays.</p>
+        <p>Os bydd gŵyl banc ar benwythnos, bydd diwrnod o'r wythnos waith yn dod yn ŵyl banc yn lle, y dydd Llun canlynol fel rheol.</p>
+        <p>Nid oes yn rhaid i'ch cyflogwr roi absenoldeb â thâl i chi am ŵyl banc neu ŵyl gyhoeddus.</p>
 
       </div>
     </article>

@@ -4,7 +4,7 @@
   "description": "Calendr gwyliau banc y DU – edrychwch ar wyliau banc a gwyliau cyhoeddus y DU ar gyfer 2012 a 2013",
   "indexable_content": "",
   "divisions": {
-    "england-and-wales": {
+    "cymru-a-lloegr": {
       "title": "Cymru a Lloegr",
       "2012": [
         {
@@ -113,7 +113,7 @@
         }
       ]
     },
-    "scotland": {
+    "yr-alban": {
       "title": "Yr Alban",
       "2012": [
         {
@@ -234,7 +234,7 @@
         }
       ]
     },
-    "northern-ireland": {
+    "gogledd-iwerddon": {
       "title": "Gogledd Iwerddon",
       "2012": [
         {
