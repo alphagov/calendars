@@ -1,7 +1,6 @@
 cy:
   calendar:
-    last_updated:
-      "Diweddarwyd ddiwethaf"
+    last_updated: "Diweddarwyd ddiwethaf"
     events:
       headings:
         date: "Dyddiad"
