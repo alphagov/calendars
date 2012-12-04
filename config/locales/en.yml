@@ -2,4 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  calendar:
+    last_updated: "Last updated"
+    events:
+      headings:
+        date: "Date"
+        day: "Day"
+        holiday_name: "Holiday Name"
+        notes: "Notes"

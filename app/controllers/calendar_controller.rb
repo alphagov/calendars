@@ -5,7 +5,7 @@ class CalendarController < ApplicationController
   include GdsApi::Helpers
 
   before_filter :load_calendar
-
+ 
   rescue_from Calendar::CalendarNotFound, with: :simple_404
 
   def calendar
@@ -14,9 +14,11 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @artefact = content_api.artefact(params[:scope])
+
+        set_locale(@artefact)
         set_slimmer_artefact(@artefact)
         set_slimmer_headers :format => "calendar"
-
+       
         render params[:scope].gsub('-', '_')
       end
       format.json do
@@ -49,5 +51,11 @@ private
 
   def simple_404
     head 404
+  end
+
+  def set_locale(artefact)
+    if artefact and artefact["details"]
+      I18n.locale = artefact["details"]["language"]
+    end
   end
 end

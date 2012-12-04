@@ -1,0 +1,77 @@
+<%= render :partial => "calendar_head" %>
+
+<% if @calendar.divisions.any? {|d| d.upcoming_event and d.upcoming_event.date == Date.today and d.upcoming_event.bunting == "true" } %>
+  <div class="epic-bunting"><span></span></div>
+<% end %>
+
+<section id="content" role="main" class="group">
+  <header class="page-header group">
+    <hgroup>
+    <h1><span>Ateb cyflym</span> Gwyliau banc y DU</h1>
+    </hgroup>
+    <nav class="skip-to-related">
+      <a href="#related">Ddim beth rydych chi'n chwilio amdano? ↓</a>
+    </nav>
+  </header>
+
+  <div class="article-container group">
+
+    <article role="article" class="group">
+      <div class="inner">
+
+        <p>Dyma ddyddiadau gwyliau banc y DU ar gyfer 2012 a 2013. <%= @artefact.language %></p>
+
+        <nav class="js-tabs nav-tabs" role="navigation">
+          <ul>
+            <% @calendar.divisions.each do |division| %>
+              <li><%= link_to division.title, "##{division.slug}", :class => division.slug %></li>
+            <% end %>
+          </ul>
+        </nav>
+
+        <div class="js-tab-content tab-content">
+          <% @calendar.divisions.each do |division| %>
+            <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
+              <% if division.upcoming_event %>
+                <p>Y gŵyl banc nesaf <%= yn_yng_variant(division.title) %> yw:</p>
+                <div class="highlighted-event">
+                  <p><%= division.upcoming_event.title %>
+                  <em><%= division.upcoming_event.date == Date.today ? "heddiw" : l(division.upcoming_event.date, :format => "%e %B") %></em></p>
+                </div>
+              <% end %>
+
+              <% division.years.each do |year| %>
+                <%= render :partial => 'calendar_year', :locals => {
+                  :year => year,
+                  :caption => "Gwyliau banc #{year} #{yn_yng_variant(division.title)}" } %>
+
+                <div class="subscribe">
+                  <p>Ychwanegwch ddyddiadau at eich calendr: <%=
+                  link_to("Gwyliau banc #{year} #{yn_yng_variant(division.title)}",
+                          division_year_path(@calendar, division, year, :format => 'ics'),
+                          :title => 'Llwythwch y dyddiadau hyn i lawr i chi allu eu hychwanegu at raglen calendr fel iCal neu Outlook')
+                          %>.</p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <p>Os bydd gŵyl banc ar benwythnos, bydd diwrnod o'r wythnos waith yn dod yn ŵyl banc yn lle, y dydd Llun canlynol fel rheol.</p>
+        <p>Nid oes yn rhaid i'ch cyflogwr roi absenoldeb â thâl i chi am ŵyl banc neu ŵyl gyhoeddus.</p>
+
+      </div>
+    </article>
+
+    <%= render :partial => 'calendar_metadata' %>
+  </div>
+</section>
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() {
+  $('article .inner').tabs();
+});
+//]]>
+</script>
+

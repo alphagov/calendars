@@ -147,5 +147,16 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
         assert page.has_no_css?('.epic-bunting')
       end
     end
+  end # within #content
+  
+  context "last updated" do
+    should "be formatted correctly" do
+      Timecop.travel(Date.parse("25th Dec 2012")) do
+        visit "/bank-holidays"
+        within ".meta-data" do
+          assert page.has_content?("Last updated: 25 December 2012")
+        end
+      end
+    end
   end
 end
