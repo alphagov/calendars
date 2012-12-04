@@ -36,7 +36,7 @@
                 <p>Gŵyl banc nesaf <%= division.title %> yw:</p>
                 <div class="highlighted-event">
                   <p><%= division.upcoming_event.title %>
-                    <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em></p>
+                  <em><%= division.upcoming_event.date == Date.today ? "heddiw" : l(division.upcoming_event.date, :format => "%e %B") %></em></p>
                 </div>
               <% end %>
 

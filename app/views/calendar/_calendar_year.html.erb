@@ -13,8 +13,8 @@
   <tbody>
     <% year.events.each do |event| -%>
       <tr>
-        <td class="calendar_date"><%= event.date.strftime('%d %B') %></td>
-        <td class="calendar_day"><%= event.date.strftime('%A') %></td>
+        <td class="calendar_date"><%= l event.date, :format => '%d %B' %></td>
+        <td class="calendar_day"><%= l event.date, :format => '%A' %></td>
         <td class="calendar_title"><%= event.title %></td>
         <td class="calendar_notes"><small><%= event.notes %></small></td>
       </tr>

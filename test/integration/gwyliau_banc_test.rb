@@ -3,6 +3,12 @@ require_relative '../integration_test_helper'
 
 class GwyliauBancTest < ActionDispatch::IntegrationTest
 
+  setup do
+    artefact_data = artefact_for_slug('gwyliau-banc')
+    artefact_data.merge!(language: :cy)
+    content_api_has_an_artefact('gwyliau-banc', artefact_data)   
+  end
+
   should "display the Gwyliau Banc page (Bank Holidays page in Welsh)" do
 
     visit "/gwyliau-banc"
@@ -36,64 +42,64 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
         within '.tab-content' do
           within '#england-and-wales' do
             assert page.has_table?("Gwyliau banc 2012 yng Cymru a Lloegr", :rows => [
-              ["02 January", "Monday", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["04 June", "Monday", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["05 June", "Tuesday", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
-              ["27 August", "Monday", "Gŵyl Banc yr Haf", ""],
-              ["25 December", "Tuesday", "Dydd Nadolig", ""],
-              ["26 December", "Wednesday", "Gŵyl San Steffan", ""]
+              ["02 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
+              ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
+              ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
+              ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""]
             ])
             assert page.has_link?("Gwyliau banc 2012 yng Cymru a Lloegr", :href => "/gwyliau-banc/england-and-wales-2012.ics")
 
             assert page.has_table?("Gwyliau banc 2013 yng Cymru a Lloegr", :rows => [
-              ["01 January", "Tuesday", "Dydd Calan", ""],
-              ["29 March", "Friday", "Dydd Gwener y Groglith", ""],
-              ["25 December", "Wednesday", "Dydd Nadolig", ""],
-              ["26 December", "Thursday", "Gŵyl San Steffan", ""],
+              ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
+              ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
+              ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
+              ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
             assert page.has_link?("Gwyliau banc 2013 yng Cymru a Lloegr", :href => "/gwyliau-banc/england-and-wales-2013.ics")
           end
 
           within '#scotland' do
             assert page.has_table?("Gwyliau banc 2012 yng Yr Alban", :rows => [
-              ["02 January", "Monday", "2il Ionawr", ""],
-              ["03 January", "Tuesday", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["04 June", "Monday", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["05 June", "Tuesday", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
-              ["06 August", "Monday", "Gŵyl Banc yr Haf", ""],
-              ["25 December", "Tuesday", "Dydd Nadolig", ""],
-              ["26 December", "Wednesday", "Gŵyl San Steffan", ""],
+              ["02 Ionawr", "Dydd Llun", "2il Ionawr", ""],
+              ["03 Ionawr", "Dydd Mawrth", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
+              ["06 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
+              ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
+              ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
             ])
             assert page.has_link?("Gwyliau banc 2012 yng Yr Alban", :href => "/gwyliau-banc/scotland-2012.ics")
 
             assert page.has_table?("Gwyliau banc 2013 yng Yr Alban", :rows => [
-              ["01 January", "Tuesday", "Dydd Calan", ""],
-              ["29 March", "Friday", "Dydd Gwener y Groglith", ""],
-              ["02 December", "Monday", "Gŵyl Andreas", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["25 December", "Wednesday", "Dydd Nadolig", ""],
-              ["26 December", "Thursday", "Gŵyl San Steffan", ""],
+              ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
+              ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
+              ["02 Rhagfyr", "Dydd Llun", "Gŵyl Andreas", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
+              ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
             assert page.has_link?("Gwyliau banc 2013 yng Yr Alban", :href => "/gwyliau-banc/scotland-2013.ics")
           end
 
           within '#northern-ireland' do
             assert page.has_table?("Gwyliau banc 2012 yng Gogledd Iwerddon", :rows => [
-              ["02 January", "Monday", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["19 March", "Monday", "Gŵyl San Padrig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["04 June", "Monday", "Gŵyl Banc y Gwanwyn", ""],
-              ["05 June", "Tuesday", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
-              ["27 August", "Monday", "Gŵyl Banc yr Haf", ""],
-              ["25 December", "Tuesday", "Dydd Nadolig", ""],
-              ["26 December", "Wednesday", "Gŵyl San Steffan", ""],
+              ["02 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["19 Mawrth", "Dydd Llun", "Gŵyl San Padrig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", ""],
+              ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
+              ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
+              ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
+              ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
             ])
             assert page.has_link?("Gwyliau banc 2012 yng Gogledd Iwerddon", :href => "/gwyliau-banc/northern-ireland-2012.ics")
 
             assert page.has_table?("Gwyliau banc 2013 yng Gogledd Iwerddon", :rows => [
-              ["01 January", "Tuesday", "Dydd Calan", ""],
-              ["29 March", "Friday", "Dydd Gwener y Groglith", ""],
-              ["12 July", "Friday", "Brwydr y Boyne (Diwrnod yr Orangemen)", ""],
-              ["25 December", "Wednesday", "Dydd Nadolig", ""],
-              ["26 December", "Thursday", "Gŵyl San Steffan", ""],
+              ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
+              ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
+              ["12 Gorffennaf", "Dydd Gwener", "Brwydr y Boyne (Diwrnod yr Orangemen)", ""],
+              ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
+              ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
             assert page.has_link?("Gwyliau banc 2013 yng Gogledd Iwerddon", :href => "/gwyliau-banc/northern-ireland-2013.ics")
           end
@@ -110,17 +116,17 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
         within '#england-and-wales .highlighted-event' do
           assert page.has_content?("Gŵyl Banc y Gwanwyn")
-          assert page.has_content?("4 June")
+          assert page.has_content?("4 Mehefin")
         end
 
         within '#scotland .highlighted-event' do
           assert page.has_content?("Dydd Calan")
-          assert page.has_content?("today")
+          assert page.has_content?("heddiw")
         end
 
         within '#northern-ireland .highlighted-event' do
           assert page.has_content?("Gŵyl San Padrig")
-          assert page.has_content?("19 March")
+          assert page.has_content?("19 Mawrth")
         end
       end # within .tab-content
     end # Timecop
