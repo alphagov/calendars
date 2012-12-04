@@ -14,11 +14,11 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @artefact = content_api.artefact(params[:scope])
+
+        set_locale(@artefact)
         set_slimmer_artefact(@artefact)
         set_slimmer_headers :format => "calendar"
-        
-        I18n.locale = @artefact.language if @artefact.language
-        
+       
         render params[:scope].gsub('-', '_')
       end
       format.json do
@@ -53,4 +53,9 @@ private
     head 404
   end
 
+  def set_locale(artefact)
+    if artefact and artefact["details"]
+      I18n.locale = artefact["details"]["language"]
+    end
+  end
 end

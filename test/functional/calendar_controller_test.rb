@@ -49,7 +49,7 @@ class CalendarControllerTest < ActionController::TestCase
     context "for a welsh language artefact" do
       should "set the I18n locale" do
         artefact_data = artefact_for_slug('gwyliau-banc')
-        artefact_data.merge!(language: :cy)
+        artefact_data["details"].merge!(language: "cy")
         content_api_has_an_artefact('gwyliau-banc', artefact_data)
         get :calendar, :scope => 'gwyliau-banc'
         assert_equal :cy, I18n.locale
