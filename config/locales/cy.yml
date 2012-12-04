@@ -1,7 +1,10 @@
 cy:
-  events:
-    headings:
-      date: "Dyddiad"
-      day: "Diwrnod"
-      holiday_name: "Enw'r Gwyliau"
-      notes: "Nodiadau"
+  calendar:
+    last_updated:
+      "Diweddarwyd ddiwethaf"
+    events:
+      headings:
+        date: "Dyddiad"
+        day: "Diwrnod"
+        holiday_name: "Enw'r Gwyliau"
+        notes: "Nodiadau"
