@@ -46,10 +46,13 @@ class CalendarControllerTest < ActionController::TestCase
       end
     end
 
-    context "with a locale param" do
-      should "set the I18n locale for translations" do
-         get :calendar, :scope => 'bank-holidays', :locale => 'cy'
-         assert_equal :cy, I18n.locale
+    context "for a welsh language artefact" do
+      should "set the I18n locale" do
+        artefact_data = artefact_for_slug('gwyliau-banc')
+        artefact_data.merge!(language: :cy)
+        content_api_has_an_artefact('gwyliau-banc', artefact_data)
+        get :calendar, :scope => 'gwyliau-banc'
+        assert_equal :cy, I18n.locale
       end
     end
 
