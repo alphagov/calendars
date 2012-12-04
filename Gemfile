@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
 
 gem 'rails', '3.2.8'
+gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch => "welsh_updates"
 
 gem 'json', '1.7.4'
 gem 'exception_notification', '2.5.2'
@@ -12,8 +13,6 @@ gem 'govuk_frontend_toolkit', '0.3.3'
 
 gem 'lograge', '0.0.6'
 gem 'unicorn', '4.3.1'
-
-gem 'r18n-rails'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
