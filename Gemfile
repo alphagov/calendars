@@ -7,7 +7,7 @@ gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch 
 gem 'json', '1.7.4'
 gem 'exception_notification', '2.5.2'
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
-gem 'plek', '0.3.0'
+gem 'plek', '1.0.0'
 
 gem 'govuk_frontend_toolkit', '0.3.3'
 
