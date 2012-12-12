@@ -111,6 +111,106 @@
           "notes": "",
           "bunting": "true"
         }
+      ],
+      "2014": [
+        {
+          "title": "Dydd Calan",
+          "date": "01/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Gwener y Groglith",
+          "date": "18/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Llun y Pasg",
+          "date": "21/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc Cyntaf Mai",
+          "date": "05/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc y Gwanwyn",
+          "date": "26/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc yr Haf",
+          "date": "25/08/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Nadolig",
+          "date": "25/12/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Steffan",
+          "date": "26/12/2014",
+          "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2015": [
+        {
+          "title": "Dydd Calan",
+          "date": "01/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Gwener y Groglith",
+          "date": "03/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Llun y Pasg",
+          "date": "06/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc Cyntaf Mai",
+          "date": "04/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc y Gwanwyn",
+          "date": "25/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc yr Haf",
+          "date": "31/08/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Nadolig",
+          "date": "25/12/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Steffan",
+          "date": "28/12/2015",
+          "notes": "Substitute day",
+          "bunting": "true"
+        }
       ]
     },
     "yr-alban": {
@@ -230,6 +330,118 @@
           "title": "Gŵyl San Steffan",
           "date": "26/12/2013",
           "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2014": [
+        {
+          "title": "Dydd Calan",
+          "date": "01/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "2il Ionawr",
+          "date": "02/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Gwener y Groglith",
+          "date": "18/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc Cyntaf Mai",
+          "date": "05/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc y Gwanwyn",
+          "date": "26/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc yr Haf",
+          "date": "04/08/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Andreas",
+          "date": "01/12/2014",
+          "notes": "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Nadolig",
+          "date": "25/12/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Steffan",
+          "date": "26/12/2014",
+          "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2015": [
+        {
+          "title": "Dydd Calan",
+          "date": "01/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "2il Ionawr",
+          "date": "02/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Gwener y Groglith",
+          "date": "03/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc Cyntaf Mai",
+          "date": "04/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc y Gwanwyn",
+          "date": "25/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc yr Haf",
+          "date": "03/08/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Andreas",
+          "date": "30/11/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Nadolig",
+          "date": "25/12/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Steffan",
+          "date": "28/12/2015",
+          "notes": "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos",
           "bunting": "true"
         }
       ]
@@ -363,6 +575,130 @@
           "title": "Gŵyl San Steffan",
           "date": "26/12/2013",
           "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2014": [
+        {
+          "title": "Dydd Calan",
+          "date": "01/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Padrig",
+          "date": "17/03/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Gwener y Groglith",
+          "date": "18/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Llun y Pasg",
+          "date": "21/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc Cyntaf Mai",
+          "date": "05/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc y Gwanwyn",
+          "date": "26/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Brwydr y Boyne (Diwrnod yr Orangemen)",
+          "date": "14/07/2014",
+          "notes": "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos",
+          "bunting": "false"
+        },
+        {
+          "title": "Gŵyl Banc yr Haf",
+          "date": "25/08/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Nadolig",
+          "date": "25/12/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Steffan",
+          "date": "26/12/2014",
+          "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2015": [
+        {
+          "title": "Dydd Calan",
+          "date": "01/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Padrig",
+          "date": "17/03/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Gwener y Groglith",
+          "date": "03/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Llun y Pasg",
+          "date": "06/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc Cyntaf Mai",
+          "date": "04/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl Banc y Gwanwyn",
+          "date": "25/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Brwydr y Boyne (Diwrnod yr Orangemen)",
+          "date": "13/07/2015",
+          "notes": "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos",
+          "bunting": "false"
+        },
+        {
+          "title": "Gŵyl Banc yr Haf",
+          "date": "31/08/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Dydd Nadolig",
+          "date": "25/12/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Gŵyl San Steffan",
+          "date": "28/12/2015",
+          "notes": "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos",
           "bunting": "true"
         }
       ]
