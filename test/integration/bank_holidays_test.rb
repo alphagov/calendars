@@ -151,10 +151,10 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
   
   context "last updated" do
     should "be formatted correctly" do
-      Timecop.travel(Date.parse("25th Dec 2012")) do
+      Timecop.travel(Date.parse("5th Dec 2012")) do
         visit "/bank-holidays"
         within ".meta-data" do
-          assert page.has_content?("Last updated: 25 December 2012")
+          assert page.has_content?("Last updated: 5 December 2012")
         end
       end
     end
