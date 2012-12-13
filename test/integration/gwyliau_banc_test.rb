@@ -43,9 +43,9 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#cymru-a-lloegr' do
             assert page.has_table?("Gwyliau banc 2012 yng Nghymru a Lloegr", :headers => [
               "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
-              ["02 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
+              ["2 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""]
@@ -54,7 +54,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
             assert page.has_table?("Gwyliau banc 2013 yng Nghymru a Lloegr", :headers => [
               "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
-              ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
+              ["1 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
@@ -65,11 +65,11 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#yr-alban' do
             assert page.has_table?("Gwyliau banc 2012 yn yr Alban", :headers => [
               "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
-              ["02 Ionawr", "Dydd Llun", "2il Ionawr", ""],
-              ["03 Ionawr", "Dydd Mawrth", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
-              ["06 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
+              ["2 Ionawr", "Dydd Llun", "2il Ionawr", ""],
+              ["3 Ionawr", "Dydd Mawrth", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
+              ["6 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
             ])
@@ -77,9 +77,9 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
             assert page.has_table?("Gwyliau banc 2013 yn yr Alban", :headers => [
               "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
-              ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
+              ["1 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
-              ["02 Rhagfyr", "Dydd Llun", "Gŵyl Andreas", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["2 Rhagfyr", "Dydd Llun", "Gŵyl Andreas", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
             ])
@@ -89,10 +89,10 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#gogledd-iwerddon' do
             assert page.has_table?("Gwyliau banc 2012 yng Ngogledd Iwerddon", :headers => [
               "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
-              ["02 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
+              ["2 Ionawr", "Dydd Llun", "Dydd Calan", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["19 Mawrth", "Dydd Llun", "Gŵyl San Padrig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
-              ["04 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", ""],
-              ["05 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
+              ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn", ""],
+              ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
@@ -101,7 +101,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
             assert page.has_table?("Gwyliau banc 2013 yng Ngogledd Iwerddon", :headers => [
               "Dyddiad", "Diwrnod", "Enw'r Gwyliau","Nodiadau"], :rows => [
-              ["01 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
+              ["1 Ionawr", "Dydd Mawrth", "Dydd Calan", ""],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
               ["12 Gorffennaf", "Dydd Gwener", "Brwydr y Boyne (Diwrnod yr Orangemen)", ""],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
