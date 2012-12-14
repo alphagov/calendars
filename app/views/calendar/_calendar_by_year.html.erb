@@ -1,0 +1,18 @@
+<table class="calendar">
+  <caption>
+    <%= caption %>
+  </caption>
+  <% events_by_year.each do |year, events| %>
+    <tr>
+      <th colspan="4"><%= year.to_s %></th>
+    </tr>
+    <% events.each do |event| %>
+      <tr>
+        <td class="calendar_date"><%= l event.date, :format => '%e %B' %></td>
+        <td class="calendar_day"><%= l event.date, :format => '%A' %></td>
+        <td class="calendar_title"><%= event.title %></td>
+        <td class="calendar_notes"><small><%= event.notes %></small></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
