@@ -21,6 +21,14 @@ class Calendar
       @upcoming_event ||= events.find {|e| e.date >= Date.today }
     end
 
+    def upcoming_events
+      @upcoming_events ||= events.select {|e| e.date >= Date.today }
+    end
+
+    def past_events
+      @past_events ||= events.select {|e| e.date < Date.today }
+    end
+
     def as_json(options = nil)
       {
         "year" => self.to_s,
