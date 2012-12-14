@@ -6,6 +6,26 @@
   "divisions": {
     "england-and-wales": {
       "title": "England and Wales",
+      "2011": [
+        {
+          "title": "Summer bank holiday",
+          "date": "29/08/2011",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "26/12/2011",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "27/12/2011",
+          "notes": "Substitute day",
+          "bunting": "true"
+        }
+      ],
       "2012": [
         {
           "title": "New Year’s Day",
@@ -72,6 +92,26 @@
       ]
     },
     "scotland": {
+      "2011": [
+        {
+          "title": "Summer bank holiday",
+          "date": "29/08/2011",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "26/12/2011",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "27/12/2011",
+          "notes": "Substitute day",
+          "bunting": "true"
+        }
+      ],
       "2012": [
         {
           "title": "2nd January",
@@ -151,6 +191,26 @@
     },
     "northern-ireland": {
       "title": "Northern Ireland",
+      "2011": [
+        {
+          "title": "Summer bank holiday",
+          "date": "29/08/2011",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "26/12/2011",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "27/12/2011",
+          "notes": "Substitute day",
+          "bunting": "true"
+        }
+      ],
       "2012": [
         {
           "title": "New Year’s Day",
