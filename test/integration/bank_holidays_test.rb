@@ -4,6 +4,7 @@ require_relative '../integration_test_helper'
 class BankHolidaysTest < ActionDispatch::IntegrationTest
 
   should "display the bank holidays page" do
+    Timecop.travel("2012-12-14")
 
     visit "/bank-holidays"
 
@@ -35,67 +36,88 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
 
         within '.tab-content' do
           within '#england-and-wales' do
-            assert page.has_table?("2012 bank holidays in England and Wales", :rows => [
-              ["2 January", "Monday", "New Year’s Day", "Substitute day"],
-              ["4 June", "Monday", "Spring bank holiday", "Substitute day"],
-              ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
-              ["27 August", "Monday", "Summer bank holiday", ""],
+            assert page.has_link?("Bank holidays in England and Wales", :href => "/bank-holidays/england-and-wales.ics")
+
+            assert page.has_table?("Upcoming bank holidays in England and Wales", :rows => [
+              ["2012"],
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
-            ])
-            assert page.has_link?("Bank holidays for 2012 in England and Wales", :href => "/bank-holidays/england-and-wales-2012.ics")
-
-            assert page.has_table?("2013 bank holidays in England and Wales", :rows => [
+              ["2013"],
               ["1 January", "Tuesday", "New Year’s Day", ""],
               ["29 March", "Friday", "Good Friday", ""],
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
             ])
-            assert page.has_link?("Bank holidays for 2013 in England and Wales", :href => "/bank-holidays/england-and-wales-2013.ics")
+
+            assert page.has_table?("Past bank holidays in England and Wales", :rows => [
+              ["2012"],
+              ["27 August", "Monday", "Summer bank holiday", ""],
+              ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
+              ["4 June", "Monday", "Spring bank holiday", "Substitute day"],
+              ["2 January", "Monday", "New Year’s Day", "Substitute day"],
+              ["2011"],
+              ["27 December", "Tuesday", "Christmas Day", "Substitute day"],
+              ["26 December", "Monday", "Boxing Day", ""],
+              ["29 August", "Monday", "Summer bank holiday", ""],
+            ])
           end
 
           within '#scotland' do
-            assert page.has_table?("2012 bank holidays in Scotland", :rows => [
-              ["2 January", "Monday", "2nd January", ""],
-              ["3 January", "Tuesday", "New Year’s Day", "Substitute day"],
-              ["4 June", "Monday", "Spring bank holiday", "Substitute day"],
-              ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
-              ["6 August", "Monday", "Summer bank holiday", ""],
+            assert page.has_link?("Bank holidays in Scotland", :href => "/bank-holidays/scotland.ics")
+
+            assert page.has_table?("Upcoming bank holidays in Scotland", :rows => [
+              ["2012"],
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
-            ])
-            assert page.has_link?("Bank holidays for 2012 in Scotland", :href => "/bank-holidays/scotland-2012.ics")
-
-            assert page.has_table?("2013 bank holidays in Scotland", :rows => [
+              ["2013"],
               ["1 January", "Tuesday", "New Year’s Day", ""],
               ["29 March", "Friday", "Good Friday", ""],
               ["2 December", "Monday", "St Andrew’s Day", "Substitute day"],
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
             ])
-            assert page.has_link?("Bank holidays for 2013 in Scotland", :href => "/bank-holidays/scotland-2013.ics")
+
+            assert page.has_table?("Past bank holidays in Scotland", :rows => [
+              ["2012"],
+              ["6 August", "Monday", "Summer bank holiday", ""],
+              ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
+              ["4 June", "Monday", "Spring bank holiday", "Substitute day"],
+              ["3 January", "Tuesday", "New Year’s Day", "Substitute day"],
+              ["2 January", "Monday", "2nd January", ""],
+              ["2011"],
+              ["27 December", "Tuesday", "Christmas Day", "Substitute day"],
+              ["26 December", "Monday", "Boxing Day", ""],
+              ["29 August", "Monday", "Summer bank holiday", ""],
+            ])
           end
 
           within '#northern-ireland' do
-            assert page.has_table?("2012 bank holidays in Northern Ireland", :rows => [
-              ["2 January", "Monday", "New Year’s Day", "Substitute day"],
-              ["19 March", "Monday", "St Patrick’s Day", "Substitute day"],
-              ["4 June", "Monday", "Spring bank holiday", ""],
-              ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
-              ["27 August", "Monday", "Summer bank holiday", ""],
+            assert page.has_link?("Bank holidays in Northern Ireland", :href => "/bank-holidays/northern-ireland.ics")
+
+            assert page.has_table?("Upcoming bank holidays in Northern Ireland", :rows => [
+              ["2012"],
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
-            ])
-            assert page.has_link?("Bank holidays for 2012 in Northern Ireland", :href => "/bank-holidays/northern-ireland-2012.ics")
-
-            assert page.has_table?("2013 bank holidays in Northern Ireland", :rows => [
+              ["2013"],
               ["1 January", "Tuesday", "New Year’s Day", ""],
               ["29 March", "Friday", "Good Friday", ""],
               ["12 July", "Friday", "Battle of the Boyne (Orangemen’s Day)", ""],
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
             ])
-            assert page.has_link?("Bank holidays for 2013 in Northern Ireland", :href => "/bank-holidays/northern-ireland-2013.ics")
+
+            assert page.has_table?("Past bank holidays in Northern Ireland", :rows => [
+              ["2012"],
+              ["27 August", "Monday", "Summer bank holiday", ""],
+              ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
+              ["4 June", "Monday", "Spring bank holiday", ""],
+              ["19 March", "Monday", "St Patrick’s Day", "Substitute day"],
+              ["2 January", "Monday", "New Year’s Day", "Substitute day"],
+              ["2011"],
+              ["27 December", "Tuesday", "Christmas Day", "Substitute day"],
+              ["26 December", "Monday", "Boxing Day", ""],
+              ["29 August", "Monday", "Summer bank holiday", ""],
+            ])
           end
         end # within .tab-content
       end # within article
@@ -109,18 +131,21 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       within ".tab-content" do
 
         within '#england-and-wales .highlighted-event' do
-          assert page.has_content?("Spring bank holiday")
+          assert page.has_content?("The next bank holiday in England and Wales is:")
           assert page.has_content?("4 June")
+          assert page.has_content?("Spring bank holiday")
         end
 
         within '#scotland .highlighted-event' do
-          assert page.has_content?("New Year’s Day")
+          assert page.has_content?("The next bank holiday in Scotland is:")
           assert page.has_content?("today")
+          assert page.has_content?("New Year’s Day")
         end
 
         within '#northern-ireland .highlighted-event' do
-          assert page.has_content?("St Patrick’s Day")
+          assert page.has_content?("The next bank holiday in Northern Ireland is:")
           assert page.has_content?("19 March")
+          assert page.has_content?("St Patrick’s Day")
         end
       end # within .tab-content
     end # Timecop
