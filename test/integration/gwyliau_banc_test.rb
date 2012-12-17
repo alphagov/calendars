@@ -44,7 +44,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#cymru-a-lloegr' do
             assert page.has_link?("Gwyliau banc yng Nghymru a Lloegr", :href => "/gwyliau-banc/cymru-a-lloegr.ics")
 
-            assert page.has_table?("Upcoming bank holidays in Cymru a Lloegr (in Welsh)", :rows => [
+            assert_table_with_caption "Upcoming bank holidays in Cymru a Lloegr (in Welsh)", :rows => [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
@@ -53,9 +53,9 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith", ""],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
-            ])
+            ]
 
-            assert page.has_table?("Past bank holidays in Cymru a Lloegr (in Welsh)", :rows => [
+            assert_table_with_caption "Past bank holidays in Cymru a Lloegr (in Welsh)", :rows => [
               ["2012"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
@@ -65,13 +65,13 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["27 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["26 Rhagfyr", "Dydd Llun", "Gŵyl San Steffan", ""],
               ["29 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
-            ])
+            ]
           end
 
           within '#yr-alban' do
             assert page.has_link?("Gwyliau banc yn yr Alban", :href => "/gwyliau-banc/yr-alban.ics")
 
-            assert page.has_table?("Upcoming bank holidays in Yr Alban (in Welsh)", :rows => [
+            assert_table_with_caption "Upcoming bank holidays in Yr Alban (in Welsh)", :rows => [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
@@ -81,9 +81,9 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["2 Rhagfyr", "Dydd Llun", "Gŵyl Andreas", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
-            ])
+            ]
 
-            assert page.has_table?("Past bank holidays in Yr Alban (in Welsh)", :rows => [
+            assert_table_with_caption "Past bank holidays in Yr Alban (in Welsh)", :rows => [
               ["2012"],
               ["6 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
@@ -94,13 +94,13 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["27 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["26 Rhagfyr", "Dydd Llun", "Gŵyl San Steffan", ""],
               ["29 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
-            ])
+            ]
           end
 
           within '#gogledd-iwerddon' do
             assert page.has_link?("Gwyliau banc yng Ngogledd Iwerddon", :href => "/gwyliau-banc/gogledd-iwerddon.ics")
 
-            assert page.has_table?("Upcoming bank holidays in Gogledd Iwerddon (in Welsh)", :rows => [
+            assert_table_with_caption "Upcoming bank holidays in Gogledd Iwerddon (in Welsh)", :rows => [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan", ""],
@@ -110,9 +110,9 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["12 Gorffennaf", "Dydd Gwener", "Brwydr y Boyne (Diwrnod yr Orangemen)", ""],
               ["25 Rhagfyr", "Dydd Mercher", "Dydd Nadolig", ""],
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan", ""],
-            ])
+            ]
 
-            assert page.has_table?("Past bank holidays in Gogledd Iwerddon (in Welsh)", :rows => [
+            assert_table_with_caption "Past bank holidays in Gogledd Iwerddon (in Welsh)", :rows => [
               ["2012"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines", "Gŵyl Banc ychwanegol"],
@@ -123,7 +123,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["27 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig", "Diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos"],
               ["26 Rhagfyr", "Dydd Llun", "Gŵyl San Steffan", ""],
               ["29 Awst", "Dydd Llun", "Gŵyl Banc yr Haf", ""],
-            ])
+            ]
           end
         end # within .tab-content
       end # within article

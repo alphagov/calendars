@@ -38,7 +38,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           within '#england-and-wales' do
             assert page.has_link?("Bank holidays in England and Wales", :href => "/bank-holidays/england-and-wales.ics")
 
-            assert page.has_table?("Upcoming bank holidays in England and Wales", :rows => [
+            assert_table_with_caption "Upcoming bank holidays in England and Wales", :rows => [
               ["2012"],
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
@@ -47,9 +47,9 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["29 March", "Friday", "Good Friday", ""],
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
-            ])
+            ]
 
-            assert page.has_table?("Past bank holidays in England and Wales", :rows => [
+            assert_table_with_caption "Past bank holidays in England and Wales", :rows => [
               ["2012"],
               ["27 August", "Monday", "Summer bank holiday", ""],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
@@ -59,13 +59,13 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["27 December", "Tuesday", "Christmas Day", "Substitute day"],
               ["26 December", "Monday", "Boxing Day", ""],
               ["29 August", "Monday", "Summer bank holiday", ""],
-            ])
+            ]
           end
 
           within '#scotland' do
             assert page.has_link?("Bank holidays in Scotland", :href => "/bank-holidays/scotland.ics")
 
-            assert page.has_table?("Upcoming bank holidays in Scotland", :rows => [
+            assert_table_with_caption "Upcoming bank holidays in Scotland", :rows => [
               ["2012"],
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
@@ -75,9 +75,9 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["2 December", "Monday", "St Andrew’s Day", "Substitute day"],
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
-            ])
+            ]
 
-            assert page.has_table?("Past bank holidays in Scotland", :rows => [
+            assert_table_with_caption "Past bank holidays in Scotland", :rows => [
               ["2012"],
               ["6 August", "Monday", "Summer bank holiday", ""],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
@@ -88,13 +88,13 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["27 December", "Tuesday", "Christmas Day", "Substitute day"],
               ["26 December", "Monday", "Boxing Day", ""],
               ["29 August", "Monday", "Summer bank holiday", ""],
-            ])
+            ]
           end
 
           within '#northern-ireland' do
             assert page.has_link?("Bank holidays in Northern Ireland", :href => "/bank-holidays/northern-ireland.ics")
 
-            assert page.has_table?("Upcoming bank holidays in Northern Ireland", :rows => [
+            assert_table_with_caption "Upcoming bank holidays in Northern Ireland", :rows => [
               ["2012"],
               ["25 December", "Tuesday", "Christmas Day", ""],
               ["26 December", "Wednesday", "Boxing Day", ""],
@@ -104,9 +104,9 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["12 July", "Friday", "Battle of the Boyne (Orangemen’s Day)", ""],
               ["25 December", "Wednesday", "Christmas Day", ""],
               ["26 December", "Thursday", "Boxing Day", ""],
-            ])
+            ]
 
-            assert page.has_table?("Past bank holidays in Northern Ireland", :rows => [
+            assert_table_with_caption "Past bank holidays in Northern Ireland", :rows => [
               ["2012"],
               ["27 August", "Monday", "Summer bank holiday", ""],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee", "Extra bank holiday"],
@@ -117,7 +117,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["27 December", "Tuesday", "Christmas Day", "Substitute day"],
               ["26 December", "Monday", "Boxing Day", ""],
               ["29 August", "Monday", "Summer bank holiday", ""],
-            ])
+            ]
           end
         end # within .tab-content
       end # within article
