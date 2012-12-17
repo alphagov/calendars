@@ -41,6 +41,9 @@ class IcalendarTest < ActionDispatch::IntegrationTest
       get path
 
       expected_events = [
+        {"date"=>"20110829", "title"=>"Summer bank holiday"},
+        {"date"=>"20111226", "title"=>"Boxing Day"},
+        {"date"=>"20111227", "title"=>"Christmas Day"},
         {"date"=>"20120102", "title"=>"New Year’s Day"},
         {"date"=>"20120604", "title"=>"Spring bank holiday"},
         {"date"=>"20120605", "title"=>"Queen’s Diamond Jubilee"},

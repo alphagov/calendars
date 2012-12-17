@@ -1,14 +1,14 @@
 class Calendar
   class Year
 
-    def initialize(year, division, data = [])
-      @year = year
+    def initialize(year_str, division, data = [])
+      @year_str = year_str
       @division = division
       @data = data
     end
 
     def to_s
-      @year
+      @year_str
     end
 
     def events
@@ -21,9 +21,17 @@ class Calendar
       @upcoming_event ||= events.find {|e| e.date >= Date.today }
     end
 
+    def upcoming_events
+      @upcoming_events ||= events.select {|e| e.date >= Date.today }
+    end
+
+    def past_events
+      @past_events ||= events.select {|e| e.date < Date.today }
+    end
+
     def as_json(options = nil)
       {
-        "year" => @year,
+        "year" => self.to_s,
         "division" => @division.slug,
         "events" => events,
       }
