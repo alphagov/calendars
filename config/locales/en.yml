@@ -4,9 +4,3 @@
 en:
   calendar:
     last_updated: "Last updated"
-    events:
-      headings:
-        date: "Date"
-        day: "Day"
-        holiday_name: "Holiday Name"
-        notes: "Notes"
