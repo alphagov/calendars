@@ -17,7 +17,7 @@
           "title": "Good Friday",
           "date": "06/04/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": "false"
         },
         {
           "title": "Easter Monday",
@@ -73,7 +73,7 @@
           "title": "Good Friday",
           "date": "29/03/2013",
           "notes": "",
-          "bunting": "true"
+          "bunting": "false"
         },
         {
           "title": "Easter Monday",
@@ -111,6 +111,106 @@
           "notes": "",
           "bunting": "true"
         }
+      ],
+      "2014": [
+        {
+          "title": "New Year’s Day",
+          "date": "01/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Good Friday",
+          "date": "18/04/2014",
+          "notes": "",
+          "bunting": "false"
+        },
+        {
+          "title": "Easter Monday",
+          "date": "21/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Early May bank holiday",
+          "date": "05/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Spring bank holiday",
+          "date": "26/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Summer bank holiday",
+          "date": "25/08/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "25/12/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "26/12/2014",
+          "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2015": [
+        {
+          "title": "New Year’s Day",
+          "date": "01/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Good Friday",
+          "date": "03/04/2015",
+          "notes": "",
+          "bunting": "false"
+        },
+        {
+          "title": "Easter Monday",
+          "date": "06/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Early May bank holiday",
+          "date": "04/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Spring bank holiday",
+          "date": "25/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Summer bank holiday",
+          "date": "31/08/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "25/12/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "28/12/2015",
+          "notes": "Substitute day",
+          "bunting": "true"
+        }
       ]
     },
     "scotland": {
@@ -131,7 +231,7 @@
           "title": "Good Friday",
           "date": "06/04/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": "false"
         },
         {
           "title": "Early May bank holiday",
@@ -193,7 +293,7 @@
           "title": "Good Friday",
           "date": "29/03/2013",
           "notes": "",
-          "bunting": "true"
+          "bunting": "false"
         },
         {
           "title": "Early May bank holiday",
@@ -231,6 +331,118 @@
           "notes": "",
           "bunting": "true"
         }
+      ],
+      "2014": [
+        {
+          "title": "New Year’s Day",
+          "date": "01/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "2nd January",
+          "date": "02/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Good Friday",
+          "date": "18/04/2014",
+          "notes": "",
+          "bunting": "false"
+        },
+        {
+          "title": "Early May bank holiday",
+          "date": "05/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Spring bank holiday",
+          "date": "26/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Summer bank holiday",
+          "date": "04/08/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "St Andrew’s Day",
+          "date": "01/12/2014",
+          "notes": "Substitute day",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "25/12/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "26/12/2014",
+          "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2015": [
+        {
+          "title": "New Year’s Day",
+          "date": "01/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "2nd January",
+          "date": "02/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Good Friday",
+          "date": "03/04/2015",
+          "notes": "",
+          "bunting": "false"
+        },
+        {
+          "title": "Early May bank holiday",
+          "date": "04/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Spring bank holiday",
+          "date": "25/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Summer bank holiday",
+          "date": "03/08/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "St Andrew’s Day",
+          "date": "30/11/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "25/12/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "28/12/2015",
+          "notes": "Substitute day",
+          "bunting": "true"
+        }
       ]
     },
     "northern-ireland": {
@@ -252,7 +464,7 @@
           "title": "Good Friday",
           "date": "06/04/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": "false"
         },
         {
           "title": "Easter Monday",
@@ -320,7 +532,7 @@
           "title": "Good Friday",
           "date": "29/03/2013",
           "notes": "",
-          "bunting": "true"
+          "bunting": "false"
         },
         {
           "title": "Easter Monday",
@@ -362,6 +574,130 @@
           "title": "Boxing Day",
           "date": "26/12/2013",
           "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2014": [
+        {
+          "title": "New Year’s Day",
+          "date": "01/01/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "St Patrick’s Day",
+          "date": "17/03/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Good Friday",
+          "date": "18/04/2014",
+          "notes": "",
+          "bunting": "false"
+        },
+        {
+          "title": "Easter Monday",
+          "date": "21/04/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Early May bank holiday",
+          "date": "05/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Spring bank holiday",
+          "date": "26/05/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Battle of the Boyne (Orangemen’s Day)",
+          "date": "14/07/2014",
+          "notes": "Substitute day",
+          "bunting": "false"
+        },
+        {
+          "title": "Summer bank holiday",
+          "date": "25/08/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "25/12/2014",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "26/12/2014",
+          "notes": "",
+          "bunting": "true"
+        }
+      ],
+      "2015": [
+        {
+          "title": "New Year’s Day",
+          "date": "01/01/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "St Patrick’s Day",
+          "date": "17/03/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Good Friday",
+          "date": "03/04/2015",
+          "notes": "",
+          "bunting": "false"
+        },
+        {
+          "title": "Easter Monday",
+          "date": "06/04/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Early May bank holiday",
+          "date": "04/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Spring bank holiday",
+          "date": "25/05/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Battle of the Boyne (Orangemen’s Day)",
+          "date": "13/07/2015",
+          "notes": "Substitute day",
+          "bunting": "false"
+        },
+        {
+          "title": "Summer bank holiday",
+          "date": "31/08/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Christmas Day",
+          "date": "25/12/2015",
+          "notes": "",
+          "bunting": "true"
+        },
+        {
+          "title": "Boxing Day",
+          "date": "28/12/2015",
+          "notes": "Substitute day",
           "bunting": "true"
         }
       ]

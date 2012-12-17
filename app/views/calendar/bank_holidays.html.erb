@@ -19,8 +19,6 @@
     <article role="article" class="group">
       <div class="inner">
 
-        <p>These are the dates of UK bank holidays for 2012 and 2013.</p>
-
         <nav class="js-tabs nav-tabs" role="navigation">
           <ul>
             <% @calendar.divisions.each do |division| %>
@@ -33,32 +31,37 @@
           <% @calendar.divisions.each do |division| %>
             <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
               <% if division.upcoming_event %>
-                <p>The next bank holiday in <%= division.title %> is:</p>
                 <div class="highlighted-event">
-                  <p><%= division.upcoming_event.title %>
-                    <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em></p>
+                  <p>The next bank holiday in <%= division.title %> is:</p>
+                  <p>
+                    <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em>
+                    <em><%= division.upcoming_event.title %></em>
+                  </p>
                 </div>
               <% end %>
 
-              <% division.years.each do |year| %>
-                <%= render :partial => 'calendar_year', :locals => {
-                  :year => year,
-                  :caption => "#{year} bank holidays in #{division.title}" } %>
+              <div class="subscribe">
+                <p>Add dates to your calendar:<br/>
+                  <%= link_to("Bank holidays in #{division.title}",
+                              division_path(@calendar, division, :format => 'ics'),
+                              :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook') %>
+                </p>
+              </div>
 
-                <div class="subscribe">
-                  <p>Add dates to your calendar: <%=
-                  link_to("Bank holidays for #{year} in #{division.title}",
-                          division_year_path(@calendar, division, year, :format => 'ics'),
-                          :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook')
-                          %>.</p>
-                </div>
-              <% end %>
+              <%= render :partial => 'calendar_by_year', :locals => {
+                  :events_by_year => division.upcoming_events_by_year,
+                  :caption => "Upcoming bank holidays in #{division.title}" } %>
+
+              <p>If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+              <p>Your employer doesn’t have to give you paid leave on bank or public holidays.</p>
+
+              <%= render :partial => 'calendar_by_year', :locals => {
+                  :events_by_year => division.past_events_by_year,
+                  :caption => "Past bank holidays in #{division.title}" } %>
             </div>
           <% end %>
         </div>
 
-        <p>If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
-        <p>Your employer doesn’t have to give you paid leave on bank or public holidays.</p>
 
       </div>
     </article>

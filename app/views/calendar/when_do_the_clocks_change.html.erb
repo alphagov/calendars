@@ -32,8 +32,8 @@
             <% division.years.each do |year| -%>
               <tr>
                 <th scope="row"><%= year %></th>
-                <td><%= year.events[0].date.strftime('%d %B') %></td>
-                <td><%= year.events[1].date.strftime('%d %B') %></td>
+                <td><%= year.events[0].date.strftime('%e %B') %></td>
+                <td><%= year.events[1].date.strftime('%e %B') %></td>
               </tr>
             <% end -%>
           </tbody>

@@ -146,6 +146,70 @@ class DivisionTest < ActiveSupport::TestCase
     end
   end
 
+  context "upcoming_events_by_year" do
+    setup do
+      @years = []
+      @div = Calendar::Division.new('something')
+      @div.stubs(:years).returns(@years)
+    end
+
+    should "return a hash of year => events for upcoming events" do
+      y1 = stub("Year1", :upcoming_events => [:e1, :e2])
+      y2 = stub("Year2", :upcoming_events => [:e3, :e4, :e5])
+      @years << y1 << y2
+
+      expected = {
+        y1 => [:e1, :e2],
+        y2 => [:e3, :e4, :e5],
+      }
+      assert_equal expected, @div.upcoming_events_by_year
+    end
+
+    should "not include any years with no upcoming events" do
+      y1 = stub("Year1", :upcoming_events => [])
+      y2 = stub("Year2", :upcoming_events => [:e1, :e2, :e3])
+      @years << y1 << y2
+
+      expected = {
+        y2 => [:e1, :e2, :e3],
+      }
+      assert_equal expected, @div.upcoming_events_by_year
+    end
+  end
+
+  context "past_events_by_year" do
+    setup do
+      @years = []
+      @div = Calendar::Division.new('something')
+      @div.stubs(:years).returns(@years)
+    end
+
+    should "return a hash of year => reversed events for past events" do
+      y1 = stub("Year1", :past_events => [:e1, :e2])
+      y2 = stub("Year2", :past_events => [:e3, :e4, :e5])
+      @years << y1 << y2
+
+      expected = {
+        y1 => [:e2, :e1],
+        y2 => [:e5, :e4, :e3],
+      }
+      events_by_year = @div.past_events_by_year
+      assert_equal expected, events_by_year
+      assert_equal [y2,y1], events_by_year.keys # Assert ordering of Hash
+    end
+
+    should "not include any years with no past events" do
+      y1 = stub("Year1", :past_events => [:e1, :e2])
+      y2 = stub("Year2", :past_events => [])
+      @years << y1 << y2
+
+      expected = {
+        y1 => [:e2, :e1],
+      }
+      assert_equal expected, @div.past_events_by_year
+    end
+  end
+
   context "as_json" do
     setup do
       @div = Calendar::Division.new('something')

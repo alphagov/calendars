@@ -31,6 +31,9 @@ class JSONTest < ActionDispatch::IntegrationTest
       expected = {
         "division" => "england-and-wales",
         "events" => [
+          {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>"true"},
+          {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>"true"},
+          {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>"true"},
           {"date"=>"2012-01-02", "notes"=>"Substitute day", "title"=>"New Year’s Day", "bunting"=>"true"},
           {"date"=>"2012-06-04", "notes"=>"Substitute day", "title"=>"Spring bank holiday", "bunting"=>"true"},
           {"date"=>"2012-06-05", "notes"=>"Extra bank holiday", "title"=>"Queen’s Diamond Jubilee", "bunting"=>"true"},
@@ -56,6 +59,15 @@ class JSONTest < ActionDispatch::IntegrationTest
         "england-and-wales" => {
           "division" => "england-and-wales",
           "calendars" => {
+            "2011" => {
+              "year" => "2011",
+              "division" => "england-and-wales",
+              "events" => [
+                {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>"true"},
+                {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>"true"},
+                {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>"true"},
+              ]
+            },
             "2012" => {
               "year" => "2012",
               "division" => "england-and-wales",
@@ -83,6 +95,15 @@ class JSONTest < ActionDispatch::IntegrationTest
         "scotland" => {
           "division" => "scotland",
           "calendars" => {
+            "2011" => {
+              "year" => "2011",
+              "division" => "scotland",
+              "events" => [
+                {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>"true"},
+                {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>"true"},
+                {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>"true"},
+              ]
+            },
             "2012" => {
               "year" => "2012",
               "division" => "scotland",
@@ -112,6 +133,15 @@ class JSONTest < ActionDispatch::IntegrationTest
         "northern-ireland" => {
           "division" => "northern-ireland",
           "calendars" => {
+            "2011" => {
+              "year" => "2011",
+              "division" => "northern-ireland",
+              "events" => [
+                {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>"true"},
+                {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>"true"},
+                {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>"true"},
+              ]
+            },
             "2012" => {
               "year" => "2012",
               "division" => "northern-ireland",

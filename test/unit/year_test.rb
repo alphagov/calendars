@@ -79,6 +79,50 @@ class YearTest < ActiveSupport::TestCase
     end
   end
 
+  context "upcoming_events" do
+    setup do
+      @year = Calendar::Year.new("1234", :a_division, [
+        {"title" => "foo", "date" => "02/01/2012"},
+        {"title" => "bar", "date" => "27/08/2012"},
+        {"title" => "baz", "date" => "16/10/2012"},
+      ])
+    end
+
+    should "return all future events including today" do
+      Timecop.travel("2012-08-27") do
+        assert_equal ["bar", "baz"], @year.upcoming_events.map(&:title)
+      end
+    end
+
+    should "cache the result" do
+      @year.upcoming_events
+      @year.expects(:events).never
+      @year.upcoming_events
+    end
+  end
+
+  context "past_events" do
+    setup do
+      @year = Calendar::Year.new("1234", :a_division, [
+        {"title" => "foo", "date" => "02/01/2012"},
+        {"title" => "bar", "date" => "27/08/2012"},
+        {"title" => "baz", "date" => "16/10/2012"},
+      ])
+    end
+
+    should "return all past events excluding today" do
+      Timecop.travel("2012-08-27") do
+        assert_equal ["foo"], @year.past_events.map(&:title)
+      end
+    end
+
+    should "cache the result" do
+      @year.past_events
+      @year.expects(:events).never
+      @year.past_events
+    end
+  end
+
   context "as_json" do
     setup do
       @div = stub("Division", :slug => 'a-division')
