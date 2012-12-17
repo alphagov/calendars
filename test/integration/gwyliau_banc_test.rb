@@ -185,7 +185,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
       Timecop.travel(Date.parse("25th Dec 2012")) do
         visit "/gwyliau-banc"
         within ".meta-data" do
-          assert page.has_content?("Diweddarwyd ddiwethaf: 25 Rhagfyr 2012")
+          assert page.has_content?("Diweddarwyd diwethaf: 25 Rhagfyr 2012")
         end
       end
     end
