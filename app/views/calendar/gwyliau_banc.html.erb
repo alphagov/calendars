@@ -50,14 +50,14 @@
 
               <%= render :partial => 'calendar_by_year', :locals => {
                   :events_by_year => division.upcoming_events_by_year,
-                  :caption => "Upcoming bank holidays in #{division.title} (in Welsh)" } %>
+                  :caption => "Gwyliau banc i ddod #{yn_yng_variant(division.title)}" } %>
 
               <p>Os bydd gŵyl banc ar benwythnos, bydd diwrnod o'r wythnos waith yn dod yn ŵyl banc yn lle, y dydd Llun canlynol fel rheol.</p>
               <p>Nid oes yn rhaid i'ch cyflogwr roi absenoldeb â thâl i chi am ŵyl banc neu ŵyl gyhoeddus.</p>
 
               <%= render :partial => 'calendar_by_year', :locals => {
                   :events_by_year => division.past_events_by_year,
-                  :caption => "Past bank holidays in #{division.title} (in Welsh)" } %>
+                  :caption => "Gwyliau banc yn y gorffennol #{yn_yng_variant(division.title)}" } %>
             </div>
           <% end %>
         </div>
