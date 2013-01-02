@@ -40,16 +40,8 @@ class Calendar
   end
 
   def as_json(options = nil)
-    # TODO: review this representation
-    # This is kinda messy because the top-level JSON representation is inconsistent
-    # with the lower level representations
     divisions.each_with_object({}) do |division, hash|
-      hash[division.slug] = {
-        "division" => division.slug,
-        "calendars" => division.years.each_with_object({}) do |year, years|
-          years[year.to_s] = year
-        end
-      }
+      hash[division.slug] = division.as_json
     end
   end
 end

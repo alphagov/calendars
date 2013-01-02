@@ -28,16 +28,13 @@ class CalendarController < ApplicationController
   end
 
   def division
-    target = @calendar.division(params[:division])
-    if params[:year]
-      target = target.year(params[:year])
-    end
+    division = @calendar.division(params[:division])
 
     set_expiry 1.day
 
     respond_to do |format|
-      format.json { render :json => target }
-      format.ics { render :text => ICSRenderer.new(target.events, request.path).render }
+      format.json { render :json => division }
+      format.ics { render :text => ICSRenderer.new(division.events, request.path).render }
       format.all { simple_404 }
     end
   end
