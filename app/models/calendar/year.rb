@@ -28,13 +28,5 @@ class Calendar
     def past_events
       @past_events ||= events.select {|e| e.date < Date.today }
     end
-
-    def as_json(options = nil)
-      {
-        "year" => self.to_s,
-        "division" => @division.slug,
-        "events" => events,
-      }
-    end
   end
 end

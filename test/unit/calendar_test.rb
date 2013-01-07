@@ -121,30 +121,16 @@ class CalendarTest < ActiveSupport::TestCase
 
   context "as_json" do
     setup do
-      @y1 = stub("Year1", :to_s => '2012')
-      @y2 = stub("Year2", :to_s => '2013')
-      @y3 = stub("Year3", :to_s => '2012')
-      @div1 = stub("Division", :slug => 'division-1', :years => [@y1, @y2])
-      @div2 = stub("Division", :slug => 'division-2', :years => [@y3])
+      @div1 = stub("Division", :slug => 'division-1', :as_json => "div1 json")
+      @div2 = stub("Division", :slug => 'division-2', :as_json => "div2 json")
       @cal = Calendar.new('a-calendar')
       @cal.stubs(:divisions).returns([@div1, @div2])
     end
 
-    should "construct a hash representation of all years grouped by division" do
+    should "construct a hash representation of all divisions" do
       expected = {
-        "division-1" => {
-          "division" => "division-1",
-          "calendars" => {
-            "2012" => @y1,
-            "2013" => @y2,
-          },
-        },
-        "division-2" => {
-          "division" => "division-2",
-          "calendars" => {
-            "2012" => @y3,
-          },
-        },
+        "division-1" => "div1 json",
+        "division-2" => "div2 json",
       }
       assert_equal expected, @cal.as_json
     end

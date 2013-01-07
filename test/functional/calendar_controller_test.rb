@@ -89,141 +89,63 @@ class CalendarControllerTest < ActionController::TestCase
   context "GET 'division'" do
     setup do
       stub_content_api_default_artefact
+      @division = stub("Division", :to_json => "", :events => [])
+      @calendar = stub("Calendar")
+      @calendar.stubs(:division).returns(@division)
+      Calendar.stubs(:find).returns(@calendar)
     end
 
-    context "with no year specified" do
-      setup do
-        @division = stub("Division", :to_json => "", :events => [])
-        @calendar = stub("Calendar")
-        @calendar.stubs(:division).returns(@division)
-        Calendar.stubs(:find).returns(@calendar)
-      end
+    should "return the json representation of the division" do
+      @division.expects(:to_json).returns("json_division")
+      @calendar.expects(:division).with('a-division').returns(@division)
+      Calendar.expects(:find).with('a-calendar').returns(@calendar)
 
-      should "return the json representation of the division" do
-        @division.expects(:to_json).returns("json_division")
-        @calendar.expects(:division).with('a-division').returns(@division)
-        Calendar.expects(:find).with('a-calendar').returns(@calendar)
-
-        get :division, :scope => "a-calendar", :division => "a-division", :format => "json"
-        assert_equal "json_division", @response.body
-      end
-
-      should "return the ics representation of the division" do
-        @division.expects(:events).returns(:some_events)
-        @calendar.expects(:division).with('a-division').returns(@division)
-        Calendar.expects(:find).with('a-calendar').returns(@calendar)
-        ICSRenderer.expects(:new).with(:some_events, "/a-calendar/a-division.ics").returns(mock("Renderer", :render => "ics_division"))
-
-        get :division, :scope => "a-calendar", :division => "a-division", :format => "ics"
-        assert_equal "ics_division", @response.body
-      end
-
-      should "set the expiry headers" do
-        get :division, :scope => "a-calendar", :division => "a-division", :format => "ics"
-        assert_equal "max-age=86400, public", response.headers["Cache-Control"]
-      end
-
-      should "404 for a html request" do
-        get :division, :scope => "a-calendar", :division => "a-division", :format => "html"
-        assert_equal 404, @response.status
-
-        get :division, :scope => "a-calendar", :division => "a-division"
-        assert_equal 404, @response.status
-      end
-
-      should "404 with an invalid division" do
-        @calendar.stubs(:division).raises(Calendar::CalendarNotFound)
-
-        get :division, :scope => 'something', :division => 'foo', :format => "json"
-        assert_equal 404, response.status
-      end
-
-      should "404 for a non-existent calendar" do
-        Calendar.stubs(:find).raises(Calendar::CalendarNotFound)
-
-        get :division, :scope => 'something', :division => 'foo', :format => "json"
-        assert_equal 404, response.status
-      end
-
-      should "404 without looking up the calendar with an invalid slug format" do
-        Calendar.expects(:find).never
-
-        get :division, :scope => 'something..etc-passwd', :division => 'foo', :format => "json"
-        assert_equal 404, response.status
-      end
+      get :division, :scope => "a-calendar", :division => "a-division", :format => "json"
+      assert_equal "json_division", @response.body
     end
 
-    context "with a year specified" do
-      setup do
-        @year = stub("Year", :to_json => "", :events => [])
-        @division = stub("Division")
-        @division.stubs(:year).returns(@year)
-        @calendar = stub("Calendar")
-        @calendar.stubs(:division).returns(@division)
-        Calendar.stubs(:find).returns(@calendar)
-      end
+    should "return the ics representation of the division" do
+      @division.expects(:events).returns(:some_events)
+      @calendar.expects(:division).with('a-division').returns(@division)
+      Calendar.expects(:find).with('a-calendar').returns(@calendar)
+      ICSRenderer.expects(:new).with(:some_events, "/a-calendar/a-division.ics").returns(mock("Renderer", :render => "ics_division"))
 
-      should "return the json representation of the year" do
-        @year.expects(:to_json).returns("json_year")
-        @division.expects(:year).with("2012").returns(@year)
-        @calendar.expects(:division).with('a-division').returns(@division)
-        Calendar.expects(:find).with('a-calendar').returns(@calendar)
+      get :division, :scope => "a-calendar", :division => "a-division", :format => "ics"
+      assert_equal "ics_division", @response.body
+    end
 
-        get :division, :scope => "a-calendar", :division => "a-division", :year => "2012", :format => "json"
-        assert_equal "json_year", @response.body
-      end
+    should "set the expiry headers" do
+      get :division, :scope => "a-calendar", :division => "a-division", :format => "ics"
+      assert_equal "max-age=86400, public", response.headers["Cache-Control"]
+    end
 
-      should "return the ics representation of the year" do
-        @year.expects(:events).returns(:some_events)
-        @division.expects(:year).with("2012").returns(@year)
-        @calendar.expects(:division).with('a-division').returns(@division)
-        Calendar.expects(:find).with('a-calendar').returns(@calendar)
-        ICSRenderer.expects(:new).with(:some_events, "/a-calendar/a-division-2012.ics").returns(mock("Renderer", :render => "ics_year"))
+    should "404 for a html request" do
+      get :division, :scope => "a-calendar", :division => "a-division", :format => "html"
+      assert_equal 404, @response.status
 
-        get :division, :scope => "a-calendar", :division => "a-division", :year => "2012", :format => "ics"
-        assert_equal "ics_year", @response.body
-      end
+      get :division, :scope => "a-calendar", :division => "a-division"
+      assert_equal 404, @response.status
+    end
 
-      should "set the expiry headers" do
-        get :division, :scope => "a-calendar", :division => "a-division", :year => "2012", :format => "json"
-        assert_equal "max-age=86400, public", response.headers["Cache-Control"]
-      end
+    should "404 with an invalid division" do
+      @calendar.stubs(:division).raises(Calendar::CalendarNotFound)
 
-      should "404 for a html request" do
-        get :division, :scope => "a-calendar", :division => "a-division", :year => "2012", :format => "html"
-        assert_equal 404, @response.status
+      get :division, :scope => 'something', :division => 'foo', :format => "json"
+      assert_equal 404, response.status
+    end
 
-        get :division, :scope => "a-calendar", :division => "a-division", :year => "2012"
-        assert_equal 404, @response.status
-      end
+    should "404 for a non-existent calendar" do
+      Calendar.stubs(:find).raises(Calendar::CalendarNotFound)
 
-      should "404 with an invalid year" do
-        @division.stubs(:year).raises(Calendar::CalendarNotFound)
+      get :division, :scope => 'something', :division => 'foo', :format => "json"
+      assert_equal 404, response.status
+    end
 
-        get :division, :scope => 'something', :division => 'foo', :year => "2012", :format => "json"
-        assert_equal 404, response.status
-      end
+    should "404 without looking up the calendar with an invalid slug format" do
+      Calendar.expects(:find).never
 
-      should "404 with an invalid division" do
-        @calendar.stubs(:division).raises(Calendar::CalendarNotFound)
-
-        get :division, :scope => 'something', :division => 'foo', :year => "2012", :format => "json"
-        assert_equal 404, response.status
-      end
-
-      should "404 for a non-existent calendar" do
-        Calendar.stubs(:find).raises(Calendar::CalendarNotFound)
-
-        get :division, :scope => 'something', :division => 'foo', :year => "2012", :format => "json"
-        assert_equal 404, response.status
-      end
-
-      should "404 without looking up the calendar with an invalid slug format" do
-        Calendar.expects(:find).never
-
-        get :division, :scope => 'something..etc-passwd', :division => 'foo', :year => "2012", :format => "json"
-        assert_equal 404, response.status
-      end
+      get :division, :scope => 'something..etc-passwd', :division => 'foo', :format => "json"
+      assert_equal 404, response.status
     end
   end
 end

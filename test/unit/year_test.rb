@@ -122,25 +122,4 @@ class YearTest < ActiveSupport::TestCase
       @year.past_events
     end
   end
-
-  context "as_json" do
-    setup do
-      @div = stub("Division", :slug => 'a-division')
-      @year = Calendar::Year.new("2012", @div)
-    end
-
-    should "return a hash with the division slug and events" do
-      hash = @year.as_json
-
-      assert_equal "2012", hash["year"]
-      assert_equal "a-division", hash["division"]
-    end
-
-    should "include all events" do
-      @year.stubs(:events).returns([1,2])
-
-      hash = @year.as_json
-      assert_equal [1,2], hash["events"]
-    end
-  end
 end
