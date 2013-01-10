@@ -41,8 +41,7 @@
               <% end %>
 
               <div class="subscribe">
-                <p>Ychwanegwch ddyddiadau at eich calendr:<br/>
-                  <%= link_to("Gwyliau banc #{yn_yng_variant(division.title)}",
+                <p><%= link_to("Ychwanegwch ddyddiadau gwyliau banc #{yn_yng_variant(division.title)} at eich calendr (ICS, 10KB)",
                               division_path(@calendar, division, :format => 'ics'),
                               :title => 'Llwythwch y dyddiadau hyn i lawr i chi allu eu hychwanegu at raglen calendr fel iCal neu Outlook') %>
                 </p>
