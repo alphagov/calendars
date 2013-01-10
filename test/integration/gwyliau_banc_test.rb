@@ -6,7 +6,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
   setup do
     artefact_data = artefact_for_slug('gwyliau-banc')
     artefact_data["details"].merge!(language: :cy)
-    content_api_has_an_artefact('gwyliau-banc', artefact_data)   
+    content_api_has_an_artefact('gwyliau-banc', artefact_data)
   end
 
   should "display the Gwyliau Banc page" do
@@ -42,7 +42,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
         within '.tab-content' do
           within '#cymru-a-lloegr' do
-            assert page.has_link?("Gwyliau banc yng Nghymru a Lloegr", :href => "/gwyliau-banc/cymru-a-lloegr.ics")
+            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", :href => "/gwyliau-banc/cymru-a-lloegr.ics")
 
             assert_table_with_caption "Gwyliau banc i ddod yng Nghymru a Lloegr", :rows => [
               ["2012"],
@@ -69,7 +69,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           end
 
           within '#yr-alban' do
-            assert page.has_link?("Gwyliau banc yn yr Alban", :href => "/gwyliau-banc/yr-alban.ics")
+            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", :href => "/gwyliau-banc/yr-alban.ics")
 
             assert_table_with_caption "Gwyliau banc i ddod yn yr Alban", :rows => [
               ["2012"],
@@ -98,7 +98,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           end
 
           within '#gogledd-iwerddon' do
-            assert page.has_link?("Gwyliau banc yng Ngogledd Iwerddon", :href => "/gwyliau-banc/gogledd-iwerddon.ics")
+            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", :href => "/gwyliau-banc/gogledd-iwerddon.ics")
 
             assert_table_with_caption "Gwyliau banc i ddod yng Ngogledd Iwerddon", :rows => [
               ["2012"],

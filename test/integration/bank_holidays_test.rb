@@ -36,7 +36,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
 
         within '.tab-content' do
           within '#england-and-wales' do
-            assert page.has_link?("Bank holidays in England and Wales", :href => "/bank-holidays/england-and-wales.ics")
+            assert page.has_link?("Add bank holidays for England and Wales to your calendar", :href => "/bank-holidays/england-and-wales.ics")
 
             assert_table_with_caption "Upcoming bank holidays in England and Wales", :rows => [
               ["2012"],
@@ -63,7 +63,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           end
 
           within '#scotland' do
-            assert page.has_link?("Bank holidays in Scotland", :href => "/bank-holidays/scotland.ics")
+            assert page.has_link?("Add bank holidays for Scotland to your calendar", :href => "/bank-holidays/scotland.ics")
 
             assert_table_with_caption "Upcoming bank holidays in Scotland", :rows => [
               ["2012"],
@@ -92,7 +92,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           end
 
           within '#northern-ireland' do
-            assert page.has_link?("Bank holidays in Northern Ireland", :href => "/bank-holidays/northern-ireland.ics")
+            assert page.has_link?("Add bank holidays for Northern Ireland to your calendar", :href => "/bank-holidays/northern-ireland.ics")
 
             assert_table_with_caption "Upcoming bank holidays in Northern Ireland", :rows => [
               ["2012"],
@@ -173,7 +173,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       end
     end
   end # within #content
-  
+
   context "last updated" do
     should "be formatted correctly" do
       Timecop.travel(Date.parse("5th Dec 2012")) do
