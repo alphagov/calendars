@@ -36,3 +36,11 @@ Each calendar has a series of formats and endpoints at which data can be accesse
 * `/<scope>/<division>-<year>.<format>` - calendar for events in a specific year for a division, available as `json` or `ics`
 * `/<scope>/<division>.<format>` - calendar for all events in a division regardless of year, available as `json` or `ics`
 * `/<scope>.<format>` - entire scope dataset, all divisions, their calendars and events, only available as `json` 
+
+### Testing
+
+Run unit tests like this:
+
+    govuk_setenv calendars bundle exec rake
+
+
