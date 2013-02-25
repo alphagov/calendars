@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
+source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
 gem 'rails', '3.2.11'
 gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch => "welsh_updates"
