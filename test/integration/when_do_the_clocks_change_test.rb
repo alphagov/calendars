@@ -32,7 +32,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
           ["2014", "30 March", "26 October"],
         ], rows
 
-        assert page.has_link?("Clock changes in the UK", :href => "/when-do-the-clocks-change/united-kingdom.ics")
+        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 5KB)", :href => "/when-do-the-clocks-change/united-kingdom.ics")
       end
     end
   end
