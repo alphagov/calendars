@@ -27,7 +27,7 @@ else
 end
 
 group :test do
-  gem 'mocha', '0.10.0', require: false
+  gem 'mocha', '0.13.3', require: false
   gem 'shoulda', '2.11.3'
   gem 'simplecov', '0.4.2'
   gem 'simplecov-rcov', '0.2.3'
