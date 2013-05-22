@@ -32,7 +32,8 @@ class IcalendarTest < ActionDispatch::IntegrationTest
 
       expected = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
       expected_events.each_with_index do |event,i|
-        expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{event["date"]}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
+        end_date = (Date.parse(event["date"]) + 1.day).strftime("%Y%m%d")
+        expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{end_date}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
         expected << "UID:#{path_hash}-#{i}@gov.uk\r\nSEQUENCE:0\r\nDTSTAMP:20121017T010000Z\r\nEND:VEVENT\r\n"
       end
       expected << "END:VCALENDAR\r\n"
