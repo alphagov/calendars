@@ -19,7 +19,8 @@ class ICSRenderer
 
   def render_event(event, sequence)
     output =  "BEGIN:VEVENT\r\n"
-    output << "DTEND;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
+    # The end date is defined as non-inclusive in the RFC (2445 section 4.6.1)
+    output << "DTEND;VALUE=DATE:#{ (event.date + 1.day).strftime("%Y%m%d") }\r\n"
     output << "DTSTART;VALUE=DATE:#{ event.date.strftime("%Y%m%d") }\r\n"
     output << "SUMMARY:#{ event.title }\r\n"
     output << "UID:#{uid(sequence)}\r\n"
