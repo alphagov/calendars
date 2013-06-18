@@ -17,7 +17,7 @@ gem 'unicorn', '4.3.1'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '3.16.0'
+  gem 'slimmer', '3.17.0'
 end
 
 if ENV['API_DEV']
