@@ -44,6 +44,12 @@ class CalendarControllerTest < ActionController::TestCase
 
         assert_equal artefact_data.to_json, @response.headers[Slimmer::Headers::ARTEFACT_HEADER]
       end
+
+      should "503 if fetching the arterfact times out" do
+        stub_request(:get, %r{\A#{GdsApi::TestHelpers::ContentApi::CONTENT_API_ENDPOINT}}).to_timeout
+        get :calendar, :scope => 'bank-holidays'
+        assert_equal 503, response.status
+      end
     end
 
     context "for a welsh language artefact" do
