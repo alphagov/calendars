@@ -9,9 +9,7 @@
     <hgroup>
     <h1><span>Ateb cyflym</span> Gwyliau banc y DU</h1>
     </hgroup>
-    <nav class="skip-to-related">
-      <a href="#related">Ddim beth rydych chi'n chwilio amdano? ↓</a>
-    </nav>
+    <a class="skip-to-related" href="#related">Ddim beth rydych chi'n chwilio amdano? ↓</a>
   </header>
 
   <div class="article-container group">
@@ -19,13 +17,13 @@
     <article role="article" class="group">
       <div class="inner">
 
-        <nav class="js-tabs nav-tabs" role="navigation">
+        <div class="js-tabs nav-tabs">
           <ul>
             <% @calendar.divisions.each do |division| %>
               <li><%= link_to division.title, "##{division.slug}", :class => division.slug %></li>
             <% end %>
           </ul>
-        </nav>
+        </div>
 
         <div class="js-tab-content tab-content">
           <% @calendar.divisions.each do |division| %>
