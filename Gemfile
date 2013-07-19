@@ -9,7 +9,7 @@ gem 'exception_notification', '2.5.2'
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
 gem 'plek', '1.3.1'
 
-gem 'govuk_frontend_toolkit', '0.3.3'
+gem 'govuk_frontend_toolkit', '0.32.2'
 
 gem 'lograge', '~> 0.1.0'
 gem 'unicorn', '4.3.1'
