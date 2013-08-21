@@ -156,6 +156,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       Timecop.travel(Date.parse("2nd Jan 2012")) do
         visit "/bank-holidays"
         assert page.has_css?('.epic-bunting')
+        assert page.has_css?('#wrapper.bunted')
       end
     end
 
@@ -163,6 +164,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       Timecop.travel(Date.parse("12th July 2013")) do
         visit "/bank-holidays"
         assert page.has_no_css?('.epic-bunting')
+        assert page.has_no_css?('#wrapper.bunted')
       end
     end
 
@@ -170,6 +172,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       Timecop.travel(Date.parse("3rd Feb 2012")) do
         visit "/bank-holidays"
         assert page.has_no_css?('.epic-bunting')
+        assert page.has_no_css?('#wrapper.bunted')
       end
     end
   end # within #content
