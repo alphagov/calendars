@@ -4,6 +4,10 @@
 @import "_colours";
 @import "_css3";
 
+/* local styleguide includes */
+@import "styleguide/_colours";
+@import "styleguide/_conditionals2";
+
 table.calendar td.calendar_date {
   white-space: nowrap;
 }
