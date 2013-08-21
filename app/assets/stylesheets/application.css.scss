@@ -12,6 +12,31 @@ table.calendar td.calendar_date {
   white-space: nowrap;
 }
 
+.highlighted-event {
+	p {
+
+		@include copy-19;
+		margin-top: 1.15em;
+		padding-bottom: 0;
+
+		span {
+			@include heading-24;
+			font-weight:bold;
+			display:block;
+		}
+
+		em {
+			display:block;
+
+			@include heading-80;
+
+			font-weight:bold;
+			margin-bottom: 0;
+			padding-bottom:0;
+		}
+	}
+}
+
 /* bunting lol */
 .bunted {
 	.epic-bunting {
