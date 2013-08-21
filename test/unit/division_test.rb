@@ -2,7 +2,7 @@
 require_relative '../test_helper'
 
 class DivisionTest < ActiveSupport::TestCase
-  
+
   should "return the slug" do
     assert_equal 'a-slug', Calendar::Division.new('a-slug', {}).slug
   end
@@ -207,6 +207,33 @@ class DivisionTest < ActiveSupport::TestCase
         y1 => [:e2, :e1],
       }
       assert_equal expected, @div.past_events_by_year
+    end
+  end
+
+  context "show_bunting?" do
+    setup do
+      @div = Calendar::Division.new('something')
+    end
+
+    should "be true if there is a buntable bank holiday today" do
+      @event = stub("Event", :bunting => "true", :date => Date.today)
+      @div.stubs(:upcoming_event).returns(@event)
+
+      assert @div.show_bunting?
+    end
+
+    should "be false if there is a non-buntable bank holiday today" do
+      @event = stub("Event", :bunting => "false", :date => Date.today)
+      @div.stubs(:upcoming_event).returns(@event)
+
+      assert_false @div.show_bunting?
+    end
+
+    should "be false if there is no bank holiday today" do
+      @event = stub("Event", :bunting => "true", :date => Date.today + 1.week)
+      @div.stubs(:upcoming_event).returns(@event)
+
+      assert_false @div.show_bunting?
     end
   end
 

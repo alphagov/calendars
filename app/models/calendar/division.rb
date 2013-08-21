@@ -42,6 +42,10 @@ class Calendar
       end
     end
 
+    def show_bunting?
+      upcoming_event and upcoming_event.date == Date.today and upcoming_event.bunting == "true"
+    end
+
     def as_json(options = {})
       {
         "division" => @slug,
