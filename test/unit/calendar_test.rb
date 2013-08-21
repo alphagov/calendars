@@ -119,6 +119,39 @@ class CalendarTest < ActiveSupport::TestCase
     end
   end
 
+  context "show_bunting?" do
+    setup do
+      @cal = Calendar.new('a-calendar')
+    end
+
+    should "be true when one division is buntable" do
+      @div1 = stub("Division", :show_bunting? => true)
+      @div2 = stub("Division", :show_bunting? => false)
+      @div3 = stub("Division", :show_bunting? => false)
+      @cal.stubs(:divisions).returns([@div1, @div2, @div3])
+
+      assert @cal.show_bunting?
+    end
+
+    should "be true when more than one division is buntable" do
+      @div1 = stub("Division", :show_bunting? => true)
+      @div2 = stub("Division", :show_bunting? => true)
+      @div3 = stub("Division", :show_bunting? => false)
+      @cal.stubs(:divisions).returns([@div1, @div2, @div3])
+
+      assert @cal.show_bunting?
+    end
+
+    should "be false when no divisions are buntable" do
+      @div1 = stub("Division", :show_bunting? => false)
+      @div2 = stub("Division", :show_bunting? => false)
+      @div3 = stub("Division", :show_bunting? => false)
+      @cal.stubs(:divisions).returns([@div1, @div2, @div3])
+
+      assert_false @cal.show_bunting?
+    end
+  end
+
   context "as_json" do
     setup do
       @div1 = stub("Division", :slug => 'division-1', :as_json => "div1 json")
