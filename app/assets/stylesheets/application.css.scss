@@ -7,3 +7,25 @@
 table.calendar td.calendar_date {
   white-space: nowrap;
 }
+
+/* bunting lol */
+.epic-bunting {
+  width: 100%;
+  height: 50px;
+  overflow: visible;
+  border-top: 1px solid $grey-8;
+
+  @include media-down(tablet) {
+    display: none;
+  }
+
+  span {
+    background-image: image-url("bunting.png");
+    background-color: transparent;
+    background-repeat: repeat-x;
+    background-position: center top;
+    width: 99.9%;
+    height: 70px;
+    display: block;
+  }
+}
