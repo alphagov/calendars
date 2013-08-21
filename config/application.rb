@@ -51,7 +51,7 @@ module Calendars
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    config.assets.precompile += %w(calendars.css)
+    config.assets.precompile += %w(application.css)
 
     # Path within public/ where assets are compiled to
     config.assets.prefix = "calendars"
