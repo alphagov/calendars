@@ -1,0 +1,9 @@
+// govuk_frontend_toolkit mixins
+@import "_conditionals";
+@import "_typography";
+@import "_colours";
+@import "_css3";
+
+table.calendar td.calendar_date {
+  white-space: nowrap;
+}
