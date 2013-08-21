@@ -1,6 +1,6 @@
 <%= render :partial => "calendar_head" %>
 
-<% if @calendar.divisions.any? {|d| d.upcoming_event and d.upcoming_event.date == Date.today and d.upcoming_event.bunting == "true" } %>
+<% if @calendar.show_bunting? %>
   <div class="epic-bunting"><span></span></div>
 <% end %>
 
