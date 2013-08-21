@@ -35,7 +35,7 @@
                   <p>Y gŵyl banc nesaf <%= yn_yng_variant(division.title) %> yw:</p>
                   <p>
                     <em><%= division.upcoming_event.date == Date.today ? "heddiw" : l(division.upcoming_event.date, :format => "%e %B") %></em>
-                    <em><%= division.upcoming_event.title %></em>
+                    <span><%= division.upcoming_event.title %></span>
                   </p>
                 </div>
               <% end %>

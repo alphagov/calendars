@@ -34,7 +34,7 @@
                   <p>The next bank holiday in <%= division.title %> is:</p>
                   <p>
                     <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em>
-                    <em><%= division.upcoming_event.title %></em>
+                    <span><%= division.upcoming_event.title %></span>
                   </p>
                 </div>
               <% end %>
