@@ -41,4 +41,15 @@ table.calendar td.calendar_date {
 			margin-top:6em;
 		}
 	}
+
+	main#content {
+		@include media(desktop) {
+			margin-top:3em;
+
+			header.page-header div {
+				background-color:transparent;
+			}
+		}
+	}
+
 }
