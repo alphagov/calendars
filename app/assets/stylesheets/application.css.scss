@@ -36,6 +36,9 @@ table.calendar td.calendar_date {
 	}
 
 	.related {
-		margin-top:6em;
+
+		@include media(desktop) {
+			margin-top:6em;
+		}
 	}
 }
