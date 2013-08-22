@@ -137,19 +137,19 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
       within ".tab-content" do
 
         within '#cymru-a-lloegr .highlighted-event' do
-          assert page.has_content?("Y gŵyl banc nesaf yng Nghymru a Lloegr yw:")
+          assert page.has_content?("Y gŵyl banc nesaf yng Nghymru a Lloegr yw")
           assert page.has_content?("4 Mehefin")
           assert page.has_content?("Gŵyl Banc y Gwanwyn")
         end
 
         within '#yr-alban .highlighted-event' do
-          assert page.has_content?("Y gŵyl banc nesaf yn yr Alban yw:")
+          assert page.has_content?("Y gŵyl banc nesaf yn yr Alban yw")
           assert page.has_content?("heddiw")
           assert page.has_content?("Dydd Calan")
         end
 
         within '#gogledd-iwerddon .highlighted-event' do
-          assert page.has_content?("Y gŵyl banc nesaf yng Ngogledd Iwerddon yw:")
+          assert page.has_content?("Y gŵyl banc nesaf yng Ngogledd Iwerddon yw")
           assert page.has_content?("19 Mawrth")
           assert page.has_content?("Gŵyl San Padrig")
         end
