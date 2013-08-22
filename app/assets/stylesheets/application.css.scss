@@ -37,13 +37,24 @@ table.calendar td.calendar_date {
 	}
 
 	.related {
+		margin-top:6.5em;
+
+		@include media(mobile) {
+			margin-top:0;
+		}
 
 		@include media(desktop) {
-			margin-top:5em;
+			margin-top:6.5em;
 		}
 	}
 
 	main#content {
+		margin-top:1em;
+
+		@include media(mobile) {
+			margin-top:0;
+		}
+
 		@include media(desktop) {
 			margin-top:1em;
 
