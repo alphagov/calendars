@@ -18,13 +18,16 @@ table.calendar td.calendar_date {
 
 	p {
 
-		@include copy-19;
+		font-weight:bold;
+
+		@include heading-24;
 		padding: 0;
 		margin-top: 1.15em;
 
 		@include media(tablet) {
 			padding: 0;
 			margin-top: 1.25em;
+			font-weight:bold;
 		}
 
 		span {
