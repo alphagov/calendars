@@ -43,6 +43,28 @@ table.calendar td.calendar_date {
 	}
 }
 
+article { 
+	.subscribe {
+		background: none;
+		padding:0 0 0 1em;
+
+		@include media(tablet) {
+			padding:0.25em 0 0.25em 0;
+		}
+
+		p {
+			a {
+				display: block;
+				font-weight: 600;
+				background: image-url("icon-calendar.png") no-repeat scroll 0 0;
+				min-height: 2.5em;
+				padding: 0 0 0 3em;
+			}
+		}	
+	}
+}
+
+
 /* bunting lol */
 .bunted {
 	.epic-bunting {
