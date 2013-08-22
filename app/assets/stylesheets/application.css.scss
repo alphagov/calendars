@@ -14,21 +14,36 @@ table.calendar td.calendar_date {
 
 .highlighted-event {
 
-	padding: 0.1em 0.75em 0.2em 0.75em;
+	padding: 0.5em 0.75em 0.25em 0.75em;
+
+	@include media(tablet) {
+		padding: 1.75em 0.75em 1.25em 0.75em;
+	}
+
+	@include media(mobile) {
+		padding: 0.5em 0.75em 0.25em 0.75em;
+	}
 
 	p {
-
-		font-weight:bold;
-
 		@include heading-24;
-		padding: 0;
-		margin-top: 1.15em;
 
-		@include media(tablet) {
+		@include media(mobile) {
 			padding: 0;
-			margin-top: 1.25em;
+			margin-top: 0;
+			margin-bottom: 0;
+			font-weight:bold;
+			padding: 0;
+			margin:0;
+
+		}
+	
+		@include media(tablet) {
+			padding:0;
+			margin:0;
 			font-weight:bold;
 		}
+
+
 
 		span {
 			display:block;
@@ -41,7 +56,18 @@ table.calendar td.calendar_date {
 			@include heading-80;
 			font-weight:bold;
 			margin-bottom: 0;
-			padding:0;
+			
+			@include media(mobile) {
+				padding:0;
+				padding-top:0.2em;
+				padding-bottom:0.1em;
+			}
+
+			@include media(tablet) {
+				padding:0;
+				padding-top:0.2em;
+				padding-bottom:0.1em;
+			}
 		}
 	}
 }

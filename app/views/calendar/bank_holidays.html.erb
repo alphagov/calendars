@@ -31,7 +31,7 @@
             <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
               <% if division.upcoming_event %>
                 <div class="highlighted-event">
-                  <p>The next bank holiday in <%= division.title %> is:</p>
+                  <p>The next bank holiday in <%= division.title %> is</p>
                   <p>
                     <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em>
                     <span><%= division.upcoming_event.title %></span>
