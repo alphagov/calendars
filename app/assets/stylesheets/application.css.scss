@@ -14,7 +14,7 @@ table.calendar td.calendar_date {
 
 .highlighted-event {
 
-	padding: 0.5em 0.75em 0.25em 0.75em;
+	padding: 1.75em 0.75em 1.25em 0.75em;
 
 	@include media(tablet) {
 		padding: 1.75em 0.75em 1.25em 0.75em;
@@ -26,6 +26,9 @@ table.calendar td.calendar_date {
 
 	p {
 		@include heading-24;
+		font-weight:bold;
+		padding:0;
+		margin:0;
 
 		@include media(mobile) {
 			padding: 0;
@@ -43,8 +46,6 @@ table.calendar td.calendar_date {
 			font-weight:bold;
 		}
 
-
-
 		span {
 			display:block;
 			@include heading-24;
@@ -56,6 +57,10 @@ table.calendar td.calendar_date {
 			@include heading-80;
 			font-weight:bold;
 			margin-bottom: 0;
+
+			padding:0;
+			padding-top:0.2em;
+			padding-bottom:0.1em;
 			
 			@include media(mobile) {
 				padding:0;
