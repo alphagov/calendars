@@ -111,6 +111,7 @@ article {
 	  height: 50px;
 	  overflow: visible;
 	  border-top: 1px solid $grey-8;
+	  position: static;
 
 	  @include media-down(tablet) {
 	    display: none;
@@ -128,15 +129,26 @@ article {
 	}
 
 	.related {
+		margin-top:6.5em;
+
+		@include media(mobile) {
+			margin-top:0;
+		}
 
 		@include media(desktop) {
-			margin-top:6em;
+			margin-top:6.5em;
 		}
 	}
 
 	main#content {
+		margin-top:1em;
+
+		@include media(mobile) {
+			margin-top:0;
+		}
+
 		@include media(desktop) {
-			margin-top:3em;
+			margin-top:1em;
 
 			header.page-header div {
 				background-color:transparent;
