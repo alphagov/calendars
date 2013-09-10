@@ -1,0 +1,25 @@
+
+.nav-tabs {
+  display: none;
+}
+
+/* calendar tables */
+
+article table.calendar {
+  margin-bottom: 1em;
+
+  td {
+    text-align: left;
+  }
+  
+  td.calendar_date {
+    width: 25%;
+    white-space: nowrap;
+  }
+  td.calendar_day {
+    width: 25%;
+  }
+  td.calendar_title {
+    width: 50%;
+  }
+}
