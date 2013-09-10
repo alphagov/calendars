@@ -44,10 +44,12 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#cymru-a-lloegr' do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", :href => "/gwyliau-banc/cymru-a-lloegr.ics")
 
-            assert_table_with_caption "Gwyliau banc i ddod yng Nghymru a Lloegr", :rows => [
+            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Nghymru a Lloegr", :year => "2012", :rows => [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
+            ]
+            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Nghymru a Lloegr", :year => "2013", :rows => [
               ["2013"],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith"],
@@ -55,12 +57,14 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan"],
             ]
 
-            assert_table_with_caption "Gwyliau banc yn y gorffennol yng Nghymru a Lloegr", :rows => [
+            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yng Nghymru a Lloegr", :year => "2012", :rows => [
               ["2012"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines (gŵyl banc ychwanegol)"],
               ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["2 Ionawr", "Dydd Llun", "Dydd Calan (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
+            ]
+            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yng Nghymru a Lloegr", :year => "2011", :rows => [
               ["2011"],
               ["27 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["26 Rhagfyr", "Dydd Llun", "Gŵyl San Steffan"],
@@ -71,10 +75,12 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#yr-alban' do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", :href => "/gwyliau-banc/yr-alban.ics")
 
-            assert_table_with_caption "Gwyliau banc i ddod yn yr Alban", :rows => [
+            assert_bank_holiday_table :title => "Gwyliau banc i ddod yn yr Alban", :year => "2012", :rows => [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
+            ]
+            assert_bank_holiday_table :title => "Gwyliau banc i ddod yn yr Alban", :year => "2013", :rows => [
               ["2013"],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith"],
@@ -83,13 +89,15 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan"],
             ]
 
-            assert_table_with_caption "Gwyliau banc yn y gorffennol yn yr Alban", :rows => [
+            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yn yr Alban", :year => "2012", :rows => [
               ["2012"],
               ["6 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines (gŵyl banc ychwanegol)"],
               ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["3 Ionawr", "Dydd Mawrth", "Dydd Calan (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["2 Ionawr", "Dydd Llun", "2il Ionawr"],
+            ]
+            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yn yr Alban", :year => "2011", :rows => [
               ["2011"],
               ["27 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["26 Rhagfyr", "Dydd Llun", "Gŵyl San Steffan"],
@@ -100,10 +108,12 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           within '#gogledd-iwerddon' do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", :href => "/gwyliau-banc/gogledd-iwerddon.ics")
 
-            assert_table_with_caption "Gwyliau banc i ddod yng Ngogledd Iwerddon", :rows => [
+            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Ngogledd Iwerddon", :year => "2012", :rows => [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
+            ]
+            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Ngogledd Iwerddon", :year => "2013", :rows => [
               ["2013"],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith"],
@@ -112,13 +122,15 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan"],
             ]
 
-            assert_table_with_caption "Gwyliau banc yn y gorffennol yng Ngogledd Iwerddon", :rows => [
+            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yng Ngogledd Iwerddon", :year => "2012", :rows => [
               ["2012"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines (gŵyl banc ychwanegol)"],
               ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn"],
               ["19 Mawrth", "Dydd Llun", "Gŵyl San Padrig (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["2 Ionawr", "Dydd Llun", "Dydd Calan (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
+            ]
+            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yng Ngogledd Iwerddon", :year => "2011", :rows => [
               ["2011"],
               ["27 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
               ["26 Rhagfyr", "Dydd Llun", "Gŵyl San Steffan"],

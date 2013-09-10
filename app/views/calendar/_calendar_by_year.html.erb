@@ -1,9 +1,9 @@
-<table class="calendar">
-  <caption><%= caption %></caption>
-  <% events_by_year.each do |year, events| %>
+<h2 id="<%= caption.parameterize %>"><%= caption %></h2>
+<% events_by_year.each do |year, events| %>
+  <table class="calendar">
     <thead>
       <tr>
-        <th colspan="3"><%= year.to_s %></th>
+        <th colspan="3" aria-labelledby="<%= caption.parameterize %>"><%= year.to_s %></th>
       </tr>
     </thead>
     <tbody>
@@ -15,5 +15,5 @@
         </tr>
       <% end %>
     </tbody>
-  <% end %>
-</table>
+  </table>
+<% end %>

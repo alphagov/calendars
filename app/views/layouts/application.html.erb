@@ -3,6 +3,7 @@
   <head>
     <title><%= yield :title %> - GOV.UK</title>
     <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'print', :media => :print %>
     <%= yield :head %>
   </head>
   <body class="mainstream">

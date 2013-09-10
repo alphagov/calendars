@@ -38,10 +38,12 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           within '#england-and-wales' do
             assert page.has_link?("Add bank holidays for England and Wales to your calendar", :href => "/bank-holidays/england-and-wales.ics")
 
-            assert_table_with_caption "Upcoming bank holidays in England and Wales", :rows => [
+            assert_bank_holiday_table :title => "Upcoming bank holidays in England and Wales", :year => "2012", :rows => [
               ["2012"],
               ["25 December", "Tuesday", "Christmas Day"],
               ["26 December", "Wednesday", "Boxing Day"],
+            ]
+            assert_bank_holiday_table :title => "Upcoming bank holidays in England and Wales", :year => "2013", :rows => [
               ["2013"],
               ["1 January", "Tuesday", "New Year’s Day"],
               ["29 March", "Friday", "Good Friday"],
@@ -49,12 +51,14 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["26 December", "Thursday", "Boxing Day"],
             ]
 
-            assert_table_with_caption "Past bank holidays in England and Wales", :rows => [
+            assert_bank_holiday_table :title => "Past bank holidays in England and Wales", :year => "2012", :rows => [
               ["2012"],
               ["27 August", "Monday", "Summer bank holiday"],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee (extra bank holiday)"],
               ["4 June", "Monday", "Spring bank holiday (substitute day)"],
               ["2 January", "Monday", "New Year’s Day (substitute day)"],
+            ]
+            assert_bank_holiday_table :title => "Past bank holidays in England and Wales", :year => "2011", :rows => [
               ["2011"],
               ["27 December", "Tuesday", "Christmas Day (substitute day)"],
               ["26 December", "Monday", "Boxing Day"],
@@ -65,10 +69,12 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           within '#scotland' do
             assert page.has_link?("Add bank holidays for Scotland to your calendar", :href => "/bank-holidays/scotland.ics")
 
-            assert_table_with_caption "Upcoming bank holidays in Scotland", :rows => [
+            assert_bank_holiday_table :title => "Upcoming bank holidays in Scotland", :year => "2012", :rows => [
               ["2012"],
               ["25 December", "Tuesday", "Christmas Day"],
               ["26 December", "Wednesday", "Boxing Day"],
+            ]
+            assert_bank_holiday_table :title => "Upcoming bank holidays in Scotland", :year => "2013", :rows => [
               ["2013"],
               ["1 January", "Tuesday", "New Year’s Day"],
               ["29 March", "Friday", "Good Friday"],
@@ -77,13 +83,15 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["26 December", "Thursday", "Boxing Day"],
             ]
 
-            assert_table_with_caption "Past bank holidays in Scotland", :rows => [
+            assert_bank_holiday_table :title => "Past bank holidays in Scotland", :year => "2012", :rows => [
               ["2012"],
               ["6 August", "Monday", "Summer bank holiday"],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee (extra bank holiday)"],
               ["4 June", "Monday", "Spring bank holiday (substitute day)"],
               ["3 January", "Tuesday", "New Year’s Day (substitute day)"],
               ["2 January", "Monday", "2nd January"],
+            ]
+            assert_bank_holiday_table :title => "Past bank holidays in Scotland", :year => "2011", :rows => [
               ["2011"],
               ["27 December", "Tuesday", "Christmas Day (substitute day)"],
               ["26 December", "Monday", "Boxing Day"],
@@ -94,10 +102,12 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           within '#northern-ireland' do
             assert page.has_link?("Add bank holidays for Northern Ireland to your calendar", :href => "/bank-holidays/northern-ireland.ics")
 
-            assert_table_with_caption "Upcoming bank holidays in Northern Ireland", :rows => [
+            assert_bank_holiday_table :title => "Upcoming bank holidays in Northern Ireland", :year => "2012", :rows => [
               ["2012"],
               ["25 December", "Tuesday", "Christmas Day"],
               ["26 December", "Wednesday", "Boxing Day"],
+            ]
+            assert_bank_holiday_table :title => "Upcoming bank holidays in Northern Ireland", :year => "2013", :rows => [
               ["2013"],
               ["1 January", "Tuesday", "New Year’s Day"],
               ["29 March", "Friday", "Good Friday"],
@@ -106,13 +116,15 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["26 December", "Thursday", "Boxing Day"],
             ]
 
-            assert_table_with_caption "Past bank holidays in Northern Ireland", :rows => [
+            assert_bank_holiday_table :title => "Past bank holidays in Northern Ireland", :year => "2012", :rows => [
               ["2012"],
               ["27 August", "Monday", "Summer bank holiday"],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee (extra bank holiday)"],
               ["4 June", "Monday", "Spring bank holiday"],
               ["19 March", "Monday", "St Patrick’s Day (substitute day)"],
               ["2 January", "Monday", "New Year’s Day (substitute day)"],
+            ]
+            assert_bank_holiday_table :title => "Past bank holidays in Northern Ireland", :year => "2011", :rows => [
               ["2011"],
               ["27 December", "Tuesday", "Christmas Day (substitute day)"],
               ["26 December", "Monday", "Boxing Day"],

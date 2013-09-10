@@ -8,10 +8,6 @@
 @import "styleguide/_colours";
 @import "styleguide/_conditionals2";
 
-table.calendar td.calendar_date {
-  white-space: nowrap;
-}
-
 .highlighted-event {
 
 	padding: 1.75em 0.75em 1.25em 0.75em;
@@ -103,6 +99,26 @@ article {
 	}
 }
 
+/* calendar tables */
+
+table.calendar {
+  margin-bottom: 1em;
+
+  td.calendar_date {
+    width: 25%;
+    white-space: nowrap;
+  }
+  td.calendar_day {
+    width: 25%;
+  }
+  td.calendar_title {
+    width: 50%;
+  }
+}
+
+table.clocks-calendar .equal-width {
+  width: 50%;
+}
 
 /* bunting lol */
 .bunted {
