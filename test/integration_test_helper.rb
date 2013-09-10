@@ -10,9 +10,9 @@ class ActionDispatch::IntegrationTest
     stub_content_api_default_artefact
   end
 
-  def assert_table_with_caption(caption, attrs = {})
-    table = page.all(:xpath, ".//table[caption='#{caption}']").first
-    assert table, "Failed to find table with caption #{caption}"
+  def assert_bank_holiday_table(attrs)
+    header = page.find("h2", :text => attrs[:title])
+    table = page.find(:xpath, ".//table[.//*[@aria-labelledby='#{header["id"]}'][text()='#{attrs[:year]}']]")
     if attrs[:rows]
       actual_rows = table.all('tr').map {|r| r.all('th, td').map(&:text).map(&:strip) }
       assert_equal attrs[:rows], actual_rows
