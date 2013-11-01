@@ -20,10 +20,10 @@ class RegisterableCalendar
   end
 
   def paths
-    ["#{@slug}.json"]
+    ["/#{@slug}.json"]
   end
 
   def prefixes
-    [@slug]
+    ["/#{@slug}"]
   end
 end
