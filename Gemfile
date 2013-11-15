@@ -8,6 +8,7 @@ gem 'json', '1.7.4'
 gem 'exception_notification', '2.5.2'
 gem 'aws-ses', '0.4.4', require: 'aws/ses'
 gem 'plek', '1.3.1'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'govuk_frontend_toolkit', '0.32.2'
 
