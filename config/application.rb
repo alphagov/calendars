@@ -66,5 +66,12 @@ module Calendars
     config.action_dispatch.rack_cache = nil
 
     config.action_dispatch.ignore_accept_header = true
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins 'callmeback.justice.gov.uk'
+        resource '*', credentials: false
+      end
+    end
   end
 end
