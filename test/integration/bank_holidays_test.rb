@@ -25,7 +25,6 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
     within "#content" do
       within 'header' do
         assert page.has_content?("UK bank holidays")
-        assert page.has_content?("Quick answer")
       end
 
       within 'article' do

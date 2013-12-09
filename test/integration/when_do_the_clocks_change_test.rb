@@ -20,7 +20,6 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     within "#content" do
       within 'header' do
         assert page.has_content?("When do the clocks change?")
-        assert page.has_content?("Quick answer")
       end
 
       within 'article' do

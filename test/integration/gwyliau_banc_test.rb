@@ -31,7 +31,6 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     within "#content" do
       within 'header' do
         assert page.has_content?("Gwyliau banc y DU")
-        assert page.has_content?("Ateb cyflym")
       end
 
       within 'article' do
