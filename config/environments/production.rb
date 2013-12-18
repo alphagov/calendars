@@ -60,6 +60,4 @@ Calendars::Application.configure do
 
   config.action_mailer.default_url_options = { :host => Plek.current.find('calendars') }
   config.action_mailer.delivery_method = :ses
-
-  config.lograge.enabled = true
 end
