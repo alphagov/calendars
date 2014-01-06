@@ -11,7 +11,7 @@ gem 'plek', '1.3.1'
 
 gem 'govuk_frontend_toolkit', '0.32.2'
 
-gem 'logstasher', '0.4.0'
+gem 'logstasher', '0.4.1'
 gem 'unicorn', '4.3.1'
 
 if ENV['SLIMMER_DEV']
