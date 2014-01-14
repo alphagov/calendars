@@ -216,21 +216,21 @@ class DivisionTest < ActiveSupport::TestCase
     end
 
     should "be true if there is a buntable bank holiday today" do
-      @event = stub("Event", :bunting => "true", :date => Date.today)
+      @event = stub("Event", :bunting => true, :date => Date.today)
       @div.stubs(:upcoming_event).returns(@event)
 
       assert @div.show_bunting?
     end
 
     should "be false if there is a non-buntable bank holiday today" do
-      @event = stub("Event", :bunting => "false", :date => Date.today)
+      @event = stub("Event", :bunting => false, :date => Date.today)
       @div.stubs(:upcoming_event).returns(@event)
 
       assert_false @div.show_bunting?
     end
 
     should "be false if there is no bank holiday today" do
-      @event = stub("Event", :bunting => "true", :date => Date.today + 1.week)
+      @event = stub("Event", :bunting => true, :date => Date.today + 1.week)
       @div.stubs(:upcoming_event).returns(@event)
 
       assert_false @div.show_bunting?
