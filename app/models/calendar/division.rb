@@ -43,7 +43,7 @@ class Calendar
     end
 
     def show_bunting?
-      upcoming_event and upcoming_event.date.today? and upcoming_event.bunting == "true"
+      upcoming_event and upcoming_event.date.today? and upcoming_event.bunting
     end
 
     def as_json(options = {})

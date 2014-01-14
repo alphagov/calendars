@@ -7,31 +7,31 @@
           "title": "New Year's Day",
           "date": "03/01/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Good Friday",
           "date": "22/04/2011",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Royal wedding",
           "date": "29/04/2011",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Christmas Day",
           "date": "26/12/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Boxing Day",
           "date": "27/12/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         }
       ],
       "2012": [
@@ -39,25 +39,25 @@
           "title": "New Year's Day",
           "date": "02/01/2012",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Early May Bank Holiday",
           "date": "07/05/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Christmas Day",
           "date": "25/12/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Boxing Day",
           "date": "26/12/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         }
       ]
     },
@@ -67,31 +67,31 @@
           "title": "New Year's Day",
           "date": "03/01/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Early May Bank Holiday",
           "date": "02/05/2011",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "St Andrew's Day",
           "date": "30/11/11",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Christmas Day",
           "date": "26/12/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Boxing Day",
           "date": "27/12/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         }
       ],
       "2012": [
@@ -99,31 +99,31 @@
           "title": "New Year's Day",
           "date": "02/01/2012",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Spring Bank Holiday",
           "date": "04/06/2012",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Queen's Diamond Jubilee",
           "date": "05/06/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Christmas Day",
           "date": "25/12/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Boxing Day",
           "date": "26/12/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         }
       ]
     },
@@ -133,25 +133,25 @@
           "title": "New Year's Day",
           "date": "03/01/2011",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Early May Bank Holiday",
           "date": "02/05/2011",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Spring Bank Holiday",
           "date": "30/05/2011",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Battle of the Boyne (Orangemen's Day)",
           "date": "12/07/2011",
           "notes": "",
-          "bunting": "false"
+          "bunting": false
         }
       ],
       "2012": [
@@ -159,31 +159,31 @@
           "title": "New Year's Day",
           "date": "02/01/2012",
           "notes": "Substitute day",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Early May Bank Holiday",
           "date": "07/05/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Spring Bank Holiday",
           "date": "04/06/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Christmas Day",
           "date": "25/12/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         },
         {
           "title": "Boxing Day",
           "date": "26/12/2012",
           "notes": "",
-          "bunting": "true"
+          "bunting": true
         }
       ]
     }
