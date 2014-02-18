@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.17'
 gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch => "welsh_updates"
 
 gem 'json', '1.7.4'
