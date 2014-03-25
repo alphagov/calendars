@@ -4,7 +4,7 @@ A Rails application to format and display calendar data, starting with [Bank Hol
 
 ### Usage
 
-Each type of calendar (e.g. daylight saving, bank holidays) is known as a _scope_. A scope has its own view templates, JSON data source and primary route.
+Each type of calendar (eg daylight saving, bank holidays) is known as a _scope_. A scope has its own view templates, JSON data source and primary route.
 
 JSON data files are stored in `lib/data/<scope>.json`, with a `divisions` hash for separate data per region (`united-kingdom`, `england-and-wales`, `scotland` or `northern-ireland`).
       
@@ -42,5 +42,10 @@ Each calendar has a series of formats and endpoints at which data can be accesse
 Run unit tests like this:
 
     govuk_setenv calendars bundle exec rake
+
+#### Canonical sources
+
+For summer time, we can use the [Summer Time Act 1972](http://www.legislation.gov.uk/ukpga/1972/6).
+
 
 
