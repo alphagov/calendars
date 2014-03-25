@@ -43,4 +43,9 @@ Run unit tests like this:
 
     govuk_setenv calendars bundle exec rake
 
+#### Canonical sources
+
+For summer time, we can use the [Summer Time Act 1972](http://www.legislation.gov.uk/ukpga/1972/6).
+
+
 
