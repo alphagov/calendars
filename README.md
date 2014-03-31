@@ -47,5 +47,4 @@ Run unit tests like this:
 
 For summer time, we can use the [Summer Time Act 1972](http://www.legislation.gov.uk/ukpga/1972/6).
 
-
-
+For bank holidays, we can use the [Banking and Financial Dealings Act 1971](http://www.legislation.gov.uk/ukpga/1971/80/schedule/1).
