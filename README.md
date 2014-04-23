@@ -37,6 +37,14 @@ Each calendar has a series of formats and endpoints at which data can be accesse
 * `/<scope>/<division>.<format>` - calendar for all events in a division regardless of year, available as `json` or `ics`
 * `/<scope>.<format>` - entire scope dataset, all divisions, their calendars and events, only available as `json` 
 
+### Generate bank holidays
+
+A rake task has been created to generate the bank holidays JSON for a given year. They need to be then inserted, and modified to
+take into account any additions/modifications made by proclamation.
+Run the rake task like this:
+
+    bundle exec rake bank_holidays:generate_json[2016]
+
 ### Testing
 
 Run unit tests like this:

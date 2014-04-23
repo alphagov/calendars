@@ -7,7 +7,7 @@
 <main id="content" role="main" class="group">
   <header class="page-header group">
     <div>
-      <h1><%= @calendar.title %></h1>
+      <h1><%=@calendar.title %></h1>
     </div>
   </header>
 
@@ -19,42 +19,42 @@
         <div class="js-tabs nav-tabs">
           <ul>
             <% @calendar.divisions.each do |division| %>
-              <li><%= link_to division.title, "##{division.slug}", :class => division.slug %></li>
+              <li><%= link_to t(division.title), "##{t division.slug}", :class => t(division.slug) %></li>
             <% end %>
           </ul>
         </div>
 
         <div class="js-tab-content tab-content">
           <% @calendar.divisions.each do |division| %>
-            <div class="js-tab-pane tab-pane" id="<%= division.slug %>">
+            <div class="js-tab-pane tab-pane" id="<%=t division.slug %>">
               <% if division.upcoming_event %>
                 <div class="highlighted-event">
-                  <p>The next bank holiday in <%= division.title %> is</p>
+                  <p><%=t "common.next_holiday_in_is", :in_nation => t("#{division.title}_in") %></p>
                   <p>
-                    <em><%= division.upcoming_event.date == Date.today ? "today" : division.upcoming_event.date.strftime("%e %B") %></em>
-                    <span><%= division.upcoming_event.title %></span>
+                    <em><%= division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B") %></em>
+                    <span><%=division.upcoming_event.title %></span>
                   </p>
                 </div>
               <% end %>
 
               <div class="subscribe">
-                <p><%= link_to("Add bank holidays for #{division.title} to your calendar (ICS, 10KB)",
+                <p><%= link_to((t "common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
                               division_path(@calendar, division, :format => 'ics'),
-                              :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook') %>
+                              :title => t("common.download_ics")) %>
                 </p>
               </div>
 
               <%= render :partial => 'calendar_by_year', :locals => {
                   :events_by_year => division.upcoming_events_by_year,
-                  :caption => "Upcoming bank holidays in #{division.title}" } %>
+                  :caption => "#{t "common.upcoming_bank_holidays"} #{t "#{division.title}_in"}"} %>
 
-              <p>If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
-              <p>Your employer doesn’t have to give you <a href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
-              <p>Bank holidays might affect <a href="/how-to-have-your-benefits-paid" title="How and when your benefits are paid">how and when your benefits are paid</a>.</p>
+              <p><%= raw(t("common.bank_holiday_on_wkend"))%></p>
+              <p><%= raw(t("common.holiday_entitlement"))%></p>
+              <p><%= raw(t("common.bank_holiday_benefits"))%></p>
 
               <%= render :partial => 'calendar_by_year', :locals => {
                   :events_by_year => division.past_events_by_year,
-                  :caption => "Past bank holidays in #{division.title}" } %>
+                  :caption => "#{t "common.past_bank_holidays"} #{t "#{division.title}_in"}"} %>
             </div>
           <% end %>
         </div>
