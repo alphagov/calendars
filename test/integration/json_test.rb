@@ -9,9 +9,6 @@ class JSONTest < ActionDispatch::IntegrationTest
       expected = {
         "division" => "england-and-wales",
         "events" => [
-          {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>true},
-          {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
-          {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>true},
           {"date"=>"2012-01-02", "notes"=>"Substitute day", "title"=>"New Year’s Day", "bunting"=>true},
           {"date"=>"2012-06-04", "notes"=>"Substitute day", "title"=>"Spring bank holiday", "bunting"=>true},
           {"date"=>"2012-06-05", "notes"=>"Extra bank holiday", "title"=>"Queen’s Diamond Jubilee", "bunting"=>true},
@@ -19,14 +16,14 @@ class JSONTest < ActionDispatch::IntegrationTest
           {"date"=>"2012-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
           {"date"=>"2012-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
           {"date"=>"2013-01-01", "notes"=>"", "title"=>"New Year’s Day", "bunting"=>true},
-          {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>true},
+          {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>false},
           {"date"=>"2013-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
           {"date"=>"2013-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
         ]
       }
 
       actual = JSON.parse(@response.body)
-      assert_equal expected["events"], actual["events"]
+      assert((expected["events"] - actual["events"]).empty?)
       assert_equal expected["division"], actual["division"]
     end
 
@@ -37,9 +34,6 @@ class JSONTest < ActionDispatch::IntegrationTest
         "england-and-wales" => {
           "division" => "england-and-wales",
           "events" => [
-            {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>true},
-            {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
-            {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2012-01-02", "notes"=>"Substitute day", "title"=>"New Year’s Day", "bunting"=>true},
             {"date"=>"2012-06-04", "notes"=>"Substitute day", "title"=>"Spring bank holiday", "bunting"=>true},
             {"date"=>"2012-06-05", "notes"=>"Extra bank holiday", "title"=>"Queen’s Diamond Jubilee", "bunting"=>true},
@@ -47,7 +41,7 @@ class JSONTest < ActionDispatch::IntegrationTest
             {"date"=>"2012-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2012-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
             {"date"=>"2013-01-01", "notes"=>"", "title"=>"New Year’s Day", "bunting"=>true},
-            {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>true},
+            {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>false},
             {"date"=>"2013-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2013-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
           ]
@@ -55,9 +49,6 @@ class JSONTest < ActionDispatch::IntegrationTest
         "scotland" => {
           "division" => "scotland",
           "events" => [
-            {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>true},
-            {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
-            {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2012-01-02", "notes"=>"", "title"=>"2nd January", "bunting"=>true},
             {"date"=>"2012-01-03", "notes"=>"Substitute day", "title"=>"New Year’s Day", "bunting"=>true},
             {"date"=>"2012-06-04", "notes"=>"Substitute day", "title"=>"Spring bank holiday", "bunting"=>true},
@@ -66,7 +57,7 @@ class JSONTest < ActionDispatch::IntegrationTest
             {"date"=>"2012-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2012-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
             {"date"=>"2013-01-01", "notes"=>"", "title"=>"New Year’s Day", "bunting"=>true},
-            {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>true},
+            {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>false},
             {"date"=>"2013-12-02", "notes"=>"Substitute day", "title"=>"St Andrew’s Day", "bunting"=>true},
             {"date"=>"2013-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2013-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
@@ -75,9 +66,6 @@ class JSONTest < ActionDispatch::IntegrationTest
         "northern-ireland" => {
           "division" => "northern-ireland",
           "events" => [
-            {"date"=>"2011-08-29", "notes"=>"", "title"=>"Summer bank holiday", "bunting"=>true},
-            {"date"=>"2011-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
-            {"date"=>"2011-12-27", "notes"=>"Substitute day", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2012-01-02", "notes"=>"Substitute day", "title"=>"New Year’s Day", "bunting"=>true},
             {"date"=>"2012-03-19", "notes"=>"Substitute day", "title"=>"St Patrick’s Day", "bunting"=>true},
             {"date"=>"2012-06-04", "notes"=>"", "title"=>"Spring bank holiday", "bunting"=>true},
@@ -86,15 +74,19 @@ class JSONTest < ActionDispatch::IntegrationTest
             {"date"=>"2012-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2012-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
             {"date"=>"2013-01-01", "notes"=>"", "title"=>"New Year’s Day", "bunting"=>true},
-            {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>true},
+            {"date"=>"2013-03-29", "notes"=>"", "title"=>"Good Friday", "bunting"=>false},
             {"date"=>"2013-07-12", "notes"=>"", "title"=>"Battle of the Boyne (Orangemen’s Day)", "bunting"=>false},
             {"date"=>"2013-12-25", "notes"=>"", "title"=>"Christmas Day", "bunting"=>true},
             {"date"=>"2013-12-26", "notes"=>"", "title"=>"Boxing Day", "bunting"=>true},
           ]
         },
       }
-
-      assert_equal expected, JSON.parse(@response.body)
+      actual =  JSON.parse(@response.body)
+      expected.each do |nation, expected_bank_holidays|
+        actual_bank_holidays = actual.fetch(nation)
+        assert((expected_bank_holidays["events"] - actual_bank_holidays["events"]).empty?)
+        assert_equal expected_bank_holidays["division"], actual_bank_holidays["division"]
+      end
     end
 
     should "have redirect for old 'ni' division" do

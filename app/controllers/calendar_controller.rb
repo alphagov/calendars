@@ -18,7 +18,6 @@ class CalendarController < ApplicationController
         I18n.locale = @artefact.details.language if @artefact
         set_slimmer_artefact(@artefact)
         set_slimmer_headers :format => "calendar"
-       
         render params[:scope].gsub('-', '_')
       end
       format.json do
@@ -28,8 +27,8 @@ class CalendarController < ApplicationController
   end
 
   def division
+    handle_bank_holiday_ics_calendars
     division = @calendar.division(params[:division])
-
     set_expiry 1.day
 
     respond_to do |format|
@@ -42,11 +41,30 @@ class CalendarController < ApplicationController
 private
 
   def load_calendar
+    if params[:scope] == "gwyliau-banc"
+      I18n.locale = :cy
+      params[:scope] = "bank-holidays"
+    end
     simple_404 unless params[:scope] =~ /\A[a-z-]+\z/
     @calendar = Calendar.find(params[:scope])
   end
 
   def simple_404
     head 404
+  end
+
+  def handle_bank_holiday_ics_calendars
+    if params[:scope] == "bank-holidays"
+      I18n.backend.send(:init_translations) unless I18n.backend.initialized?
+      translations = I18n.backend.send(:translations)
+      english_nation_translations = translations[:en][:common][:nations]
+      division_key = english_nation_translations.key(params[:division]).to_s
+      if division_key.empty?
+        welsh_nation_translations = translations[:cy][:common][:nations]
+        division_key = welsh_nation_translations.key(params[:division]).to_s
+        I18n.locale = :cy
+      end
+      params[:division] = "common.nations."+division_key
+    end
   end
 end
