@@ -15,12 +15,13 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-  context "as_json" do
+  context "as_json in English" do
     should "return a hash representation" do
+      I18n.locale = :en
       e = Calendar::Event.new(
-        "title" => "New Year’s Day",
+        "title" => "bank_holidays.new_year",
         "date" => "02/01/2012",
-        "notes" => "Substitute day",
+        "notes" => "common.substitute_day",
         "bunting" => true
       )
 

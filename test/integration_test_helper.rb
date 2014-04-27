@@ -8,6 +8,7 @@ class ActionDispatch::IntegrationTest
 
   setup do
     stub_content_api_default_artefact
+    I18n.locale = :en
   end
 
   def assert_bank_holiday_table(attrs)
