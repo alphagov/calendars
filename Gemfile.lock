@@ -64,7 +64,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.1.5)
-    gds-api-adapters (8.2.1)
+    gds-api-adapters (10.10.1)
       link_header
       lrucache (~> 0.1.1)
       null_logger
@@ -189,7 +189,7 @@ DEPENDENCIES
   capybara (= 1.1.2)
   ci_reporter (= 1.6.5)
   exception_notification (= 2.5.2)
-  gds-api-adapters (= 8.2.1)
+  gds-api-adapters (= 10.10.1)
   govuk_frontend_toolkit (= 0.32.2)
   json (= 1.7.4)
   logstasher (= 0.4.8)
