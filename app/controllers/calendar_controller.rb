@@ -4,6 +4,7 @@ require 'ics_renderer'
 class CalendarController < ApplicationController
   include GdsApi::Helpers
 
+  before_filter :set_locale
   before_filter :load_calendar
  
   rescue_from Calendar::CalendarNotFound, with: :simple_404
@@ -18,7 +19,7 @@ class CalendarController < ApplicationController
         I18n.locale = @artefact.details.language if @artefact
         set_slimmer_artefact(@artefact)
         set_slimmer_headers :format => "calendar"
-        render params[:scope].gsub('-', '_')
+        render scope.gsub('-', '_')
       end
       format.json do
         render :json => @calendar
@@ -40,13 +41,23 @@ class CalendarController < ApplicationController
 
 private
 
-  def load_calendar
+  def scope
     if params[:scope] == "gwyliau-banc"
-      I18n.locale = :cy
-      params[:scope] = "bank-holidays"
+      "bank-holidays"
+    else
+      params[:scope]
     end
+  end
+
+  def set_locale
+    if params[:locale]
+      I18n.locale = params[:locale]
+    end
+  end
+
+  def load_calendar
     simple_404 unless params[:scope] =~ /\A[a-z-]+\z/
-    @calendar = Calendar.find(params[:scope])
+    @calendar = Calendar.find(scope)
   end
 
   def simple_404
@@ -54,7 +65,7 @@ private
   end
 
   def handle_bank_holiday_ics_calendars
-    if params[:scope] == "bank-holidays"
+    if scope == "bank-holidays"
       I18n.backend.send(:init_translations) unless I18n.backend.initialized?
       translations = I18n.backend.send(:translations)
       division_key = translations[I18n.locale][:common][:nations].key(params[:division]).to_s
