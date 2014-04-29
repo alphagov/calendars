@@ -16,13 +16,16 @@ class Calendar
   end
 
   attr_reader :slug, :title, :description
-  alias :to_param :slug
 
   def initialize(slug, data = {})
     @slug = slug
     @data = data
-    @title = data["title"]
-    @description = data["description"]
+    @title = I18n.t(data["title"])
+    @description = I18n.t(data["description"])
+  end
+
+  def to_param
+    I18n.t(slug)
   end
 
   def divisions
@@ -45,7 +48,7 @@ class Calendar
 
   def as_json(options = nil)
     divisions.each_with_object({}) do |division, hash|
-      hash[division.slug] = division.as_json
+      hash[I18n.t(division.slug)] = division.as_json
     end
   end
 end

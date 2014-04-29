@@ -1,12 +1,15 @@
 class Calendar
   class Division
     attr_reader :slug, :title
-    alias :to_param :slug
 
     def initialize(slug, data = {})
-      @slug = slug
+      @slug = data["slug"] || slug
       @title = data.delete("title") || slug.underscore.humanize
       @data = data
+    end
+
+    def to_param
+      I18n.t(slug)
     end
 
     def years
@@ -48,7 +51,7 @@ class Calendar
 
     def as_json(options = {})
       {
-        "division" => @slug,
+        "division" => I18n.t(@slug),
         "events" => events,
       }
     end
