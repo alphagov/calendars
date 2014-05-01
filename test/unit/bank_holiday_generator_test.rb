@@ -28,4 +28,14 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
       generates_correct_bank_holidays(nation, year, "gwyliau-banc_translated.json")
     end
   end
+
+  should "generate bank holidays in order" do
+    #In 2016 in England, Christmas (substitute day) is on the 27th and Boxing Day is the 26th.
+    # This is one example of why we need to reorder bank holidays by date.
+    bank_holiday_generator = BankHolidayGenerator.new(2016, "england-and-wales")
+    generated_bank_holidays = bank_holiday_generator.perform
+    index_of_christmas = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.christmas"}.first
+    index_of_boxing_day = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.boxing_day"}.first
+    assert index_of_boxing_day < index_of_christmas
+  end
 end

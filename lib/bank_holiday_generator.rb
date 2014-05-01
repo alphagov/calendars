@@ -60,7 +60,7 @@ class BankHolidayGenerator
     BANK_HOLIDAYS.fetch(nation).each do |bank_holiday|
       send(bank_holiday)
     end
-    bank_holidays
+    bank_holidays.sort_by{|bh_hash| DateTime.parse(bh_hash.fetch("date"))}
   end
 
 private
