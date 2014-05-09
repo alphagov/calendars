@@ -7,12 +7,20 @@ class RegisterableCalendar
 
   attr_accessor :calendar, :slug, :live
 
-  def_delegators :@calendar, :title, :description, :indexable_content
+  def_delegators :@calendar, :indexable_content
 
   def initialize(path)
     details = JSON.parse(File.read(path))
     @calendar = OpenStruct.new(details)
     @slug = File.basename(path, '.json')
+  end
+
+  def title
+    I18n.t(@calendar.title)
+  end
+
+  def description
+    I18n.t(@calendar.description)
   end
 
   def state
