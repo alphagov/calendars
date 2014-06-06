@@ -39,11 +39,19 @@ Each calendar has a series of formats and endpoints at which data can be accesse
 
 ### Generate bank holidays
 
-A rake task has been created to generate the bank holidays JSON for a given year. They need to be then inserted, and modified to
-take into account any additions/modifications made by proclamation.
+A rake task has been created to generate the bank holidays JSON for a given year. They need to be then inserted, and
+modified to take into account any additions/modifications made by proclamation.
 Run the rake task like this:
 
     bundle exec rake bank_holidays:generate_json[2016]
+
+In order to make the difference between holidays determined by law or by proclamation, an additional rake task was created:
+
+    bundle exec rake bank_holidays:generate_json_with_proclamation[2016]
+
+This rake task adds an additional "proclamation" boolean flag on each bank holiday. If the "proclamation" flag is set
+to true, that holiday is not specified by any legislation but has been proclaimed consistently every year: this is
+the case for a number of bank holidays, as well for some substitute days. 
 
 ### Testing
 
