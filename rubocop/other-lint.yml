@@ -20,11 +20,11 @@ ConditionPosition:
 
 Debugger:
   Description: 'Check for debugger calls.'
-  Enabled: false
+  Enabled: true
 
 DeprecatedClassMethods:
   Description: 'Check for deprecated class method calls.'
-  Enabled: false
+  Enabled: true
 
 EmptyEnsure:
   Description: 'Checks for empty ensure block.'

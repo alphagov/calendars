@@ -7,7 +7,7 @@ class Calendar
 
   def self.find(slug)
     json_file = Rails.root.join(REPOSITORY_PATH, "#{slug}.json")
-    if File.exists?(json_file)
+    if File.exist?(json_file)
       data = JSON.parse(File.read(json_file))
       self.new(slug, data)
     else
