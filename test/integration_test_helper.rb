@@ -1,6 +1,6 @@
-require_relative 'test_helper'
-require 'capybara/rails'
-require 'gds_api/test_helpers/content_api'
+require_relative "test_helper"
+require "capybara/rails"
+require "gds_api/test_helpers/content_api"
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
@@ -12,10 +12,10 @@ class ActionDispatch::IntegrationTest
   end
 
   def assert_bank_holiday_table(attrs)
-    header = page.find("h2", :text => attrs[:title])
+    header = page.find("h2", text: attrs[:title])
     table = page.find(:xpath, ".//table[.//*[@aria-labelledby='#{header["id"]}'][text()='#{attrs[:year]}']]")
     if attrs[:rows]
-      actual_rows = table.all('tr').map {|r| r.all('th, td').map(&:text).map(&:strip) }
+      actual_rows = table.all("tr").map {|r| r.all("th, td").map(&:text).map(&:strip) }
       assert_equal attrs[:rows], actual_rows
     end
   end

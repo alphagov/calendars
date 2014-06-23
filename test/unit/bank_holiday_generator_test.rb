@@ -1,12 +1,12 @@
 # encoding: utf-8
-require 'bank_holiday_generator'
-require_relative '../test_helper'
+require "bank_holiday_generator"
+require_relative "../test_helper"
 
 class BankHolidayGeneratorTest < ActiveSupport::TestCase
 
   def self.generates_correct_bank_holidays(nation, year, file_name = "bank-holidays_translated.json")
     should "generate bank holidays correctly in #{nation} for year #{year}" do
-      bank_holidays = JSON.parse( IO.read(Rails.root+"./test/fixtures/data/#{file_name}") ).fetch("divisions")
+      bank_holidays = JSON.parse(IO.read(Rails.root + "./test/fixtures/data/#{file_name}")).fetch("divisions")
       bank_holiday_generator = BankHolidayGenerator.new(year, nation)
       generated_bank_holidays = bank_holiday_generator.perform
       translated_bank_holidays = generated_bank_holidays.map { |bank_holiday|
@@ -18,7 +18,7 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
     end
   end
 
-  nations = ["england-and-wales", "scotland", "northern-ireland"]
+  nations = %w(england-and-wales scotland northern-ireland)
   years = (2013..2016)
   nations.each do  |nation|
     years.each do |year|
@@ -34,8 +34,8 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
     # This is one example of why we need to reorder bank holidays by date.
     bank_holiday_generator = BankHolidayGenerator.new(2016, "england-and-wales")
     generated_bank_holidays = bank_holiday_generator.perform
-    index_of_christmas = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.christmas"}.first
-    index_of_boxing_day = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.boxing_day"}.first
+    index_of_christmas = generated_bank_holidays.each_index.select {|i| generated_bank_holidays[i]["title"] == "bank_holidays.christmas"}.first
+    index_of_boxing_day = generated_bank_holidays.each_index.select {|i| generated_bank_holidays[i]["title"] == "bank_holidays.boxing_day"}.first
     assert index_of_boxing_day < index_of_christmas
   end
 end

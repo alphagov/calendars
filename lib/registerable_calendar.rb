@@ -1,4 +1,4 @@
-require 'ostruct'
+require "ostruct"
 
 # Takes a path and produces a calendar object for registering in
 # panopticon
@@ -12,7 +12,7 @@ class RegisterableCalendar
   def initialize(path)
     details = JSON.parse(File.read(path))
     @calendar = OpenStruct.new(details)
-    @slug = File.basename(path, '.json')
+    @slug = File.basename(path, ".json")
   end
 
   def title
@@ -24,7 +24,7 @@ class RegisterableCalendar
   end
 
   def state
-    'live'
+    "live"
   end
 
   def need_ids

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Slimmer::Headers
   protect_from_forgery
 
-  rescue_from GdsApi::TimedOutException, :with => :error_503
+  rescue_from GdsApi::TimedOutException, with: :error_503
 
   protected
 
@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_expiry(age = 60.minutes)
-    expires_in age, :public => true unless Rails.env.development?
+    expires_in age, public: true unless Rails.env.development?
   end
 end

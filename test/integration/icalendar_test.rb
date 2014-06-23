@@ -1,5 +1,5 @@
 # encoding: utf-8
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class IcalendarTest < ActionDispatch::IntegrationTest
 
@@ -15,20 +15,20 @@ class IcalendarTest < ActionDispatch::IntegrationTest
       get path
 
       expected_events = [
-        {"date"=>"20120102", "title"=>"New Year’s Day"},
-        {"date"=>"20120604", "title"=>"Spring bank holiday"},
-        {"date"=>"20120605", "title"=>"Queen’s Diamond Jubilee"},
-        {"date"=>"20120827", "title"=>"Summer bank holiday"},
-        {"date"=>"20121225", "title"=>"Christmas Day"},
-        {"date"=>"20121226", "title"=>"Boxing Day"},
-        {"date"=>"20130101", "title"=>"New Year’s Day"},
-        {"date"=>"20130329", "title"=>"Good Friday"},
-        {"date"=>"20131225", "title"=>"Christmas Day"},
-        {"date"=>"20131226", "title"=>"Boxing Day"},
+        {"date" => "20120102", "title" => "New Year’s Day"},
+        {"date" => "20120604", "title" => "Spring bank holiday"},
+        {"date" => "20120605", "title" => "Queen’s Diamond Jubilee"},
+        {"date" => "20120827", "title" => "Summer bank holiday"},
+        {"date" => "20121225", "title" => "Christmas Day"},
+        {"date" => "20121226", "title" => "Boxing Day"},
+        {"date" => "20130101", "title" => "New Year’s Day"},
+        {"date" => "20130329", "title" => "Good Friday"},
+        {"date" => "20131225", "title" => "Christmas Day"},
+        {"date" => "20131226", "title" => "Boxing Day"},
       ]
 
       assert(response.body.start_with?("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"))
-      expected_events.each_with_index do |event,i|
+      expected_events.each_with_index do |event, _i|
         expected = ""
         end_date = (Date.parse(event["date"]) + 1.day).strftime("%Y%m%d")
         expected << "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{end_date}\r\nDTSTART;VALUE=DATE:#{event["date"]}\r\nSUMMARY:#{event["title"]}\r\n"
