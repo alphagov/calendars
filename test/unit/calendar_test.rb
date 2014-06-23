@@ -30,23 +30,26 @@ class CalendarTest < ActiveSupport::TestCase
 
   context "divisions" do
     setup do
-      @cal = Calendar.new("a-calendar", {
-        "title" => "UK bank holidays",
-        "divisions" => {
-          "kablooie" => {
-            "2012" => [1],
-            "2013" => [3],
+      @cal = Calendar.new(
+        "a-calendar",
+        {
+          "title" => "UK bank holidays",
+          "divisions" => {
+            "kablooie" => {
+              "2012" => [1],
+              "2013" => [3],
+            },
+            "fooey" => {
+              "2012" => [1, 2],
+              "2013" => [3, 4],
+            },
+            "gooey" => {
+              "2012" => [2],
+              "2013" => [4],
+            },
           },
-          "fooey" => {
-            "2012" => [1, 2],
-            "2013" => [3, 4],
-          },
-          "gooey" => {
-            "2012" => [2],
-            "2013" => [4],
-          },
-        }
-      })
+        },
+      )
     end
 
     should "construct a division for each one in the data" do

@@ -51,7 +51,7 @@ class BankHolidayGenerator
       :last_monday_august,
       :christmas,
       :boxing_day,
-    ]
+    ],
   }
 
   attr_reader :year, :bank_holidays, :nation
@@ -67,16 +67,12 @@ private
 
   def add_bank_holiday(title, date, substitute = false, bunting = true)
     bank_holiday_hash = {
-        "title"   => title,
-        "date"    => date.strftime("%d/%m/%Y"),
-        "notes"   => "",
-        "bunting" => bunting,
+      "title"   => title,
+      "date"    => date.strftime("%d/%m/%Y"),
+      "notes"   => "",
+      "bunting" => bunting,
     }
-    if substitute
-      bank_holiday_hash.merge!(
-        { "notes" => "common.substitute_day" }
-      )
-    end
+    bank_holiday_hash.merge!("notes" => "common.substitute_day") if substitute
     bank_holidays << bank_holiday_hash
   end
 

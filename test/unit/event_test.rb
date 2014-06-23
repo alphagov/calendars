@@ -22,14 +22,14 @@ class EventTest < ActiveSupport::TestCase
         "title" => "bank_holidays.new_year",
         "date" => "02/01/2012",
         "notes" => "common.substitute_day",
-        "bunting" => true
+        "bunting" => true,
       )
 
       expected = {
         "title" => "New Year’s Day",
         "date" => Date.civil(2012, 1, 2),
         "notes" => "Substitute day",
-        "bunting" => true
+        "bunting" => true,
       }
 
       assert_equal expected, e.as_json
