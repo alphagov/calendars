@@ -49,7 +49,7 @@ IndentationConsistency:
 
 LineLength:
   Description: Limit lines to 80 characters.
-  Enabled: true
+  Enabled: false
   Max: 80
 
 # Supports --auto-correct
