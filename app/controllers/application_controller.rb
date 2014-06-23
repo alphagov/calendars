@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def error_503(e); error(503, e); end
 
   def error(status_code, exception = nil)
-    if exception and defined? Airbrake
+    if exception && defined? Airbrake
       env["airbrake.error_id"] = notify_airbrake(exception)
     end
     render status: status_code, text: "#{status_code} error"
