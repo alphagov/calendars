@@ -11,7 +11,6 @@ class IcalendarTest < ActionDispatch::IntegrationTest
 
     should "contain all events in the given division" do
       path = "/bank-holidays/england-and-wales.ics"
-      path_hash = Digest::MD5.hexdigest(path)
       get path
 
       expected_events = [

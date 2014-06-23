@@ -108,11 +108,11 @@ UnreachableCode:
 
 UselessAccessModifier:
   Description: 'Checks for useless access modifiers.'
-  Enabled: false
+  Enabled: true
 
 UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
-  Enabled: false
+  Enabled: true
 
 UselessComparison:
   Description: 'Checks for comparison of something with itself.'
