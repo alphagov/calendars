@@ -271,15 +271,15 @@ RaiseArgs:
 
 RedundantBegin:
   Description: "Don't use begin blocks when they are not needed."
-  Enabled: false
+  Enabled: true
 
 RedundantException:
   Description: "Checks for an obsolete RuntimeException argument in raise/fail."
-  Enabled: false
+  Enabled: true
 
 RedundantSelf:
   Description: "Don't use self where it's not needed."
-  Enabled: false
+  Enabled: true
 
 RegexpLiteral:
   Description: >-
@@ -299,7 +299,7 @@ SelfAssignment:
 
 Semicolon:
   Description: "Don't use semicolons to terminate expressions."
-  Enabled: false
+  Enabled: true
 
 SignalException:
   Description: 'Checks for proper usage of fail and raise.'
@@ -317,7 +317,7 @@ SingleSpaceBeforeFirstArg:
   Description: >-
                  Checks that exactly one space is used between a method name
                  and the first argument for method calls without parentheses.
-  Enabled: false
+  Enabled: true
 
 SpaceAfterControlKeyword:
   Description: 'Use spaces after if/elsif/unless/while/until/case/when.'
