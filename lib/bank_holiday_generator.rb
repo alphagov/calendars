@@ -200,9 +200,7 @@ private
   end
 
   def substitute_day_next_day_off(date)
-    if date.saturday? || date.sunday?
-      date += 2
-    end
+    date += 2 if date.saturday? || date.sunday?
     date
   end
 end
