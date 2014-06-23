@@ -8,23 +8,23 @@ AccessorMethodName:
 
 Alias:
   Description: 'Use alias_method instead of alias.'
-  Enabled: false
+  Enabled: true
 
 AlignHash:
   Description: >-
                  Align the elements of a hash literal if they span more than
                  one line.
-  Enabled: false
+  Enabled: true
 
 AlignParameters:
   Description: >-
                  Align the parameters of a method call if they span more
                  than one line.
-  Enabled: false
+  Enabled: true
 
 ArrayJoin:
   Description: 'Use Array#join instead of Array#*.'
-  Enabled: false
+  Enabled: true
 
 AsciiComments:
   Description: 'Use only ascii symbols in comments.'
