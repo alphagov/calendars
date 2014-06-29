@@ -1,12 +1,12 @@
-require 'gds_api/helpers'
-require 'ics_renderer'
+require "gds_api/helpers"
+require "ics_renderer"
 
 class CalendarController < ApplicationController
   include GdsApi::Helpers
 
   before_filter :set_locale
   before_filter :load_calendar
- 
+
   rescue_from Calendar::CalendarNotFound, with: :simple_404
 
   def calendar
@@ -18,11 +18,11 @@ class CalendarController < ApplicationController
 
         I18n.locale = @artefact.details.language if @artefact
         set_slimmer_artefact(@artefact)
-        set_slimmer_headers :format => "calendar"
-        render scope.gsub('-', '_')
+        set_slimmer_headers format: "calendar"
+        render scope.gsub("-", "_")
       end
       format.json do
-        render :json => @calendar
+        render json: @calendar
       end
     end
   end
@@ -33,8 +33,8 @@ class CalendarController < ApplicationController
     set_expiry 1.day
 
     respond_to do |format|
-      format.json { render :json => division }
-      format.ics { render :text => ICSRenderer.new(division.events, request.path).render }
+      format.json { render json: division }
+      format.ics { render text: ICSRenderer.new(division.events, request.path).render }
       format.all { simple_404 }
     end
   end
@@ -71,7 +71,7 @@ private
       I18n.backend.send(:init_translations) unless I18n.backend.initialized?
       translations = I18n.backend.send(:translations)
       division_key = translations[I18n.locale][:common][:nations].key(params[:division]).to_s
-      params[:division] = "common.nations."+division_key
+      params[:division] = "common.nations." + division_key
     end
   end
 end

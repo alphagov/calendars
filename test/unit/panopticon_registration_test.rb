@@ -1,7 +1,7 @@
-require_relative '../test_helper'
+require_relative "../test_helper"
 
-require 'gds_api/panopticon'
-require 'registerable_calendar'
+require "gds_api/panopticon"
+require "registerable_calendar"
 
 class PanopticonRegistrationTest < ActiveSupport::TestCase
   context "Panopticon registration" do
@@ -20,7 +20,7 @@ class PanopticonRegistrationTest < ActiveSupport::TestCase
       assert_equal ["/bank-holidays.json"], artefact[:paths]
       assert_equal ["/bank-holidays"], artefact[:prefixes]
 
-      assert_equal 'live', artefact[:state], "Is not live"
+      assert_equal "live", artefact[:state], "Is not live"
     end
   end
 end

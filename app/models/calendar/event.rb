@@ -1,4 +1,4 @@
-require 'ostruct'
+require "ostruct"
 
 class Calendar
   class Event < OpenStruct

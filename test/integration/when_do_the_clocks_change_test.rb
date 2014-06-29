@@ -1,5 +1,5 @@
 # encoding: utf-8
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
 
@@ -7,8 +7,8 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
 
     visit "/when-do-the-clocks-change"
 
-    within 'head' do
-      assert page.has_selector?("title", :text => "When do the clocks change? - GOV.UK")
+    within "head" do
+      assert page.has_selector?("title", text: "When do the clocks change? - GOV.UK")
       desc = page.find("meta[name=description]")
       assert_equal "Dates when the clocks go back or forward in 2012, 2013, 2014 - includes British Summer Time, Greenwich Mean Time", desc["content"]
 
@@ -18,12 +18,12 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     end
 
     within "#content" do
-      within 'header' do
+      within "header" do
         assert page.has_content?("When do the clocks change?")
       end
 
-      within 'article' do
-        rows = page.all('table.clocks-calendar tr').map {|row| row.all('th,td').map(&:text) }
+      within "article" do
+        rows = page.all("table.clocks-calendar tr").map {|row| row.all("th,td").map(&:text) }
         assert_equal [
           ["Year", "Clocks go forward", "Clocks go back"],
           ["2012", "25 March", "28 October"],
@@ -31,13 +31,13 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
           ["2014", "30 March", "26 October"],
         ], rows
 
-        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 5KB)", :href => "/when-do-the-clocks-change/united-kingdom.ics")
+        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 5KB)", href: "/when-do-the-clocks-change/united-kingdom.ics")
       end
     end
   end
 
   should "display the correct upcoming event" do
-    Timecop.travel(Date.parse('2012-11-15')) do
+    Timecop.travel(Date.parse("2012-11-15")) do
       visit "/when-do-the-clocks-change"
 
       within ".highlighted-event" do
@@ -46,7 +46,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
       end
     end # Timecop
 
-    Timecop.travel(Date.parse('2013-04-01')) do
+    Timecop.travel(Date.parse("2013-04-01")) do
       visit "/when-do-the-clocks-change"
 
       within ".highlighted-event" do

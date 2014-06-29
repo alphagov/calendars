@@ -1,5 +1,5 @@
 # encoding: utf-8
-require_relative '../test_helper'
+require_relative "../test_helper"
 
 class YearTest < ActiveSupport::TestCase
 
@@ -90,7 +90,7 @@ class YearTest < ActiveSupport::TestCase
 
     should "return all future events including today" do
       Timecop.travel("2012-08-27") do
-        assert_equal ["bar", "baz"], @year.upcoming_events.map(&:title)
+        assert_equal %w(bar baz), @year.upcoming_events.map(&:title)
       end
     end
 

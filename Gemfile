@@ -24,6 +24,10 @@ else
   gem 'gds-api-adapters', '10.10.1'
 end
 
+group :development do
+  gem 'rubocop'
+end
+
 group :test do
   gem 'mocha', '0.13.3', require: false
   gem 'shoulda', '2.11.3'
