@@ -6,7 +6,7 @@ gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch 
 gem 'json', '1.7.4'
 gem 'plek', '1.3.1'
 
-gem 'govuk_frontend_toolkit', '0.32.2'
+gem 'govuk_frontend_toolkit', '~> 1.5.0'
 
 gem 'logstasher', '0.4.8'
 gem 'airbrake', '3.1.15'
