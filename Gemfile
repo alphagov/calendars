@@ -10,6 +10,7 @@ gem 'govuk_frontend_toolkit', '~> 1.5.0'
 
 gem 'logstasher', '0.4.8'
 gem 'airbrake', '3.1.15'
+gem 'rack_strip_client_ip', '0.0.1'
 gem 'unicorn', '4.3.1'
 
 if ENV['SLIMMER_DEV']
