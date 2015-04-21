@@ -38,4 +38,35 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
     index_of_boxing_day = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.boxing_day"}.first
     assert index_of_boxing_day < index_of_christmas
   end
+
+  context "new year's day is on a Saturday" do
+    #In 2022 New Year's day is on a Saturday
+    bank_holiday_generator = BankHolidayGenerator.new(2022, "scotland")
+    generated_bank_holidays = bank_holiday_generator.perform
+    should "move new year's day to the Tuesday in Scotland" do
+      new_year = generated_bank_holidays.find { |holiday| holiday["title"] == "bank_holidays.new_year" }
+      assert new_year["date"] == "04/01/2022"
+      assert new_year["notes"] == "common.substitute_day"
+    end
+    should "move January 2nd to the Monday in Scotland" do
+      jan_2nd = generated_bank_holidays.find { |holiday| holiday["title"] == "bank_holidays.2nd_january" }
+      assert jan_2nd["date"] == "03/01/2022"
+      assert jan_2nd["notes"] == "common.substitute_day"
+    end
+  end
+
+  context "new year's day is on a Sunday" do
+    #In 2017 New Year's day is on a Sunday
+    bank_holiday_generator = BankHolidayGenerator.new(2017, "scotland")
+    generated_bank_holidays = bank_holiday_generator.perform
+    should "move new year's day to the Tuesday in Scotland" do
+      new_year = generated_bank_holidays.find { |holiday| holiday["title"] == "bank_holidays.new_year" }
+      assert new_year["date"] == "03/01/2017"
+      assert new_year["notes"] == "common.substitute_day"
+    end
+    should "does not move January 2nd in Scotland" do
+      jan_2nd = generated_bank_holidays.find { |holiday| holiday["title"] == "bank_holidays.2nd_january" }
+      assert jan_2nd["date"] == "02/01/2017"
+    end
+  end
 end

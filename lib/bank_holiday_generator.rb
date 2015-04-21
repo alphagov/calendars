@@ -88,7 +88,7 @@ private
     else
       new_date = substitute_day(date)
     end
-    add_bank_holiday("bank_holidays.new_year", date, new_date != date)
+    add_bank_holiday("bank_holidays.new_year", new_date, new_date != date)
   end
 
   def new_years_day_second_january_off
@@ -201,7 +201,9 @@ private
   end
 
   def substitute_day_next_day_off(date)
-    if date.saturday? || date.sunday?
+    if date.saturday?
+      date += 3
+    elsif date.sunday?
       date += 2
     end
     date
