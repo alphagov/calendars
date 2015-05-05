@@ -128,7 +128,8 @@ table.clocks-calendar .equal-width {
     height: 50px;
     overflow: visible;
     border-top: 1px solid $grey-8;
-    position: static;
+    position: absolute;
+    left: 0;
 
     @include media-down(tablet) {
       display: none;
@@ -146,29 +147,29 @@ table.clocks-calendar .equal-width {
   }
 
   .related {
-    margin-top:6.5em;
+    margin-top: 4.5em;
 
     @include media(mobile) {
-      margin-top:0;
+      margin-top: 0;
     }
 
     @include media(desktop) {
-      margin-top:6.5em;
+      margin-top: 4.5em;
     }
   }
 
-  main#content {
-    margin-top:1em;
+  #content {
+    margin-top: 4em;
 
     @include media(mobile) {
       margin-top:0;
     }
 
     @include media(desktop) {
-      margin-top:1em;
+      margin-top: 4em;
 
       header.page-header div {
-        background-color:transparent;
+        background-color: transparent;
       }
     }
   }
