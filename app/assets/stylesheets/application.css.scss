@@ -149,25 +149,19 @@ table.clocks-calendar .equal-width {
   .related {
     margin-top: 4.5em;
 
-    @include media(mobile) {
+    @include media-down(tablet) {
       margin-top: 0;
-    }
-
-    @include media(desktop) {
-      margin-top: 4.5em;
     }
   }
 
   #content {
     margin-top: 4em;
 
-    @include media(mobile) {
-      margin-top:0;
+    @include media-down(tablet) {
+      margin-top: 0;
     }
 
     @include media(desktop) {
-      margin-top: 4em;
-
       header.page-header div {
         background-color: transparent;
       }
