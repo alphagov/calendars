@@ -73,7 +73,7 @@ GEM
     journey (1.0.4)
     json (1.7.4)
     kgio (2.7.4)
-    libv8 (3.3.10.4)
+    libv8 (3.16.14.11)
     libwebsocket (0.1.5)
       addressable
     link_header (0.0.8)
@@ -121,6 +121,7 @@ GEM
     rake (10.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rubyzip (0.9.9)
@@ -154,8 +155,9 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     test-unit (2.5.2)
-    therubyracer (0.10.2)
-      libv8 (~> 3.3.10)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     tilt (1.4.1)
     timecop (0.4.5)
@@ -198,7 +200,7 @@ DEPENDENCIES
   simplecov-rcov (= 0.2.3)
   slimmer (= 8.2.1)
   test-unit (= 2.5.2)
-  therubyracer (= 0.10.2)
+  therubyracer (= 0.12.2)
   timecop (= 0.4.5)
   uglifier
   unicorn (= 4.3.1)

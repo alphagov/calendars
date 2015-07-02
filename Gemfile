@@ -39,6 +39,6 @@ end
 
 group :assets do
   gem 'sass-rails', '3.2.3'
-  gem 'therubyracer', '0.10.2'
+  gem 'therubyracer', '0.12.2'
   gem 'uglifier'
 end
