@@ -3,9 +3,12 @@ require "gds_api/helpers"
 
 class ApplicationController < ActionController::Base
   include Slimmer::Headers
+  include Slimmer::Template
   protect_from_forgery
 
   rescue_from GdsApi::TimedOutException, :with => :error_503
+
+  slimmer_template 'wrapper'
 
   protected
 
