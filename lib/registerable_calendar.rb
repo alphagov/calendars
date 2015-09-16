@@ -7,7 +7,7 @@ class RegisterableCalendar
 
   attr_accessor :calendar, :slug, :live
 
-  def_delegators :@calendar, :indexable_content
+  def_delegators :@calendar, :indexable_content, :content_id
 
   def initialize(path)
     details = JSON.parse(File.read(path))
