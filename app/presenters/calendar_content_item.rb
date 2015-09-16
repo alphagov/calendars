@@ -19,6 +19,9 @@ class CalendarContentItem
       update_type: 'minor',
       locale: 'en',
       public_updated_at: Time.now,
+      routes: [
+        { type: 'exact', path: base_path }
+      ]
     }
   end
 end
