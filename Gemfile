@@ -22,7 +22,7 @@ end
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '20.1.1'
+  gem 'gds-api-adapters', '~> 24.3.0'
 end
 
 group :test do
@@ -35,6 +35,7 @@ group :test do
   gem 'test-unit', '2.5.2'
   gem 'capybara', '1.1.2'
   gem 'timecop', '0.4.5'
+  gem 'govuk-content-schema-test-helpers', '~> 1.3.0'
 end
 
 group :assets do
