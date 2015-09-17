@@ -3,6 +3,7 @@
 REPO_NAME=${REPO_NAME:-"alphagov/calendars"}
 CONTEXT_MESSAGE=${CONTEXT_MESSAGE:-"default"}
 GH_STATUS_GIT_COMMIT=${SCHEMA_GIT_COMMIT:-${GIT_COMMIT}}
+TEST_TASK="ci:setup:testunit default"
 
 function github_status {
   REPO_NAME="$1"
