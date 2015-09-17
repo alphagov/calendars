@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.22'
 gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch => "welsh_updates"
 
-gem 'json', '1.7.4'
+gem 'json', '~> 1.8.3'
 gem 'plek', '1.3.1'
 
 gem 'govuk_frontend_toolkit', '~> 1.5.0'
@@ -11,7 +11,7 @@ gem 'govuk_frontend_toolkit', '~> 1.5.0'
 gem 'logstasher', '0.4.8'
 gem 'airbrake', '3.1.15'
 gem 'rack_strip_client_ip', '0.0.1'
-gem 'unicorn', '4.3.1'
+gem 'unicorn', '~> 4.9.0'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'

@@ -45,6 +45,7 @@ The division `title` attribute is optional.  If this is not present the slug wil
 ### Dependencies
 
 - [panopticon](https://github.com/alphagov/panopticon): this app sends data to panopticon to register URLs and for search indexing.
+- [publishing-api](https://github.com/alphagov/publishing-api): this app sends data to the content-store.
 
 ### Additional information
 
