@@ -18,6 +18,7 @@ class CalendarContentItemTest < ActiveSupport::TestCase
     payload = CalendarContentItem.new(calendar).payload
 
     assert_equal 'UK bank holidays', payload[:title]
+    assert payload[:content_id].is_a?(String)
   end
 
   def test_base_path_is_correct

@@ -51,4 +51,8 @@ class Calendar
       hash[I18n.t(division.slug)] = division.as_json
     end
   end
+
+  def content_id
+    @data["content_id"]
+  end
 end
