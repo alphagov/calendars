@@ -13,6 +13,7 @@ class CalendarContentItem
   def payload
     {
       title: calendar.title,
+      content_id: calendar.content_id,
       format: 'placeholder_calendar',
       publishing_app: 'calendars',
       rendering_app: 'calendars',
