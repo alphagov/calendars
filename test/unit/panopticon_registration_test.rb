@@ -6,9 +6,10 @@ class PanopticonRegistrationTest < ActiveSupport::TestCase
   context "Panopticon registration" do
     should "translate to Panopticon artefacts" do
       file_path = Rails.root.join(*%w(lib data bank-holidays.json))
+      registerer = GdsApi::Panopticon::Registerer.new(owning_app: "calendars")
 
       calendar = RegisterableCalendar.new(file_path)
-      artefact = Services.panopticon.record_to_artefact(calendar)
+      artefact = registerer.record_to_artefact(calendar)
 
       [:name, :description, :slug, :content_id].each do |key|
         assert artefact.has_key?(key), "Missing attribute: #{key}"
