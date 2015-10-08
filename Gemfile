@@ -31,7 +31,7 @@ end
 
 group :test do
   gem 'mocha', '0.13.3', require: false
-  gem 'shoulda', '2.11.3'
+  gem 'shoulda', '3.5.0'
   gem 'simplecov', '0.4.2'
   gem 'simplecov-rcov', '0.2.3'
   gem 'webmock', '1.8.0', require: false
