@@ -30,7 +30,7 @@ else
 end
 
 group :test do
-  gem 'mocha', '0.13.3', require: false
+  gem 'mocha', '1.1.0', require: false
   gem 'shoulda', '3.5.0'
   gem 'simplecov', '0.4.2'
   gem 'simplecov-rcov', '0.2.3'
