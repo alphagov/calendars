@@ -34,7 +34,7 @@ group :test do
   gem 'shoulda', '3.5.0'
   gem 'simplecov', '0.4.2'
   gem 'simplecov-rcov', '0.2.3'
-  gem 'webmock', '1.8.0', require: false
+  gem 'webmock', '1.21.0', require: false
   gem 'ci_reporter_minitest', '1.0.0'
   gem 'capybara', '1.1.2'
   gem 'timecop', '0.4.5'
