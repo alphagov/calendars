@@ -148,7 +148,7 @@ class CalendarTest < ActiveSupport::TestCase
       @div3 = stub("Division", :show_bunting? => false)
       @cal.stubs(:divisions).returns([@div1, @div2, @div3])
 
-      assert_false @cal.show_bunting?
+      assert !@cal.show_bunting?
     end
   end
 
