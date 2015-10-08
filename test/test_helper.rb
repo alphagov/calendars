@@ -11,7 +11,7 @@ require 'rails/test_help'
 require 'mocha/setup'
 require 'slimmer/test'
 
-require 'webmock/test_unit'
+require 'webmock/minitest'
 WebMock.disable_net_connect!(:allow_localhost => true)
 
 GovukContentSchemaTestHelpers.configure do |config|
