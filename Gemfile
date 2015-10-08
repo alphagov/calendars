@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '4.2.4'
-gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch => "welsh_updates"
+gem 'rails-i18n', '4.0.5'
 
 gem 'json', '~> 1.8.3'
 gem 'plek', '1.3.1'
