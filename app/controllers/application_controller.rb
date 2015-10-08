@@ -4,7 +4,10 @@ require "gds_api/helpers"
 class ApplicationController < ActionController::Base
   include Slimmer::Headers
   include Slimmer::Template
-  protect_from_forgery
+
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 
   rescue_from GdsApi::TimedOutException, :with => :error_503
 

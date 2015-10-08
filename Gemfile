@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.22'
+gem 'rails', '4.2.4'
 gem 'rails-i18n', :git => "https://github.com/alphagov/rails-i18n.git", :branch => "welsh_updates"
 
 gem 'json', '~> 1.8.3'
@@ -39,7 +39,7 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails', '3.2.3'
+  gem 'sass-rails', '5.0.4'
   gem 'therubyracer', '0.12.2'
   gem 'uglifier'
 end
