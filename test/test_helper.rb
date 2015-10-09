@@ -21,3 +21,13 @@ GovukContentSchemaTestHelpers.configure do |config|
 end
 
 Dir[Rails.root.join('test/support/*.rb')].each { |f| require f }
+
+class ActiveSupport::TestCase
+  setup do
+    I18n.locale = :en
+  end
+
+  teardown do
+    I18n.locale = :en
+  end
+end
