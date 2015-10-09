@@ -4,8 +4,9 @@ require_relative '../test_helper'
 
 class BankHolidayGeneratorTest < ActiveSupport::TestCase
 
-  def self.generates_correct_bank_holidays(nation, year, file_name = "bank-holidays_translated.json")
+  def self.generates_correct_bank_holidays(nation, year, locale, file_name)
     should "generate bank holidays correctly in #{nation} for year #{year}" do
+      I18n.locale = locale
       bank_holidays = JSON.parse( IO.read(Rails.root+"./test/fixtures/data/#{file_name}") ).fetch("divisions")
       bank_holiday_generator = BankHolidayGenerator.new(year, nation)
       generated_bank_holidays = bank_holiday_generator.perform
@@ -20,12 +21,10 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
 
   nations = ["england-and-wales", "scotland", "northern-ireland"]
   years = (2013..2016)
-  nations.each do  |nation|
+  nations.each do |nation|
     years.each do |year|
-      I18n.locale = :en
-      generates_correct_bank_holidays(nation, year)
-      I18n.locale = :cy
-      generates_correct_bank_holidays(nation, year, "gwyliau-banc_translated.json")
+      generates_correct_bank_holidays(nation, year, :en, "bank-holidays_translated.json")
+      generates_correct_bank_holidays(nation, year, :cy, "gwyliau-banc_translated.json")
     end
   end
 
