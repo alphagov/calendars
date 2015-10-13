@@ -4,14 +4,15 @@ require 'simplecov-rcov'
 SimpleCov.start 'rails'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 
-ENV["RAILS_ENV"] = "test"
+ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'mocha/setup'
+require 'mocha/mini_test'
 require 'slimmer/test'
 
-require 'webmock/test_unit'
+require 'webmock/minitest'
 WebMock.disable_net_connect!(:allow_localhost => true)
 
 GovukContentSchemaTestHelpers.configure do |config|
@@ -20,3 +21,13 @@ GovukContentSchemaTestHelpers.configure do |config|
 end
 
 Dir[Rails.root.join('test/support/*.rb')].each { |f| require f }
+
+class ActiveSupport::TestCase
+  setup do
+    I18n.locale = :en
+  end
+
+  teardown do
+    I18n.locale = :en
+  end
+end

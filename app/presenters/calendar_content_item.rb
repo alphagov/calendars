@@ -19,7 +19,7 @@ class CalendarContentItem
       rendering_app: 'calendars',
       update_type: 'minor',
       locale: 'en',
-      public_updated_at: Time.now,
+      public_updated_at: Time.current.to_datetime.rfc3339,
       routes: [
         { type: 'exact', path: base_path }
       ]

@@ -1,5 +1,6 @@
 require_relative '../test_helper'
 
+require 'gds_api/panopticon'
 require 'registerable_calendar'
 
 class PanopticonRegistrationTest < ActiveSupport::TestCase
