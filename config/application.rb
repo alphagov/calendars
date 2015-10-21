@@ -36,6 +36,7 @@ module Calendars
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.assets.prefix = '/calendars'
     config.assets.precompile += %w(
       application.css
       print.css
