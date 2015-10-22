@@ -31,8 +31,6 @@ module Calendars
     # of locales from config/locales
     config.i18n.available_locales = [:en, :cy]
 
-    # config.assets.precompile += %w( )
-
     # Enable the asset pipeline
     config.assets.enabled = true
 
