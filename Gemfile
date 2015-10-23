@@ -14,7 +14,6 @@ gem 'rack_strip_client_ip', '0.0.1'
 gem 'unicorn', '~> 4.9.0'
 
 gem 'sass-rails', '5.0.4'
-gem 'therubyracer', '0.12.2'
 gem 'uglifier'
 
 if ENV['SLIMMER_DEV']
