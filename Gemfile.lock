@@ -85,7 +85,6 @@ GEM
     json-schema (2.5.1)
       addressable (~> 2.3.7)
     kgio (2.10.0)
-    libv8 (3.16.14.11)
     libwebsocket (0.1.5)
       addressable
     link_header (0.0.8)
@@ -145,7 +144,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
     rake (10.4.2)
-    ref (1.0.5)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -188,9 +186,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
@@ -234,7 +229,6 @@ DEPENDENCIES
   simplecov (= 0.4.2)
   simplecov-rcov (= 0.2.3)
   slimmer (= 9.0.0)
-  therubyracer (= 0.12.2)
   timecop (= 0.4.5)
   uglifier
   unicorn (~> 4.9.0)
