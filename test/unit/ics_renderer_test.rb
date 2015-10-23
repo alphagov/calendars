@@ -84,7 +84,7 @@ class ICSRendererTest < ActiveSupport::TestCase
     end
 
     should "return the mtime of the REVISION file" do
-      File.expects(:mtime).with(Rails.root.join("REVISION")).returns(Time.parse('2012-04-06 14:53:54'))
+      File.expects(:mtime).with(Rails.root.join("REVISION")).returns(Time.parse('2012-04-06 14:53:54Z'))
       assert_equal "20120406T145354Z", @r.dtstamp
     end
 
@@ -96,7 +96,7 @@ class ICSRendererTest < ActiveSupport::TestCase
     end
 
     should "cache the result" do
-      File.expects(:mtime).with(Rails.root.join("REVISION")).once.returns(Time.parse('2012-04-06 14:53:54'))
+      File.expects(:mtime).with(Rails.root.join("REVISION")).once.returns(Time.parse('2012-04-06 14:53:54Z'))
       @r.dtstamp
       assert_equal "20120406T145354Z", @r.dtstamp
     end
