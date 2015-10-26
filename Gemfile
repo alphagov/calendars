@@ -28,6 +28,10 @@ else
   gem 'gds-api-adapters', '~> 24.4.0'
 end
 
+group :test, :development do
+  gem 'pry-byebug'
+end
+
 group :test do
   gem 'mocha', '1.1.0', require: false
   gem 'shoulda', '3.5.0'
