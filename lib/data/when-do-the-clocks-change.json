@@ -6,18 +6,6 @@
   "indexable_content": "This clock change gives the UK an extra hour of daylight (sometimes called Daylight Saving Time). From March to October (when the clocks are 1 hour ahead) the UK is on British Summer Time (BST). From October to March, the UK is on Greenwich Mean Time (GMT).",
   "divisions": {
     "united-kingdom": {
-      "2014": [
-        {
-          "title": "Start of British Summer Time",
-          "date": "30/03/2014",
-          "notes": "Clocks go forward one hour"
-        },
-        {
-          "title": "End of British Summer Time",
-          "date": "26/10/2014",
-          "notes": "Clocks go back one hour"
-        }
-      ],
       "2015": [
         {
           "title": "Start of British Summer Time",
@@ -39,6 +27,18 @@
         {
           "title": "End of British Summer Time",
           "date": "30/10/2016",
+          "notes": "Clocks go back one hour"
+        }
+      ],
+      "2017": [
+        {
+          "title": "Start of British Summer Time",
+          "date": "26/03/2017",
+          "notes": "Clocks go forward one hour"
+        },
+        {
+          "title": "End of British Summer Time",
+          "date": "29/10/2017",
           "notes": "Clocks go back one hour"
         }
       ]
