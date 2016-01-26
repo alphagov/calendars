@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5.1'
 gem 'rails-i18n', '4.0.5'
 
 gem 'json', '~> 1.8.3'
@@ -14,12 +14,12 @@ gem 'rack_strip_client_ip', '0.0.1'
 gem 'unicorn', '~> 4.9.0'
 
 gem 'sass-rails', '5.0.4'
-gem 'uglifier'
+gem 'uglifier', '2.7.2'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '9.0.0'
+  gem 'slimmer', '9.0.1'
 end
 
 if ENV['API_DEV']
