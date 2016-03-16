@@ -6,7 +6,7 @@ gem 'rails-i18n', '4.0.5'
 gem 'json', '~> 1.8.3'
 gem 'plek', '1.3.1'
 
-gem 'govuk_frontend_toolkit', '~> 1.5.0'
+gem 'govuk_frontend_toolkit', '~> 4.9.0'
 
 gem 'logstasher', '0.4.8'
 gem 'airbrake', '3.1.15'
