@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.6'
 gem 'rails-i18n', '4.0.5'
 
 gem 'json', '~> 1.8.3'
