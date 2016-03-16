@@ -11,7 +11,7 @@ gem 'govuk_frontend_toolkit', '~> 4.9.0'
 gem 'logstasher', '0.4.8'
 gem 'airbrake', '4.3.0'
 gem 'rack_strip_client_ip', '0.0.1'
-gem 'unicorn', '~> 4.9.0'
+gem 'unicorn', '~> 5.0.0'
 
 gem 'sass-rails', '5.0.4'
 gem 'uglifier', '2.7.2'
