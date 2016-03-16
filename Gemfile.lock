@@ -38,7 +38,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    airbrake (3.1.15)
+    airbrake (4.3.0)
       builder
       multi_json
     arel (6.0.3)
@@ -226,7 +226,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake (= 3.1.15)
+  airbrake (= 4.3.0)
   capybara (= 1.1.2)
   ci_reporter_minitest (= 1.0.0)
   gds-api-adapters (~> 26.7)

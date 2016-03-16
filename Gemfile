@@ -9,7 +9,7 @@ gem 'plek', '1.12.0'
 gem 'govuk_frontend_toolkit', '~> 4.9.0'
 
 gem 'logstasher', '0.4.8'
-gem 'airbrake', '3.1.15'
+gem 'airbrake', '4.3.0'
 gem 'rack_strip_client_ip', '0.0.1'
 gem 'unicorn', '~> 4.9.0'
 
