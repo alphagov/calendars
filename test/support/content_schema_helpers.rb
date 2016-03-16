@@ -13,7 +13,7 @@ module Mocha
 
       def matches?(available_parameters)
         payload = available_parameters.shift
-        validator = GovukContentSchemaTestHelpers::Validator.new(@format_name, JSON.dump(payload))
+        validator = GovukContentSchemaTestHelpers::Validator.new(@format_name, "schema", JSON.dump(payload))
         validator.valid?
       end
     end

@@ -41,5 +41,5 @@ group :test do
   gem 'ci_reporter_minitest', '1.0.0'
   gem 'capybara', '2.6.2'
   gem 'timecop', '0.8.0'
-  gem 'govuk-content-schema-test-helpers', '~> 1.3.0'
+  gem 'govuk-content-schema-test-helpers', '~> 1.4.0'
 end
