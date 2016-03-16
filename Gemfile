@@ -39,7 +39,7 @@ group :test do
   gem 'simplecov-rcov', '0.2.3'
   gem 'webmock', '1.24.2', require: false
   gem 'ci_reporter_minitest', '1.0.0'
-  gem 'capybara', '1.1.2'
+  gem 'capybara', '2.6.2'
   gem 'timecop', '0.4.5'
   gem 'govuk-content-schema-test-helpers', '~> 1.3.0'
 end

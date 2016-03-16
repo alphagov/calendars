@@ -14,18 +14,18 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
     visit "/gwyliau-banc"
 
-    within 'head' do
-      assert page.has_selector?("title", :text => "Gwyliau banc y DU - GOV.UK")
-      desc = page.find("meta[name=description]")
+    within("head", visible: false) do
+      assert page.has_selector?("title", :text => "Gwyliau banc y DU - GOV.UK", visible: false)
+      desc = page.find("meta[name=description]", visible: false)
       assert_equal "Calendr gwyliau banc y DU - edrychwch ar wyliau banc a gwyliau cyhoeddus y DU", desc["content"]
 
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc.json']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/cymru-a-lloegr.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/cymru-a-lloegr.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/yr-alban.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/yr-alban.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/gogledd-iwerddon.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/gogledd-iwerddon.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/cymru-a-lloegr.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/cymru-a-lloegr.ics']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/yr-alban.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/yr-alban.ics']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/gogledd-iwerddon.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/gogledd-iwerddon.ics']", visible: false)
     end
 
     within "#content" do
