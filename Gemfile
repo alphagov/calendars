@@ -4,7 +4,7 @@ gem 'rails', '4.2.6'
 gem 'rails-i18n', '4.0.8'
 
 gem 'json', '~> 1.8.3'
-gem 'plek', '1.3.1'
+gem 'plek', '1.12.0'
 
 gem 'govuk_frontend_toolkit', '~> 4.9.0'
 
