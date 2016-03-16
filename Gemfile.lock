@@ -185,7 +185,7 @@ GEM
     simplecov-html (0.4.5)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    slimmer (9.0.1)
+    slimmer (9.1.0)
       activesupport
       json
       nokogiri (>= 1.5.0, < 1.7.0)
@@ -244,7 +244,7 @@ DEPENDENCIES
   shoulda (= 3.5.0)
   simplecov (= 0.4.2)
   simplecov-rcov (= 0.2.3)
-  slimmer (= 9.0.1)
+  slimmer (= 9.1.0)
   timecop (= 0.4.5)
   uglifier (= 2.7.2)
   unicorn (~> 5.0.0)
