@@ -13,7 +13,7 @@ require 'mocha/mini_test'
 require 'slimmer/test'
 
 require 'webmock/minitest'
-WebMock.disable_net_connect!(:allow_localhost => true)
+WebMock.disable_net_connect!(allow_localhost: true)
 
 GovukContentSchemaTestHelpers.configure do |config|
   config.schema_type = 'publisher_v2'

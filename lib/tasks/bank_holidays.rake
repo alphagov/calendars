@@ -2,7 +2,7 @@ require 'bank_holiday_generator'
 
 namespace :bank_holidays do
   desc "Generate JSON for UK bank holidays"
-  task :generate_json, :year do |t, args|
+  task :generate_json, :year do |_t, args|
     year = args[:year].to_i
     if year != 0
       nations = ["england-and-wales", "scotland", "northern-ireland"]
