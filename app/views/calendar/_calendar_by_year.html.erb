@@ -9,9 +9,9 @@
     <tbody>
       <% events.each do |event| %>
         <tr>
-          <td class="calendar_date"><%= l event.date, :format => '%e %B' %></td>
-          <td class="calendar_day"><%= l event.date, :format => '%A' %></td>
-          <td class="calendar_title"><%= event.title %><%= " (#{event.notes.downcase})" unless event.notes.blank? %></td>
+          <td class="calendar-date"><%= l event.date, :format => '%e %B' %></td>
+          <td class="calendar-day"><%= l event.date, :format => '%A' %></td>
+          <td class="calendar-title"><%= event.title %><%= " (#{event.notes.downcase})" unless event.notes.blank? %></td>
         </tr>
       <% end %>
     </tbody>

@@ -3,7 +3,7 @@
   display: none;
 }
 
-/* calendar tables */
+// calendar tables
 
 article table.calendar {
   margin-bottom: 1em;
@@ -11,15 +11,17 @@ article table.calendar {
   td {
     text-align: left;
   }
-  
-  td.calendar_date {
+
+  td.calendar-date {
     width: 25%;
     white-space: nowrap;
   }
-  td.calendar_day {
+
+  td.calendar-day {
     width: 25%;
   }
-  td.calendar_title {
+
+  td.calendar-title {
     width: 50%;
   }
 }

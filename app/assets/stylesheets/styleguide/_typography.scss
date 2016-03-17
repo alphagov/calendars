@@ -1,4 +1,4 @@
-@import "_print.scss";
+@import "print";
 
 //  GOV.UK typography palettes
 
@@ -38,13 +38,17 @@
 @mixin core-48($line-height: (50 / 48), $line-height-640: (30 / 25)) {
   font-family: $NTA-Light;
   font-size: 48px;
+
   @include print {
     font-size: 18pt;
   }
+
+
   line-height: $line-height;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 25px;
     line-height: $line-height-640;
@@ -56,6 +60,7 @@
   @include core-48;
   padding-top: 12px;
   padding-bottom: 8px;
+
   @media (max-width: 640px) {
     padding-top: 8px;
     padding-bottom: 7px;
@@ -70,6 +75,7 @@
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 25px;
     line-height: $line-height-640;
@@ -83,6 +89,7 @@
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 19px;
     line-height: $line-height-640;
@@ -94,6 +101,7 @@
   @include core-27;
   padding-top: 3px;
   padding-bottom: 2px;
+
   @media (max-width: 640px) {
     padding-top: 7px;
     padding-bottom: 3px;
@@ -107,6 +115,7 @@
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 17px;
     line-height: $line-height-640;
@@ -118,6 +127,7 @@
   @include core-24;
   padding-top: 3px;
   padding-bottom: 2px;
+
   @media (max-width: 640px) {
     padding-top: 7px;
     padding-bottom: 7px;
@@ -129,6 +139,7 @@
   @include core-24;
   padding-top: 0;
   padding-bottom: 12px;
+
   @media (max-width: 640px) {
     padding-top: 0;
     padding-bottom: 8px;
@@ -138,13 +149,16 @@
 @mixin core-19($line-height: (25 / 19), $line-height-640: (20 / 13)) {
   font-family: $NTA-Light;
   font-size: 19px;
+
   @include print {
-    font-size:14pt;
+    font-size: 14pt;
   }
+
   line-height: $line-height;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 13px;
     line-height: $line-height-640;
@@ -156,6 +170,7 @@
   @include core-19;
   padding-top: 7px;
   padding-bottom: 3px;
+
   @media (max-width: 640px) {
     padding-top: 6px;
     padding-bottom: 4px;
@@ -165,13 +180,16 @@
 @mixin core-16($line-height: (20 / 16), $line-height-640: (20 / 13)) {
   font-family: $NTA-Light;
   font-size: 16px;
+
   @include print {
     font-size: 12pt;
   }
+
   line-height: $line-height;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 13px;
     line-height: $line-height-640;
@@ -183,6 +201,7 @@
   @include core-16;
   padding-top: 5px;
   padding-bottom: 5px;
+
   @media (max-width: 640px) {
     padding-top: 6px;
     padding-bottom: 4px;
@@ -192,14 +211,17 @@
 @mixin core-14($line-height: (20 / 14), $line-height-640: (15 / 12)) {
   font-family: $NTA-Light;
   font-size: 14px;
+
   @include print {
     font-size: 11pt;
   }
+
   line-height: $line-height;
   font-weight: 400;
   -webkit-font-smoothing: subpixel-antialiased;
   letter-spacing: 0;
   text-transform: none;
+
   @media (max-width: 640px) {
     font-size: 12px;
     line-height: $line-height-640;
@@ -211,6 +233,7 @@
   @include core-14;
   padding-top: 6px;
   padding-bottom: 4px;
+
   @media (max-width: 640px) {
     padding-top: 4px;
     padding-bottom: 1px;
