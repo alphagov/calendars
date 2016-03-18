@@ -8,18 +8,18 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
 
     visit "/bank-holidays"
 
-    within 'head' do
-      assert page.has_selector?("title", :text => "UK bank holidays - GOV.UK")
-      desc = page.find("meta[name=description]")
+    within("head", visible: false) do
+      assert page.has_selector?("title", :text => "UK bank holidays - GOV.UK", visible: false)
+      desc = page.find("meta[name=description]", visible: false)
       assert_equal "Find out when bank holidays are in England, Wales, Scotland and Northern Ireland - including past and future bank holidays", desc["content"]
 
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays.json']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/england-and-wales.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/england-and-wales.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/scotland.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/england-and-wales.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/england-and-wales.ics']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/scotland.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']", visible: false)
     end
 
     within "#content" do

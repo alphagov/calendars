@@ -7,14 +7,14 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
 
     visit "/when-do-the-clocks-change"
 
-    within 'head' do
-      assert page.has_selector?("title", :text => "When do the clocks change? - GOV.UK")
-      desc = page.find("meta[name=description]")
+    within("head", visible: false) do
+      assert page.has_selector?("title", :text => "When do the clocks change? - GOV.UK", visible: false)
+      desc = page.find("meta[name=description]", visible: false)
       assert_equal "Dates when the clocks go back or forward in 2012, 2013, 2014 - includes British Summer Time, Greenwich Mean Time", desc["content"]
 
       #assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change.json']")
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change/united-kingdom.json']")
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/when-do-the-clocks-change/united-kingdom.ics']")
+      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/when-do-the-clocks-change/united-kingdom.json']", visible: false)
+      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/when-do-the-clocks-change/united-kingdom.ics']", visible: false)
     end
 
     within "#content" do
