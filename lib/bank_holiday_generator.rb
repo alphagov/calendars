@@ -9,7 +9,6 @@
 #  Holidays are announced there 6 months to one year in advance, between the months of May and July for the following year.
 
 class BankHolidayGenerator
-
   def initialize(year, nation)
     @year = year
     @nation = nation
@@ -60,12 +59,12 @@ class BankHolidayGenerator
     BANK_HOLIDAYS.fetch(nation).each do |bank_holiday|
       send(bank_holiday)
     end
-    bank_holidays.sort_by{|bh_hash| DateTime.parse(bh_hash.fetch("date"))}
+    bank_holidays.sort_by { |bh_hash| DateTime.parse(bh_hash.fetch("date")) }
   end
 
 private
 
-  def add_bank_holiday(title, date, substitute=false, bunting=true)
+  def add_bank_holiday(title, date, substitute = false, bunting = true)
     bank_holiday_hash = {
         "title"   => title,
         "date"    => date.strftime("%d/%m/%Y"),
@@ -74,7 +73,7 @@ private
     }
     if substitute
       bank_holiday_hash.merge!(
-        { "notes" => "common.substitute_day" }
+        "notes" => "common.substitute_day"
       )
     end
     bank_holidays << bank_holiday_hash
@@ -108,12 +107,12 @@ private
   end
 
   def good_friday
-    date = easter-2
+    date = easter - 2
     add_bank_holiday("bank_holidays.good_friday", date, false, false)
   end
 
   def easter_monday
-    date = easter+1
+    date = easter + 1
     add_bank_holiday("bank_holidays.easter_monday", date)
   end
 
@@ -164,11 +163,11 @@ private
   #Date utilities
 
   def first_monday_of_month(year, month)
-    Date.new(year, month, 1).upto(Date.new(year, month, -1)).find {|day| day.monday? }
+    Date.new(year, month, 1).upto(Date.new(year, month, -1)).find(&:monday?)
   end
 
   def last_monday_of_month(year, month)
-    Date.new(year, month, -1).downto(0).find {|day| day.monday? }
+    Date.new(year, month, -1).downto(0).find(&:monday?)
   end
 
   #The following code comes from:

@@ -3,7 +3,6 @@ require_relative '../test_helper'
 require 'ics_renderer'
 
 class ICSRendererTest < ActiveSupport::TestCase
-
   context "generating complete ics file" do
     should "generate correct ics header and footer" do
       r = ICSRenderer.new([], "/foo/ics")
@@ -58,7 +57,6 @@ class ICSRendererTest < ActiveSupport::TestCase
 
       assert_equal expected, @r.render_event(e, 2)
     end
-
   end
 
   context "generating a uid" do

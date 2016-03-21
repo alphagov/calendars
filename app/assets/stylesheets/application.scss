@@ -1,74 +1,74 @@
 // govuk_frontend_toolkit mixins
-@import "_conditionals";
-@import "_typography";
-@import "_colours";
-@import "_css3";
+@import "conditionals";
+@import "typography";
+@import "colours";
+@import "css3";
 
-/* local styleguide includes */
-@import "styleguide/_colours";
-@import "styleguide/_conditionals2";
+// local styleguide includes
+@import "styleguide/colours";
+@import "styleguide/conditionals2";
 
 
 .highlighted-event {
 
-  padding: 1.75em 0.75em 1.25em 0.75em;
+  padding: 1.75em 0.75em 1.25em;
 
   @include media(tablet) {
-    padding: 1.75em 0.75em 1.25em 0.75em;
+    padding: 1.75em 0.75em 1.25em;
   }
 
   @include media(mobile) {
-    padding: 0.5em 0.75em 0.25em 0.75em;
+    padding: 0.5em 0.75em 0.25em;
   }
 
   p {
     @include heading-24;
-    font-weight:bold;
-    padding:0;
-    margin:0;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
 
     @include media(mobile) {
       padding: 0;
       margin-top: 0;
       margin-bottom: 0;
-      font-weight:bold;
+      font-weight: bold;
       padding: 0;
-      margin:0;
+      margin: 0;
 
     }
 
     @include media(tablet) {
-      padding:0;
-      margin:0;
-      font-weight:bold;
+      padding: 0;
+      margin: 0;
+      font-weight: bold;
     }
 
     span {
-      display:block;
+      display: block;
       @include heading-24;
-      font-weight:bold;
+      font-weight: bold;
     }
 
     em {
-      display:block;
+      display: block;
       @include heading-80;
-      font-weight:bold;
+      font-weight: bold;
       margin-bottom: 0;
 
-      padding:0;
-      padding-top:0.2em;
-      padding-bottom:0.1em;
+      padding: 0;
+      padding-top: 0.2em;
+      padding-bottom: 0.1em;
 
       @include media(mobile) {
-        padding:0;
-        padding-top:0.2em;
-        padding-bottom:0.1em;
+        padding: 0;
+        padding-top: 0.2em;
+        padding-bottom: 0.1em;
       }
 
       @include media(tablet) {
-        padding:0;
-        padding-top:0.2em;
-        padding-bottom:0.1em;
+        padding: 0;
+        padding-top: 0.2em;
+        padding-bottom: 0.1em;
       }
     }
   }
@@ -77,10 +77,10 @@
 article {
   .subscribe {
     background: none;
-    padding:0 0 0 1em;
+    padding: 0 0 0 1em;
 
     @include media(tablet) {
-      padding:0.25em 0 0.25em 0;
+      padding: 0.25em 0;
     }
 
     p {
@@ -100,19 +100,22 @@ article {
   }
 }
 
-/* calendar tables */
+// calendar tables
 
+// scss-lint:disable QualifyingElement
 table.calendar {
   margin-bottom: 1em;
 
-  td.calendar_date {
+  td.calendar-date {
     width: 25%;
     white-space: nowrap;
   }
-  td.calendar_day {
+
+  td.calendar-day {
     width: 25%;
   }
-  td.calendar_title {
+
+  td.calendar-title {
     width: 50%;
   }
 }
@@ -121,7 +124,7 @@ table.clocks-calendar .equal-width {
   width: 50%;
 }
 
-/* bunting lol */
+// bunting lol
 .bunted {
   .epic-bunting {
     width: 100%;
@@ -154,6 +157,7 @@ table.clocks-calendar .equal-width {
     }
   }
 
+  // scss-lint:disable IdSelector
   #content {
     margin-top: 4em;
 

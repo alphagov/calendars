@@ -3,11 +3,10 @@ require 'bank_holiday_generator'
 require_relative '../test_helper'
 
 class BankHolidayGeneratorTest < ActiveSupport::TestCase
-
   def self.generates_correct_bank_holidays(nation, year, locale, file_name)
     should "generate bank holidays correctly in #{nation} for year #{year}" do
       I18n.locale = locale
-      bank_holidays = JSON.parse( IO.read(Rails.root+"./test/fixtures/data/#{file_name}") ).fetch("divisions")
+      bank_holidays = JSON.parse(IO.read(Rails.root + "./test/fixtures/data/#{file_name}")).fetch("divisions")
       bank_holiday_generator = BankHolidayGenerator.new(year, nation)
       generated_bank_holidays = bank_holiday_generator.perform
       translated_bank_holidays = generated_bank_holidays.map { |bank_holiday|
@@ -33,8 +32,8 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
     # This is one example of why we need to reorder bank holidays by date.
     bank_holiday_generator = BankHolidayGenerator.new(2016, "england-and-wales")
     generated_bank_holidays = bank_holiday_generator.perform
-    index_of_christmas = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.christmas"}.first
-    index_of_boxing_day = generated_bank_holidays.each_index.select{|i| generated_bank_holidays[i]["title"] == "bank_holidays.boxing_day"}.first
+    index_of_christmas = generated_bank_holidays.each_index.find { |i| generated_bank_holidays[i]["title"] == "bank_holidays.christmas" }
+    index_of_boxing_day = generated_bank_holidays.each_index.find { |i| generated_bank_holidays[i]["title"] == "bank_holidays.boxing_day" }
     assert index_of_boxing_day < index_of_christmas
   end
 

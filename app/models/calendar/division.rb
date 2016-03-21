@@ -17,7 +17,7 @@ class Calendar
     end
 
     def year(name)
-      yr = years.find {|y| y.to_s == name }
+      yr = years.find { |y| y.to_s == name }
       raise CalendarNotFound unless yr
       yr
     end
@@ -28,7 +28,7 @@ class Calendar
 
     def upcoming_event
       @upcoming_event ||= begin
-        year = years.find {|y| y.upcoming_event }
+        year = years.find(&:upcoming_event)
         year.upcoming_event if year
       end
     end
@@ -46,10 +46,10 @@ class Calendar
     end
 
     def show_bunting?
-      upcoming_event and upcoming_event.date.today? and upcoming_event.bunting
+      upcoming_event && upcoming_event.date.today? && upcoming_event.bunting
     end
 
-    def as_json(options = {})
+    def as_json(_options = {})
       {
         "division" => I18n.t(@slug),
         "events" => events,

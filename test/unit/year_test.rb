@@ -2,7 +2,6 @@
 require_relative '../test_helper'
 
 class YearTest < ActiveSupport::TestCase
-
   should "return the year string for to_s" do
     assert_equal "2012", Calendar::Year.new("2012", :a_division, []).to_s
   end
@@ -10,8 +9,8 @@ class YearTest < ActiveSupport::TestCase
   context "events" do
     setup do
       @y = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
       ])
     end
 
@@ -37,17 +36,17 @@ class YearTest < ActiveSupport::TestCase
 
     should "return nil with no future events" do
       y = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
       ])
       assert_equal nil, y.upcoming_event
     end
 
     should "return the first event that's in the future" do
       y = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
-        {"title" => "baz", "date" => "16/10/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
+        { "title" => "baz", "date" => "16/10/2012" },
       ])
       Timecop.travel(Date.parse("2012-03-24")) do
         assert_equal "bar", y.upcoming_event.title
@@ -56,9 +55,9 @@ class YearTest < ActiveSupport::TestCase
 
     should "count an event today as a future event" do
       y = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
-        {"title" => "baz", "date" => "16/10/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
+        { "title" => "baz", "date" => "16/10/2012" },
       ])
       Timecop.travel(Date.parse("2012-08-27")) do
         assert_equal "bar", y.upcoming_event.title
@@ -67,9 +66,9 @@ class YearTest < ActiveSupport::TestCase
 
     should "cache the event" do
       y = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
-        {"title" => "baz", "date" => "16/10/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
+        { "title" => "baz", "date" => "16/10/2012" },
       ])
       Timecop.travel(Date.parse("2012-03-24")) do
         y.upcoming_event
@@ -82,15 +81,15 @@ class YearTest < ActiveSupport::TestCase
   context "upcoming_events" do
     setup do
       @year = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
-        {"title" => "baz", "date" => "16/10/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
+        { "title" => "baz", "date" => "16/10/2012" },
       ])
     end
 
     should "return all future events including today" do
       Timecop.travel("2012-08-27") do
-        assert_equal ["bar", "baz"], @year.upcoming_events.map(&:title)
+        assert_equal %w(bar baz), @year.upcoming_events.map(&:title)
       end
     end
 
@@ -104,9 +103,9 @@ class YearTest < ActiveSupport::TestCase
   context "past_events" do
     setup do
       @year = Calendar::Year.new("1234", :a_division, [
-        {"title" => "foo", "date" => "02/01/2012"},
-        {"title" => "bar", "date" => "27/08/2012"},
-        {"title" => "baz", "date" => "16/10/2012"},
+        { "title" => "foo", "date" => "02/01/2012" },
+        { "title" => "bar", "date" => "27/08/2012" },
+        { "title" => "baz", "date" => "16/10/2012" },
       ])
     end
 

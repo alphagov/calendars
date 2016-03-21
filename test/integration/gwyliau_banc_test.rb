@@ -2,7 +2,6 @@
 require_relative '../integration_test_helper'
 
 class GwyliauBancTest < ActionDispatch::IntegrationTest
-
   setup do
     artefact_data = artefact_for_slug('gwyliau-banc')
     artefact_data["details"].merge!(language: :cy)
@@ -15,7 +14,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     visit "/gwyliau-banc"
 
     within("head", visible: false) do
-      assert page.has_selector?("title", :text => "Gwyliau banc y DU - GOV.UK", visible: false)
+      assert page.has_selector?("title", text: "Gwyliau banc y DU - GOV.UK", visible: false)
       desc = page.find("meta[name=description]", visible: false)
       assert_equal "Calendr gwyliau banc y DU - edrychwch ar wyliau banc a gwyliau cyhoeddus y DU", desc["content"]
 
@@ -41,14 +40,14 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
 
         within '.tab-content' do
           within '#cymru-a-lloegr' do
-            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", :href => "/gwyliau-banc/cymru-a-lloegr.ics")
+            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", href: "/gwyliau-banc/cymru-a-lloegr.ics")
 
-            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Nghymru a Lloegr", :year => "2012", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc i ddod yng Nghymru a Lloegr", year: "2012", rows: [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
             ]
-            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Nghymru a Lloegr", :year => "2013", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc i ddod yng Nghymru a Lloegr", year: "2013", rows: [
               ["2013"],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith"],
@@ -60,7 +59,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan"],
             ]
 
-            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yng Nghymru a Lloegr", :year => "2012", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc yn y gorffennol yng Nghymru a Lloegr", year: "2012", rows: [
               ["2012"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines (gŵyl banc ychwanegol)"],
@@ -73,14 +72,14 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           end
 
           within '#yr-alban' do
-            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", :href => "/gwyliau-banc/yr-alban.ics")
+            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", href: "/gwyliau-banc/yr-alban.ics")
 
-            assert_bank_holiday_table :title => "Gwyliau banc i ddod yn yr Alban", :year => "2012", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc i ddod yn yr Alban", year: "2012", rows: [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
             ]
-            assert_bank_holiday_table :title => "Gwyliau banc i ddod yn yr Alban", :year => "2013", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc i ddod yn yr Alban", year: "2013", rows: [
               ["2013"],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["2 Ionawr", "Dydd Mercher", "2il Ionawr"],
@@ -93,7 +92,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan"],
             ]
 
-            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yn yr Alban", :year => "2012", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc yn y gorffennol yn yr Alban", year: "2012", rows: [
               ["2012"],
               ["30 Tachwedd", "Dydd Gwener", "Gŵyl Andreas"],
               ["6 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
@@ -107,14 +106,14 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           end
 
           within '#gogledd-iwerddon' do
-            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", :href => "/gwyliau-banc/gogledd-iwerddon.ics")
+            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", href: "/gwyliau-banc/gogledd-iwerddon.ics")
 
-            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Ngogledd Iwerddon", :year => "2012", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc i ddod yng Ngogledd Iwerddon", year: "2012", rows: [
               ["2012"],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
             ]
-            assert_bank_holiday_table :title => "Gwyliau banc i ddod yng Ngogledd Iwerddon", :year => "2013", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc i ddod yng Ngogledd Iwerddon", year: "2013", rows: [
               ["2013"],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["18 Mawrth",
@@ -130,7 +129,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["26 Rhagfyr", "Dydd Iau", "Gŵyl San Steffan"],
             ]
 
-            assert_bank_holiday_table :title => "Gwyliau banc yn y gorffennol yng Ngogledd Iwerddon", :year => "2012", :rows => [
+            assert_bank_holiday_table title: "Gwyliau banc yn y gorffennol yng Ngogledd Iwerddon", year: "2012", rows: [
               ["2012"],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["12 Gorffennaf", "Dydd Iau", "Brwydr y Boyne (Diwrnod yr Orangemen)"],
@@ -155,7 +154,6 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
       visit "/gwyliau-banc"
 
       within ".tab-content" do
-
         within '#cymru-a-lloegr .highlighted-event' do
           assert page.has_content?("Y gŵyl banc nesaf yng Nghymru a Lloegr yw")
           assert page.has_content?("6 Ebrill")

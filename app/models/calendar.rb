@@ -1,5 +1,4 @@
 class Calendar
-
   REPOSITORY_PATH = Rails.env.test? ? "test/fixtures/data" : "lib/data"
 
   class CalendarNotFound < StandardError
@@ -7,7 +6,7 @@ class Calendar
 
   def self.find(slug)
     json_file = Rails.root.join(REPOSITORY_PATH, "#{slug}.json")
-    if File.exists?(json_file)
+    if File.exist?(json_file)
       data = JSON.parse(File.read(json_file))
       self.new(slug, data)
     else
@@ -29,11 +28,11 @@ class Calendar
   end
 
   def divisions
-    @divisions ||= @data["divisions"].map {|slug, data| Division.new(slug, data) }
+    @divisions ||= @data["divisions"].map { |slug, data| Division.new(slug, data) }
   end
 
   def division(slug)
-    div = divisions.find {|d| d.slug == slug }
+    div = divisions.find { |d| d.slug == slug }
     raise CalendarNotFound unless div
     div
   end
@@ -46,7 +45,7 @@ class Calendar
     divisions.any?(&:show_bunting?)
   end
 
-  def as_json(options = nil)
+  def as_json(_options = nil)
     divisions.each_with_object({}) do |division, hash|
       hash[I18n.t(division.slug)] = division.as_json
     end

@@ -1,6 +1,5 @@
 class Calendar
   class Year
-
     def initialize(year_str, division, data = [])
       @year_str = year_str
       @division = division
@@ -18,15 +17,15 @@ class Calendar
     end
 
     def upcoming_event
-      @upcoming_event ||= events.find {|e| e.date >= Date.today }
+      @upcoming_event ||= events.find { |e| e.date >= Date.today }
     end
 
     def upcoming_events
-      @upcoming_events ||= events.select {|e| e.date >= Date.today }
+      @upcoming_events ||= events.select { |e| e.date >= Date.today }
     end
 
     def past_events
-      @past_events ||= events.select {|e| e.date < Date.today }
+      @past_events ||= events.select { |e| e.date < Date.today }
     end
   end
 end
