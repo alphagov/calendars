@@ -75,6 +75,12 @@ class CalendarControllerTest < ActionController::TestCase
         get :calendar, scope: 'bank-holidays', format: :json
         assert_equal "max-age=3600, public", response.headers["Cache-Control"]
       end
+
+      should "set the CORS headers" do
+        get :calendar, scope: 'bank-holidays', format: :json
+
+        assert_equal "*", response.headers['Access-Control-Allow-Origin']
+      end
     end
 
     should "404 for a non-existent calendar" do
