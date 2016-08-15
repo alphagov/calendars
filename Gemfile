@@ -13,7 +13,7 @@ gem 'airbrake', '4.3.0'
 gem 'rack_strip_client_ip', '0.0.1'
 gem 'unicorn', '~> 5.0.0'
 
-gem 'sass-rails', '5.0.4'
+gem 'sass-rails', '5.0.6'
 gem 'uglifier', '2.7.2'
 
 if ENV['SLIMMER_DEV']
