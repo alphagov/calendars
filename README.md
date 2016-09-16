@@ -44,14 +44,19 @@ The division `title` attribute is optional.  If this is not present the slug wil
 
 ### Dependencies
 
-- [panopticon](https://github.com/alphagov/panopticon): this app sends data to panopticon to register URLs and for search indexing.
+- [panopticon](https://github.com/alphagov/panopticon): this app sends data to panopticon to register URLs.
+- [rummager](https://github.com/alphagov/rummager): this app indexes its pages for search via Rummager.
 - [publishing-api](https://github.com/alphagov/publishing-api): this app sends data to the content-store.
 
 ### Additional information
 
 #### Publishing to GOV.UK
 
-- `bundle exec rake panopticon:register` will send the calendars to panopticon. Panopticon will register the URL and send the data to Rummager for indexing in search.
+- `bundle exec rake panopticon:register` will send the calendars to panopticon. Panopticon will register the URL.
+
+#### Search indexing
+
+- `bundle exec rake rummager:index_all` will send the data to Rummager for indexing in search.
 
 #### Generate bank holidays JSON
 
