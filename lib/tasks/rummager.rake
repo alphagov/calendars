@@ -2,7 +2,7 @@ require 'registerable_calendar'
 
 namespace :rummager do
   desc "Indexes all calendars in Rummager"
-  task index_all: :environment do
+  task index: :environment do
     require 'gds_api/rummager'
 
     logger = GdsApi::Base.logger = Logger.new(STDERR).tap { |l| l.level = Logger::INFO }
