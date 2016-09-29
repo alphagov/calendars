@@ -28,11 +28,12 @@
           <% @calendar.divisions.each do |division| %>
             <div class="js-tab-pane tab-pane" id="<%=t division.slug %>">
               <% if division.upcoming_event %>
-                <div class="highlighted-event">
+                <div class="highlighted-event" itemscope itemtype="http://schema.org/Event">
+                  <meta itemprop="location" content="<%=t("#{division.title}")%>" />
                   <p><%=t "common.next_holiday_in_is", :in_nation => t("#{division.title}_in") %></p>
                   <p>
-                    <em><%= division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B") %></em>
-                    <span><%=division.upcoming_event.title %></span>
+                    <time itemprop="startDate" datetime="<%=division.upcoming_event.date%>"><%= division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B") %></time>
+                    <span itemprop="name"><%=division.upcoming_event.title %></span>
                   </p>
                 </div>
               <% end %>
@@ -45,6 +46,7 @@
               </div>
 
               <%= render :partial => 'calendar_by_year', :locals => {
+                  :location => division.title,
                   :events_by_year => division.upcoming_events_by_year,
                   :caption => "#{t "common.upcoming_bank_holidays"} #{t "#{division.title}_in"}"} %>
 
@@ -53,6 +55,7 @@
               <p><%= raw(t("common.bank_holiday_benefits"))%></p>
 
               <%= render :partial => 'calendar_by_year', :locals => {
+                  :location => division.title,
                   :events_by_year => division.past_events_by_year,
                   :caption => "#{t "common.past_bank_holidays"} #{t "#{division.title}_in"}"} %>
             </div>
