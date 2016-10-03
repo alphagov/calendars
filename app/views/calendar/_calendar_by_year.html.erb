@@ -11,10 +11,14 @@
         <tr itemscope itemtype="http://schema.org/Event">
           <meta itemprop="location" content="<%=t("#{location}")%>" />
           <td class="calendar-date">
-            <time itemprop="startDate" datetime="<%= event.date %>"><%= l event.date, :format => '%e %B' %></time>
+            <time itemprop="startDate" datetime="<%= event.date %>">
+              <%= l event.date, :format => '%e %B' %>
+            </time>
           </td>
           <td class="calendar-day"><%= l event.date, :format => '%A' %></td>
-          <td class="calendar-title" itemprop="name"><%= event.title %><%= " (#{event.notes.downcase})" unless event.notes.blank? %></td>
+          <td class="calendar-title" itemprop="name">
+            <%= event.title %><%= " (#{event.notes.downcase})" unless event.notes.blank? %>
+          </td>
         </tr>
       <% end %>
     </tbody>

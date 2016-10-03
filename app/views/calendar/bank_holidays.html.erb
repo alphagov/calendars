@@ -32,7 +32,9 @@
                   <meta itemprop="location" content="<%=t("#{division.title}")%>" />
                   <p><%=t "common.next_holiday_in_is", :in_nation => t("#{division.title}_in") %></p>
                   <p>
-                    <time itemprop="startDate" datetime="<%=division.upcoming_event.date%>"><%= division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B") %></time>
+                    <time itemprop="startDate" datetime="<%=division.upcoming_event.date%>">
+                      <%= division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B") %>
+                    </time>
                     <span itemprop="name"><%=division.upcoming_event.title %></span>
                   </p>
                 </div>

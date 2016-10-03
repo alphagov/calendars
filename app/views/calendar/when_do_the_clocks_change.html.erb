@@ -29,8 +29,18 @@
             <% division.years.each do |year| -%>
               <tr>
                 <th scope="row"><%= year %></th>
-                <td itemscope itemtype="http://schema.org/Event"><meta itemprop="name" content="Clocks go forward"/><time itemprop="startDate" datetime="<%= year.events[0].date %>"><%= year.events[0].date.strftime('%e %B') %></td>
-                <td itemscope itemtype="http://schema.org/Event"><meta itemprop="name" content="Clocks go back"/><time itemprop="startDate" datetime="<%= year.events[1].date %>"><%= year.events[1].date.strftime('%e %B') %></td>
+                <td itemscope itemtype="http://schema.org/Event">
+                  <meta itemprop="name" content="Clocks go forward"/>
+                  <time itemprop="startDate" datetime="<%= year.events[0].date %>">
+                    <%= year.events[0].date.strftime('%e %B') %>
+                  </time>
+                </td>
+                <td itemscope itemtype="http://schema.org/Event">
+                  <meta itemprop="name" content="Clocks go back"/>
+                  <time itemprop="startDate" datetime="<%= year.events[1].date %>">
+                    <%= year.events[1].date.strftime('%e %B') %>
+                  </time>
+                </td>
               </tr>
             <% end -%>
           </tbody>
