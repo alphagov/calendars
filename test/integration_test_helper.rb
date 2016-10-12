@@ -1,13 +1,12 @@
 require_relative 'test_helper'
 require 'capybara/rails'
-require 'gds_api/test_helpers/content_api'
+require 'gds_api/test_helpers/content_store'
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-  include GdsApi::TestHelpers::ContentApi
+  include GdsApi::TestHelpers::ContentStore
 
   setup do
-    stub_content_api_default_artefact
     I18n.locale = :en
   end
 

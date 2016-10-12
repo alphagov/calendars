@@ -1,13 +1,13 @@
 require_relative '../test_helper'
-require 'gds_api/test_helpers/content_api'
+require 'gds_api/test_helpers/content_store'
 
 class CalendarControllerTest < ActionController::TestCase
-  include GdsApi::TestHelpers::ContentApi
+  include GdsApi::TestHelpers::ContentStore
 
   context "GET 'calendar'" do
     setup do
-      stub_content_api_default_artefact
       Calendar.stubs(:find).returns(Calendar.new('something', "divisions" => []))
+      content_store_has_item('/bank-holidays')
     end
 
     context "HTML request (no format)" do
@@ -29,35 +29,14 @@ class CalendarControllerTest < ActionController::TestCase
         get :calendar, scope: 'bank-holidays'
         assert_equal "max-age=3600, public", response.headers["Cache-Control"]
       end
-
-      should "send analytics headers" do
-        get :calendar, scope: 'bank-holidays'
-
-        assert_equal 'calendar', @response.headers["X-Slimmer-Format"]
-      end
-
-      should "send artefact from content_api to slimmer" do
-        artefact_data = artefact_for_slug('bank-holidays')
-        content_api_has_an_artefact('bank-holidays', artefact_data)
-
-        get :calendar, scope: 'bank-holidays'
-
-        assert_equal artefact_data.to_json, @response.headers[Slimmer::Headers::ARTEFACT_HEADER]
-      end
-
-      should "503 if fetching the arterfact times out" do
-        stub_request(:get, %r{\A#{GdsApi::TestHelpers::ContentApi::CONTENT_API_ENDPOINT}}).to_timeout
-        get :calendar, scope: 'bank-holidays'
-        assert_equal 503, response.status
-      end
     end
 
-    context "for a welsh language artefact" do
+    context "for a welsh language content item" do
       should "set the I18n locale" do
-        artefact_data = artefact_for_slug('gwyliau-banc')
-        artefact_data["details"].merge!(language: "cy")
-        content_api_has_an_artefact('gwyliau-banc', artefact_data)
-        get :calendar, scope: 'gwyliau-banc'
+        content_item = content_item_for_base_path('/bank-holidays')
+        content_item["locale"] = "cy"
+        content_store_has_item('/bank-holidays', content_item)
+        get :calendar, scope: 'gwyliau-banc', locale: 'cy'
         assert_equal :cy, I18n.locale
       end
     end
@@ -100,7 +79,6 @@ class CalendarControllerTest < ActionController::TestCase
 
   context "GET 'division'" do
     setup do
-      stub_content_api_default_artefact
       @division = stub("Division", to_json: "", events: [])
       @calendar = stub("Calendar")
       @calendar.stubs(:division).returns(@division)

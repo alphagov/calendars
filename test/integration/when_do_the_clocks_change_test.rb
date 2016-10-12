@@ -2,6 +2,10 @@
 require_relative '../integration_test_helper'
 
 class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
+  setup do
+    content_store_has_item('/when-do-the-clocks-change')
+  end
+
   should "display the clocks change page" do
     visit "/when-do-the-clocks-change"
 
