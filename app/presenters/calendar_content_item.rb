@@ -22,7 +22,7 @@ class CalendarContentItem
     {
       title: calendar.title,
       base_path: base_path,
-      document_type: 'placeholder_calendar',
+      document_type: 'calendar',
       schema_name: 'placeholder_calendar',
       publishing_app: 'calendars',
       rendering_app: 'calendars',

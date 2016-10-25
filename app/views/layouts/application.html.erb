@@ -5,13 +5,20 @@
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'print', :media => :print %>
     <%= yield :head %>
+    <%= render partial: 'govuk_component/analytics_meta_tags', locals: { content_item: @content_item } %>
+    <% if @meta_section %>
+      <meta name="govuk:section" content="<%= @meta_section %>">
+    <% end %>
   </head>
   <body class="mainstream">
+    <div class="header-context"><!-- Deliberately empty. This will prevent Slimmer from adding the artefact-breadcrumb. --></div>
     <div id="wrapper" class="answer <%= yield :wrapper_class %>">
+      <%= render partial: 'govuk_component/breadcrumbs', locals: @navigation_helpers.breadcrumbs %>
       <div class="grid-row">
         <%= yield %>
-
-        <div id="related-items"></div>
+        <div class="related-container">
+          <%= render partial: 'govuk_component/related_items', locals: @navigation_helpers.related_items %>
+        </div>
       </div>
     </div>
   </body>

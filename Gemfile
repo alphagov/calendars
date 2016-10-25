@@ -7,6 +7,7 @@ gem 'json', '~> 1.8.3'
 gem 'plek', '1.12.0'
 
 gem 'govuk_frontend_toolkit', '~> 4.9.0'
+gem 'govuk_navigation_helpers', '~> 2.0.0'
 
 gem 'logstasher', '0.4.8'
 gem 'airbrake', '4.3.0'
@@ -19,13 +20,13 @@ gem 'uglifier', '2.7.2'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '9.1.0'
+  gem 'slimmer', '9.2.1'
 end
 
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '~> 36.4.0'
+  gem 'gds-api-adapters', '~> 37.1.0'
 end
 
 group :test, :development do

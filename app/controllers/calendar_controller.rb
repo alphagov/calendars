@@ -1,9 +1,6 @@
-require 'gds_api/helpers'
 require 'ics_renderer'
 
 class CalendarController < ApplicationController
-  include GdsApi::Helpers
-
   before_filter :set_locale
   before_filter :load_calendar
 
@@ -14,11 +11,20 @@ class CalendarController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @artefact = content_api.artefact(params[:scope])
+        @content_item = Services.content_store.content_item("/#{scope}").to_hash
+        # Remove the organisations from the content item - this will prevent the
+        # govuk:analytics:organisations meta tag from being generated until there is
+        # a better way of doing this.
+        if @content_item["links"]
+          @content_item["links"].delete("organisations")
+        end
 
-        I18n.locale = @artefact.details.language if @artefact
-        set_slimmer_artefact(@artefact)
-        set_slimmer_headers format: "calendar"
+        @navigation_helpers = GovukNavigationHelpers::NavigationHelper.new(@content_item)
+        section_name = @content_item.dig("links", "parent", 0, "links", "parent", 0, "title")
+        if section_name
+          @meta_section = section_name.downcase
+        end
+
         render scope.tr('-', '_')
       end
       format.json do

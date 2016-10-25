@@ -24,6 +24,8 @@ Dir[Rails.root.join('test/support/*.rb')].each { |f| require f }
 
 class ActiveSupport::TestCase
   setup do
+    stub_request(:get, %r{#{Plek.new.find("static")}/templates/locales/(en|cy)})
+      .to_return(body: {}.to_json)
     I18n.locale = :en
   end
 

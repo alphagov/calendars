@@ -3,9 +3,9 @@ require_relative '../integration_test_helper'
 
 class GwyliauBancTest < ActionDispatch::IntegrationTest
   setup do
-    artefact_data = artefact_for_slug('gwyliau-banc')
-    artefact_data["details"].merge!(language: :cy)
-    content_api_has_an_artefact('gwyliau-banc', artefact_data)
+    content_item = content_item_for_base_path('/bank-holidays')
+    content_item["locale"] = "cy"
+    content_store_has_item('/bank-holidays', content_item)
   end
 
   should "display the Gwyliau Banc page" do
