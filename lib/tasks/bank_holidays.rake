@@ -12,7 +12,7 @@ namespace :bank_holidays do
         File.write("bank_holidays_#{year}_#{nation}.json", bank_holidays.to_json)
       end
     else
-      p "Please enter the year for which you want to generate bank holidays for"
+      p "Please enter the year that you want to generate bank holidays for"
     end
   end
 end
