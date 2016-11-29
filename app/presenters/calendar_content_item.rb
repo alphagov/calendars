@@ -23,14 +23,14 @@ class CalendarContentItem
       title: calendar.title,
       base_path: base_path,
       document_type: 'calendar',
-      schema_name: 'placeholder_calendar',
+      schema_name: 'generic',
       publishing_app: 'calendars',
       rendering_app: 'calendars',
       locale: 'en',
       details: {},
       public_updated_at: Time.current.to_datetime.rfc3339,
       routes: [
-        { type: 'exact', path: base_path }
+        { type: 'prefix', path: base_path }
       ]
     }
   end

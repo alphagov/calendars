@@ -9,7 +9,7 @@ class CalendarContentItemTest < ActiveSupport::TestCase
 
     payload = CalendarContentItem.new(calendar).payload
 
-    assert_valid_against_schema payload, 'placeholder'
+    assert_valid_against_schema payload, 'generic'
   end
 
   def test_payload_contains_correct_data
