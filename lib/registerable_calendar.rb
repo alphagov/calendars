@@ -31,11 +31,13 @@ class RegisterableCalendar
     [@calendar.need_id.to_s]
   end
 
+  # Sending an empty array for `paths` and `prefixes` will make sure we don't
+  # register routes in Panopticon.
   def paths
-    ["/#{@slug}.json"]
+    []
   end
 
   def prefixes
-    ["/#{@slug}"]
+    []
   end
 end
