@@ -74,10 +74,9 @@ private
 
   def handle_bank_holiday_ics_calendars
     if scope == "bank-holidays"
-      I18n.backend.send(:init_translations) unless I18n.backend.initialized?
-      translations = I18n.backend.send(:translations)
-      division_key = translations[I18n.locale][:common][:nations].key(params[:division]).to_s
-      params[:division] = "common.nations." + division_key
+      division_slug = Calendar::Division::SLUGS.fetch(params[:division])
+
+      params[:division] = "common.nations.#{division_slug}"
     end
   end
 end

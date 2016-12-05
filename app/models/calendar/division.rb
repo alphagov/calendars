@@ -1,5 +1,14 @@
 class Calendar
   class Division
+    SLUGS = {
+      "england-and-wales" => "england-and-wales_slug",
+      "cymru-a-lloegr" => "england-and-wales_slug",
+      "northern-ireland" => "northern-ireland_slug",
+      "gogledd-iwerddon" => "northern-ireland_slug",
+      "scotland" => "scotland_slug",
+      "yr-alban" => "scotland_slug",
+    }.freeze
+
     attr_reader :slug, :title
 
     def initialize(slug, data = {})
