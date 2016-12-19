@@ -45,6 +45,14 @@ class Calendar
     divisions.any?(&:show_bunting?)
   end
 
+  def bunting_styles
+    if [1, 12].include? Date.today.month
+      'tinsel'
+    else
+      ''
+    end
+  end
+
   def as_json(_options = nil)
     divisions.each_with_object({}) do |division, hash|
       hash[I18n.t(division.slug)] = division.as_json

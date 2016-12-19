@@ -1,7 +1,7 @@
 <%= render :partial => "calendar_head" %>
 
 <% if @calendar.show_bunting? %>
-  <div class="epic-bunting"><span></span></div>
+  <div class="epic-bunting <%= @calendar.bunting_styles %>"><span></span></div>
 <% end %>
 
 <main id="content" role="main" class="group">
