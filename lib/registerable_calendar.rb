@@ -1,7 +1,5 @@
 require 'ostruct'
 
-# Takes a path and produces a calendar object for registering in
-# panopticon
 class RegisterableCalendar
   extend Forwardable
 
