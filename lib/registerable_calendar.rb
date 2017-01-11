@@ -1,11 +1,9 @@
 require 'ostruct'
 
-# Takes a path and produces a calendar object for registering in
-# panopticon
 class RegisterableCalendar
   extend Forwardable
 
-  attr_accessor :calendar, :slug, :live
+  attr_accessor :calendar, :slug
 
   def_delegators :@calendar, :indexable_content, :content_id
 
@@ -21,23 +19,5 @@ class RegisterableCalendar
 
   def description
     I18n.t(@calendar.description)
-  end
-
-  def state
-    'live'
-  end
-
-  def need_ids
-    [@calendar.need_id.to_s]
-  end
-
-  # Sending an empty array for `paths` and `prefixes` will make sure we don't
-  # register routes in Panopticon.
-  def paths
-    []
-  end
-
-  def prefixes
-    []
   end
 end
