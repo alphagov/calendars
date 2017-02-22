@@ -22,7 +22,7 @@ gem 'uglifier', '2.7.2'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '10.0.0'
+  gem 'slimmer', '10.1.1'
 end
 
 if ENV['API_DEV']
