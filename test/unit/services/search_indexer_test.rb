@@ -16,6 +16,7 @@ class SearchIndexerTest < ActiveSupport::TestCase
       description:  "Find out when bank holidays are in England, Wales, Scotland and Northern Ireland - including past and future bank holidays",
       indexable_content: "",
       link: '/bank-holidays',
+      content_store_document_type: 'calendar',
     )
 
     SearchIndexer.call(registerable_calendar)
