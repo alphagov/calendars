@@ -73,5 +73,10 @@ class IcalendarTest < ActionDispatch::IntegrationTest
       assert_equal 301, response.status
       assert_equal "http://www.example.com/bank-holidays/northern-ireland.ics", response.location
     end
+
+    should "404 if the division does not exist" do
+      get "/bank-holidays/never-never-land.ics"
+      assert_equal 404, response.status
+    end
   end
 end
