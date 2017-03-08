@@ -74,7 +74,7 @@ private
 
   def handle_bank_holiday_ics_calendars
     if scope == "bank-holidays"
-      division_slug = Calendar::Division::SLUGS.fetch(params[:division])
+      division_slug = Calendar::Division::SLUGS[params[:division]]
 
       params[:division] = "common.nations.#{division_slug}"
     end

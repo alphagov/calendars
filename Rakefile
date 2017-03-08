@@ -6,3 +6,5 @@ require File.expand_path('../config/application', __FILE__)
 require 'ci/reporter/rake/minitest' if Rails.env.test?
 
 Rails.application.load_tasks
+
+task default: [:lint]
