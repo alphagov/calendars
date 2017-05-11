@@ -275,5 +275,8 @@ DEPENDENCIES
   unicorn (~> 5.0.0)
   webmock (= 1.24.2)
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.13.1
+   1.14.5
