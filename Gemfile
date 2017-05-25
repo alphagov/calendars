@@ -5,30 +5,30 @@ ruby File.read(".ruby-version").chomp
 gem 'rails', '~> 5.0.3'
 gem 'rails-i18n', '~> 5.0.4'
 
-gem 'json', '~> 1.8.3'
-gem 'plek', '1.12.0'
+gem 'json', '~> 2.1.0'
+gem 'plek', '2.0.0'
 
-gem 'govuk_frontend_toolkit', '~> 4.9.0'
+gem 'govuk_frontend_toolkit', '~> 6.0.3'
 gem 'govuk_navigation_helpers', '~> 2.0.0'
 
-gem 'logstasher', '0.4.8'
-gem 'airbrake', '4.3.0'
-gem 'rack_strip_client_ip', '0.0.1'
-gem 'unicorn', '~> 5.0.0'
+gem 'logstasher', '1.2.1'
+gem 'airbrake', github: 'alphagov/airbrake', branch: 'silence-dep-warnings-for-rails-5'
+gem 'rack_strip_client_ip', '0.0.2'
+gem 'unicorn', '~> 5.3.0'
 
 gem 'sass-rails', '5.0.6'
-gem 'uglifier', '2.7.2'
+gem 'uglifier', '3.2.0'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '10.1.1'
+  gem 'slimmer', '11.0.0'
 end
 
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '~> 37.1.0'
+  gem 'gds-api-adapters', '~> 46.0.0'
 end
 
 group :test, :development do
