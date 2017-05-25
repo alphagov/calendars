@@ -1,8 +1,8 @@
 require 'ics_renderer'
 
 class CalendarController < ApplicationController
-  before_filter :set_locale
-  before_filter :load_calendar
+  before_action :set_locale
+  before_action :load_calendar
 
   rescue_from Calendar::CalendarNotFound, with: :simple_404
 
@@ -40,7 +40,7 @@ class CalendarController < ApplicationController
 
     respond_to do |format|
       format.json { render json: division }
-      format.ics { render text: ICSRenderer.new(division.events, request.path).render }
+      format.ics { render plain: ICSRenderer.new(division.events, request.path).render }
       format.all { simple_404 }
     end
   end
