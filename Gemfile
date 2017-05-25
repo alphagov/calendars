@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby File.read(".ruby-version").chomp
 
-gem 'rails', '~> 4.2.7'
-gem 'rails-i18n', '4.0.8'
+gem 'rails', '~> 5.0.3'
+gem 'rails-i18n', '~> 5.0.4'
 
 gem 'json', '~> 1.8.3'
 gem 'plek', '1.12.0'
@@ -37,6 +37,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'mocha', '1.1.0', require: false
   gem 'shoulda', '3.5.0'
   gem 'simplecov', '0.10.0'
