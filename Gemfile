@@ -38,13 +38,13 @@ end
 
 group :test do
   gem 'rails-controller-testing'
-  gem 'mocha', '1.1.0', require: false
+  gem 'mocha', '1.2.1', require: false
   gem 'shoulda', '3.5.0'
-  gem 'simplecov', '0.10.0'
+  gem 'simplecov', '0.14.1'
   gem 'simplecov-rcov', '0.2.3'
   gem 'webmock', '1.24.2', require: false
   gem 'ci_reporter_minitest', '1.0.0'
-  gem 'capybara', '2.6.2'
-  gem 'timecop', '0.8.0'
+  gem 'capybara', '2.14.0'
+  gem 'timecop', '0.8.1'
   gem 'govuk-content-schema-test-helpers', '~> 1.4.0'
 end
