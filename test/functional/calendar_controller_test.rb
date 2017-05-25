@@ -6,17 +6,16 @@ class CalendarControllerTest < ActionController::TestCase
 
   context "GET 'calendar'" do
     setup do
-      Calendar.stubs(:find).returns(Calendar.new('something', "divisions" => []))
+      Calendar.stubs(:find).returns(Calendar.new("something", "title" => "Brilliant holidays!", "divisions" => []))
       content_store_has_item('/bank-holidays')
+      content_store_has_item('/when-do-the-clocks-change')
     end
 
     context "HTML request (no format)" do
-      should "load the calendar and assign it to @calendar" do
-        @controller.stubs(:render)
-        Calendar.expects(:find).with('bank-holidays').returns(:a_calendar)
-
+      should "load the calendar and shows it" do
         get :calendar, params: { scope: 'bank-holidays' }
-        assert_equal :a_calendar, assigns[:calendar]
+
+        assert_match "Brilliant holidays!", response.body
       end
 
       should "render the template corresponding to the given calendar" do
