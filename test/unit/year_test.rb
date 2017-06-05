@@ -31,7 +31,7 @@ class YearTest < ActiveSupport::TestCase
   context "upcoming_event" do
     should "return nil with no events" do
       y = Calendar::Year.new("1234", :a_division, [])
-      assert_equal nil, y.upcoming_event
+      assert_nil y.upcoming_event
     end
 
     should "return nil with no future events" do
@@ -39,7 +39,7 @@ class YearTest < ActiveSupport::TestCase
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
       ])
-      assert_equal nil, y.upcoming_event
+      assert_nil y.upcoming_event
     end
 
     should "return the first event that's in the future" do

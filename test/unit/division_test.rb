@@ -108,13 +108,13 @@ class DivisionTest < ActiveSupport::TestCase
     end
 
     should "return nil with no years" do
-      assert_equal nil, @div.upcoming_event
+      assert_nil @div.upcoming_event
     end
 
     should "return nil if no years have upcoming_events" do
       @years << stub("Year1", upcoming_event: nil)
       @years << stub("Year2", upcoming_event: nil)
-      assert_equal nil, @div.upcoming_event
+      assert_nil @div.upcoming_event
     end
 
     should "return the upcoming event for the first year that has one" do
