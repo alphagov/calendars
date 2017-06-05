@@ -13,9 +13,9 @@
         <%- division = @calendar.divisions.first -%>
 
         <% if division.upcoming_event %>
-          <div class="highlighted-event">
-            <p>The <%= division.upcoming_event.notes.gsub(' one hour', '').downcase %>
-              <em><%= division.upcoming_event.date.strftime("%e %B") %></em></p>
+          <div class="highlighted-event" itemscope itemtype="http://schema.org/Event">
+            <p itemprop="name">The <%= division.upcoming_event.notes.gsub(' one hour', '').downcase %>
+              <time itemprop="startDate" datetime="<%= division.upcoming_event.date %>"><%= division.upcoming_event.date.strftime("%e %B") %></time></p>
           </div>
         <% end %>
 
@@ -29,8 +29,18 @@
             <% division.years.each do |year| -%>
               <tr>
                 <th scope="row"><%= year %></th>
-                <td><%= year.events[0].date.strftime('%e %B') %></td>
-                <td><%= year.events[1].date.strftime('%e %B') %></td>
+                <td itemscope itemtype="http://schema.org/Event">
+                  <meta itemprop="name" content="Clocks go forward"/>
+                  <time itemprop="startDate" datetime="<%= year.events[0].date %>">
+                    <%= year.events[0].date.strftime('%e %B') %>
+                  </time>
+                </td>
+                <td itemscope itemtype="http://schema.org/Event">
+                  <meta itemprop="name" content="Clocks go back"/>
+                  <time itemprop="startDate" datetime="<%= year.events[1].date %>">
+                    <%= year.events[1].date.strftime('%e %B') %>
+                  </time>
+                </td>
               </tr>
             <% end -%>
           </tbody>
