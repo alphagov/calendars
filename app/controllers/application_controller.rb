@@ -17,8 +17,8 @@ protected
   def error_503(e); error(503, e); end
 
   def error(status_code, exception = nil)
-    if exception && defined? Airbrake
-      env["airbrake.error_id"] = notify_airbrake(exception)
+    if exception && defined? GovukError
+      GovukError.notify exception
     end
     render status: status_code, text: "#{status_code} error"
   end
