@@ -12,7 +12,6 @@ gem 'govuk_frontend_toolkit', '~> 6.0.3'
 gem 'govuk_navigation_helpers', '~> 2.0.0'
 
 gem 'logstasher', '1.2.1'
-gem 'airbrake', github: 'alphagov/airbrake', branch: 'silence-dep-warnings-for-rails-5'
 gem 'rack_strip_client_ip', '0.0.2'
 gem 'unicorn', '~> 5.3.0'
 
