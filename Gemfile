@@ -21,13 +21,13 @@ gem 'uglifier', '3.2.0'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '11.0.0'
+  gem 'slimmer', "~> 11.0.2"
 end
 
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '~> 47.2'
+  gem 'gds-api-adapters', "~> 47.9.1"
 end
 
 group :test, :development do
@@ -47,3 +47,6 @@ group :test do
   gem 'timecop', '0.8.1'
   gem 'govuk-content-schema-test-helpers', '~> 1.4.0'
 end
+
+# Upgrade to Sentry
+gem "govuk_app_config", "~> 0.2.0"
