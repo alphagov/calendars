@@ -87,24 +87,6 @@ When you are in Development:
 
 `bundle exec rake`
 
-### Deploying a preview to Heroku
-
-Start by creating a GitHub pull request with the changes you want to deploy.
-
-Make a note of the pull request number and use the `startup_heroku.sh` script to deploy your changes to Heroku:
-
-```bash
-$ PR=<number-of-pull-request> ./startup_heroku.sh
-```
-
-This script will create and configure an app on Heroku, push the __current branch__ and open the marriage-abroad Smart Answer in the browser.
-
-Once deployed you'll need to use the standard `git push` mechanism to deploy your changes.
-
-```bash
-./startup_heroku.sh
-```
-
 ## Licence
 
 [MIT License](LICENCE.txt)
