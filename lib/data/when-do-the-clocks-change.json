@@ -29,6 +29,18 @@
           "date": "28/10/2018",
           "notes": "Clocks go back one hour"
         }
+      ],
+      "2019": [
+        {
+          "title": "Start of British Summer Time",
+          "date": "31/03/2019",
+          "notes": "Clocks go forward one hour"
+        },
+        {
+          "title": "End of British Summer Time",
+          "date": "27/10/2019",
+          "notes": "Clocks go back one hour"
+        }
       ]
     }
   }
