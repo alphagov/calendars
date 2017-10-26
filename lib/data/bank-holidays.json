@@ -362,56 +362,6 @@
                 "bunting": true
               }
             ],
-            "2019": [
-                {
-                    "title": "bank_holidays.new_year",
-                    "date": "01/01/2019",
-                    "notes": "",
-                    "bunting": true
-                },
-                {
-                    "title": "bank_holidays.good_friday",
-                    "date": "19/04/2019",
-                    "notes": "",
-                    "bunting": false
-                },
-                {
-                    "title": "bank_holidays.easter_monday",
-                    "date": "22/04/2019",
-                    "notes": "",
-                    "bunting": true
-                },
-                {
-                    "title": "bank_holidays.early_may",
-                    "date": "06/05/2019",
-                    "notes": "",
-                    "bunting": true
-                },
-                {
-                    "title": "bank_holidays.spring",
-                    "date": "27/05/2019",
-                    "notes": "",
-                    "bunting": true
-                },
-                {
-                    "title": "bank_holidays.late_august",
-                    "date": "26/08/2019",
-                    "notes": "",
-                    "bunting": true
-                },
-                {
-                    "title": "bank_holidays.christmas",
-                    "date": "25/12/2019",
-                    "notes": "",
-                    "bunting": true
-                },
-                {
-                    "title": "bank_holidays.boxing_day",
-                    "date": "26/12/2019",
-                    "notes": "",
-                    "bunting": true
-                }
-            ],
             "slug": "common.nations.england-and-wales_slug",
             "title": "common.nations.england-and-wales"
         },
@@ -810,62 +760,6 @@
               {
                 "title": "bank_holidays.boxing_day",
                 "date": "26/12/2018",
-                "notes": "",
-                "bunting": true
-              }
-            ],
-            "2019": [
-              {
-                "title": "bank_holidays.new_year",
-                "date": "01/01/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.2nd_january",
-                "date": "02/01/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.good_friday",
-                "date": "19/04/2019",
-                "notes": "",
-                "bunting": false
-              },
-              {
-                "title": "bank_holidays.early_may",
-                "date": "06/05/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.spring",
-                "date": "27/05/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.summer",
-                "date": "05/08/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.st_andrew",
-                "date": "02/12/2019",
-                "notes": "common.substitute_day",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.christmas",
-                "date": "25/12/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.boxing_day",
-                "date": "26/12/2019",
                 "notes": "",
                 "bunting": true
               }
@@ -1314,69 +1208,7 @@
                 "bunting": true
               }
             ],
-            "2019": [
-              {
-                "title": "bank_holidays.new_year",
-                "date": "01/01/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.st_patrick",
-                "date": "18/03/2019",
-                "notes": "common.substitute_day",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.good_friday",
-                "date": "19/04/2019",
-                "notes": "",
-                "bunting": false
-              },
-              {
-                "title": "bank_holidays.easter_monday",
-                "date": "22/04/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.early_may",
-                "date": "06/05/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.spring",
-                "date": "27/05/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.battle_boyne",
-                "date": "12/07/2019",
-                "notes": "",
-                "bunting": false
-              },
-              {
-                "title": "bank_holidays.late_august",
-                "date": "26/08/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.christmas",
-                "date": "25/12/2019",
-                "notes": "",
-                "bunting": true
-              },
-              {
-                "title": "bank_holidays.boxing_day",
-                "date": "26/12/2019",
-                "notes": "",
-                "bunting": true
-              }
-            ],
-            "slug": "common.nations.northern-ireland_slug",
+            "slug":  "common.nations.northern-ireland_slug",
             "title": "common.nations.northern-ireland"
         }
     }
