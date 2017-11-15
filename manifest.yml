@@ -1,0 +1,12 @@
+---
+applications:
+- name: govuk-dev-calendars
+  memory: 256M
+  buildpack: ruby_buildpack
+  instances: 1
+  env:  
+    GOVUK_APP_DOMAIN: www.gov.uk
+    GOVUK_WEBSITE_ROOT: https://www.gov.uk
+    PLEK_SERVICE_CONTENT_STORE_URI: https://www.gov.uk/api
+#    PLEK_SERVICE_STATIC_URI: assets.digital.cabinet-office.gov.uk
+#    RAILS_SERVE_STATIC_ASSETS: yes
