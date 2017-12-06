@@ -20,7 +20,7 @@ class SearchPayloadPresenter
       content_id: content_id,
       rendering_app: 'calendars',
       publishing_app: 'calendars',
-      format: 'custom-application',
+      format: 'calendar',
       title: title,
       description: description,
       indexable_content: indexable_content,
