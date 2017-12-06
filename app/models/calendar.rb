@@ -62,4 +62,8 @@ class Calendar
   def content_id
     @data["content_id"]
   end
+
+  def body
+    @data["body"]
+  end
 end

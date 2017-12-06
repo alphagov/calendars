@@ -23,11 +23,13 @@ class CalendarContentItem
       title: calendar.title,
       base_path: base_path,
       document_type: 'calendar',
-      schema_name: 'generic',
+      schema_name: 'calendar',
       publishing_app: 'calendars',
       rendering_app: 'calendars',
       locale: 'en',
-      details: {},
+      details: {
+        body: calendar.body,
+      },
       public_updated_at: Time.current.to_datetime.rfc3339,
       routes: [
         { type: 'prefix', path: base_path }

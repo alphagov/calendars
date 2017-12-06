@@ -1,18 +1,18 @@
 class SearchPayloadPresenter
-  attr_reader :registerable_calendar
+  attr_reader :calendar
   delegate :slug,
            :title,
            :description,
-           :indexable_content,
+           :body,
            :content_id,
-           to: :registerable_calendar
+           to: :calendar
 
-  def initialize(registerable_calendar)
-    @registerable_calendar = registerable_calendar
+  def initialize(calendar)
+    @calendar = calendar
   end
 
-  def self.call(registerable_calendar)
-    new(registerable_calendar).call
+  def self.call(calendar)
+    new(calendar).call
   end
 
   def call
@@ -23,7 +23,7 @@ class SearchPayloadPresenter
       format: 'calendar',
       title: title,
       description: description,
-      indexable_content: indexable_content,
+      indexable_content: body,
       link: "/#{slug}",
       content_store_document_type: 'calendar',
     }

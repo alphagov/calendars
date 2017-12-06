@@ -1,13 +1,13 @@
 class SearchIndexer
-  attr_reader :registerable_calendar
-  delegate :slug, to: :registerable_calendar
+  attr_reader :calendar
+  delegate :slug, to: :calendar
 
-  def initialize(registerable_calendar)
-    @registerable_calendar = registerable_calendar
+  def initialize(calendar)
+    @calendar = calendar
   end
 
-  def self.call(registerable_calendar)
-    new(registerable_calendar).call
+  def self.call(calendar)
+    new(calendar).call
   end
 
   def call
@@ -25,6 +25,6 @@ private
   end
 
   def payload
-    SearchPayloadPresenter.call(registerable_calendar)
+    SearchPayloadPresenter.call(calendar)
   end
 end
