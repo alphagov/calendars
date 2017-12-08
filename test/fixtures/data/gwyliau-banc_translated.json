@@ -2,7 +2,7 @@
     "title": "Gwyliau banc y DU",
     "need_id": 100128,
     "description": "Calendr gwyliau banc y DU - edrychwch ar wyliau banc a gwyliau cyhoeddus y DU",
-    "indexable_content": "",
+    "body": "",
     "divisions": {
         "england-and-wales": {
             "title": "Cymru a Lloegr",

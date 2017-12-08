@@ -1,5 +1,3 @@
-require 'registerable_calendar'
-
 namespace :rummager do
   desc "Indexes all calendars in Rummager"
   task index: :environment do
@@ -7,11 +5,11 @@ namespace :rummager do
 
     logger = GdsApi::Base.logger = Logger.new(STDERR).tap { |l| l.level = Logger::INFO }
 
-    Dir.glob(Rails.root.join("lib/data/*.json")).each do |file|
-      details = RegisterableCalendar.new(file)
-      logger.info "Indexing '#{details.title}' in rummager..."
+    %w[bank-holidays when-do-the-clocks-change].each do |slug|
+      calendar = Calendar.find(slug)
+      logger.info "Indexing '#{calendar.title}' in rummager..."
 
-      SearchIndexer.call(details)
+      SearchIndexer.call(calendar)
     end
   end
 end
