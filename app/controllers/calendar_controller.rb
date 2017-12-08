@@ -12,13 +12,6 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @content_item = Services.content_store.content_item("/#{scope}").to_hash
-        # Remove the organisations from the content item - this will prevent the
-        # govuk:analytics:organisations meta tag from being generated until there is
-        # a better way of doing this.
-        if @content_item["links"]
-          @content_item["links"].delete("organisations")
-        end
-
         @navigation_helpers = GovukNavigationHelpers::NavigationHelper.new(@content_item)
         section_name = @content_item.dig("links", "parent", 0, "links", "parent", 0, "title")
         if section_name
