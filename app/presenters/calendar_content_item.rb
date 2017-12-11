@@ -21,6 +21,7 @@ class CalendarContentItem
   def payload
     {
       title: calendar.title,
+      description: calendar.description,
       base_path: base_path,
       document_type: 'calendar',
       schema_name: 'calendar',
