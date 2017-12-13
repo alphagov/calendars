@@ -44,7 +44,6 @@ The division `title` attribute is optional.  If this is not present the slug wil
 
 ### Dependencies
 
-- [rummager](https://github.com/alphagov/rummager): this app indexes its pages for search via Rummager.
 - [publishing-api](https://github.com/alphagov/publishing-api): this app sends data to the content-store.
 
 ### Additional information
@@ -56,7 +55,7 @@ The division `title` attribute is optional.  If this is not present the slug wil
 
 #### Search indexing
 
-- `bundle exec rake rummager:index` will send the data to Rummager for indexing in search.
+- Is performed automatically on data sent to publishing api.
 
 #### Generate bank holidays JSON
 
