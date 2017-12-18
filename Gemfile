@@ -16,7 +16,7 @@ gem 'rack_strip_client_ip', '0.0.2'
 gem 'unicorn', '~> 5.3.0'
 
 gem 'sass-rails', '5.0.6'
-gem 'uglifier', '3.2.0'
+gem 'uglifier', '4.0.2'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
