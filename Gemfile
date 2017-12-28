@@ -13,7 +13,7 @@ gem 'govuk_navigation_helpers', '~> 2.0.0'
 
 gem 'logstasher', '1.2.1'
 gem 'rack_strip_client_ip', '0.0.2'
-gem 'unicorn', '~> 5.3.0'
+gem 'unicorn', '~> 5.4.0'
 
 gem 'sass-rails', '5.0.7'
 gem 'uglifier', '3.2.0'
