@@ -73,10 +73,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: Plek.current.find('calendars') }
   config.action_mailer.delivery_method = :ses
 
-  # Enable JSON-style logging
-  config.logstasher.enabled = true
-  config.logstasher.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.json.log")
-  config.logstasher.supress_app_log = true
-
   config.eager_load = false
 end
