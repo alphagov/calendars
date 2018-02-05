@@ -69,7 +69,7 @@ GEM
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
-    gds-api-adapters (51.1.1)
+    gds-api-adapters (51.2.0)
       addressable
       link_header
       lrucache (~> 0.1.1)
@@ -141,7 +141,7 @@ GEM
     pry-byebug (3.5.1)
       byebug (~> 9.1)
       pry (~> 0.10)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-cache (1.7.1)
       rack (>= 0.4)
     rack-test (0.6.3)
@@ -276,7 +276,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (= 2.14.0)
   ci_reporter_minitest (= 1.0.0)
-  gds-api-adapters (~> 51.1.1)
+  gds-api-adapters (~> 51.2.0)
   govuk-content-schema-test-helpers (~> 1.4.0)
   govuk-lint (= 3.6.0)
   govuk_app_config (~> 0.2.0)
