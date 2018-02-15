@@ -43,7 +43,7 @@ group :test do
   gem 'ci_reporter_minitest', '1.0.0'
   gem 'capybara', '2.14.0'
   gem 'timecop', '0.9.1'
-  gem 'govuk-content-schema-test-helpers', '~> 1.4.0'
+  gem 'govuk-content-schema-test-helpers', '~> 1.6.0'
 end
 
 # Upgrade to Sentry
