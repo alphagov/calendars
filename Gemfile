@@ -9,7 +9,7 @@ gem 'json', '~> 2.1.0'
 gem 'plek', '2.1.1'
 
 gem 'govuk_frontend_toolkit', '~> 7.2.0'
-gem 'govuk_navigation_helpers', '~> 2.0.0'
+gem 'govuk_navigation_helpers', '~> 7.3.0'
 
 gem 'rack_strip_client_ip', '0.0.2'
 
