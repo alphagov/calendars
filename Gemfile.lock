@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alphagov/govuk_publishing_components.git
-  revision: 0be945fc30762b6c75ed6b8242b77285dc827771
+  revision: 44c6cf861b229d3412bf232b7cd139fb181f352d
   specs:
     govuk_publishing_components (5.0.0)
       govspeak (>= 5.0.3)
