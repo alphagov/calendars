@@ -1,6 +1,4 @@
 Calendars::Application.routes.draw do
-  mount GovukPublishingComponents::Engine, at: "/component-guide"
-
   # Redirect for old 'ni' division slug in bank-holidays
   constraints(format: /(json|ics)/) do
     get '/bank-holidays/ni', to: redirect("/bank-holidays/northern-ireland.%{format}")
