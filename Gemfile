@@ -9,7 +9,6 @@ gem 'json', '~> 2.1.0'
 gem 'plek', '2.1.1'
 
 gem 'govuk_frontend_toolkit', '~> 7.2.0'
-gem 'govuk_publishing_components', github: 'alphagov/govuk_publishing_components'
 gem 'govuk_navigation_helpers', '~> 7.3.0'
 
 gem 'rack_strip_client_ip', '0.0.2'
@@ -20,7 +19,7 @@ gem 'uglifier', '4.1.5'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '~> 12.0.0'
+  gem 'slimmer', "~> 11.0.2"
 end
 
 if ENV['API_DEV']
