@@ -82,6 +82,15 @@ When you are in Development:
 
 `bundle exec bowl calendars www`
 
+Or locally:
+
+```
+./startup.sh --live
+```
+
+You can also run `./startup.sh` to run against a local running content-store and
+`./startup.sh --dummy` for the dummy content-store.
+
 ### Running the test suite
 
 `bundle exec rake`
