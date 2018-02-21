@@ -6,6 +6,7 @@
     <%= stylesheet_link_tag 'print', :media => :print %>
     <%= yield :head %>
     <%= render partial: 'govuk_component/analytics_meta_tags', locals: { content_item: @content_item } %>
+    <%= javascript_include_tag 'application.js', integrity: true, crossorigin: 'anonymous' %>
     <% if @meta_section %>
       <meta name="govuk:section" content="<%= @meta_section %>">
     <% end %>
@@ -19,6 +20,7 @@
           <%= render partial: 'govuk_component/related_items', locals: @navigation_helpers.related_items %>
         </div>
       </div>
+      <%= render 'govuk_publishing_components/components/feedback' %>
     </div>
   </body>
 </html>
