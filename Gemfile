@@ -8,7 +8,7 @@ gem 'rails-i18n', '~> 5.0.4'
 gem 'json', '~> 2.1.0'
 gem 'plek', '2.1.1'
 
-gem 'govuk_frontend_toolkit', '~> 7.4.1'
+gem 'govuk_frontend_toolkit', '~> 7.4.2'
 gem 'govuk_publishing_components', '~> 5.2.0'
 gem 'govuk_navigation_helpers', '~> 7.3.0'
 
