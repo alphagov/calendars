@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read(".ruby-version").chomp
 
-gem 'rails', '~> 5.0.3'
+gem 'rails', '~> 5.1.5'
 gem 'rails-i18n', '~> 5.1.1'
 
 gem 'json', '~> 2.1.0'
