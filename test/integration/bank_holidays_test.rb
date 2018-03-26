@@ -23,10 +23,6 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']", visible: false)
       assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']", visible: false)
       assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']", visible: false)
-      # The following selectors are specified using XPath because Capybara/Nokogiri does not seem to find non-standard tags
-      # using the usual "CSS-style" selectors.
-      assert page.has_selector?(:xpath, "//test-govuk-component[@data-template='govuk_component-breadcrumbs']", visible: true)
-      assert page.has_selector?(:xpath, "//test-govuk-component[@data-template='govuk_component-related_items']", visible: true)
     end
 
     within "#content" do

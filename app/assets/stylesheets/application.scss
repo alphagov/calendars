@@ -8,6 +8,18 @@
 @import "styleguide/colours";
 @import "styleguide/conditionals2";
 
+// Reset some global styles from the `wrapper` layout
+.gem-c-related-navigation {
+  h3 {
+    font-size: 16px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 @import "govuk_publishing_components/all_components";
 
 .highlighted-event {

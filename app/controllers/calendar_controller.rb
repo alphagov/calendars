@@ -12,7 +12,6 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @content_item = Services.content_store.content_item("/#{scope}").to_hash
-        @navigation_helpers = GovukNavigationHelpers::NavigationHelper.new(@content_item)
         section_name = @content_item.dig("links", "parent", 0, "links", "parent", 0, "title")
         if section_name
           @meta_section = section_name.downcase
