@@ -324,7 +324,7 @@ DEPENDENCIES
   plek (= 2.1.1)
   pry-byebug
   rack_strip_client_ip (= 0.0.2)
-  rails (~> 5.1.5)
+  rails (~> 5.1.6)
   rails-controller-testing
   rails-i18n (~> 5.1.1)
   sass-rails (= 5.0.7)
