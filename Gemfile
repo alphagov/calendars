@@ -9,7 +9,7 @@ gem 'json', '~> 2.1.0'
 gem 'plek', '2.1.1'
 
 gem 'govuk_frontend_toolkit', '~> 7.4.2'
-gem 'govuk_publishing_components', '~> 6.5.0'
+gem 'govuk_publishing_components', '~> 6.6.0'
 
 gem 'rack_strip_client_ip', '0.0.2'
 
