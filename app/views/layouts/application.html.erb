@@ -5,7 +5,7 @@
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'print', :media => :print %>
     <%= yield :head %>
-    <%= render partial: 'govuk_component/analytics_meta_tags', locals: { content_item: @content_item } %>
+    <%= render 'govuk_publishing_components/components/meta_tags', content_item: @content_item %>
     <%= javascript_include_tag 'application.js', integrity: true, crossorigin: 'anonymous' %>
     <% if @meta_section %>
       <meta name="govuk:section" content="<%= @meta_section %>">
