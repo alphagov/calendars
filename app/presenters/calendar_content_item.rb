@@ -1,5 +1,7 @@
 # Renders a calendar for the publishing-api.
 class CalendarContentItem
+  GDS_ORGANISATION_ID = "af07d5a5-df63-4ddc-9383-6a666845ebe9".freeze
+
   attr_reader :calendar
 
   def initialize(calendar)
@@ -36,6 +38,12 @@ class CalendarContentItem
         { type: 'prefix', path: base_path }
       ],
       update_type: update_type,
+    }
+  end
+
+  def links
+    {
+      "primary_publishing_organisation": [GDS_ORGANISATION_ID]
     }
   end
 end
