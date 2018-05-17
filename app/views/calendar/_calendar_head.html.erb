@@ -7,4 +7,8 @@
     <link rel="alternate" type="application/json" href="<%= division_path(@calendar, division, :format => :json) %>" />
     <link rel="alternate" type="text/calendar" href="<%= division_path(@calendar, division, :format => :ics) %>" />
   <% end %>
+
+  <%= render 'govuk_publishing_components/components/machine_readable_metadata',
+    schema: :article,
+    content_item: @content_item %>
 <% end %>
