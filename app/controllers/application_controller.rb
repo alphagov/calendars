@@ -2,7 +2,6 @@ require "gds_api/helpers"
 
 class ApplicationController < ActionController::Base
   include Slimmer::Template
-  include Slimmer::GovukComponents
 
   protect_from_forgery with: :exception
 
