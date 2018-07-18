@@ -39,7 +39,7 @@ group :test do
   gem 'govuk-content-schema-test-helpers', '~> 1.6.1'
   gem 'mocha', '1.5.0', require: false
   gem 'rails-controller-testing'
-  gem 'shoulda', '3.5.0'
+  gem 'shoulda', '3.6.0'
   gem 'simplecov', '0.16.1'
   gem 'simplecov-rcov', '0.2.3'
   gem 'timecop', '0.9.1'
