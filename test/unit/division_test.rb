@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 require_relative '../test_helper'
 
 class DivisionTest < ActiveSupport::TestCase
@@ -29,7 +30,7 @@ class DivisionTest < ActiveSupport::TestCase
       Calendar::Year.expects(:new).with("2012", div, [1, 2]).returns(:y_2012)
       Calendar::Year.expects(:new).with("2013", div, [3, 4]).returns(:y_2013)
 
-      assert_equal [:y_2012, :y_2013], div.years
+      assert_equal %i[y_2012 y_2013], div.years
     end
 
     should "cache the constructed instances" do
@@ -52,7 +53,7 @@ class DivisionTest < ActiveSupport::TestCase
       Calendar::Year.expects(:new).with("title", anything, anything).never
       Calendar::Year.expects(:new).with("foo", anything, anything).never
 
-      assert_equal [:y_2012, :y_2013], div.years
+      assert_equal %i[y_2012 y_2013], div.years
     end
 
     context "finding a year by name" do
@@ -145,24 +146,24 @@ class DivisionTest < ActiveSupport::TestCase
     end
 
     should "return a hash of year => events for upcoming events" do
-      y1 = stub("Year1", upcoming_events: [:e1, :e2])
-      y2 = stub("Year2", upcoming_events: [:e3, :e4, :e5])
+      y1 = stub("Year1", upcoming_events: %i[e1 e2])
+      y2 = stub("Year2", upcoming_events: %i[e3 e4 e5])
       @years << y1 << y2
 
       expected = {
-        y1 => [:e1, :e2],
-        y2 => [:e3, :e4, :e5],
+        y1 => %i[e1 e2],
+        y2 => %i[e3 e4 e5],
       }
       assert_equal expected, @div.upcoming_events_by_year
     end
 
     should "not include any years with no upcoming events" do
       y1 = stub("Year1", upcoming_events: [])
-      y2 = stub("Year2", upcoming_events: [:e1, :e2, :e3])
+      y2 = stub("Year2", upcoming_events: %i[e1 e2 e3])
       @years << y1 << y2
 
       expected = {
-        y2 => [:e1, :e2, :e3],
+        y2 => %i[e1 e2 e3],
       }
       assert_equal expected, @div.upcoming_events_by_year
     end
@@ -176,13 +177,13 @@ class DivisionTest < ActiveSupport::TestCase
     end
 
     should "return a hash of year => reversed events for past events" do
-      y1 = stub("Year1", past_events: [:e1, :e2])
-      y2 = stub("Year2", past_events: [:e3, :e4, :e5])
+      y1 = stub("Year1", past_events: %i[e1 e2])
+      y2 = stub("Year2", past_events: %i[e3 e4 e5])
       @years << y1 << y2
 
       expected = {
-        y1 => [:e2, :e1],
-        y2 => [:e5, :e4, :e3],
+        y1 => %i[e2 e1],
+        y2 => %i[e5 e4 e3],
       }
       events_by_year = @div.past_events_by_year
       assert_equal expected, events_by_year
@@ -190,12 +191,12 @@ class DivisionTest < ActiveSupport::TestCase
     end
 
     should "not include any years with no past events" do
-      y1 = stub("Year1", past_events: [:e1, :e2])
+      y1 = stub("Year1", past_events: %i[e1 e2])
       y2 = stub("Year2", past_events: [])
       @years << y1 << y2
 
       expected = {
-        y1 => [:e2, :e1],
+        y1 => %i[e2 e1],
       }
       assert_equal expected, @div.past_events_by_year
     end

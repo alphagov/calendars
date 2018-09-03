@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 require_relative '../integration_test_helper'
 
 class IcalendarTest < ActionDispatch::IntegrationTest

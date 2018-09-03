@@ -48,15 +48,15 @@ private
   end
 
   def set_locale
-    if params[:locale]
-      I18n.locale = params[:locale]
-    else
-      I18n.locale = I18n.default_locale
-    end
+    I18n.locale = if params[:locale]
+                    params[:locale]
+                  else
+                    I18n.default_locale
+                  end
   end
 
   def load_calendar
-    simple_404 unless params[:scope] =~ /\A[a-z-]+\z/
+    simple_404 unless params[:scope].match?(/\A[a-z-]+\z/)
     @calendar = Calendar.find(scope)
   end
 
