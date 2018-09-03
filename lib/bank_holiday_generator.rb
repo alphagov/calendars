@@ -60,7 +60,7 @@ class BankHolidayGenerator
     BANK_HOLIDAYS.fetch(nation).each do |bank_holiday|
       send(bank_holiday)
     end
-    bank_holidays.sort_by { |bh_hash| DateTime.parse(bh_hash.fetch("date")) }
+    bank_holidays.sort_by { |bh_hash| Date.parse(bh_hash.fetch("date")) }
   end
 
 private
@@ -68,7 +68,7 @@ private
   def add_bank_holiday(title, date, substitute = false, bunting = true)
     bank_holiday_hash = {
         "title"   => title,
-        "date"    => date.strftime("%d/%m/%Y"),
+        "date"    => date.strftime("%d/%m/%Y"), # rubocop:disable Style/FormatStringToken
         "notes"   => "",
         "bunting" => bunting,
     }
