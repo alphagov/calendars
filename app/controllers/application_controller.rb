@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def error_503(e); error(503, e); end
+  def error_503(exception); error(503, exception); end
 
   def error(status_code, exception = nil)
     if exception && defined? GovukError

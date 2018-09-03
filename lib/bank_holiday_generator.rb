@@ -68,7 +68,7 @@ private
   def add_bank_holiday(title, date, substitute = false, bunting = true)
     bank_holiday_hash = {
         "title"   => title,
-        "date"    => date.strftime("%d/%m/%Y"), # rubocop:disable Style/FormatStringToken
+        "date"    => date.strftime("%d/%m/%Y"),
         "notes"   => "",
         "bunting" => bunting,
     }

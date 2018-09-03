@@ -112,7 +112,7 @@ class YearTest < ActiveSupport::TestCase
 
     should "return all past events excluding today" do
       Timecop.travel("2012-08-27") do
-        assert_equal ["foo"], @year.past_events.map(&:title)
+        assert_equal %w[foo], @year.past_events.map(&:title)
       end
     end
 
