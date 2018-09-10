@@ -34,7 +34,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'capybara', '3.7.0'
+  gem 'capybara', '3.7.1'
   gem 'ci_reporter_minitest', '1.0.0'
   gem 'govuk-content-schema-test-helpers', '~> 1.6.1'
   gem 'mocha', '1.7.0', require: false
