@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 require_relative '../test_helper'
 require 'ics_renderer'
 
@@ -18,7 +19,7 @@ class ICSRendererTest < ActiveSupport::TestCase
     end
 
     should "generate an event for each given event" do
-      r = ICSRenderer.new([:e1, :e2], "/foo/ics")
+      r = ICSRenderer.new(%i[e1 e2], "/foo/ics")
       r.expects(:render_event).with(:e1, 0).returns("Event1 ics\r\n")
       r.expects(:render_event).with(:e2, 1).returns("Event2 ics\r\n")
 

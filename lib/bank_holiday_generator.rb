@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 #Bank holidays are determined both by law and by proclamation.
 #Link to the legislation to determine bank holidays:
 #  http://www.legislation.gov.uk/ukpga/1971/80/schedule/1
@@ -51,7 +52,7 @@ class BankHolidayGenerator
       :christmas,
       :boxing_day,
     ]
-  }
+  }.freeze
 
   attr_reader :year, :bank_holidays, :nation
 
@@ -59,7 +60,7 @@ class BankHolidayGenerator
     BANK_HOLIDAYS.fetch(nation).each do |bank_holiday|
       send(bank_holiday)
     end
-    bank_holidays.sort_by { |bh_hash| DateTime.parse(bh_hash.fetch("date")) }
+    bank_holidays.sort_by { |bh_hash| Date.parse(bh_hash.fetch("date")) }
   end
 
 private
@@ -72,21 +73,18 @@ private
         "bunting" => bunting,
     }
     if substitute
-      bank_holiday_hash.merge!(
-        "notes" => "common.substitute_day"
-      )
+      bank_holiday_hash["notes"] = "common.substitute_day"
     end
     bank_holidays << bank_holiday_hash
   end
 
-
   def new_years_day(second_january_off = false)
     date = Date.new(year, 1, 1)
-    if second_january_off
-      new_date = substitute_day_next_day_off(date)
-    else
-      new_date = substitute_day(date)
-    end
+    new_date = if second_january_off
+                 substitute_day_next_day_off(date)
+               else
+                 substitute_day(date)
+               end
     add_bank_holiday("bank_holidays.new_year", new_date, new_date != date)
   end
 

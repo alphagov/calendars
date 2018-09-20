@@ -22,7 +22,7 @@ class Calendar
     end
 
     def years
-      @years ||= @data.map { |year, events| Year.new(year, self, events) if year =~ /\A\d{4}\z/ }.compact
+      @years ||= @data.map { |year, events| Year.new(year, self, events) if year.match?(/\A\d{4}\z/) }.compact
     end
 
     def year(name)

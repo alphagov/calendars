@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 require_relative '../test_helper'
 
 class CalendarTest < ActiveSupport::TestCase
@@ -50,7 +51,7 @@ class CalendarTest < ActiveSupport::TestCase
       Calendar::Division.expects(:new).with("fooey", "2012" => [1, 2], "2013" => [3, 4]).returns(:fooey)
       Calendar::Division.expects(:new).with("gooey", "2012" => [2], "2013" => [4]).returns(:gooey)
 
-      assert_equal [:kablooie, :fooey, :gooey], @cal.divisions
+      assert_equal %i[kablooie fooey gooey], @cal.divisions
     end
 
     should "cache the constructed instances" do

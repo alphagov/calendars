@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 require 'bank_holiday_generator'
 require_relative '../test_helper'
 

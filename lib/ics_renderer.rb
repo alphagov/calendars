@@ -1,4 +1,3 @@
-
 class ICSRenderer
   def initialize(events, cal_path)
     @events = events

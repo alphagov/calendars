@@ -1,0 +1,5 @@
+Style/CommentedKeyword:
+  Exclude:
+    - 'test/integration/when_do_the_clocks_change_test.rb'
+    - 'test/integration/gwyliau_banc_test.rb'
+    - 'test/integration/bank_holidays_test.rb'
