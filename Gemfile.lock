@@ -111,7 +111,7 @@ GEM
     govuk_frontend_toolkit (8.0.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    govuk_publishing_components (10.0.0)
+    govuk_publishing_components (10.1.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -327,7 +327,7 @@ DEPENDENCIES
   govuk-lint (= 3.9.0)
   govuk_app_config (~> 1.9.3)
   govuk_frontend_toolkit (~> 8.0.0)
-  govuk_publishing_components (~> 10.0.0)
+  govuk_publishing_components (~> 10.1.0)
   json (~> 2.1.0)
   mocha (= 1.7.0)
   plek (= 2.1.1)
