@@ -111,7 +111,7 @@ GEM
     govuk_frontend_toolkit (8.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    govuk_publishing_components (12.0.0)
+    govuk_publishing_components (12.1.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -141,7 +141,7 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
@@ -326,7 +326,7 @@ DEPENDENCIES
   govuk-lint (= 3.9.0)
   govuk_app_config (~> 1.10.0)
   govuk_frontend_toolkit (~> 8.1.0)
-  govuk_publishing_components (~> 12.0.0)
+  govuk_publishing_components (~> 12.1.0)
   json (~> 2.1.0)
   mocha (= 1.7.0)
   plek (= 2.1.1)
