@@ -1,11 +1,7 @@
 <%= render :partial => "calendar_head" %>
 
 <main id="content" role="main" class="group">
-  <header class="page-header group">
-    <div>
-      <h1><%= @calendar.title %></h1>
-    </div>
-  </header>
+  <%= render "govuk_publishing_components/components/title", title: @calendar.title %>
 
   <div class="article-container group">
     <article role="article" class="group">
