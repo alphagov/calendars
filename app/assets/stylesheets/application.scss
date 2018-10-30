@@ -4,10 +4,6 @@
 @import "colours";
 @import "css3";
 
-// local styleguide includes
-@import "styleguide/colours";
-@import "styleguide/conditionals2";
-
 // Reset some global styles from the `wrapper` layout
 .gem-c-related-navigation {
   h3 {
@@ -143,7 +139,7 @@ table.clocks-calendar .equal-width {
     width: 100%;
     height: 50px;
     overflow: visible;
-    border-top: 1px solid $grey-8;
+    border-top: 1px solid govuk-colour("grey-2");
     position: absolute;
     left: 0;
 
@@ -190,5 +186,4 @@ table.clocks-calendar .equal-width {
       }
     }
   }
-
 }
