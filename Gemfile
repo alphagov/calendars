@@ -14,7 +14,7 @@ gem 'govuk_publishing_components', '~> 12.7.1'
 gem 'rack_strip_client_ip', '0.0.2'
 
 gem 'sass-rails', '5.0.7'
-gem 'uglifier', '4.1.19'
+gem 'uglifier', '4.1.20'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
