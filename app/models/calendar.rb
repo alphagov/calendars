@@ -34,6 +34,7 @@ class Calendar
   def division(slug)
     div = divisions.find { |d| d.slug == slug }
     raise CalendarNotFound unless div
+
     div
   end
 
