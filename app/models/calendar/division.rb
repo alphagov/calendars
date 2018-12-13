@@ -28,6 +28,7 @@ class Calendar
     def year(name)
       yr = years.find { |y| y.to_s == name }
       raise CalendarNotFound unless yr
+
       yr
     end
 
