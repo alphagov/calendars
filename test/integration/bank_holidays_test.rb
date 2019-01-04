@@ -38,17 +38,15 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           assert_equal ['England and Wales', 'Scotland', 'Northern Ireland'], tab_labels
         end
 
-        within '.tab-content' do
+        within '.govuk-tabs' do
           within '#england-and-wales' do
             assert page.has_link?("Add bank holidays for England and Wales to your calendar", href: "/bank-holidays/england-and-wales.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in England and Wales", year: "2012", rows: [
-              %w[2012],
               ["25 December", "Tuesday", "Christmas Day"],
               ["26 December", "Wednesday", "Boxing Day"],
             ]
             assert_bank_holiday_table title: "Upcoming bank holidays in England and Wales", year: "2013", rows: [
-              %w[2013],
               ["1 January", "Tuesday", "New Year’s Day"],
               ["29 March", "Friday", "Good Friday"],
               ["1 April", "Monday", "Easter Monday"],
@@ -60,7 +58,6 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             ]
 
             assert_bank_holiday_table title: "Past bank holidays in England and Wales", year: "2012", rows: [
-              %w[2012],
               ["27 August", "Monday", "Summer bank holiday"],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee (extra bank holiday)"],
               ["4 June", "Monday", "Spring bank holiday (substitute day)"],
@@ -75,12 +72,10 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             assert page.has_link?("Add bank holidays for Scotland to your calendar", href: "/bank-holidays/scotland.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in Scotland", year: "2012", rows: [
-              %w[2012],
               ["25 December", "Tuesday", "Christmas Day"],
               ["26 December", "Wednesday", "Boxing Day"],
             ]
             assert_bank_holiday_table title: "Upcoming bank holidays in Scotland", year: "2013", rows: [
-              %w[2013],
               ["1 January", "Tuesday", "New Year’s Day"],
               ["2 January", "Wednesday", "2nd January"],
               ["29 March", "Friday", "Good Friday"],
@@ -93,7 +88,6 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             ]
 
             assert_bank_holiday_table title: "Past bank holidays in Scotland", year: "2012", rows: [
-              %w[2012],
               ["30 November", "Friday", "St Andrew’s Day"],
               ["6 August", "Monday", "Summer bank holiday"],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee (extra bank holiday)"],
@@ -109,12 +103,10 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             assert page.has_link?("Add bank holidays for Northern Ireland to your calendar", href: "/bank-holidays/northern-ireland.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in Northern Ireland", year: "2012", rows: [
-              %w[2012],
               ["25 December", "Tuesday", "Christmas Day"],
               ["26 December", "Wednesday", "Boxing Day"],
             ]
             assert_bank_holiday_table title: "Upcoming bank holidays in Northern Ireland", year: "2013", rows: [
-              %w[2013],
               ["1 January", "Tuesday", "New Year’s Day"],
               ["18 March", "Monday", "St Patrick’s Day (substitute day)"],
               ["29 March", "Friday", "Good Friday"],
@@ -128,7 +120,6 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             ]
 
             assert_bank_holiday_table title: "Past bank holidays in Northern Ireland", year: "2012", rows: [
-              %w[2012],
               ["27 August", "Monday", "Summer bank holiday"],
               ["12 July", "Thursday", "Battle of the Boyne (Orangemen’s Day)"],
               ["5 June", "Tuesday", "Queen’s Diamond Jubilee (extra bank holiday)"],
@@ -140,7 +131,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["2 January", "Monday", "New Year’s Day (substitute day)"],
             ]
           end
-        end # within .tab-content
+        end # within .govuk-tabs
       end # within article
     end # within #content
   end
@@ -149,7 +140,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse('2012-01-03')) do
       visit "/bank-holidays"
 
-      within ".tab-content" do
+      within ".govuk-tabs" do
         within '#england-and-wales .govuk-panel' do
           assert page.has_content?("The next bank holiday in England and Wales is")
           assert page.has_content?("6 April")
@@ -167,7 +158,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           assert page.has_content?("19 March")
           assert page.has_content?("St Patrick’s Day")
         end
-      end # within .tab-content
+      end # within .govuk-tabs
     end # Timecop
   end
 
@@ -220,7 +211,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
     should "be formatted correctly" do
       Timecop.travel(Date.parse("5th Dec 2012")) do
         visit "/bank-holidays"
-        within ".meta-data" do
+        within ".app-c-meta-data" do
           assert page.has_content?("Last updated: 5 December 2012")
         end
       end

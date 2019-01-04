@@ -26,7 +26,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
       end
 
       within 'article' do
-        rows = page.all('table.clocks-calendar tr').map { |row| row.all('th,td').map(&:text) }
+        rows = page.all('.app-c-clocks-calendar tr').map { |row| row.all('th,td').map(&:text) }
         assert_equal [
           ["Year", "Clocks go forward", "Clocks go back"],
           ["2012", "25 March", "28 October"],
@@ -34,7 +34,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
           ["2014", "30 March", "26 October"],
         ], rows
 
-        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 5KB)", href: "/when-do-the-clocks-change/united-kingdom.ics")
+        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 2KB)", href: "/when-do-the-clocks-change/united-kingdom.ics")
       end
     end
   end

@@ -47,25 +47,26 @@ article {
 // calendar tables
 
 // scss-lint:disable QualifyingElement
-table.calendar {
-  margin-bottom: 1em;
-
-  td.calendar-date {
-    width: 25%;
-    white-space: nowrap;
-  }
-
-  td.calendar-day {
+.app-c-calendar {
+  td:nth-child(1),
+  td:nth-child(2) {
     width: 25%;
   }
 
-  td.calendar-title {
+  td:nth-child(3) {
     width: 50%;
   }
 }
 
-table.clocks-calendar .equal-width {
-  width: 50%;
+.app-c-clocks-calendar {
+  td:nth-child(1) {
+    width: 10%;
+  }
+
+  td:nth-child(2),
+  td:nth-child(3) {
+    width: 45%;
+  }
 }
 
 // bunting lol

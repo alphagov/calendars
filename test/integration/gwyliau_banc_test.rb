@@ -39,17 +39,15 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           assert_equal ['Cymru a Lloegr', 'Yr Alban', 'Gogledd Iwerddon'], tab_labels
         end
 
-        within '.tab-content' do
+        within '.govuk-tabs' do
           within '#cymru-a-lloegr' do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", href: "/gwyliau-banc/cymru-a-lloegr.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Nghymru a Lloegr", year: "2012", rows: [
-              %w[2012],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
             ]
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Nghymru a Lloegr", year: "2013", rows: [
-              %w[2013],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith"],
               ["1 Ebrill", "Dydd Llun", "Dydd Llun y Pasg"],
@@ -61,7 +59,6 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             ]
 
             assert_bank_holiday_table title: "Gwyliau banc yn y gorffennol yng Nghymru a Lloegr", year: "2012", rows: [
-              %w[2012],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines (gŵyl banc ychwanegol)"],
               ["4 Mehefin", "Dydd Llun", "Gŵyl Banc y Gwanwyn (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
@@ -76,12 +73,10 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", href: "/gwyliau-banc/yr-alban.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yn yr Alban", year: "2012", rows: [
-              %w[2012],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
             ]
             assert_bank_holiday_table title: "Gwyliau banc i ddod yn yr Alban", year: "2013", rows: [
-              %w[2013],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["2 Ionawr", "Dydd Mercher", "2il Ionawr"],
               ["29 Mawrth", "Dydd Gwener", "Dydd Gwener y Groglith"],
@@ -94,7 +89,6 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             ]
 
             assert_bank_holiday_table title: "Gwyliau banc yn y gorffennol yn yr Alban", year: "2012", rows: [
-              %w[2012],
               ["30 Tachwedd", "Dydd Gwener", "Gŵyl Andreas"],
               ["6 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["5 Mehefin", "Dydd Mawrth", "Jiwbilî Diemwnt y Frenhines (gŵyl banc ychwanegol)"],
@@ -110,12 +104,10 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", href: "/gwyliau-banc/gogledd-iwerddon.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Ngogledd Iwerddon", year: "2012", rows: [
-              %w[2012],
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
               ["26 Rhagfyr", "Dydd Mercher", "Gŵyl San Steffan"],
             ]
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Ngogledd Iwerddon", year: "2013", rows: [
-              %w[2013],
               ["1 Ionawr", "Dydd Mawrth", "Dydd Calan"],
               ["18 Mawrth",
                "Dydd Llun",
@@ -131,7 +123,6 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             ]
 
             assert_bank_holiday_table title: "Gwyliau banc yn y gorffennol yng Ngogledd Iwerddon", year: "2012", rows: [
-              %w[2012],
               ["27 Awst", "Dydd Llun", "Gŵyl Banc yr Haf"],
               ["12 Gorffennaf", "Dydd Iau", "Brwydr y Boyne (Diwrnod yr Orangemen)"],
               ["5 Mehefin",
@@ -145,7 +136,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["2 Ionawr", "Dydd Llun", "Dydd Calan (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
             ]
           end
-        end # within .tab-content
+        end # within .govuk-tabs
       end # within article
     end # within #content
   end
@@ -154,7 +145,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse('2012-01-03')) do
       visit "/gwyliau-banc"
 
-      within ".tab-content" do
+      within ".govuk-tabs" do
         within '#cymru-a-lloegr .govuk-panel' do
           assert page.has_content?("Y gŵyl banc nesaf yng Nghymru a Lloegr yw")
           assert page.has_content?("6 Ebrill")
@@ -172,7 +163,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           assert page.has_content?("19 Mawrth")
           assert page.has_content?("Gŵyl San Padrig")
         end
-      end # within .tab-content
+      end # within .govuk-tabs
     end # Timecop
   end
 
@@ -203,7 +194,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     should "be translated and localised" do
       Timecop.travel(Date.parse("25th Dec 2012")) do
         visit "/gwyliau-banc"
-        within ".meta-data" do
+        within ".app-c-meta-data" do
           assert page.has_content?("Diweddarwyd diwethaf: 25 Rhagfyr 2012")
         end
       end

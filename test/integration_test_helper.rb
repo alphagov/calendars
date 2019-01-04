@@ -11,8 +11,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def assert_bank_holiday_table(attrs)
-    header = page.find("h2", text: attrs[:title])
-    table = page.find(:xpath, ".//table[.//*[@aria-labelledby='#{header['id']}'][text()='#{attrs[:year]}']]")
+    table = page.find('caption', text: "#{attrs[:title]} #{attrs[:year]}").ancestor('table')
     if attrs[:rows]
       actual_rows = table.all('tr').map { |r| r.all('th, td').map(&:text).map(&:strip) }
       assert_equal attrs[:rows], actual_rows
