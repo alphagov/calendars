@@ -21,7 +21,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     end
 
     within "#content" do
-      within 'header' do
+      within '.gem-c-title' do
         assert page.has_content?("When do the clocks change?")
       end
 

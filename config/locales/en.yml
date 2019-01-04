@@ -24,7 +24,7 @@ en:
   common:
     last_updated:             "Last updated"
     next_holiday_in_is:       "The next bank holiday %{in_nation} is"
-    add_holiday_ics:          "Add bank holidays %{for_nation} to your calendar (ICS, 10KB)"
+    add_holiday_ics:          "Add bank holidays %{for_nation} to your calendar (ICS, 14KB)"
     download_ics:             "Download these dates so you can add them to a calendar application such as iCal or Outlook"
     today:                    "today"
     substitute_day:           "Substitute day"
@@ -65,5 +65,3 @@ en:
     christmas:      "Christmas Day"
     boxing_day:     "Boxing Day"
     queen_diamond:  "Queen’s Diamond Jubilee"
-
-

@@ -1,53 +1,54 @@
-// govuk_frontend_toolkit mixins
-@import "conditionals";
-@import "typography";
-@import "colours";
-@import "css3";
-
-// Reset some global styles from the `wrapper` layout
-.gem-c-related-navigation {
-  h3 {
-    font-size: 16px;
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-}
-
 @import "govuk_publishing_components/all_components";
 
-article {
-  .subscribe {
-    background: none;
-    padding: 0 0 0 1em;
+// overwrite title component styles
+.gem-c-title {
+  margin-top: govuk-spacing(6);
+  margin-bottom: govuk-spacing(6);
 
-    @include media(tablet) {
-      padding: 0.25em 0;
-    }
+  .gem-c-title__text {
+    padding-top: 7px;
+    padding-bottom: 13px;
+  }
+}
 
-    p {
-      a {
-        display: block;
-        font-weight: 600;
-        background: image-url("icon-calendar.png") no-repeat scroll 0 0;
-        min-height: 2.5em;
-        padding: 0 0 0 3em;
+.govuk-panel__title {
+  @include govuk-font($size: 80, $weight: bold);
+}
 
-        @include device-pixel-ratio() {
-          background-image: image-url("icon-calendar-2x.png");
-          background-size: 29px 24px;
-        }
-      }
+.app-o-related-container {
+  margin-top: govuk-spacing(7);
+}
+
+.app-c-meta-data {
+  @include govuk-font($size: 16);
+
+  color: $govuk-secondary-text-colour;
+}
+
+.app-c-subscribe {
+  @include govuk-font($size: 19);
+  @include govuk-responsive-margin(6, "bottom");
+  padding-top: govuk-spacing(3);
+
+  a {
+    display: block;
+    font-weight: 600;
+    background: image-url("icon-calendar.png") no-repeat scroll 0 0;
+    min-height: 2.5em;
+    padding: 0 0 0 3em;
+
+    @include device-pixel-ratio() {
+      background-image: image-url("icon-calendar-2x.png");
+      background-size: 29px 24px;
     }
   }
 }
 
-// calendar tables
-
-// scss-lint:disable QualifyingElement
 .app-c-calendar {
+  .govuk-table {
+    @include govuk-font($size: 16);
+  }
+
   td:nth-child(1),
   td:nth-child(2) {
     width: 25%;
@@ -59,6 +60,10 @@ article {
 }
 
 .app-c-clocks-calendar {
+  .govuk-table {
+    @include govuk-font($size: 16);
+  }
+
   td:nth-child(1) {
     width: 10%;
   }
@@ -79,7 +84,7 @@ article {
     position: absolute;
     left: 0;
 
-    @include media-down(tablet) {
+    @include govuk-media-query($until: tablet) {
       display: none;
     }
 
@@ -100,26 +105,11 @@ article {
     }
   }
 
-  .related {
+  .app-o-related-container {
     margin-top: 4.5em;
 
-    @include media-down(tablet) {
+    @include govuk-media-query($until: tablet) {
       margin-top: 0;
-    }
-  }
-
-  // scss-lint:disable IdSelector
-  #content {
-    margin-top: 4em;
-
-    @include media-down(tablet) {
-      margin-top: 0;
-    }
-
-    @include media(desktop) {
-      header.page-header div {
-        background-color: transparent;
-      }
     }
   }
 }

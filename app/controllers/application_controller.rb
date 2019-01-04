@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from GdsApi::TimedOutException, with: :error_503
 
-  slimmer_template 'wrapper'
+  slimmer_template 'core_layout'
 
   before_action :set_cors_headers, if: :json_request?
 

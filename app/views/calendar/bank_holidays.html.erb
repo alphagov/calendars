@@ -4,59 +4,57 @@
   <div class="epic-bunting <%= @calendar.bunting_styles %>"><span></span></div>
 <% end %>
 
-<main id="content" role="main" class="group">
+<main id="content" role="main">
   <%= render "govuk_publishing_components/components/title", {
     title: @calendar.title
   } %>
 
-  <div class="article-container group">
+  <article role="article">
+    <% tab_content ||= [] %>
+    <% @calendar.divisions.each_with_index do |division, index| %>
+      <% tab_content[index] = capture do %>
 
-    <article role="article" class="group">
-      <% tab_content ||= [] %>
-      <% @calendar.divisions.each_with_index do |division, index| %>
-        <% tab_content[index] = capture do %>
-
-          <% if division.upcoming_event %>
-            <%= render "govuk_publishing_components/components/panel", {
-              prepend: t("common.next_holiday_in_is", :in_nation => t("#{division.title}_in")),
-              title: division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B"),
-              append: division.upcoming_event.title
-            } %>
-          <% end %>
-
-          <div class="subscribe">
-            <p><%= link_to((t "common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
-                          division_path(@calendar, division, :format => 'ics'),
-                          :title => t("common.download_ics")) %>
-            </p>
-          </div>
-
-          <%= render :partial => 'calendar_by_year', :locals => {
-              :events_by_year => division.upcoming_events_by_year,
-              :caption => "#{t "common.upcoming_bank_holidays"} #{t "#{division.title}_in"}"} %>
-
-          <p><%= raw(t("common.bank_holiday_on_wkend"))%></p>
-          <p><%= raw(t("common.holiday_entitlement"))%></p>
-          <p><%= raw(t("common.bank_holiday_benefits"))%></p>
-
-          <%= render :partial => 'calendar_by_year', :locals => {
-              :events_by_year => division.past_events_by_year,
-              :caption => "#{t "common.past_bank_holidays"} #{t "#{division.title}_in"}"} %>
+        <% if division.upcoming_event %>
+          <%= render "govuk_publishing_components/components/panel", {
+            prepend: t("common.next_holiday_in_is", :in_nation => t("#{division.title}_in")),
+            title: division.upcoming_event.date == Date.today ? t("common.today") : l(division.upcoming_event.date, format: "%e %B"),
+            append: division.upcoming_event.title
+          } %>
         <% end %>
+
+        <div class="app-c-subscribe">
+          <p><%= link_to((t "common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
+                        division_path(@calendar, division, :format => 'ics'),
+                        :title => t("common.download_ics")) %>
+          </p>
+        </div>
+
+        <%= render :partial => 'calendar_by_year', :locals => {
+            :events_by_year => division.upcoming_events_by_year,
+            :caption => "#{t "common.upcoming_bank_holidays"} #{t "#{division.title}_in"}"} %>
+
+        <p class="govuk-body"><%= raw(t("common.bank_holiday_on_wkend"))%></p>
+        <p class="govuk-body"><%= raw(t("common.holiday_entitlement"))%></p>
+        <p class="govuk-body"><%= raw(t("common.bank_holiday_benefits"))%></p>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+        <%= render :partial => 'calendar_by_year', :locals => {
+            :events_by_year => division.past_events_by_year,
+            :caption => "#{t "common.past_bank_holidays"} #{t "#{division.title}_in"}"} %>
       <% end %>
+    <% end %>
 
-      <%= render "govuk_publishing_components/components/tabs", {
-        panel_border: false,
-        tabs: @calendar.divisions.each_with_index.map { |division, index| {
-           :id => t(division.slug),
-           :label => t(division.title),
-           :content => tab_content[index]
-         } }
-      } %>
-    </article>
+    <%= render "govuk_publishing_components/components/tabs", {
+      panel_border: false,
+      tabs: @calendar.divisions.each_with_index.map { |division, index| {
+         :id => t(division.slug),
+         :label => t(division.title),
+         :content => tab_content[index]
+       } }
+    } %>
+  </article>
 
-    <%= render :partial => 'calendar_metadata' %>
-  </div>
+  <%= render :partial => 'calendar_metadata' %>
 </main>
 
 <% content_for :wrapper_class do %><% if @calendar.show_bunting? -%>bunted<% end %><% end %>
