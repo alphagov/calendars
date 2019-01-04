@@ -43,7 +43,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse('2012-11-15')) do
       visit "/when-do-the-clocks-change"
 
-      within ".highlighted-event" do
+      within ".govuk-panel" do
         assert page.has_content?("The clocks advance")
         assert page.has_content?("31 March")
       end
@@ -52,7 +52,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse('2013-04-01')) do
       visit "/when-do-the-clocks-change"
 
-      within ".highlighted-event" do
+      within ".govuk-panel" do
         assert page.has_content?("The clocks go back")
         assert page.has_content?("27 October")
       end

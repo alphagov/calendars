@@ -150,19 +150,19 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       visit "/bank-holidays"
 
       within ".tab-content" do
-        within '#england-and-wales .highlighted-event' do
+        within '#england-and-wales .govuk-panel' do
           assert page.has_content?("The next bank holiday in England and Wales is")
           assert page.has_content?("6 April")
           assert page.has_content?("Good Friday")
         end
 
-        within '#scotland .highlighted-event' do
+        within '#scotland .govuk-panel' do
           assert page.has_content?("The next bank holiday in Scotland is")
           assert page.has_content?("today")
           assert page.has_content?("New Year’s Day")
         end
 
-        within '#northern-ireland .highlighted-event' do
+        within '#northern-ireland .govuk-panel' do
           assert page.has_content?("The next bank holiday in Northern Ireland is")
           assert page.has_content?("19 March")
           assert page.has_content?("St Patrick’s Day")

@@ -13,10 +13,10 @@
         <%- division = @calendar.divisions.first -%>
 
         <% if division.upcoming_event %>
-          <div class="highlighted-event">
-            <p>The <%= division.upcoming_event.notes.gsub(' one hour', '').downcase %>
-              <em><%= division.upcoming_event.date.strftime("%e %B") %></em></p>
-          </div>
+          <%= render "govuk_publishing_components/components/panel", {
+            prepend: "The #{division.upcoming_event.notes.gsub(' one hour', '').downcase}",
+            title: division.upcoming_event.date.strftime("%e %B"),
+          } %>
         <% end %>
 
         <table class="clocks-calendar">
