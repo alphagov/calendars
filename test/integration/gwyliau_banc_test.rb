@@ -34,7 +34,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
       end
 
       within 'article' do
-        within '.nav-tabs' do
+        within '.govuk-tabs' do
           tab_labels = page.all("ul li a").map(&:text)
           assert_equal ['Cymru a Lloegr', 'Yr Alban', 'Gogledd Iwerddon'], tab_labels
         end

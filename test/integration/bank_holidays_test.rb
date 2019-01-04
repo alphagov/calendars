@@ -32,7 +32,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       end
 
       within 'article' do
-        within '.nav-tabs' do
+        within '.govuk-tabs' do
           tab_labels = page.all("ul li a").map(&:text)
 
           assert_equal ['England and Wales', 'Scotland', 'Northern Ireland'], tab_labels
