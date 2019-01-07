@@ -22,12 +22,11 @@
           } %>
         <% end %>
 
-        <div class="app-c-subscribe">
-          <p><%= link_to((t "common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
-                        division_path(@calendar, division, :format => 'ics'),
-                        :title => t("common.download_ics")) %>
-          </p>
-        </div>
+        <%= render "components/subscribe", {
+          label: (t "common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
+          url: division_path(@calendar, division, :format => 'ics'),
+          title: t("common.download_ics")
+        } %>
 
         <%= render :partial => 'calendar_by_year', :locals => {
             :events_by_year => division.upcoming_events_by_year,

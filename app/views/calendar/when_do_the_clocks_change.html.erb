@@ -31,13 +31,11 @@
       } %>
     </div>
 
-    <div class="app-c-subscribe">
-      <p><%=
-      link_to("Add clock changes in the UK to your calendar (ICS, 2KB)",
-              division_path(@calendar, division, :format => 'ics'),
-              :title => 'Download these dates so you can add them to a calendar application such as iCal or Outlook')
-              %></p>
-    </div>
+    <%= render "components/subscribe", {
+      label: "Add clock changes in the UK to your calendar (ICS, 2KB)",
+      url: division_path(@calendar, division, :format => 'ics'),
+      title: "Download these dates so you can add them to a calendar application such as iCal or Outlook"
+    } %>
 
     <p class="govuk-body">In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the last Sunday in October. </p>
 

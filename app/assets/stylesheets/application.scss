@@ -1,5 +1,7 @@
 @import "govuk_publishing_components/all_components";
 
+@import "components/*";
+
 // overwrite title component styles
 .gem-c-title {
   margin-top: govuk-spacing(6);
@@ -23,25 +25,6 @@
   @include govuk-font($size: 16);
 
   color: $govuk-secondary-text-colour;
-}
-
-.app-c-subscribe {
-  @include govuk-font($size: 19);
-  @include govuk-responsive-margin(6, "bottom");
-  padding-top: govuk-spacing(3);
-
-  a {
-    display: block;
-    font-weight: 600;
-    background: image-url("icon-calendar.png") no-repeat scroll 0 0;
-    min-height: 2.5em;
-    padding: 0 0 0 3em;
-
-    @include device-pixel-ratio() {
-      background-image: image-url("icon-calendar-2x.png");
-      background-size: 29px 24px;
-    }
-  }
 }
 
 .app-c-calendar {
