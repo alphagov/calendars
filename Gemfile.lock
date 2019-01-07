@@ -77,7 +77,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.25)
+    ffi (1.10.0)
     gds-api-adapters (55.0.2)
       addressable
       link_header
@@ -113,7 +113,7 @@ GEM
     govuk_frontend_toolkit (8.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    govuk_publishing_components (13.5.3)
+    govuk_publishing_components (13.5.4)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -163,7 +163,7 @@ GEM
     multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.3.1)
-    nokogiri (1.9.1)
+    nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
     nokogumbo (1.5.0)
       nokogiri
@@ -249,7 +249,7 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4)
-    sass (3.7.2)
+    sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -330,7 +330,7 @@ DEPENDENCIES
   govuk-lint (= 3.10.0)
   govuk_app_config (~> 1.11.2)
   govuk_frontend_toolkit (~> 8.1.0)
-  govuk_publishing_components (~> 13.5.3)
+  govuk_publishing_components (~> 13.5.4)
   json (~> 2.1.0)
   mocha (= 1.7.0)
   plek (= 2.1.1)
