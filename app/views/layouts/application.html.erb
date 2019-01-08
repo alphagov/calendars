@@ -12,14 +12,14 @@
     <% end %>
   </head>
   <body class="govuk-template__body">
-    <div class="govuk-width-container <%= yield :wrapper_class %>" id="wrapper">
+    <div class="govuk-width-container " id="wrapper">
       <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_item %>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <%= yield %>
         </div>
         <div class="govuk-grid-column-one-third">
-          <div class="app-o-related-container">
+          <div class="app-o-related-container <%= yield :related_container_class %>">
             <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item %>
           </div>
         </div>

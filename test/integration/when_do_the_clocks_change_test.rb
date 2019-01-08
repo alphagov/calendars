@@ -26,7 +26,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
       end
 
       within 'article' do
-        rows = page.all('.app-c-clocks-calendar tr').map { |row| row.all('th,td').map(&:text) }
+        rows = page.all('.app-c-calendar--clocks tr').map { |row| row.all('th,td').map(&:text) }
         assert_equal [
           ["Year", "Clocks go forward", "Clocks go back"],
           ["2012", "25 March", "28 October"],

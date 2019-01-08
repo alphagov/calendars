@@ -1,10 +1,12 @@
 <%= render :partial => "calendar_head" %>
 
 <% if @calendar.show_bunting? %>
-  <div class="epic-bunting <%= @calendar.bunting_styles %>"><span></span></div>
+  <div class="app-o-epic-bunting">
+    <span class="app-o-epic-bunting__bunt<%= " app-o-epic-bunting__bunt--#{@calendar.bunting_styles}" if @calendar.bunting_styles %>"></span>
+  </div>
 <% end %>
 
-<main id="content" role="main">
+<main id="content" class="app-o-main-container <%= "app-o-main-container--bunted" if @calendar.show_bunting? %>" role="main">
   <%= render "govuk_publishing_components/components/title", {
     title: @calendar.title
   } %>
@@ -74,4 +76,4 @@
   } %>
 </main>
 
-<% content_for :wrapper_class do %><% if @calendar.show_bunting? -%>bunted<% end %><% end %>
+<% content_for :related_container_class do %><% if @calendar.show_bunting? -%>app-o-related-container--bunted<% end %><% end %>

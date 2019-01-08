@@ -1,0 +1,9 @@
+.app-o-related-container {
+  margin-top: govuk-spacing(7);
+}
+
+.app-o-related-container--bunted {
+  @include govuk-media-query($from: tablet) {
+    padding-top: 4em;
+  }
+}
