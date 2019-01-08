@@ -44,5 +44,7 @@
     <p class="govuk-body">When the clocks go back, the UK is on Greenwich Mean Time (GMT).</p>
   </article>
 
-  <%= render :partial => 'calendar_metadata' %>
+  <%= render "components/metadata", {
+    last_updated: last_updated_date
+  } %>
 </main>

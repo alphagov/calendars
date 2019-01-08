@@ -23,7 +23,7 @@
         <% end %>
 
         <%= render "components/subscribe", {
-          label: (t "common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
+          label: t("common.add_holiday_ics", :for_nation => t("#{division.title}_for")),
           url: division_path(@calendar, division, :format => 'ics'),
           title: t("common.download_ics")
         } %>
@@ -53,7 +53,9 @@
     } %>
   </article>
 
-  <%= render :partial => 'calendar_metadata' %>
+  <%= render "components/metadata", {
+    last_updated: last_updated_date
+  } %>
 </main>
 
 <% content_for :wrapper_class do %><% if @calendar.show_bunting? -%>bunted<% end %><% end %>
