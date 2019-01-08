@@ -28,18 +28,34 @@
           title: t("common.download_ics")
         } %>
 
-        <%= render :partial => 'calendar_by_year', :locals => {
-            :events_by_year => division.upcoming_events_by_year,
-            :caption => "#{t "common.upcoming_bank_holidays"} #{t "#{division.title}_in"}"} %>
+        <% caption = "#{t "common.upcoming_bank_holidays"} #{t "#{division.title}_in"}" %>
+        <h2 class="govuk-heading-m" id="<%= caption.parameterize %>"><%= caption %></h2>
+
+        <% division.upcoming_events_by_year.each do |year, events| %>
+          <%= render "components/calendar", {
+            title: caption,
+            year: year,
+            events: events
+          } %>
+        <% end %>
 
         <p class="govuk-body"><%= raw(t("common.bank_holiday_on_wkend"))%></p>
         <p class="govuk-body"><%= raw(t("common.holiday_entitlement"))%></p>
         <p class="govuk-body"><%= raw(t("common.bank_holiday_benefits"))%></p>
 
         <hr class="govuk-section-break govuk-section-break--m">
-        <%= render :partial => 'calendar_by_year', :locals => {
-            :events_by_year => division.past_events_by_year,
-            :caption => "#{t "common.past_bank_holidays"} #{t "#{division.title}_in"}"} %>
+
+        <% caption = "#{t "common.past_bank_holidays"} #{t "#{division.title}_in"}" %>
+        <h2 class="govuk-heading-m" id="<%= caption.parameterize %>"><%= caption %></h2>
+
+        <% division.past_events_by_year.each do |year, events| %>
+          <%= render "components/calendar", {
+            title: caption,
+            year: year,
+            events: events
+          } %>
+        <% end %>
+
       <% end %>
     <% end %>
 

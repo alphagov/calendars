@@ -1,0 +1,25 @@
+.app-c-calendar {
+  .govuk-table {
+    @include govuk-font($size: 16);
+  }
+
+  td:nth-child(1),
+  td:nth-child(2) {
+    width: 25%;
+  }
+
+  td:nth-child(3) {
+    width: 50%;
+  }
+}
+
+.app-c-calendar--clocks {
+  td:nth-child(1) {
+    width: 10%;
+  }
+
+  td:nth-child(2),
+  td:nth-child(3) {
+    width: 45%;
+  }
+}

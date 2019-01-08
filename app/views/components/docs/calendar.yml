@@ -1,0 +1,21 @@
+name: Calendar
+description: Generates a calendar table
+body: |
+
+shared_accessibility_criteria:
+- table
+
+accessibility_criteria: |
+  Caption must contain a complete description of the data contained in the table
+
+examples:
+  default:
+    data:
+      caption: Upcoming bank holidays in England and Wales
+      year: 2018
+      events:
+        - title: Boxing Day
+          date: 2018-12-26 00:00:00 +0
+        - title: New Year’s Day
+          date: 2018-01-02 00:00:00 +0
+          notes: Substitute day
