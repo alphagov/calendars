@@ -1,98 +1,10 @@
 @import "govuk_publishing_components/all_components";
 
-@import "components/*";
+@import "objects/bunting";
+@import "objects/related-container";
 
-// overwrite title component styles
-.gem-c-title {
-  margin-top: govuk-spacing(6);
-  margin-bottom: govuk-spacing(6);
+@import "components/calendar";
+@import "components/metadata";
+@import "components/subscribe";
 
-  .gem-c-title__text {
-    padding-top: 7px;
-    padding-bottom: 13px;
-  }
-}
-
-.govuk-panel__title {
-  @include govuk-font($size: 80, $weight: bold);
-}
-
-.app-o-related-container {
-  margin-top: govuk-spacing(7);
-}
-
-.app-c-meta-data {
-  @include govuk-font($size: 16);
-
-  color: $govuk-secondary-text-colour;
-}
-
-.app-c-calendar {
-  .govuk-table {
-    @include govuk-font($size: 16);
-  }
-
-  td:nth-child(1),
-  td:nth-child(2) {
-    width: 25%;
-  }
-
-  td:nth-child(3) {
-    width: 50%;
-  }
-}
-
-.app-c-clocks-calendar {
-  .govuk-table {
-    @include govuk-font($size: 16);
-  }
-
-  td:nth-child(1) {
-    width: 10%;
-  }
-
-  td:nth-child(2),
-  td:nth-child(3) {
-    width: 45%;
-  }
-}
-
-// bunting lol
-.bunted {
-  .epic-bunting {
-    width: 100%;
-    height: 50px;
-    overflow: visible;
-    border-top: 1px solid govuk-colour("grey-2");
-    position: absolute;
-    left: 0;
-
-    @include govuk-media-query($until: tablet) {
-      display: none;
-    }
-
-    span {
-      background-image: image-url("bunting.png");
-      background-color: transparent;
-      background-repeat: repeat-x;
-      background-position: center top;
-      width: 99.9%;
-      height: 70px;
-      display: block;
-    }
-  }
-
-  .epic-bunting.tinsel {
-    span {
-      background-image: image-url("tinsel.png");
-    }
-  }
-
-  .app-o-related-container {
-    margin-top: 4.5em;
-
-    @include govuk-media-query($until: tablet) {
-      margin-top: 0;
-    }
-  }
-}
+@import "utilities/overwrites";
