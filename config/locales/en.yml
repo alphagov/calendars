@@ -22,6 +22,7 @@
 en:
   bank-holidays:              "bank-holidays"
   common:
+    bank_holiday:             "Bank holiday"
     last_updated:             "Last updated"
     next_holiday_in_is:       "The next bank holiday %{in_nation} is"
     add_holiday_ics:          "Add bank holidays %{for_nation} to your calendar (ICS, 14KB)"

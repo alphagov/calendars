@@ -16,6 +16,7 @@ class CalendarController < ApplicationController
         if section_name
           @meta_section = section_name.downcase
         end
+        load_events
 
         render scope.tr('-', '_')
       end
@@ -54,6 +55,10 @@ private
   def load_calendar
     simple_404 unless params[:scope].match?(/\A[a-z-]+\z/)
     @calendar = Calendar.find(scope)
+  end
+
+  def load_events
+    @schema_events = CalendarEventSchema.new(@calendar)
   end
 
   def simple_404

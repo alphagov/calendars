@@ -141,6 +141,37 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     end # within #content
   end
 
+  should "show schema.org information about the upcoming bank holidays" do
+    Timecop.travel("2012-12-14")
+
+    visit "/gwyliau-banc"
+
+    schema_sections = page.find_all("script[type='application/ld+json']", visible: false)
+    schemas = schema_sections.map { |section| JSON.parse(section.text(:all)) }
+    event_schemas = schemas.detect do |schema|
+      schema.class == Array && schema.all? { |item| item["@type"] == "Event" }
+    end
+
+    # Ensure that holidays for each division are present
+    ["Gŵyl banc yng Ngogledd Iwerddon", "Gŵyl banc yn yr Alban", "Gŵyl banc yng Nghymru a Lloegr"].each do |description|
+      assert event_schemas.detect { |event| event["description"] == description }, "#{description} is missing from the holidays list"
+    end
+
+    # Ensure that there are Christmas days in the correct format (one for each division)
+    first_events = event_schemas[0...2]
+    first_events.each do |event|
+      assert_equal event["name"], "Dydd Nadolig"
+      assert_equal event["startDate"], "2012-12-25T00:00:00+00:00"
+      assert_equal event["endDate"], "2012-12-25T23:59:59+00:00"
+      assert_equal event["duration"], "P1D"
+      assert_equal event["location"]["@type"], "AdministrativeArea"
+    end
+
+    # Ensure that summer bank holidays are displayed with the correct time offset
+    summer_date = event_schemas.detect { |event| event["name"] == "Gŵyl Banc yr Haf" }
+    assert_equal summer_date["startDate"], "2013-08-05T00:00:00+01:00"
+  end
+
   should "display the correct upcoming event" do
     Timecop.travel(Date.parse('2012-01-03')) do
       visit "/gwyliau-banc"

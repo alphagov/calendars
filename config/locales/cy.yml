@@ -1,6 +1,7 @@
 cy:
   bank-holidays:             "gwyliau-banc"
   common:
+    bank_holiday:            "Gŵyl banc"
     last_updated:            "Diweddarwyd diwethaf"
     next_holiday_in_is:      "Y gŵyl banc nesaf %{in_nation} yw"
     add_holiday_ics:         "Ychwanegwch ddyddiadau gwyliau banc %{for_nation} at eich calendr (ICS, 10KB)"
@@ -44,4 +45,3 @@ cy:
     christmas:     "Dydd Nadolig"
     boxing_day:    "Gŵyl San Steffan"
     queen_diamond: "Jiwbilî Diemwnt y Frenhines"
-

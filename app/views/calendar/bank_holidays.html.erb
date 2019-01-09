@@ -77,3 +77,4 @@
 </main>
 
 <% content_for :related_container_class do %><% if @calendar.show_bunting? -%>app-o-related-container--bunted<% end %><% end %>
+<%= render partial: 'calendar_machine_readable' %>
