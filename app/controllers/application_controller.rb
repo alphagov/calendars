@@ -1,5 +1,3 @@
-require "gds_api/helpers"
-
 class ApplicationController < ActionController::Base
   include Slimmer::Template
 
