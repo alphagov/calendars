@@ -21,8 +21,8 @@ private
       "@type": "Event",
       name: I18n.t(event.title),
       description: description(division, event),
-      startDate: event.date.to_time.beginning_of_day.iso8601,
-      endDate: event.date.to_time.end_of_day.iso8601,
+      startDate: event.date.to_time.beginning_of_day.localtime.iso8601,
+      endDate: event.date.to_time.end_of_day.localtime.iso8601,
       duration: "P1D",
       location: {
         "@type": "AdministrativeArea",
