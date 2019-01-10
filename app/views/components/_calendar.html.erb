@@ -1,0 +1,21 @@
+<%
+title ||= nil
+year ||= nil
+events ||= []
+%>
+
+<div class="app-c-calendar">
+  <% table_caption = capture do %>
+    <span class="govuk-visually-hidden"><%= title %></span> <%= year.to_s %>
+  <% end %>
+
+  <%= render "govuk_publishing_components/components/table", {
+    caption: table_caption,
+    caption_classes: "govuk-heading-s",
+    rows: events.each.map { |event| [
+      { :text => l(event[:date], :format => '%e %B') },
+      { :text => l(event[:date], :format => '%A') },
+      { :text => event[:title] + (event[:notes].blank? ? '' : " (#{event[:notes].downcase})") }
+     ] }
+  } %>
+</div>

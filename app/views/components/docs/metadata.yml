@@ -1,0 +1,7 @@
+name: Metadata
+description: Calendar page metadata (i.e. last updated date)
+accessibility_criteria: Elements must have sufficient color contrast
+examples:
+  default:
+    data:
+      last_updated: 2019-01-07

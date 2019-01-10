@@ -1,0 +1,16 @@
+// The title component is not aligned to work with the new (govuk-frontend based)
+// layout in the same way it did with the old one so it needs some adjustments
+// to keep it positioned consistently for users
+.gem-c-title {
+  margin-top: govuk-spacing(6);
+  margin-bottom: govuk-spacing(6);
+
+  .gem-c-title__text {
+    padding-top: 7px;
+    padding-bottom: 13px;
+  }
+}
+
+.js-enabled .gem-c-tabs__panel--no-border {
+  padding-bottom: 0;
+}

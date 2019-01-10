@@ -11,13 +11,17 @@
       <meta name="govuk:section" content="<%= @meta_section %>">
     <% end %>
   </head>
-  <body class="mainstream">
-    <div id="wrapper" class="answer <%= yield :wrapper_class %>">
+  <body class="govuk-template__body">
+    <div class="govuk-width-container " id="wrapper">
       <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_item %>
-      <div class="grid-row">
-        <%= yield %>
-        <div class="related-container">
-          <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <%= yield %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="app-o-related-container <%= yield :related_container_class %>">
+            <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item %>
+          </div>
         </div>
       </div>
       <%= render 'govuk_publishing_components/components/feedback' %>

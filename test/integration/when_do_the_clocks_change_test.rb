@@ -21,12 +21,12 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     end
 
     within "#content" do
-      within 'header' do
+      within '.gem-c-title' do
         assert page.has_content?("When do the clocks change?")
       end
 
       within 'article' do
-        rows = page.all('table.clocks-calendar tr').map { |row| row.all('th,td').map(&:text) }
+        rows = page.all('.app-c-calendar--clocks tr').map { |row| row.all('th,td').map(&:text) }
         assert_equal [
           ["Year", "Clocks go forward", "Clocks go back"],
           ["2012", "25 March", "28 October"],
@@ -34,7 +34,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
           ["2014", "30 March", "26 October"],
         ], rows
 
-        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 5KB)", href: "/when-do-the-clocks-change/united-kingdom.ics")
+        assert page.has_link?("Add clock changes in the UK to your calendar (ICS, 2KB)", href: "/when-do-the-clocks-change/united-kingdom.ics")
       end
     end
   end
@@ -43,7 +43,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse('2012-11-15')) do
       visit "/when-do-the-clocks-change"
 
-      within ".highlighted-event" do
+      within ".govuk-panel" do
         assert page.has_content?("The clocks advance")
         assert page.has_content?("31 March")
       end
@@ -52,7 +52,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     Timecop.travel(Date.parse('2013-04-01')) do
       visit "/when-do-the-clocks-change"
 
-      within ".highlighted-event" do
+      within ".govuk-panel" do
         assert page.has_content?("The clocks go back")
         assert page.has_content?("27 October")
       end
