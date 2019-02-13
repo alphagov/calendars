@@ -18,7 +18,7 @@ gem 'uglifier', '4.1.20'
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
 else
-  gem 'slimmer', '~> 13.0.0'
+  gem 'slimmer', '~> 13.1.0'
 end
 
 if ENV['API_DEV']
