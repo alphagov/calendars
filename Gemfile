@@ -46,4 +46,4 @@ group :test do
 end
 
 # Upgrade to Sentry
-gem "govuk_app_config", "~> 1.11.2"
+gem "govuk_app_config", "~> 1.11.3"
