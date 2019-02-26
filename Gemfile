@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby File.read(".ruby-version").chomp
 
 gem 'rails', '~> 5.2.2'
-gem 'rails-i18n', '~> 5.1.2'
+gem 'rails-i18n', '~> 5.1.3'
 
 gem 'json', '~> 2.1.0'
 gem 'plek', '2.1.1'
