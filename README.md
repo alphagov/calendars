@@ -13,7 +13,7 @@ Serves calendars in a clear and accessible format, along with JSON and iCal expo
 
 ## Nomenclature
 
-- **scope**: sach type of calendar (eg daylight saving, bank holidays) is known as a scope. A scope has its own view templates, JSON data source and primary route.
+- **scope**: each type of calendar (eg daylight saving, bank holidays) is known as a scope. A scope has its own view templates, JSON data source and primary route.
 
 ## Technical documentation
 
