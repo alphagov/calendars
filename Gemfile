@@ -33,7 +33,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'capybara', '3.16.2'
+  gem 'capybara', '3.18.0'
   gem 'ci_reporter_minitest', '1.0.0'
   gem 'govuk-content-schema-test-helpers', '~> 1.6.1'
   gem 'mocha', '1.8.0', require: false
