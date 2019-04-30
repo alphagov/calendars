@@ -1,0 +1,7 @@
+.app-c-govuk-offline-banner {
+  display: none;
+
+  .govuk-panel--confirmation {
+    background-color: govuk-colour('blue');
+  }
+}
