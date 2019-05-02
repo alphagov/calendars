@@ -8,7 +8,7 @@ gem 'rails-i18n', '~> 5.1.3'
 gem 'json', '~> 2.2.0'
 gem 'plek', '2.1.1'
 
-gem 'govuk_publishing_components', '~> 16.10.1'
+gem 'govuk_publishing_components', '~> 16.14.0'
 
 gem 'rack_strip_client_ip', '0.0.2'
 
