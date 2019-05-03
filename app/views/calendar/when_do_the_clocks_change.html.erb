@@ -9,10 +9,12 @@
     <%- division = @calendar.divisions.first -%>
 
     <% if division.upcoming_event %>
-      <%= render "govuk_publishing_components/components/panel", {
-        prepend: "The #{division.upcoming_event.notes.gsub(' one hour', '').downcase}",
-        title: division.upcoming_event.date.strftime("%e %B"),
-      } %>
+      <div class="when-do-the-clock-change--upcoming-event">
+        <%= render "govuk_publishing_components/components/panel", {
+          prepend: "The #{division.upcoming_event.notes.gsub(' one hour', '').downcase}",
+          title: division.upcoming_event.date.strftime("%e %B"),
+        } %>
+      </div>
     <% end %>
 
     <div class="app-c-calendar app-c-calendar--clocks">
