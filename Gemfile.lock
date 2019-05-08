@@ -87,7 +87,7 @@ GEM
       activesupport (>= 4.2.0)
     govuk-content-schema-test-helpers (1.6.1)
       json-schema (~> 2.8.0)
-    govuk-lint (3.11.1)
+    govuk-lint (3.11.2)
       rubocop (~> 0.64)
       rubocop-rspec (~> 1.28)
       scss_lint
@@ -236,7 +236,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scss_lint (0.57.1)
+    scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
     sentry-raven (2.7.4)
@@ -303,7 +303,7 @@ DEPENDENCIES
   ci_reporter_minitest (= 1.0.0)
   gds-api-adapters
   govuk-content-schema-test-helpers (~> 1.6.1)
-  govuk-lint (= 3.11.1)
+  govuk-lint (= 3.11.2)
   govuk_app_config (~> 1.16.0)
   govuk_publishing_components (~> 16.14.1)
   json (~> 2.2.0)
