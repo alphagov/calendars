@@ -13,13 +13,24 @@ var offlineUrls = [
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(currentCache.offline).then(function(cache) {
-      return cache.addAll(offlineUrls);
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (currentCache.offline.indexOf(cacheName) === -1) {
+            console.log('Deleting out of date cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(function(){
+      caches.open(currentCache.offline).then(function(cache) {
+        return cache.addAll(offlineUrls);
+      })
     })
   );
 });
 
-self.addEventListener('activate', activateEvent => {
+self.addEventListener('activate', function(activateEvent) {
   // Optional: Get a list of all the current open windows/tabs under
   // our service worker's control, and force them to reload.
   // This can "unbreak" any open windows/tabs as soon as the new
