@@ -1,6 +1,7 @@
 // https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
 'use strict';
 
+var KILLSWITCHENABLED = false; // this will delete all caches and disable offline capabilities
 var cacheVersion = 1;
 var currentCache = {
   offline: 'govuk-calendar-cache-' + cacheVersion
@@ -40,6 +41,23 @@ self.addEventListener('activate', function(activateEvent) {
       windowClient.navigate(windowClient.url);
     });
   });
+
+  // implementation of kill switch
+  if (KILLSWITCHENABLED) {
+    // delete all existing SW caches
+    activateEvent.waitUntil(
+      caches.keys()
+        .then(function(cacheNames) {
+          return Promise.all(
+            cacheNames.map(function(cacheName) {
+              return caches.delete(cacheName);
+            })
+          ).then(function(response) {
+            console.info('All service worker caches deleted');
+          })
+        })
+    );
+  }
 });
 
 self.addEventListener('fetch', function(event) {
