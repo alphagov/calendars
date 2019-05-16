@@ -10,6 +10,8 @@
     <% if @meta_section %>
       <meta name="govuk:section" content="<%= @meta_section %>">
     <% end %>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
   </head>
   <body class="govuk-template__body">
     <div class="govuk-width-container " id="wrapper">
