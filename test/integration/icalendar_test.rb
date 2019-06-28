@@ -6,7 +6,7 @@ class IcalendarTest < ActionDispatch::IntegrationTest
   context "getting ICS version" do
     setup do
       # This timestamp is used to generate the DTSTAMP entries
-      File.stubs(:mtime).with(Rails.root.join("REVISION")).returns(Time.parse("2012-10-17 01:00:00"))
+      File.stubs(:mtime).with(Rails.root.join("REVISION")).returns(Time.zone.parse("2012-10-17 01:00:00"))
     end
 
     calendars = {
