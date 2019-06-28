@@ -19,7 +19,7 @@ class BankHolidayGeneratorTest < ActiveSupport::TestCase
     end
   end
 
-  nations = ["england-and-wales", "scotland", "northern-ireland"]
+  nations = %w(england-and-wales scotland northern-ireland)
   years = (2013..2016)
   nations.each do |nation|
     years.each do |year|
