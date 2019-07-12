@@ -92,7 +92,7 @@ GEM
       rubocop-rails (~> 2)
       rubocop-rspec (~> 1.28)
       scss_lint
-    govuk_app_config (1.20.0)
+    govuk_app_config (1.20.1)
       aws-xray-sdk (~> 0.10.0)
       logstasher (>= 1.2.2, < 1.4.0)
       sentry-raven (>= 2.7.1, < 2.10.0)
@@ -317,7 +317,7 @@ DEPENDENCIES
   gds-api-adapters
   govuk-content-schema-test-helpers (~> 1.6.1)
   govuk-lint (= 3.11.5)
-  govuk_app_config (~> 1.20.0)
+  govuk_app_config (~> 1.20.1)
   govuk_publishing_components (~> 17.13.0)
   json (~> 2.2.0)
   mocha (= 1.9.0)
