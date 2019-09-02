@@ -42,8 +42,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.0)
     builder (3.2.3)
@@ -160,7 +160,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     rack (2.0.7)
     rack-cache (1.9.0)
       rack (>= 0.4)
@@ -295,7 +295,7 @@ GEM
     unicorn (5.5.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    webmock (3.6.2)
+    webmock (3.7.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -331,7 +331,7 @@ DEPENDENCIES
   slimmer (~> 13.1.0)
   timecop (= 0.9.1)
   uglifier (= 4.1.20)
-  webmock (~> 3.6.2)
+  webmock (~> 3.7.1)
 
 RUBY VERSION
    ruby 2.6.3p62
