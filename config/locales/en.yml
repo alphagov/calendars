@@ -45,8 +45,8 @@ en:
     upcoming_bank_holidays:   "Upcoming bank holidays"
     past_bank_holidays:       "Past bank holidays"
     bank_holiday_on_wkend:    "If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday."
-    holiday_entitlement:      "Your employer doesn’t have to give you <a href=\"/holiday-entitlement-rights\" title=\"Holiday entitlement rights\">paid leave on bank or public holidays</a>."
-    bank_holiday_benefits:    "Bank holidays might affect <a href=\"/how-to-have-your-benefits-paid\">how and when your benefits are paid</a>."
+    holiday_entitlement:      "Your employer doesn’t have to give you <a href=\"/holiday-entitlement-rights\" title=\"Holiday entitlement rights\" class=\"govuk-link\">paid leave on bank or public holidays</a>."
+    bank_holiday_benefits:    "Bank holidays might affect <a href=\"/how-to-have-your-benefits-paid\" class=\"govuk-link\">how and when your benefits are paid</a>."
   bank_holidays:
     calendar:
       title:        "UK bank holidays"
