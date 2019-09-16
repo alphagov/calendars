@@ -42,7 +42,7 @@ group :test do
   gem 'simplecov', '0.17.0'
   gem 'simplecov-rcov', '0.2.3'
   gem 'timecop', '0.9.1'
-  gem 'webmock', '~> 3.7.1', require: false
+  gem 'webmock', '~> 3.7.3', require: false
 end
 
 # Upgrade to Sentry
