@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_relative '../test_helper'
+require_relative "../test_helper"
 
 class YearTest < ActiveSupport::TestCase
   should "return the year string for to_s" do

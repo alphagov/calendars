@@ -51,7 +51,7 @@ class BankHolidayGenerator
       :last_monday_august,
       :christmas,
       :boxing_day,
-    ]
+    ],
   }.freeze
 
   attr_reader :year, :bank_holidays, :nation

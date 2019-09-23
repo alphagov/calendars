@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from GdsApi::TimedOutException, with: :error_503
 
-  slimmer_template 'core_layout'
+  slimmer_template "core_layout"
 
   before_action :set_cors_headers, if: :json_request?
 
@@ -27,7 +27,7 @@ protected
   def set_cors_headers
     # Calendars only does GET requests, so it's safe to allow CORS for all
     # requests.
-    headers['Access-Control-Allow-Origin'] = '*'
+    headers["Access-Control-Allow-Origin"] = "*"
   end
 
   def json_request?

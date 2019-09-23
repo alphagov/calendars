@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "action_controller/railtie"
 require "rails/test_unit/railtie"
@@ -25,7 +25,7 @@ module Calendars
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    config.assets.prefix = '/calendars'
+    config.assets.prefix = "/calendars"
     config.assets.precompile += %w(
       application.css
       print.css

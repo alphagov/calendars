@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class BankHolidaysTest < ActionDispatch::IntegrationTest
   setup do
-    content_store_has_item('/bank-holidays')
+    content_store_has_item("/bank-holidays")
   end
 
   should "display the bank holidays page" do
@@ -27,19 +27,19 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
     end
 
     within "#content" do
-      within '.gem-c-title' do
+      within ".gem-c-title" do
         assert page.has_content?("UK bank holidays")
       end
 
-      within 'article' do
-        within '.govuk-tabs' do
+      within "article" do
+        within ".govuk-tabs" do
           tab_labels = page.all("ul li a").map(&:text)
 
-          assert_equal ['England and Wales', 'Scotland', 'Northern Ireland'], tab_labels
+          assert_equal ["England and Wales", "Scotland", "Northern Ireland"], tab_labels
         end
 
-        within '.govuk-tabs' do
-          within '#england-and-wales' do
+        within ".govuk-tabs" do
+          within "#england-and-wales" do
             assert page.has_link?("Add bank holidays for England and Wales to your calendar", href: "/bank-holidays/england-and-wales.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in England and Wales", year: "2012", rows: [
@@ -68,7 +68,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             ]
           end
 
-          within '#scotland' do
+          within "#scotland" do
             assert page.has_link?("Add bank holidays for Scotland to your calendar", href: "/bank-holidays/scotland.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in Scotland", year: "2012", rows: [
@@ -99,7 +99,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
             ]
           end
 
-          within '#northern-ireland' do
+          within "#northern-ireland" do
             assert page.has_link?("Add bank holidays for Northern Ireland to your calendar", href: "/bank-holidays/northern-ireland.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in Northern Ireland", year: "2012", rows: [
@@ -137,23 +137,23 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
   end
 
   should "display the correct upcoming event" do
-    Timecop.travel(Date.parse('2012-01-03')) do
+    Timecop.travel(Date.parse("2012-01-03")) do
       visit "/bank-holidays"
 
       within ".govuk-tabs" do
-        within '#england-and-wales .govuk-panel' do
+        within "#england-and-wales .govuk-panel" do
           assert page.has_content?("The next bank holiday in England and Wales is")
           assert page.has_content?("6 April")
           assert page.has_content?("Good Friday")
         end
 
-        within '#scotland .govuk-panel' do
+        within "#scotland .govuk-panel" do
           assert page.has_content?("The next bank holiday in Scotland is")
           assert page.has_content?("today")
           assert page.has_content?("New Year’s Day")
         end
 
-        within '#northern-ireland .govuk-panel' do
+        within "#northern-ireland .govuk-panel" do
           assert page.has_content?("The next bank holiday in Northern Ireland is")
           assert page.has_content?("19 March")
           assert page.has_content?("St Patrick’s Day")
@@ -166,43 +166,43 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
     should "show bunting when today is a buntable bank holiday" do
       Timecop.travel(Date.parse("9th April 2012")) do
         visit "/bank-holidays"
-        assert page.has_css?('.app-o-epic-bunting')
-        assert page.has_css?('.app-o-main-container--bunted')
+        assert page.has_css?(".app-o-epic-bunting")
+        assert page.has_css?(".app-o-main-container--bunted")
       end
     end
 
     should "not show bunting if today is a non-buntable bank holiday" do
       Timecop.travel(Date.parse("12th July 2013")) do
         visit "/bank-holidays"
-        assert page.has_no_css?('.app-o-epic-bunting')
-        assert page.has_no_css?('.app-o-main-container--bunted')
+        assert page.has_no_css?(".app-o-epic-bunting")
+        assert page.has_no_css?(".app-o-main-container--bunted")
       end
     end
 
     should "not show bunting when today is not a bank holiday" do
       Timecop.travel(Date.parse("3rd Feb 2012")) do
         visit "/bank-holidays"
-        assert page.has_no_css?('.app-o-epic-bunting')
-        assert page.has_no_css?('.app-o-main-container--bunted')
+        assert page.has_no_css?(".app-o-epic-bunting")
+        assert page.has_no_css?(".app-o-main-container--bunted")
       end
     end
 
     should "not use tinsel bunting in the middle of the year" do
       Timecop.travel(Date.parse("9th April 2012")) do
         visit "/bank-holidays"
-        assert page.has_no_css?('.app-o-epic-bunting__bunt--tinsel')
+        assert page.has_no_css?(".app-o-epic-bunting__bunt--tinsel")
       end
     end
 
     should "use tinsel bunting for Christmas and New Year bank holidays" do
       Timecop.travel(Date.parse("25th December 2012")) do
         visit "/bank-holidays"
-        assert page.has_css?('.app-o-epic-bunting__bunt--tinsel')
+        assert page.has_css?(".app-o-epic-bunting__bunt--tinsel")
       end
 
       Timecop.travel(Date.parse("2nd Jan 2012")) do
         visit "/bank-holidays"
-        assert page.has_css?('.app-o-epic-bunting__bunt--tinsel')
+        assert page.has_css?(".app-o-epic-bunting__bunt--tinsel")
       end
     end
   end # within #content

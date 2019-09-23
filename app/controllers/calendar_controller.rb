@@ -1,4 +1,4 @@
-require 'ics_renderer'
+require "ics_renderer"
 
 class CalendarController < ApplicationController
   before_action :set_locale
@@ -17,7 +17,7 @@ class CalendarController < ApplicationController
           @meta_section = section_name.downcase
         end
 
-        render scope.tr('-', '_')
+        render scope.tr("-", "_")
       end
       format.json do
         render json: @calendar
