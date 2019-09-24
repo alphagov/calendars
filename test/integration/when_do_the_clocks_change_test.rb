@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
   setup do
-    content_store_has_item('/when-do-the-clocks-change')
+    content_store_has_item("/when-do-the-clocks-change")
   end
 
   should "display the clocks change page" do
@@ -21,12 +21,12 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
     end
 
     within "#content" do
-      within '.gem-c-title' do
+      within ".gem-c-title" do
         assert page.has_content?("When do the clocks change?")
       end
 
-      within 'article' do
-        rows = page.all('.app-c-calendar--clocks tr').map { |row| row.all('th,td').map(&:text) }
+      within "article" do
+        rows = page.all(".app-c-calendar--clocks tr").map { |row| row.all("th,td").map(&:text) }
         assert_equal [
           ["Year", "Clocks go forward", "Clocks go back"],
           ["2012", "25 March", "28 October"],
@@ -40,7 +40,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
   end
 
   should "display the correct upcoming event" do
-    Timecop.travel(Date.parse('2012-11-15')) do
+    Timecop.travel(Date.parse("2012-11-15")) do
       visit "/when-do-the-clocks-change"
 
       within ".govuk-panel" do
@@ -49,7 +49,7 @@ class WhenDoTheClocksChangeTest < ActionDispatch::IntegrationTest
       end
     end # Timecop
 
-    Timecop.travel(Date.parse('2013-04-01')) do
+    Timecop.travel(Date.parse("2013-04-01")) do
       visit "/when-do-the-clocks-change"
 
       within ".govuk-panel" do

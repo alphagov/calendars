@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class IcalendarTest < ActionDispatch::IntegrationTest
   context "getting ICS version" do
@@ -24,25 +24,25 @@ class IcalendarTest < ActionDispatch::IntegrationTest
         assert_equal response.status, 200
 
         expected_non_scottish_events = [
-          { "date" => "20120102", "title" => I18n.t('bank_holidays.new_year') },
-          { "date" => "20120604", "title" => I18n.t('bank_holidays.spring') },
-          { "date" => "20120827", "title" => I18n.t('bank_holidays.summer') },
+          { "date" => "20120102", "title" => I18n.t("bank_holidays.new_year") },
+          { "date" => "20120604", "title" => I18n.t("bank_holidays.spring") },
+          { "date" => "20120827", "title" => I18n.t("bank_holidays.summer") },
         ]
 
         expected_scottish_events = [
-          { "date" => "20120103", "title" => I18n.t('bank_holidays.new_year') },
-          { "date" => "20120604", "title" => I18n.t('bank_holidays.spring') },
-          { "date" => "20120806", "title" => I18n.t('bank_holidays.summer') },
+          { "date" => "20120103", "title" => I18n.t("bank_holidays.new_year") },
+          { "date" => "20120604", "title" => I18n.t("bank_holidays.spring") },
+          { "date" => "20120806", "title" => I18n.t("bank_holidays.summer") },
         ]
 
         common_expected_events = [
-          { "date" => "20120605", "title" => I18n.t('bank_holidays.queen_diamond') },
-          { "date" => "20121225", "title" => I18n.t('bank_holidays.christmas') },
-          { "date" => "20121226", "title" => I18n.t('bank_holidays.boxing_day') },
-          { "date" => "20130101", "title" => I18n.t('bank_holidays.new_year') },
-          { "date" => "20130329", "title" => I18n.t('bank_holidays.good_friday') },
-          { "date" => "20131225", "title" => I18n.t('bank_holidays.christmas') },
-          { "date" => "20131226", "title" => I18n.t('bank_holidays.boxing_day') },
+          { "date" => "20120605", "title" => I18n.t("bank_holidays.queen_diamond") },
+          { "date" => "20121225", "title" => I18n.t("bank_holidays.christmas") },
+          { "date" => "20121226", "title" => I18n.t("bank_holidays.boxing_day") },
+          { "date" => "20130101", "title" => I18n.t("bank_holidays.new_year") },
+          { "date" => "20130329", "title" => I18n.t("bank_holidays.good_friday") },
+          { "date" => "20131225", "title" => I18n.t("bank_holidays.christmas") },
+          { "date" => "20131226", "title" => I18n.t("bank_holidays.boxing_day") },
         ]
 
         expected_events = if calendar.include?("scotland")
@@ -53,8 +53,8 @@ class IcalendarTest < ActionDispatch::IntegrationTest
 
         assert(
           response.body.start_with?(
-            "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n"
-          )
+            "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n",
+          ),
         )
 
         assert_equal "text/calendar", response.content_type

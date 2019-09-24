@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-require_relative '../test_helper'
-require 'ics_renderer'
+require_relative "../test_helper"
+require "ics_renderer"
 
 class ICSRendererTest < ActiveSupport::TestCase
   context "generating complete ics file" do
@@ -83,19 +83,19 @@ class ICSRendererTest < ActiveSupport::TestCase
     end
 
     should "return the mtime of the REVISION file" do
-      File.expects(:mtime).with(Rails.root.join("REVISION")).returns(Time.zone.parse('2012-04-06 14:53:54Z'))
+      File.expects(:mtime).with(Rails.root.join("REVISION")).returns(Time.zone.parse("2012-04-06 14:53:54Z"))
       assert_equal "20120406T145354Z", @r.dtstamp
     end
 
     should "return now if the file doesn't exist" do
-      Timecop.freeze(Time.zone.parse('2012-11-27 16:13:27')) do
+      Timecop.freeze(Time.zone.parse("2012-11-27 16:13:27")) do
         File.expects(:mtime).with(Rails.root.join("REVISION")).raises(Errno::ENOENT)
         assert_equal "20121127T161327Z", @r.dtstamp
       end
     end
 
     should "cache the result" do
-      File.expects(:mtime).with(Rails.root.join("REVISION")).once.returns(Time.zone.parse('2012-04-06 14:53:54Z'))
+      File.expects(:mtime).with(Rails.root.join("REVISION")).once.returns(Time.zone.parse("2012-04-06 14:53:54Z"))
       @r.dtstamp
       assert_equal "20120406T145354Z", @r.dtstamp
     end

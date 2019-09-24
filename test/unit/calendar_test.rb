@@ -1,35 +1,35 @@
 # encoding: utf-8
 
-require_relative '../test_helper'
+require_relative "../test_helper"
 
 class CalendarTest < ActiveSupport::TestCase
   context "finding a calendar by slug" do
     should "construct a calendar with the slug and data from the corresponding JSON file" do
-      data_from_json = JSON.parse(File.read(Rails.root.join(Calendar::REPOSITORY_PATH, 'single-calendar.json')))
-      Calendar.expects(:new).with('single-calendar', data_from_json).returns(:a_calendar)
+      data_from_json = JSON.parse(File.read(Rails.root.join(Calendar::REPOSITORY_PATH, "single-calendar.json")))
+      Calendar.expects(:new).with("single-calendar", data_from_json).returns(:a_calendar)
 
-      cal = Calendar.find('single-calendar')
+      cal = Calendar.find("single-calendar")
       assert_equal :a_calendar, cal
     end
 
     should "raise exception when calendar doesn't exist" do
       assert_raises Calendar::CalendarNotFound do
-        Calendar.find('non-existent')
+        Calendar.find("non-existent")
       end
     end
   end
 
   should "return the slug" do
-    assert_equal 'a-slug', Calendar.new('a-slug', {}).slug
+    assert_equal "a-slug", Calendar.new("a-slug", {}).slug
   end
 
   should "return the slug for to_param" do
-    assert_equal 'a-slug', Calendar.new('a-slug', {}).to_param
+    assert_equal "a-slug", Calendar.new("a-slug", {}).to_param
   end
 
   context "divisions" do
     setup do
-      @cal = Calendar.new('a-calendar', "title" => "UK bank holidays",
+      @cal = Calendar.new("a-calendar", "title" => "UK bank holidays",
         "divisions" => {
           "kablooie" => {
             "2012" => [1],
@@ -62,14 +62,14 @@ class CalendarTest < ActiveSupport::TestCase
 
     context "finding a division by slug" do
       should "return the division with the matching slug" do
-        div = @cal.division('fooey')
+        div = @cal.division("fooey")
         assert_equal Calendar::Division, div.class
-        assert_equal 'Fooey', div.title
+        assert_equal "Fooey", div.title
       end
 
       should "raise exception when division doesn't exist" do
         assert_raises Calendar::CalendarNotFound do
-          @cal.division('non-existent')
+          @cal.division("non-existent")
         end
       end
     end
@@ -78,7 +78,7 @@ class CalendarTest < ActiveSupport::TestCase
   context "events" do
     setup do
       @divisions = []
-      @calendar = Calendar.new('a-calendar')
+      @calendar = Calendar.new("a-calendar")
       @calendar.stubs(:divisions).returns(@divisions)
     end
 
@@ -101,8 +101,8 @@ class CalendarTest < ActiveSupport::TestCase
 
   context "attribute accessors" do
     setup do
-      @cal = Calendar.new('a-calendar', "title" => "UK bank holidays",
-        "description" => "UK bank holidays description",)
+      @cal = Calendar.new("a-calendar", "title" => "UK bank holidays",
+        "description" => "UK bank holidays description")
     end
 
     should "have an accessor for the title" do
@@ -116,7 +116,7 @@ class CalendarTest < ActiveSupport::TestCase
 
   context "show_bunting?" do
     setup do
-      @cal = Calendar.new('a-calendar')
+      @cal = Calendar.new("a-calendar")
     end
 
     should "be true when one division is buntable" do
@@ -149,9 +149,9 @@ class CalendarTest < ActiveSupport::TestCase
 
   context "as_json" do
     setup do
-      @div1 = stub("Division", slug: 'division-1', as_json: "div1 json")
-      @div2 = stub("Division", slug: 'division-2', as_json: "div2 json")
-      @cal = Calendar.new('a-calendar')
+      @div1 = stub("Division", slug: "division-1", as_json: "div1 json")
+      @div2 = stub("Division", slug: "division-2", as_json: "div2 json")
+      @cal = Calendar.new("a-calendar")
       @cal.stubs(:divisions).returns([@div1, @div2])
     end
 

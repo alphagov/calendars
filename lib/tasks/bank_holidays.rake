@@ -1,4 +1,4 @@
-require 'bank_holiday_generator'
+require "bank_holiday_generator"
 
 namespace :bank_holidays do
   desc "Generate JSON for UK bank holidays"

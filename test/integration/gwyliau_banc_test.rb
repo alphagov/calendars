@@ -1,12 +1,12 @@
 # encoding: utf-8
 
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class GwyliauBancTest < ActionDispatch::IntegrationTest
   setup do
-    content_item = content_item_for_base_path('/bank-holidays')
+    content_item = content_item_for_base_path("/bank-holidays")
     content_item["locale"] = "cy"
-    content_store_has_item('/bank-holidays', content_item)
+    content_store_has_item("/bank-holidays", content_item)
   end
 
   should "display the Gwyliau Banc page" do
@@ -29,18 +29,18 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     end
 
     within "#content" do
-      within '.gem-c-title' do
+      within ".gem-c-title" do
         assert page.has_content?("Gwyliau banc y DU")
       end
 
-      within 'article' do
-        within '.govuk-tabs' do
+      within "article" do
+        within ".govuk-tabs" do
           tab_labels = page.all("ul li a").map(&:text)
-          assert_equal ['Cymru a Lloegr', 'Yr Alban', 'Gogledd Iwerddon'], tab_labels
+          assert_equal ["Cymru a Lloegr", "Yr Alban", "Gogledd Iwerddon"], tab_labels
         end
 
-        within '.govuk-tabs' do
-          within '#cymru-a-lloegr' do
+        within ".govuk-tabs" do
+          within "#cymru-a-lloegr" do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", href: "/gwyliau-banc/cymru-a-lloegr.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Nghymru a Lloegr", year: "2012", rows: [
@@ -69,7 +69,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             ]
           end
 
-          within '#yr-alban' do
+          within "#yr-alban" do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", href: "/gwyliau-banc/yr-alban.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yn yr Alban", year: "2012", rows: [
@@ -100,7 +100,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
             ]
           end
 
-          within '#gogledd-iwerddon' do
+          within "#gogledd-iwerddon" do
             assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", href: "/gwyliau-banc/gogledd-iwerddon.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Ngogledd Iwerddon", year: "2012", rows: [
@@ -142,23 +142,23 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
   end
 
   should "display the correct upcoming event" do
-    Timecop.travel(Date.parse('2012-01-03')) do
+    Timecop.travel(Date.parse("2012-01-03")) do
       visit "/gwyliau-banc"
 
       within ".govuk-tabs" do
-        within '#cymru-a-lloegr .govuk-panel' do
+        within "#cymru-a-lloegr .govuk-panel" do
           assert page.has_content?("Y gŵyl banc nesaf yng Nghymru a Lloegr yw")
           assert page.has_content?("6 Ebrill")
           assert page.has_content?("Dydd Gwener y Groglith")
         end
 
-        within '#yr-alban .govuk-panel' do
+        within "#yr-alban .govuk-panel" do
           assert page.has_content?("Y gŵyl banc nesaf yn yr Alban yw")
           assert page.has_content?("heddiw")
           assert page.has_content?("Dydd Calan")
         end
 
-        within '#gogledd-iwerddon .govuk-panel' do
+        within "#gogledd-iwerddon .govuk-panel" do
           assert page.has_content?("Y gŵyl banc nesaf yng Ngogledd Iwerddon yw")
           assert page.has_content?("19 Mawrth")
           assert page.has_content?("Gŵyl San Padrig")
@@ -171,21 +171,21 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
     should "show bunting when today is a buntable bank holiday" do
       Timecop.travel(Date.parse("2nd Jan 2012")) do
         visit "/gwyliau-banc"
-        assert page.has_css?('.app-o-epic-bunting')
+        assert page.has_css?(".app-o-epic-bunting")
       end
     end
 
     should "not show bunting if today is a non-buntable bank holiday" do
       Timecop.travel(Date.parse("12th July 2013")) do
         visit "/gwyliau-banc"
-        assert page.has_no_css?('.app-o-epic-bunting')
+        assert page.has_no_css?(".app-o-epic-bunting")
       end
     end
 
     should "not show bunting when today is not a bank holiday" do
       Timecop.travel(Date.parse("3rd Feb 2012")) do
         visit "/gwyliau-banc"
-        assert page.has_no_css?('.app-o-epic-bunting')
+        assert page.has_no_css?(".app-o-epic-bunting")
       end
     end
   end

@@ -1,4 +1,4 @@
-require 'govuk-content-schema-test-helpers/test_unit'
+require "govuk-content-schema-test-helpers/test_unit"
 
 module Mocha
   module ParameterMatchers

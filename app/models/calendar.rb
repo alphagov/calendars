@@ -48,9 +48,9 @@ class Calendar
 
   def bunting_styles
     if [1, 12].include? Time.zone.today.month
-      'tinsel'
+      "tinsel"
     else
-      ''
+      ""
     end
   end
 

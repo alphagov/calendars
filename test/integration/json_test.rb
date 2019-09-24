@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_relative '../integration_test_helper'
+require_relative "../integration_test_helper"
 
 class JSONTest < ActionDispatch::IntegrationTest
   context "GET /calendars/<calendar>.json" do
@@ -20,7 +20,7 @@ class JSONTest < ActionDispatch::IntegrationTest
           { "date" => "2013-03-29", "notes" => "", "title" => "Good Friday", "bunting" => false },
           { "date" => "2013-12-25", "notes" => "", "title" => "Christmas Day", "bunting" => true },
           { "date" => "2013-12-26", "notes" => "", "title" => "Boxing Day", "bunting" => true },
-        ]
+        ],
       }
 
       actual = JSON.parse(@response.body)
@@ -45,7 +45,7 @@ class JSONTest < ActionDispatch::IntegrationTest
             { "date" => "2013-03-29", "notes" => "", "title" => "Good Friday", "bunting" => false },
             { "date" => "2013-12-25", "notes" => "", "title" => "Christmas Day", "bunting" => true },
             { "date" => "2013-12-26", "notes" => "", "title" => "Boxing Day", "bunting" => true },
-          ]
+          ],
         },
         "scotland" => {
           "division" => "scotland",
@@ -62,7 +62,7 @@ class JSONTest < ActionDispatch::IntegrationTest
             { "date" => "2013-12-02", "notes" => "Substitute day", "title" => "St Andrew’s Day", "bunting" => true },
             { "date" => "2013-12-25", "notes" => "", "title" => "Christmas Day", "bunting" => true },
             { "date" => "2013-12-26", "notes" => "", "title" => "Boxing Day", "bunting" => true },
-          ]
+          ],
         },
         "northern-ireland" => {
           "division" => "northern-ireland",
@@ -79,7 +79,7 @@ class JSONTest < ActionDispatch::IntegrationTest
             { "date" => "2013-07-12", "notes" => "", "title" => "Battle of the Boyne (Orangemen’s Day)", "bunting" => false },
             { "date" => "2013-12-25", "notes" => "", "title" => "Christmas Day", "bunting" => true },
             { "date" => "2013-12-26", "notes" => "", "title" => "Boxing Day", "bunting" => true },
-          ]
+          ],
         },
       }
       actual = JSON.parse(@response.body)

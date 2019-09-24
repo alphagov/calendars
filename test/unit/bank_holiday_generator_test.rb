@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-require 'bank_holiday_generator'
-require_relative '../test_helper'
+require "bank_holiday_generator"
+require_relative "../test_helper"
 
 class BankHolidayGeneratorTest < ActiveSupport::TestCase
   def self.generates_correct_bank_holidays(nation, year, locale, file_name)
