@@ -25,6 +25,12 @@
     },
     "HEROKU_APP_NAME": {
       "required": true
+    },
+    "BASIC_AUTH_USERNAME": {
+      "required": true
+    },
+    "BASIC_AUTH_PASSWORD": {
+      "required": true
     }
   },
   "image": "heroku/ruby",
