@@ -74,6 +74,14 @@ class CalendarControllerTest < ActionController::TestCase
       get :calendar, params: { scope: "something..etc-passwd" }
       assert_equal 404, response.status
     end
+
+    should "403 if content store returns forbidden response" do
+      stub_request(:get, "#{Plek.find('content-store')}/content/something-access-limited").
+        to_return(status: 403, headers: {})
+
+      get :calendar, params: { scope: "something-access-limited" }
+      assert_equal 403, response.status
+    end
   end
 
   context "GET 'division'" do

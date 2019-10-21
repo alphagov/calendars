@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  rescue_from GdsApi::HTTPForbidden, with: :error_403
   rescue_from GdsApi::TimedOutException, with: :error_503
 
   slimmer_template "core_layout"
@@ -18,13 +19,13 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def error_503(exception); error(503, exception); end
+  def error_403
+    render status: :forbidden, plain: "403 forbidden"
+  end
 
-  def error(status_code, exception = nil)
-    if exception && defined? GovukError
-      GovukError.notify exception
-    end
-    render status: status_code, text: "#{status_code} error"
+  def error_503(exception)
+    GovukError.notify(exception) if exception && defined? GovukError
+    render status: :service_unavailable, plain: "503 service unavailable"
   end
 
   def set_expiry(age = 60.minutes)
