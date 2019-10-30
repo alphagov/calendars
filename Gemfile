@@ -28,7 +28,7 @@ else
 end
 
 group :test, :development do
-  gem "govuk-lint", "4.0.1"
+  gem "govuk-lint", "4.1.0"
   gem "pry-byebug"
 end
 
