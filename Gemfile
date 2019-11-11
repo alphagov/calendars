@@ -28,8 +28,9 @@ else
 end
 
 group :test, :development do
-  gem "govuk-lint", "4.2.0"
   gem "pry-byebug"
+  gem "rubocop-govuk"
+  gem "scss_lint-govuk"
 end
 
 group :test do

@@ -1,3 +1,7 @@
+inherit_gem:
+  rubocop-govuk:
+    - config/default.yml
+    
 Style/CommentedKeyword:
   Exclude:
     - 'test/integration/when_do_the_clocks_change_test.rb'
