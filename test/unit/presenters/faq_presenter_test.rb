@@ -6,9 +6,9 @@ class FaqPresenterTest < ActiveSupport::TestCase
 
   def test_uses_bank_holiday_body_for_bank_holidays
     expected = [
-      q_and_a("England and Wales", "The next bank holiday in England and Wales is  6 April Good Friday"),
-      q_and_a("Scotland", "The next bank holiday in Scotland is  6 April Good Friday"),
-      q_and_a("Northern Ireland", "The next bank holiday in Northern Ireland is  6 April Good Friday"),
+      q_and_a("England and Wales", "The next bank holiday in England and Wales is Good Friday on the 6th of April"),
+      q_and_a("Scotland", "The next bank holiday in Scotland is Good Friday on the 6th of April"),
+      q_and_a("Northern Ireland", "The next bank holiday in Northern Ireland is Good Friday on the 6th of April"),
     ]
 
     Timecop.travel(Date.parse("2012-03-24")) do
@@ -24,7 +24,7 @@ class FaqPresenterTest < ActiveSupport::TestCase
 
   def test_uses_wdtcc_body_for_wdtcc
     expected = [
-      q_and_a("When do the clocks change?", "The clocks advance 25 March"),
+      q_and_a("When do the clocks change?", "The clocks advance on the 25th of March"),
     ]
 
     Timecop.travel(Date.parse("2012-03-24")) do

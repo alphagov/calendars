@@ -36,15 +36,15 @@ private
   def answer_for(division)
     return nil unless division.upcoming_event
 
+    date = "the #{division.upcoming_event.date.day.ordinalize} of #{division.upcoming_event.date.strftime('%B')}"
+
     case scope
     when "bank-holidays"
-      is_in = I18n.t("common.next_holiday_in_is").sub("%{in_nation}", I18n.t("#{division.title}_in"))
-      day = division.upcoming_event.date == Date.today ? I18n.t("common.today") : I18n.l(division.upcoming_event.date, format: "%e %B")
-      title = I18n.t(division.title)
-      body = "#{is_in} #{day}: #{division.upcoming_event.title}"
+      title = I18n.t(division.title, locale: :en)
+      body = "The next bank holiday in #{title} is #{division.upcoming_event.title} on #{date}"
     when "when-do-the-clocks-change"
       title = content_item[:title]
-      body = "The #{division.upcoming_event.notes.gsub(' one hour', '').downcase} #{division.upcoming_event.date.strftime('%e %B')}"
+      body = "The #{division.upcoming_event.notes.gsub(' one hour', '').downcase} on #{date}"
     else
       raise "Unknown scope"
     end
