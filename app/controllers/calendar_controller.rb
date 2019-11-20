@@ -17,6 +17,8 @@ class CalendarController < ApplicationController
           @meta_section = section_name.downcase
         end
 
+        @faq_presenter = FaqPresenter.new(scope, @calendar, @content_item)
+
         render scope.tr("-", "_")
       end
       format.json do
