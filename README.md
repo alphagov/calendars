@@ -75,26 +75,6 @@ and the [St Andrew's Day Bank Holiday Act](http://www.legislation.gov.uk/asp/200
 - The proclamations of holidays are published in [The Gazette](https://www.thegazette.co.uk/all-notices/notice?noticetypes=1101&sort-by=latest-date&text="Banking+and+Financial").
 Holidays are announced there 6 months to one year in advance, usually between the months of May and July for the following year.
 
-
-### Running the application
-
-When you are in Development:
-
-`bundle exec bowl calendars www`
-
-Or locally:
-
-```
-./startup.sh --live
-```
-
-You can also run `./startup.sh` to run against a local running content-store and
-`./startup.sh --dummy` for the dummy content-store.
-
-### Running the test suite
-
-`bundle exec rake`
-
 ## Licence
 
 [MIT License](LICENCE.txt)
