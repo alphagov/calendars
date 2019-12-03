@@ -47,7 +47,7 @@ class Calendar
   end
 
   def bunting_styles
-    if [1, 12].include? Time.zone.today.month
+    if christmas? || new_year?
       "tinsel"
     else
       ""
@@ -66,5 +66,13 @@ class Calendar
 
   def body
     @data["body"]
+  end
+
+  def christmas?
+    Time.zone.today.month == 12 && (25..28).include?(Time.zone.today.day)
+  end
+
+  def new_year?
+    Time.zone.today.month == 1 && (1..4).include?(Time.zone.today.day)
   end
 end

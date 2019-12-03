@@ -194,6 +194,14 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
       end
     end
 
+    should "not use tinsel bunting for bank holidays in early December" do
+      # For example, on a substitute day for St Andrew's Day
+      Timecop.travel(Date.parse("2nd December 2013")) do
+        visit "/bank-holidays"
+        assert page.has_no_css?(".app-o-epic-bunting__bunt--tinsel")
+      end
+    end
+
     should "use tinsel bunting for Christmas and New Year bank holidays" do
       Timecop.travel(Date.parse("25th December 2012")) do
         visit "/bank-holidays"
