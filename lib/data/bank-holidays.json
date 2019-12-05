@@ -462,6 +462,56 @@
                     "bunting": true
                 }
             ],
+            "2021": [
+              {
+                "title": "bank_holidays.new_year",
+                "date": "01/01/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.good_friday",
+                "date": "02/04/2021",
+                "notes": "",
+                "bunting": false
+              },
+              {
+                "title": "bank_holidays.easter_monday",
+                "date": "05/04/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.early_may",
+                "date": "03/05/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.spring",
+                "date": "31/05/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.late_august",
+                "date": "30/08/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.christmas",
+                "date": "27/12/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.boxing_day",
+                "date": "28/12/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              }
+            ],
             "slug": "common.nations.england-and-wales_slug",
             "title": "common.nations.england-and-wales"
         },
@@ -975,6 +1025,62 @@
                     "notes": "common.substitute_day",
                     "bunting": true
                 }
+            ],
+            "2021": [
+              {
+                "title": "bank_holidays.new_year",
+                "date": "01/01/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.2nd_january",
+                "date": "04/01/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.good_friday",
+                "date": "02/04/2021",
+                "notes": "",
+                "bunting": false
+              },
+              {
+                "title": "bank_holidays.early_may",
+                "date": "03/05/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.spring",
+                "date": "31/05/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.summer",
+                "date": "02/08/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.st_andrew",
+                "date": "30/11/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.christmas",
+                "date": "27/12/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.boxing_day",
+                "date": "28/12/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              }
             ],
             "slug": "common.nations.scotland_slug",
             "title": "common.nations.scotland"
@@ -1543,6 +1649,68 @@
                     "notes": "common.substitute_day",
                     "bunting": true
                 }
+            ],
+            "2021": [
+              {
+                "title": "bank_holidays.new_year",
+                "date": "01/01/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.st_patrick",
+                "date": "17/03/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.good_friday",
+                "date": "02/04/2021",
+                "notes": "",
+                "bunting": false
+              },
+              {
+                "title": "bank_holidays.easter_monday",
+                "date": "05/04/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.early_may",
+                "date": "03/05/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.spring",
+                "date": "31/05/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.battle_boyne",
+                "date": "12/07/2021",
+                "notes": "",
+                "bunting": false
+              },
+              {
+                "title": "bank_holidays.late_august",
+                "date": "30/08/2021",
+                "notes": "",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.christmas",
+                "date": "27/12/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              },
+              {
+                "title": "bank_holidays.boxing_day",
+                "date": "28/12/2021",
+                "notes": "common.substitute_day",
+                "bunting": true
+              }
             ],
             "slug": "common.nations.northern-ireland_slug",
             "title": "common.nations.northern-ireland"
