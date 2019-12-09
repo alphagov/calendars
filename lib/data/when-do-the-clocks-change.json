@@ -2,7 +2,7 @@
   "title": "When do the clocks change?",
   "need_id": 100933,
   "content_id": "41c78b38-f70e-4729-815b-680f9b90db30",
-  "description": "Dates when the clocks go back or forward in 2017, 2018, 2019 - includes British Summer Time, Greenwich Mean Time",
+  "description": "Dates when the clocks go back or forward in 2017, 2018, 2019, 2020, 2021 - includes British Summer Time, Greenwich Mean Time",
   "body": "In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the last Sunday in October.\nThe period when the clocks are 1 hour ahead is called British Summer Time (BST). There’s more daylight in the evenings and less in the mornings (sometimes called Daylight Saving Time).\nWhen the clocks go back, the UK is on Greenwich Mean Time (GMT).",
   "divisions": {
     "united-kingdom": {
@@ -51,6 +51,18 @@
         {
           "title": "End of British Summer Time",
           "date": "25/10/2020",
+          "notes": "Clocks go back one hour"
+        }
+      ],
+      "2021": [
+        {
+          "title": "Start of British Summer Time",
+          "date": "28/03/2021",
+          "notes": "Clocks go forward one hour"
+        },
+        {
+          "title": "End of British Summer Time",
+          "date": "31/10/2021",
           "notes": "Clocks go back one hour"
         }
       ]
