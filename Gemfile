@@ -37,7 +37,7 @@ group :test do
   gem "capybara", "3.29.0"
   gem "ci_reporter_minitest", "1.0.0"
   gem "govuk-content-schema-test-helpers", "~> 1.6.1"
-  gem "mocha", "1.10.1", require: false
+  gem "mocha", "1.10.2", require: false
   gem "rails-controller-testing"
   gem "shoulda", "3.6.0"
   gem "simplecov", "0.17.1"
