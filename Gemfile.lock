@@ -107,7 +107,7 @@ GEM
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
-    json (2.2.0)
+    json (2.3.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
     kgio (2.11.2)
@@ -310,7 +310,7 @@ DEPENDENCIES
   govuk-content-schema-test-helpers (~> 1.6.1)
   govuk_app_config (~> 2.0.1)
   govuk_publishing_components (~> 21.13.4)
-  json (~> 2.2.0)
+  json (~> 2.3.0)
   mocha (= 1.10.1)
   plek (= 3.0.0)
   pry-byebug
