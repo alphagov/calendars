@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag 'print', :media => :print %>
     <%= yield :head %>
     <%= render 'govuk_publishing_components/components/meta_tags', content_item: @content_item %>
-    <%= javascript_include_tag 'application.js', integrity: true, crossorigin: 'anonymous' %>
+    <%= javascript_include_tag 'application.js', integrity: true, crossorigin: 'use-credentials' %>
     <% if @meta_section %>
       <meta name="govuk:section" content="<%= @meta_section %>">
     <% end %>
