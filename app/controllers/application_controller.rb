@@ -1,12 +1,9 @@
 class ApplicationController < ActionController::Base
-  include Slimmer::Template
 
   protect_from_forgery with: :exception
 
   rescue_from GdsApi::HTTPForbidden, with: :error_403
   rescue_from GdsApi::TimedOutException, with: :error_503
-
-  slimmer_template "core_layout"
 
   before_action :set_cors_headers, if: :json_request?
 
