@@ -8,18 +8,12 @@ gem "rails-i18n", "~> 5.1.3"
 gem "json", "~> 2.3.0"
 gem "plek", "3.0.0"
 
-gem "govuk_publishing_components", "~> 21.19.1"
+gem "govuk_publishing_components", path: "../govuk_publishing_components"
 
 gem "rack_strip_client_ip", "0.0.2"
 
 gem "sass-rails", "5.0.7"
 gem "uglifier", "4.2.0"
-
-if ENV["SLIMMER_DEV"]
-  gem "slimmer", path: "../slimmer"
-else
-  gem "slimmer", "~> 13.2.0"
-end
 
 if ENV["API_DEV"]
   gem "gds-api-adapters", path: "../gds-api-adapters"
