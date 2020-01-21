@@ -1,30 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= yield :title %> - GOV.UK</title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= stylesheet_link_tag 'print', :media => :print %>
-    <%= yield :head %>
-    <%= render 'govuk_publishing_components/components/meta_tags', content_item: @content_item %>
-    <%= javascript_include_tag 'application.js', integrity: true, crossorigin: 'anonymous' %>
-    <% if @meta_section %>
-      <meta name="govuk:section" content="<%= @meta_section %>">
-    <% end %>
-  </head>
-  <body class="govuk-template__body">
-    <div class="govuk-width-container " id="wrapper">
-      <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_item %>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <%= yield %>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <div class="app-o-related-container <%= yield :related_container_class %>">
-            <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item %>
-          </div>
-        </div>
-      </div>
-      <%= render 'govuk_publishing_components/components/feedback' %>
+<% content_for :head do %>
+  <%= yield :head %>
+  <%= render 'govuk_publishing_components/components/meta_tags', content_item: @content_item %>
+  <% if @meta_section %>
+    <meta name="govuk:section" content="<%= @meta_section %>">
+  <% end %>
+<% end %>
+
+<%= render "govuk_publishing_components/components/layout_for_public" do %>
+  <%=  render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_item %>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <%= yield %>
     </div>
-  </body>
-</html>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-o-related-container <%= yield :related_container_class %>">
+        <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item %>
+      </div>
+    </div>
+  </div>
+<% end %>
