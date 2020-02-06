@@ -20,8 +20,8 @@ class ICSRendererTest < ActiveSupport::TestCase
 
     should "generate an event for each given event" do
       r = ICSRenderer.new(%i[e1 e2], "/foo/ics")
-      r.expects(:render_event).with(:e1, 0).returns("Event1 ics\r\n")
-      r.expects(:render_event).with(:e2, 1).returns("Event2 ics\r\n")
+      r.expects(:render_event).with(:e1).returns("Event1 ics\r\n")
+      r.expects(:render_event).with(:e2).returns("Event2 ics\r\n")
 
       expected =  "BEGIN:VCALENDAR\r\n"
       expected << "VERSION:2.0\r\n"
@@ -38,42 +38,46 @@ class ICSRendererTest < ActiveSupport::TestCase
 
   context "generating an event" do
     setup do
-      @r = ICSRenderer.new([], "/foo/ics")
+      @path = "/foo/ics"
+      @r = ICSRenderer.new([], @path)
       ICSRenderer.any_instance.stubs(:dtstamp).returns("20121017T0100Z")
     end
 
-    should "generate the an event" do
+    should "generate an event" do
       e = Calendar::Event.new("title" => "An Event", "date" => "2012-04-14")
 
-      @r.expects(:uid).with(2).returns("sdaljksafd-2@gov.uk")
+      Digest::MD5.expects(:hexdigest).with(@path).once.returns("hash")
 
       expected =  "BEGIN:VEVENT\r\n"
       expected << "DTEND;VALUE=DATE:20120415\r\n"
       expected << "DTSTART;VALUE=DATE:20120414\r\n"
       expected << "SUMMARY:An Event\r\n"
-      expected << "UID:sdaljksafd-2@gov.uk\r\n"
+      expected << "UID:hash-2012-04-14-AnEvent@gov.uk\r\n"
       expected << "SEQUENCE:0\r\n"
       expected << "DTSTAMP:20121017T0100Z\r\n"
       expected << "END:VEVENT\r\n"
 
-      assert_equal expected, @r.render_event(e, 2)
+      assert_equal expected, @r.render_event(e)
     end
   end
 
   context "generating a uid" do
     setup do
-      @r = ICSRenderer.new([], "/foo/bar.ics")
+      @path = "/foo/bar.ics"
+      @r = ICSRenderer.new([], @path)
+      @hash = Digest::MD5.hexdigest(@path)
+      @first_event = Calendar::Event.new("title" => "An important event", "date" => Date.new(1982, 5, 28))
+      @second_event = Calendar::Event.new("title" => "Another important event", "date" => Date.new(1984, 1, 16))
     end
 
-    should "use the calendar path, and sequence to create a uid" do
-      hash = Digest::MD5.hexdigest("/foo/bar.ics")
-      assert_equal "#{hash}-2@gov.uk", @r.uid(2)
+    should "use calendar path, event title and event date to create a uid" do
+      assert_equal "#{@hash}-1982-05-28-Animportantevent@gov.uk", @r.uid(@first_event)
     end
 
     should "cache the hash generation" do
-      Digest::MD5.expects(:hexdigest).with("/foo/bar.ics").once.returns("hash")
-      @r.uid(1)
-      assert_equal "hash-2@gov.uk", @r.uid(2)
+      Digest::MD5.expects(:hexdigest).with(@path).once.returns(@hash)
+      @r.uid(@first_event)
+      assert_equal "#{@hash}-1984-01-16-Anotherimportantevent@gov.uk", @r.uid(@second_event)
     end
   end
 
