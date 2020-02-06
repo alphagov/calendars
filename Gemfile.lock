@@ -289,7 +289,7 @@ GEM
     unicorn (5.5.3)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    webmock (3.8.0)
+    webmock (3.8.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -326,7 +326,7 @@ DEPENDENCIES
   slimmer (~> 13.2.0)
   timecop (= 0.9.1)
   uglifier (= 4.2.0)
-  webmock (~> 3.8.0)
+  webmock (~> 3.8.1)
 
 RUBY VERSION
    ruby 2.6.5p114
