@@ -28,7 +28,7 @@ class ICSRenderer
 
   def uid(event)
     @path_hash ||= Digest::MD5.hexdigest(@cal_path)
-    "#{@path_hash}-#{event.date.iso8601}-#{event.title.delete(' ')}@gov.uk"
+    "#{@path_hash}-#{event.date.iso8601}-#{event.title.gsub(/\W/, '')}@gov.uk"
   end
 
   def dtstamp
