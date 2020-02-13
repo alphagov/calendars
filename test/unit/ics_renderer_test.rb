@@ -66,12 +66,12 @@ class ICSRendererTest < ActiveSupport::TestCase
       @path = "/foo/bar.ics"
       @r = ICSRenderer.new([], @path)
       @hash = Digest::MD5.hexdigest(@path)
-      @first_event = Calendar::Event.new("title" => "An important event", "date" => Date.new(1982, 5, 28))
+      @first_event = Calendar::Event.new("title" => "Somebody’s important event", "date" => Date.new(1982, 5, 28))
       @second_event = Calendar::Event.new("title" => "Another important event", "date" => Date.new(1984, 1, 16))
     end
 
     should "use calendar path, event title and event date to create a uid" do
-      assert_equal "#{@hash}-1982-05-28-Animportantevent@gov.uk", @r.uid(@first_event)
+      assert_equal "#{@hash}-1982-05-28-Somebodysimportantevent@gov.uk", @r.uid(@first_event)
     end
 
     should "cache the hash generation" do
