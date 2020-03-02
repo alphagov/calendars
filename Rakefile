@@ -6,5 +6,3 @@ require_relative 'config/application'
 require 'ci/reporter/rake/minitest' if Rails.env.test?
 
 Rails.application.load_tasks
-
-task default: [:lint]
