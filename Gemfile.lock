@@ -137,7 +137,7 @@ GEM
     multipart-post (2.1.1)
     netrc (0.11.0)
     nio4r (2.5.2)
-    nokogiri (1.10.8)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     null_logger (0.0.1)
     parallel (1.19.1)
@@ -258,7 +258,7 @@ GEM
     simplecov-html (0.12.1)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    slimmer (13.2.0)
+    slimmer (13.2.1)
       activesupport
       json
       nokogiri (~> 1.7)
@@ -323,7 +323,7 @@ DEPENDENCIES
   shoulda (= 3.6.0)
   simplecov (= 0.18.5)
   simplecov-rcov (= 0.2.3)
-  slimmer (~> 13.2.0)
+  slimmer (~> 13.2.1)
   timecop (= 0.9.1)
   uglifier (= 4.2.0)
   webmock (~> 3.8.2)
