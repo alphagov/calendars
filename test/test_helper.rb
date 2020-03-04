@@ -19,7 +19,7 @@ GovukContentSchemaTestHelpers.configure do |config|
   config.project_root = Rails.root
 end
 
-Dir[Rails.root.join("test/support/*.rb")].each { |f| require f }
+Dir[Rails.root.join("test/support/*.rb")].sort.each { |f| require f }
 
 class ActiveSupport::TestCase
   setup do
