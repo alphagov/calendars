@@ -20,7 +20,7 @@ module Calendars
 
     # This saves loading all 80-odd locales from the rails-i18n gem.  This doesn't affect the loading
     # of locales from config/locales
-    config.i18n.available_locales = [:en, :cy]
+    config.i18n.available_locales = %i[en cy]
 
     # Enable the asset pipeline
     config.assets.enabled = true
