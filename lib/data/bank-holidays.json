@@ -273,7 +273,7 @@
                     "title": "bank_holidays.easter_monday",
                     "date": "13/04/2020",
                     "notes": "",
-                    "bunting": true
+                    "bunting": false
                 },
                 {
                     "title": "bank_holidays.early_may_ve",
