@@ -1,22 +1,20 @@
 # encoding: utf-8
 
-require_relative "../test_helper"
-
-class EventTest < ActiveSupport::TestCase
+RSpec.describe Calendar::Event do
   context "construction" do
-    should "parse a date given as a string" do
+    it "parses a date given as a string" do
       e = Calendar::Event.new("date" => "2012-02-04")
-      assert_equal Date.civil(2012, 2, 4), e.date
+      expect(e.date).to eq(Date.civil(2012, 2, 4))
     end
 
-    should "allow construction with dates as well as string dates" do
+    it "allows construction with dates as well as string dates" do
       e = Calendar::Event.new("date" => Date.civil(2012, 2, 4))
-      assert_equal Date.civil(2012, 2, 4), e.date
+      expect(e.date).to eq(Date.civil(2012, 2, 4))
     end
   end
 
   context "as_json in English" do
-    should "return a hash representation" do
+    it "returns a hash representation" do
       I18n.locale = :en
       e = Calendar::Event.new(
         "title" => "bank_holidays.new_year",
@@ -32,7 +30,7 @@ class EventTest < ActiveSupport::TestCase
         "bunting" => true,
       }
 
-      assert_equal expected, e.as_json
+      expect(e.as_json).to eq(expected)
     end
   end
 end
