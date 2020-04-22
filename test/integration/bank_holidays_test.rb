@@ -4,7 +4,7 @@ require_relative "../integration_test_helper"
 
 class BankHolidaysTest < ActionDispatch::IntegrationTest
   setup do
-    content_store_has_item("/bank-holidays")
+    stub_content_store_has_item("/bank-holidays")
   end
 
   should "display the bank holidays page" do

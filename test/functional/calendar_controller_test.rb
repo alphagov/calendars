@@ -7,8 +7,8 @@ class CalendarControllerTest < ActionController::TestCase
   context "GET 'calendar'" do
     setup do
       Calendar.stubs(:find).returns(Calendar.new("something", "title" => "Brilliant holidays!", "divisions" => []))
-      content_store_has_item("/bank-holidays")
-      content_store_has_item("/when-do-the-clocks-change")
+      stub_content_store_has_item("/bank-holidays")
+      stub_content_store_has_item("/when-do-the-clocks-change")
     end
 
     context "HTML request (no format)" do
@@ -34,7 +34,7 @@ class CalendarControllerTest < ActionController::TestCase
       should "set the I18n locale" do
         content_item = content_item_for_base_path("/bank-holidays")
         content_item["locale"] = "cy"
-        content_store_has_item("/bank-holidays", content_item)
+        stub_content_store_has_item("/bank-holidays", content_item)
         get :calendar, params: { scope: "gwyliau-banc", locale: "cy" }
         assert_equal :cy, I18n.locale
       end
