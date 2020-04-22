@@ -46,6 +46,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.0)
+    brakeman (4.8.1)
     builder (3.2.4)
     byebug (11.1.1)
     capybara (3.32.1)
@@ -56,16 +57,13 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    ci_reporter (2.0.0)
-      builder (>= 2.1.2)
-    ci_reporter_minitest (1.0.0)
-      ci_reporter (~> 2.0)
-      minitest (~> 5.0)
+    childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
+    diff-lcs (1.3)
     docile (1.3.2)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -101,6 +99,12 @@ GEM
       sass (= 3.7.4)
       sassc-rails (>= 2.0.1)
       sprockets (< 4)
+    govuk_test (1.0.3)
+      brakeman (~> 4.6)
+      capybara
+      puma
+      selenium-webdriver (>= 3.142)
+      webdrivers (>= 4)
     hashdiff (1.0.1)
     http-accept (1.7.0)
     http-cookie (1.0.3)
@@ -152,6 +156,8 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.13.0)
     public_suffix (4.0.4)
+    puma (4.3.3)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-cache (1.11.1)
       rack (>= 0.4)
@@ -205,6 +211,23 @@ GEM
       netrc (~> 0.8)
     rexml (3.2.4)
     rouge (3.18.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-rails (4.0.0)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+    rspec-support (3.9.2)
     rubocop (0.82.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -227,6 +250,7 @@ GEM
     rubocop-rspec (1.38.1)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
+    rubyzip (2.3.0)
     safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -251,6 +275,9 @@ GEM
       sass (~> 3.5, >= 3.5.5)
     scss_lint-govuk (0.2.0)
       scss_lint
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     sentry-raven (3.0.0)
       faraday (>= 1.0)
     shoulda (3.6.0)
@@ -296,6 +323,10 @@ GEM
     unicorn (5.5.4)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    webdrivers (4.3.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webmock (3.8.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -311,11 +342,11 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (= 3.32.1)
-  ci_reporter_minitest (= 1.0.0)
   gds-api-adapters
   govuk-content-schema-test-helpers (~> 1.6.1)
   govuk_app_config (~> 2.1.2)
   govuk_publishing_components (~> 21.41.3)
+  govuk_test
   json (~> 2.3.0)
   mocha (= 1.11.2)
   plek (= 3.0.0)
@@ -324,6 +355,7 @@ DEPENDENCIES
   rails (~> 5.2.4)
   rails-controller-testing
   rails-i18n (~> 5.1.3)
+  rspec-rails (~> 4.0.0)
   rubocop-govuk
   sass-rails (= 5.0.7)
   scss_lint-govuk
@@ -339,4 +371,4 @@ RUBY VERSION
    ruby 2.6.6
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
