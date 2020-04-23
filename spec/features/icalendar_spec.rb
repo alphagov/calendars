@@ -1,12 +1,10 @@
 # encoding: utf-8
 
-require_relative "../integration_test_helper"
-
-class IcalendarTest < ActionDispatch::IntegrationTest
+RSpec.feature "icalendar" do
   context "getting ICS version" do
-    setup do
+    before do
       # This timestamp is used to generate the DTSTAMP entries
-      File.stubs(:mtime).with(Rails.root.join("REVISION")).returns(Time.zone.parse("2012-10-17 01:00:00"))
+      allow(File).to receive(:mtime).with(Rails.root.join("REVISION")).and_return(Time.zone.parse("2012-10-17 01:00:00"))
     end
 
     calendars = {
@@ -19,9 +17,9 @@ class IcalendarTest < ActionDispatch::IntegrationTest
     }
 
     calendars.each do |calendar, calendar_path|
-      should "contain all events in #{calendar}" do
-        get calendar_path
-        assert_equal response.status, 200
+      it "contains all events in #{calendar}" do
+        visit calendar_path
+        expect(page.status_code).to eq(200)
 
         expected_non_scottish_events = [
           { "date" => "20120102", "title" => I18n.t("bank_holidays.new_year") },
@@ -51,33 +49,28 @@ class IcalendarTest < ActionDispatch::IntegrationTest
                             expected_non_scottish_events + common_expected_events
                           end
 
-        assert(
-          response.body.start_with?(
-            "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n",
-          ),
-        )
+        expect(page.body).to start_with("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nMETHOD:PUBLISH\r\nPRODID:-//uk.gov/GOVUK calendars//EN\r\nCALSCALE:GREGORIAN\r\n")
 
-        assert_equal "text/calendar", response.content_type
-        assert_equal "max-age=86400, public", response.headers["Cache-Control"]
+        expect(page.response_headers["Content-Type"]).to eq("text/calendar; charset=utf-8")
+        expect(page.response_headers["Cache-Control"]).to eq("max-age=86400, public")
 
         expected_events.each do |event|
           end_date = (Date.parse(event["date"]) + 1.day).strftime("%Y%m%d")
           expected = "BEGIN:VEVENT\r\nDTEND;VALUE=DATE:#{end_date}\r\nDTSTART;VALUE=DATE:#{event['date']}\r\nSUMMARY:#{event['title']}\r\n"
 
-          assert(response.body.include?(expected))
+          expect(page.body).to include(expected)
         end
       end
     end
 
-    should "have redirect for old 'ni' division" do
-      get "/bank-holidays/ni.ics"
-      assert_equal 301, response.status
-      assert_equal "http://www.example.com/bank-holidays/northern-ireland.ics", response.location
+    it "has redirect for old 'ni' division" do
+      visit "/bank-holidays/ni.ics"
+      expect(page.current_url).to eq("http://www.example.com/bank-holidays/northern-ireland.ics")
     end
 
-    should "404 if the division does not exist" do
-      get "/bank-holidays/never-never-land.ics"
-      assert_equal 404, response.status
+    it "404s if the division does not exist" do
+      visit "/bank-holidays/never-never-land.ics"
+      expect(page.status_code).to eq(404)
     end
   end
 end
