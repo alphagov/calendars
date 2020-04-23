@@ -1,71 +1,69 @@
 # encoding: utf-8
 
-require_relative "../test_helper"
-
-class YearTest < ActiveSupport::TestCase
-  should "return the year string for to_s" do
-    assert_equal "2012", Calendar::Year.new("2012", :a_division, []).to_s
+RSpec.describe Calendar::Year do
+  it "return the year string for to_s" do
+    expect(Calendar::Year.new("2012", :a_division, []).to_s).to eq("2012")
   end
 
   context "events" do
-    setup do
+    before do
       @y = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
       ])
     end
 
-    should "build an event for each event in the data" do
+    it "builds an event for each event in the data" do
       foo = Calendar::Event.new("title" => "foo", "date" => Date.civil(2012, 1, 2))
       bar = Calendar::Event.new("title" => "bar", "date" => Date.civil(2012, 8, 27))
 
-      assert_equal [foo, bar], @y.events
+      expect(@y.events).to eq([foo, bar])
     end
 
-    should "cache the constructed instances" do
+    it "caches the constructed instances" do
       first = @y.events
-      Calendar::Event.expects(:new).never
-      assert_equal first, @y.events
+      allow(Calendar::Event).to receive(:new).and_raise(Exception)
+      expect(@y.events).to eq(first)
     end
   end
 
   context "upcoming_event" do
-    should "return nil with no events" do
+    it "returns nil with no events" do
       y = Calendar::Year.new("1234", :a_division, [])
-      assert_nil y.upcoming_event
+      expect(y.upcoming_event).to be_nil
     end
 
-    should "return nil with no future events" do
+    it "returns nil with no future events" do
       y = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
       ])
-      assert_nil y.upcoming_event
+      expect(y.upcoming_event).to be_nil
     end
 
-    should "return the first event that's in the future" do
+    it "returns the first event that's in the future" do
       y = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
         { "title" => "baz", "date" => "16/10/2012" },
       ])
       Timecop.travel(Date.parse("2012-03-24")) do
-        assert_equal "bar", y.upcoming_event.title
+        expect(y.upcoming_event.title).to eq("bar")
       end
     end
 
-    should "count an event today as a future event" do
+    it "counts an event today as a future event" do
       y = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
         { "title" => "baz", "date" => "16/10/2012" },
       ])
       Timecop.travel(Date.parse("2012-08-27")) do
-        assert_equal "bar", y.upcoming_event.title
+        expect(y.upcoming_event.title).to eq("bar")
       end
     end
 
-    should "cache the event" do
+    it "caches the event" do
       y = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
@@ -73,14 +71,14 @@ class YearTest < ActiveSupport::TestCase
       ])
       Timecop.travel(Date.parse("2012-03-24")) do
         y.upcoming_event
-        y.expects(:events).never
-        assert_equal "bar", y.upcoming_event.title
+        allow(y).to receive(:events).and_raise(Exception)
+        expect(y.upcoming_event.title).to eq("bar")
       end
     end
   end
 
   context "upcoming_events" do
-    setup do
+    before do
       @year = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
@@ -88,21 +86,21 @@ class YearTest < ActiveSupport::TestCase
       ])
     end
 
-    should "return all future events including today" do
+    it "returns all future events including today" do
       Timecop.travel("2012-08-27") do
-        assert_equal %w(bar baz), @year.upcoming_events.map(&:title)
+        expect(@year.upcoming_events.map(&:title)).to eq(%w(bar baz))
       end
     end
 
-    should "cache the result" do
+    it "caches the result" do
       @year.upcoming_events
-      @year.expects(:events).never
+      allow(@year).to receive(:events).and_raise(Exception)
       @year.upcoming_events
     end
   end
 
   context "past_events" do
-    setup do
+    before do
       @year = Calendar::Year.new("1234", :a_division, [
         { "title" => "foo", "date" => "02/01/2012" },
         { "title" => "bar", "date" => "27/08/2012" },
@@ -110,15 +108,15 @@ class YearTest < ActiveSupport::TestCase
       ])
     end
 
-    should "return all past events excluding today" do
+    it "returns all past events excluding today" do
       Timecop.travel("2012-08-27") do
-        assert_equal %w[foo], @year.past_events.map(&:title)
+        expect(@year.past_events.map(&:title)).to eq(%w[foo])
       end
     end
 
-    should "cache the result" do
+    it "caches the result" do
       @year.past_events
-      @year.expects(:events).never
+      allow(@year).to receive(:events).and_raise(Exception)
       @year.past_events
     end
   end

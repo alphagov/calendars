@@ -35,15 +35,16 @@ end
 
 group :test do
   gem "capybara", "3.32.1"
-  gem "ci_reporter_minitest", "1.0.0"
   gem "govuk-content-schema-test-helpers", "~> 1.6.1"
+  gem "govuk_test"
   gem "mocha", "1.11.2", require: false
   gem "rails-controller-testing"
+  gem "rspec-rails", "~> 4.0.0"
   gem "shoulda", "3.6.0"
   gem "simplecov", "0.18.5"
   gem "simplecov-rcov", "0.2.3"
   gem "timecop", "0.9.1"
-  gem "webmock", "~> 3.8.3", require: false
+  gem "webmock", "~> 3.8.3"
 end
 
 # Upgrade to Sentry

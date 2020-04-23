@@ -54,7 +54,10 @@ private
   end
 
   def load_calendar
-    simple_404 unless params[:scope].match?(/\A[a-z-]+\z/)
+    unless params[:scope].match?(/\A[a-z-]+\z/)
+      simple_404
+      return
+    end
     @calendar = Calendar.find(scope)
   end
 

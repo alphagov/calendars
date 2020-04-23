@@ -1,47 +1,45 @@
 # encoding: utf-8
 
-require_relative "../integration_test_helper"
-
-class GwyliauBancTest < ActionDispatch::IntegrationTest
-  setup do
+RSpec.feature "Gwyliau banc" do
+  before do
     content_item = content_item_for_base_path("/bank-holidays")
     content_item["locale"] = "cy"
-    content_store_has_item("/bank-holidays", content_item)
+    stub_content_store_has_item("/bank-holidays", content_item)
   end
 
-  should "display the Gwyliau Banc page" do
+  it "displays the Gwyliau Banc page" do
     Timecop.travel("2012-12-14")
 
     visit "/gwyliau-banc"
 
     within("head", visible: false) do
-      assert page.has_selector?("title", text: "Gwyliau banc y DU - GOV.UK", visible: false)
+      expect(page).to have_selector("title", text: "Gwyliau banc y DU - GOV.UK", visible: false)
       desc = page.find("meta[name=description]", visible: false)
-      assert_equal "Calendr gwyliau banc y DU - edrychwch ar wyliau banc a gwyliau cyhoeddus y DU", desc["content"]
+      expect(desc["content"]).to eq("Calendr gwyliau banc y DU - edrychwch ar wyliau banc a gwyliau cyhoeddus y DU")
 
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/cymru-a-lloegr.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/cymru-a-lloegr.ics']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/yr-alban.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/yr-alban.ics']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/gwyliau-banc/gogledd-iwerddon.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/gogledd-iwerddon.ics']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/gwyliau-banc.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/gwyliau-banc/cymru-a-lloegr.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/cymru-a-lloegr.ics']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/gwyliau-banc/yr-alban.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/yr-alban.ics']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/gwyliau-banc/gogledd-iwerddon.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='text/calendar'][href='/gwyliau-banc/gogledd-iwerddon.ics']", visible: false)
     end
 
     within "#content" do
       within ".gem-c-title" do
-        assert page.has_content?("Gwyliau banc y DU")
+        expect(page).to have_content("Gwyliau banc y DU")
       end
 
       within "article" do
         within ".govuk-tabs" do
           tab_labels = page.all("ul li a").map(&:text)
-          assert_equal ["Cymru a Lloegr", "Yr Alban", "Gogledd Iwerddon"], tab_labels
+          expect(tab_labels).to eq(["Cymru a Lloegr", "Yr Alban", "Gogledd Iwerddon"])
         end
 
         within ".govuk-tabs" do
           within "#cymru-a-lloegr" do
-            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", href: "/gwyliau-banc/cymru-a-lloegr.ics")
+            expect(page).to have_link("Ychwanegwch ddyddiadau gwyliau banc yng Nghymru a Lloegr at eich calendr", href: "/gwyliau-banc/cymru-a-lloegr.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Nghymru a Lloegr", year: "2012", rows: [
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
@@ -70,7 +68,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           end
 
           within "#yr-alban" do
-            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", href: "/gwyliau-banc/yr-alban.ics")
+            expect(page).to have_link("Ychwanegwch ddyddiadau gwyliau banc yn yr Alban at eich calendr", href: "/gwyliau-banc/yr-alban.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yn yr Alban", year: "2012", rows: [
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
@@ -101,7 +99,7 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
           end
 
           within "#gogledd-iwerddon" do
-            assert page.has_link?("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", href: "/gwyliau-banc/gogledd-iwerddon.ics")
+            expect(page).to have_link("Ychwanegwch ddyddiadau gwyliau banc yng Ngogledd Iwerddon at eich calendr", href: "/gwyliau-banc/gogledd-iwerddon.ics")
 
             assert_bank_holiday_table title: "Gwyliau banc i ddod yng Ngogledd Iwerddon", year: "2012", rows: [
               ["25 Rhagfyr", "Dydd Mawrth", "Dydd Nadolig"],
@@ -136,66 +134,66 @@ class GwyliauBancTest < ActionDispatch::IntegrationTest
               ["2 Ionawr", "Dydd Llun", "Dydd Calan (diwrnod yn lle gŵyl banc sy'n disgyn ar benwythnos)"],
             ]
           end
-        end # within .govuk-tabs
-      end # within article
-    end # within #content
+        end
+      end
+    end
   end
 
-  should "display the correct upcoming event" do
+  it "displays the correct upcoming event" do
     Timecop.travel(Date.parse("2012-01-03")) do
       visit "/gwyliau-banc"
 
       within ".govuk-tabs" do
         within "#cymru-a-lloegr .govuk-panel" do
-          assert page.has_content?("Y gŵyl banc nesaf yng Nghymru a Lloegr yw")
-          assert page.has_content?("6 Ebrill")
-          assert page.has_content?("Dydd Gwener y Groglith")
+          expect(page).to have_content("Y gŵyl banc nesaf yng Nghymru a Lloegr yw")
+          expect(page).to have_content("6 Ebrill")
+          expect(page).to have_content("Dydd Gwener y Groglith")
         end
 
         within "#yr-alban .govuk-panel" do
-          assert page.has_content?("Y gŵyl banc nesaf yn yr Alban yw")
-          assert page.has_content?("heddiw")
-          assert page.has_content?("Dydd Calan")
+          expect(page).to have_content("Y gŵyl banc nesaf yn yr Alban yw")
+          expect(page).to have_content("heddiw")
+          expect(page).to have_content("Dydd Calan")
         end
 
         within "#gogledd-iwerddon .govuk-panel" do
-          assert page.has_content?("Y gŵyl banc nesaf yng Ngogledd Iwerddon yw")
-          assert page.has_content?("19 Mawrth")
-          assert page.has_content?("Gŵyl San Padrig")
+          expect(page).to have_content("Y gŵyl banc nesaf yng Ngogledd Iwerddon yw")
+          expect(page).to have_content("19 Mawrth")
+          expect(page).to have_content("Gŵyl San Padrig")
         end
-      end # within .govuk-tabs
-    end # Timecop
+      end
+    end
   end
 
   context "showing bunting on bank holidays" do
-    should "show bunting when today is a buntable bank holiday" do
+    it "shows bunting when today is a buntable bank holiday" do
       Timecop.travel(Date.parse("2nd Jan 2012")) do
         visit "/gwyliau-banc"
-        assert page.has_css?(".app-o-epic-bunting")
+        expect(page).to have_css(".app-o-epic-bunting")
       end
     end
 
-    should "not show bunting if today is a non-buntable bank holiday" do
+    it "doesn't show bunting if today is a non-buntable bank holiday" do
       Timecop.travel(Date.parse("12th July 2013")) do
         visit "/gwyliau-banc"
-        assert page.has_no_css?(".app-o-epic-bunting")
+        expect(page).to have_no_css(".app-o-epic-bunting")
       end
     end
 
-    should "not show bunting when today is not a bank holiday" do
+    it "doesn't show bunting when today is not a bank holiday" do
       Timecop.travel(Date.parse("3rd Feb 2012")) do
         visit "/gwyliau-banc"
-        assert page.has_no_css?(".app-o-epic-bunting")
+        expect(page).to have_no_css(".app-o-epic-bunting")
       end
     end
   end
 
   context "last updated" do
-    should "be translated and localised" do
+    it "is translated and localised" do
       Timecop.travel(Date.parse("25th Dec 2012")) do
         visit "/gwyliau-banc"
         within ".app-c-meta-data" do
-          assert page.has_content?("Diweddarwyd diwethaf: 25 Rhagfyr 2012")
+          expect(page).to have_content("Diweddarwyd diwethaf: 25 Rhagfyr 2012")
         end
       end
     end

@@ -1,46 +1,44 @@
 # encoding: utf-8
 
-require_relative "../integration_test_helper"
-
-class BankHolidaysTest < ActionDispatch::IntegrationTest
-  setup do
-    content_store_has_item("/bank-holidays")
+RSpec.feature "Bank holidays" do
+  before do
+    stub_content_store_has_item("/bank-holidays")
   end
 
-  should "display the bank holidays page" do
+  it "displays the bank holidays page" do
     Timecop.travel("2012-12-14")
 
     visit "/bank-holidays"
 
     within("head", visible: false) do
-      assert page.has_selector?("title", text: "UK bank holidays - GOV.UK", visible: false)
+      expect(page).to have_selector("title", text: "UK bank holidays - GOV.UK", visible: false)
       desc = page.find("meta[name=description]", visible: false)
-      assert_equal "Find out when bank holidays are in England, Wales, Scotland and Northern Ireland - including past and future bank holidays", desc["content"]
+      expect(desc["content"]).to eq("Find out when bank holidays are in England, Wales, Scotland and Northern Ireland - including past and future bank holidays")
 
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/england-and-wales.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/england-and-wales.ics']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/scotland.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']", visible: false)
-      assert page.has_selector?("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/bank-holidays.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/bank-holidays/england-and-wales.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='text/calendar'][href='/bank-holidays/england-and-wales.ics']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/bank-holidays/scotland.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='text/calendar'][href='/bank-holidays/scotland.ics']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='application/json'][href='/bank-holidays/northern-ireland.json']", visible: false)
+      expect(page).to have_selector("link[rel=alternate][type='text/calendar'][href='/bank-holidays/northern-ireland.ics']", visible: false)
     end
 
     within "#content" do
       within ".gem-c-title" do
-        assert page.has_content?("UK bank holidays")
+        expect(page).to have_content("UK bank holidays")
       end
 
       within "article" do
         within ".govuk-tabs" do
           tab_labels = page.all("ul li a").map(&:text)
 
-          assert_equal ["England and Wales", "Scotland", "Northern Ireland"], tab_labels
+          expect(tab_labels).to eq(["England and Wales", "Scotland", "Northern Ireland"])
         end
 
         within ".govuk-tabs" do
           within "#england-and-wales" do
-            assert page.has_link?("Add bank holidays for England and Wales to your calendar", href: "/bank-holidays/england-and-wales.ics")
+            expect(page).to have_link("Add bank holidays for England and Wales to your calendar", href: "/bank-holidays/england-and-wales.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in England and Wales", year: "2012", rows: [
               ["25 December", "Tuesday", "Christmas Day"],
@@ -69,7 +67,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           end
 
           within "#scotland" do
-            assert page.has_link?("Add bank holidays for Scotland to your calendar", href: "/bank-holidays/scotland.ics")
+            expect(page).to have_link("Add bank holidays for Scotland to your calendar", href: "/bank-holidays/scotland.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in Scotland", year: "2012", rows: [
               ["25 December", "Tuesday", "Christmas Day"],
@@ -100,7 +98,7 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
           end
 
           within "#northern-ireland" do
-            assert page.has_link?("Add bank holidays for Northern Ireland to your calendar", href: "/bank-holidays/northern-ireland.ics")
+            expect(page).to have_link("Add bank holidays for Northern Ireland to your calendar", href: "/bank-holidays/northern-ireland.ics")
 
             assert_bank_holiday_table title: "Upcoming bank holidays in Northern Ireland", year: "2012", rows: [
               ["25 December", "Tuesday", "Christmas Day"],
@@ -131,96 +129,96 @@ class BankHolidaysTest < ActionDispatch::IntegrationTest
               ["2 January", "Monday", "New Year’s Day (substitute day)"],
             ]
           end
-        end # within .govuk-tabs
-      end # within article
-    end # within #content
+        end
+      end
+    end
   end
 
-  should "display the correct upcoming event" do
+  it "displays the correct upcoming event" do
     Timecop.travel(Date.parse("2012-01-03")) do
       visit "/bank-holidays"
 
       within ".govuk-tabs" do
         within "#england-and-wales .govuk-panel" do
-          assert page.has_content?("The next bank holiday in England and Wales is")
-          assert page.has_content?("6 April")
-          assert page.has_content?("Good Friday")
+          expect(page).to have_content("The next bank holiday in England and Wales is")
+          expect(page).to have_content("6 April")
+          expect(page).to have_content("Good Friday")
         end
 
         within "#scotland .govuk-panel" do
-          assert page.has_content?("The next bank holiday in Scotland is")
-          assert page.has_content?("today")
-          assert page.has_content?("New Year’s Day")
+          expect(page).to have_content("The next bank holiday in Scotland is")
+          expect(page).to have_content("today")
+          expect(page).to have_content("New Year’s Day")
         end
 
         within "#northern-ireland .govuk-panel" do
-          assert page.has_content?("The next bank holiday in Northern Ireland is")
-          assert page.has_content?("19 March")
-          assert page.has_content?("St Patrick’s Day")
+          expect(page).to have_content("The next bank holiday in Northern Ireland is")
+          expect(page).to have_content("19 March")
+          expect(page).to have_content("St Patrick’s Day")
         end
-      end # within .govuk-tabs
-    end # Timecop
+      end
+    end
   end
 
   context "showing bunting on bank holidays" do
-    should "show bunting when today is a buntable bank holiday" do
+    it "shows bunting when today is a buntable bank holiday" do
       Timecop.travel(Date.parse("9th April 2012")) do
         visit "/bank-holidays"
-        assert page.has_css?(".app-o-epic-bunting")
-        assert page.has_css?(".app-o-main-container--bunted")
+        expect(page).to have_css(".app-o-epic-bunting")
+        expect(page).to have_css(".app-o-main-container--bunted")
       end
     end
 
-    should "not show bunting if today is a non-buntable bank holiday" do
+    it "doesn't show bunting if today is a non-buntable bank holiday" do
       Timecop.travel(Date.parse("12th July 2013")) do
         visit "/bank-holidays"
-        assert page.has_no_css?(".app-o-epic-bunting")
-        assert page.has_no_css?(".app-o-main-container--bunted")
+        expect(page).to have_no_css(".app-o-epic-bunting")
+        expect(page).to have_no_css(".app-o-main-container--bunted")
       end
     end
 
-    should "not show bunting when today is not a bank holiday" do
+    it "doesn't show bunting when today is not a bank holiday" do
       Timecop.travel(Date.parse("3rd Feb 2012")) do
         visit "/bank-holidays"
-        assert page.has_no_css?(".app-o-epic-bunting")
-        assert page.has_no_css?(".app-o-main-container--bunted")
+        expect(page).to have_no_css(".app-o-epic-bunting")
+        expect(page).to have_no_css(".app-o-main-container--bunted")
       end
     end
 
-    should "not use tinsel bunting in the middle of the year" do
+    it "doesn't use tinsel bunting in the middle of the year" do
       Timecop.travel(Date.parse("9th April 2012")) do
         visit "/bank-holidays"
-        assert page.has_no_css?(".app-o-epic-bunting__bunt--tinsel")
+        expect(page).to have_no_css(".app-o-epic-bunting__bunt--tinsel")
       end
     end
 
-    should "not use tinsel bunting for bank holidays in early December" do
+    it "doesn't use tinsel bunting for bank holidays in early December" do
       # For example, on a substitute day for St Andrew's Day
       Timecop.travel(Date.parse("2nd December 2013")) do
         visit "/bank-holidays"
-        assert page.has_no_css?(".app-o-epic-bunting__bunt--tinsel")
+        expect(page).to have_no_css(".app-o-epic-bunting__bunt--tinsel")
       end
     end
 
-    should "use tinsel bunting for Christmas and New Year bank holidays" do
+    it "uses tinsel bunting for Christmas and New Year bank holidays" do
       Timecop.travel(Date.parse("25th December 2012")) do
         visit "/bank-holidays"
-        assert page.has_css?(".app-o-epic-bunting__bunt--tinsel")
+        expect(page).to have_css(".app-o-epic-bunting__bunt--tinsel")
       end
 
       Timecop.travel(Date.parse("2nd Jan 2012")) do
         visit "/bank-holidays"
-        assert page.has_css?(".app-o-epic-bunting__bunt--tinsel")
+        expect(page).to have_css(".app-o-epic-bunting__bunt--tinsel")
       end
     end
-  end # within #content
+  end
 
   context "last updated" do
-    should "be formatted correctly" do
+    it "is formatted correctly" do
       Timecop.travel(Date.parse("5th Dec 2012")) do
         visit "/bank-holidays"
         within ".app-c-meta-data" do
-          assert page.has_content?("Last updated: 5 December 2012")
+          expect(page).to have_content("Last updated: 5 December 2012")
         end
       end
     end

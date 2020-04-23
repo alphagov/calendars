@@ -3,6 +3,10 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative "config/application"
-require "ci/reporter/rake/minitest" if Rails.env.test?
+
+if Rails.env.test?
+  require "rspec/core/rake_task"
+  RSpec::Core::RakeTask.new(:spec)
+end
 
 Rails.application.load_tasks

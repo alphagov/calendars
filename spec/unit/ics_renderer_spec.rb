@@ -1,11 +1,10 @@
 # encoding: utf-8
 
-require_relative "../test_helper"
 require "ics_renderer"
 
-class ICSRendererTest < ActiveSupport::TestCase
+RSpec.describe ICSRenderer do
   context "generating complete ics file" do
-    should "generate correct ics header and footer" do
+    it "generates correct ics header and footer" do
       r = ICSRenderer.new([], "/foo/ics")
 
       expected =  "BEGIN:VCALENDAR\r\n"
@@ -15,13 +14,13 @@ class ICSRendererTest < ActiveSupport::TestCase
       expected << "CALSCALE:GREGORIAN\r\n"
       expected << "END:VCALENDAR\r\n"
 
-      assert_equal expected, r.render
+      expect(r.render).to eq(expected)
     end
 
-    should "generate an event for each given event" do
+    it "generates an event for each given event" do
       r = ICSRenderer.new(%i[e1 e2], "/foo/ics")
-      r.expects(:render_event).with(:e1).returns("Event1 ics\r\n")
-      r.expects(:render_event).with(:e2).returns("Event2 ics\r\n")
+      allow(r).to receive(:render_event).with(:e1).and_return("Event1 ics\r\n")
+      allow(r).to receive(:render_event).with(:e2).and_return("Event2 ics\r\n")
 
       expected =  "BEGIN:VCALENDAR\r\n"
       expected << "VERSION:2.0\r\n"
@@ -32,21 +31,21 @@ class ICSRendererTest < ActiveSupport::TestCase
       expected << "Event2 ics\r\n"
       expected << "END:VCALENDAR\r\n"
 
-      assert_equal expected, r.render
+      expect(r.render).to eq(expected)
     end
   end
 
   context "generating an event" do
-    setup do
+    before do
       @path = "/foo/ics"
       @r = ICSRenderer.new([], @path)
-      ICSRenderer.any_instance.stubs(:dtstamp).returns("20121017T0100Z")
+      allow_any_instance_of(ICSRenderer).to receive(:dtstamp).and_return("20121017T0100Z")
     end
 
-    should "generate an event" do
+    it "generates an event" do
       e = Calendar::Event.new("title" => "An Event", "date" => "2012-04-14")
 
-      Digest::MD5.expects(:hexdigest).with(@path).once.returns("hash")
+      allow(Digest::MD5).to receive(:hexdigest).with(@path).once.and_return("hash")
 
       expected =  "BEGIN:VEVENT\r\n"
       expected << "DTEND;VALUE=DATE:20120415\r\n"
@@ -57,12 +56,12 @@ class ICSRendererTest < ActiveSupport::TestCase
       expected << "DTSTAMP:20121017T0100Z\r\n"
       expected << "END:VEVENT\r\n"
 
-      assert_equal expected, @r.render_event(e)
+      expect(@r.render_event(e)).to eq(expected)
     end
   end
 
   context "generating a uid" do
-    setup do
+    before do
       @path = "/foo/bar.ics"
       @r = ICSRenderer.new([], @path)
       @hash = Digest::MD5.hexdigest(@path)
@@ -70,38 +69,38 @@ class ICSRendererTest < ActiveSupport::TestCase
       @second_event = Calendar::Event.new("title" => "Another important event", "date" => Date.new(1984, 1, 16))
     end
 
-    should "use calendar path, event title and event date to create a uid" do
-      assert_equal "#{@hash}-1982-05-28-Somebodysimportantevent@gov.uk", @r.uid(@first_event)
+    it "uses calendar path, event title and event date to create a uid" do
+      expect(@r.uid(@first_event)).to eq("#{@hash}-1982-05-28-Somebodysimportantevent@gov.uk")
     end
 
-    should "cache the hash generation" do
-      Digest::MD5.expects(:hexdigest).with(@path).once.returns(@hash)
+    it "caches the hash generation" do
+      allow(Digest::MD5).to receive(:hexdigest).with(@path).once.and_return(@hash)
       @r.uid(@first_event)
-      assert_equal "#{@hash}-1984-01-16-Anotherimportantevent@gov.uk", @r.uid(@second_event)
+      expect(@r.uid(@second_event)).to eq("#{@hash}-1984-01-16-Anotherimportantevent@gov.uk")
     end
   end
 
   context "generating dtstamp" do
-    setup do
+    before do
       @r = ICSRenderer.new([], "/foo/ics")
     end
 
-    should "return the mtime of the REVISION file" do
-      File.expects(:mtime).with(Rails.root.join("REVISION")).returns(Time.zone.parse("2012-04-06 14:53:54Z"))
-      assert_equal "20120406T145354Z", @r.dtstamp
+    it "returns the mtime of the REVISION file" do
+      allow(File).to receive(:mtime).with(Rails.root.join("REVISION")).and_return(Time.zone.parse("2012-04-06 14:53:54Z"))
+      expect(@r.dtstamp).to eq("20120406T145354Z")
     end
 
-    should "return now if the file doesn't exist" do
+    it "returns now if the file doesn't exist" do
       Timecop.freeze(Time.zone.parse("2012-11-27 16:13:27")) do
-        File.expects(:mtime).with(Rails.root.join("REVISION")).raises(Errno::ENOENT)
-        assert_equal "20121127T161327Z", @r.dtstamp
+        allow(File).to receive(:mtime).with(Rails.root.join("REVISION")).and_raise(Errno::ENOENT)
+        expect(@r.dtstamp).to eq("20121127T161327Z")
       end
     end
 
-    should "cache the result" do
-      File.expects(:mtime).with(Rails.root.join("REVISION")).once.returns(Time.zone.parse("2012-04-06 14:53:54Z"))
+    it "caches the result" do
+      allow(File).to receive(:mtime).with(Rails.root.join("REVISION")).once.and_return(Time.zone.parse("2012-04-06 14:53:54Z"))
       @r.dtstamp
-      assert_equal "20120406T145354Z", @r.dtstamp
+      expect(@r.dtstamp).to eq("20120406T145354Z")
     end
   end
 end
