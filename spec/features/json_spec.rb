@@ -1,11 +1,9 @@
 # encoding: utf-8
 
-require_relative "../integration_test_helper"
-
-class JSONTest < ActionDispatch::IntegrationTest
+RSpec.feature "json" do
   context "GET /calendars/<calendar>.json" do
-    should "contain calendar with division" do
-      get "/bank-holidays/england-and-wales.json"
+    it "contains calendar with division" do
+      visit "/bank-holidays/england-and-wales.json"
 
       expected = {
         "division" => "england-and-wales",
@@ -23,13 +21,13 @@ class JSONTest < ActionDispatch::IntegrationTest
         ],
       }
 
-      actual = JSON.parse(@response.body)
-      assert((expected["events"] - actual["events"]).empty?)
-      assert_equal expected["division"], actual["division"]
+      actual = JSON.parse(page.body)
+      expect(expected["events"] - actual["events"]).to be_empty
+      expect(actual["division"]).to eq(expected["division"])
     end
 
-    should "have the full calendar json view" do
-      get "/bank-holidays.json"
+    it "has the full calendar json view" do
+      visit "/bank-holidays.json"
 
       expected = {
         "england-and-wales" => {
@@ -82,18 +80,17 @@ class JSONTest < ActionDispatch::IntegrationTest
           ],
         },
       }
-      actual = JSON.parse(@response.body)
+      actual = JSON.parse(page.body)
       expected.each do |nation, expected_bank_holidays|
         actual_bank_holidays = actual.fetch(nation)
-        assert((expected_bank_holidays["events"] - actual_bank_holidays["events"]).empty?)
-        assert_equal expected_bank_holidays["division"], actual_bank_holidays["division"]
+        expect(expected_bank_holidays["events"] - actual_bank_holidays["events"]).to be_empty
+        expect(actual_bank_holidays["division"]).to eq(expected_bank_holidays["division"])
       end
     end
 
-    should "have redirect for old 'ni' division" do
-      get "/bank-holidays/ni.json"
-      assert_equal 301, response.status
-      assert_equal "http://www.example.com/bank-holidays/northern-ireland.json", response.location
+    it "redirects for old 'ni' division" do
+      visit "/bank-holidays/ni.json"
+      expect(page.current_url).to eq("http://www.example.com/bank-holidays/northern-ireland.json")
     end
   end
 end
