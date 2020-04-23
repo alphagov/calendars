@@ -5,7 +5,7 @@ require "bank_holiday_generator"
 RSpec.describe BankHolidayGenerator do
   def generates_correct_bank_holidays(nation, year, locale, file_name)
     I18n.locale = locale
-    bank_holidays = JSON.parse(IO.read(Rails.root + "./test/fixtures/data/#{file_name}")).fetch("divisions")
+    bank_holidays = JSON.parse(IO.read(Rails.root + "./spec/fixtures/data/#{file_name}")).fetch("divisions")
     bank_holiday_generator = BankHolidayGenerator.new(year, nation)
     generated_bank_holidays = bank_holiday_generator.perform
     translated_bank_holidays = generated_bank_holidays.map { |bank_holiday|

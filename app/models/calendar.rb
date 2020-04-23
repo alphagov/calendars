@@ -1,5 +1,5 @@
 class Calendar
-  REPOSITORY_PATH = Rails.env.test? ? "test/fixtures/data" : "lib/data"
+  REPOSITORY_PATH = Rails.env.test? ? "spec/fixtures/data" : "lib/data"
 
   class CalendarNotFound < StandardError
   end
