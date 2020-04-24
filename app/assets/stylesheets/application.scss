@@ -4,6 +4,7 @@ $govuk-use-legacy-palette: false;
 @import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
 @import 'govuk_publishing_components/components/breadcrumbs';
+@import 'govuk_publishing_components/components/button'; // not in application but needed for cookie banner
 @import 'govuk_publishing_components/components/contextual-sidebar';
 @import 'govuk_publishing_components/components/feedback';
 @import 'govuk_publishing_components/components/panel';
