@@ -33,7 +33,11 @@ class ICSRenderer
 
   def dtstamp
     unless @dtstamp
-      time = File.mtime(Rails.root.join("REVISION")) rescue Time.zone.now
+      time = begin
+               File.mtime(Rails.root.join("REVISION"))
+             rescue StandardError
+               Time.zone.now
+             end
       @dtstamp = time.utc.strftime("%Y%m%dT%H%M%SZ")
     end
     @dtstamp

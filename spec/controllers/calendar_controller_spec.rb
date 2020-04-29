@@ -73,8 +73,8 @@ RSpec.describe CalendarController do
     end
 
     it "403s if content store returns forbidden response" do
-      stub_request(:get, "#{Plek.find('content-store')}/content/something-access-limited").
-        to_return(status: 403, headers: {})
+      stub_request(:get, "#{Plek.find('content-store')}/content/something-access-limited")
+        .to_return(status: 403, headers: {})
 
       get :calendar, params: { scope: "something-access-limited" }
       expect(response).to have_http_status(403)

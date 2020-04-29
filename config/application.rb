@@ -15,8 +15,8 @@ module Calendars
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.eager_load_paths += %W(#{config.root}/lib)
-    config.eager_load_paths += %W(#{config.root}/app/services)
+    config.eager_load_paths += %W[#{config.root}/lib]
+    config.eager_load_paths += %W[#{config.root}/app/services]
 
     # This saves loading all 80-odd locales from the rails-i18n gem.  This doesn't affect the loading
     # of locales from config/locales
@@ -26,10 +26,10 @@ module Calendars
     config.assets.enabled = true
 
     config.assets.prefix = "/calendars"
-    config.assets.precompile += %w(
+    config.assets.precompile += %w[
       application.css
       print.css
-    )
+    ]
 
     # Disable Rack::Cache.
     config.action_dispatch.rack_cache = nil

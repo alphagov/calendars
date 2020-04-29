@@ -44,13 +44,13 @@ class Calendar
     end
 
     def upcoming_events_by_year
-      self.years.each_with_object({}) do |year, results|
+      years.each_with_object({}) do |year, results|
         results[year] = year.upcoming_events if year.upcoming_events.any?
       end
     end
 
     def past_events_by_year
-      self.years.reverse.each_with_object({}) do |year, results|
+      years.reverse.each_with_object({}) do |year, results|
         results[year] = year.past_events.reverse if year.past_events.any?
       end
     end
