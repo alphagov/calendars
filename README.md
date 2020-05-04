@@ -1,3 +1,5 @@
+**calendars functionality is now provided by frontend.**
+
 ## Calendars
 
 Serves calendars in a clear and accessible format, along with JSON and iCal exports of the data.
