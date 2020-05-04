@@ -16,9 +16,7 @@ class CalendarContentItem
     "minor"
   end
 
-  def content_id
-    calendar.content_id
-  end
+  delegate :content_id, to: :calendar
 
   def payload
     {

@@ -1,11 +1,11 @@
 # encoding: utf-8
 
-#Bank holidays are determined both by law and by proclamation.
-#Link to the legislation to determine bank holidays:
+# Bank holidays are determined both by law and by proclamation.
+# Link to the legislation to determine bank holidays:
 #  http://www.legislation.gov.uk/ukpga/1971/80/schedule/1
 #  and
 #  http://www.legislation.gov.uk/asp/2007/2/section/1
-#Link to where to find proclamations of bank holidays:
+# Link to where to find proclamations of bank holidays:
 #  https://www.thegazette.co.uk/all-notices/notice?noticetypes=1101&sort-by=latest-date&text="Banking+and+Financial"
 #  Holidays are announced there 6 months to one year in advance, between the months of May and July for the following year.
 
@@ -18,10 +18,10 @@ class BankHolidayGenerator
 
   BANK_HOLIDAYS = {
     "england-and-wales" => [
-      :new_years_day, #by proclamation
-      :good_friday,   #by proclamation
-      :easter_monday, #by proclamation
-      :early_may,     #by proclamation
+      :new_years_day, # by proclamation
+      :good_friday,   # by proclamation
+      :easter_monday, # by proclamation
+      :early_may,     # by proclamation
       :spring,
       :last_monday_august,
       :christmas,
@@ -33,21 +33,21 @@ class BankHolidayGenerator
       :second_january,
       :good_friday,
       :early_may,
-      :spring,        #by proclamation
+      :spring,        # by proclamation
       :first_monday_august,
       :st_andrews,
       :christmas,
-      :boxing_day,    #by proclamation
+      :boxing_day,    # by proclamation
     ],
 
     "northern-ireland" => [
-      :new_years_day, #by proclamation
+      :new_years_day, # by proclamation
       :st_patricks,
-      :good_friday,   #by proclamation
+      :good_friday,   # by proclamation
       :easter_monday,
-      :early_may,     #by proclamation
+      :early_may,     # by proclamation
       :spring,
-      :battle_boyne,  #by proclamation
+      :battle_boyne,  # by proclamation
       :last_monday_august,
       :christmas,
       :boxing_day,
@@ -67,9 +67,9 @@ private
 
   def add_bank_holiday(title, date, substitute = false, bunting = true)
     bank_holiday_hash = {
-        "title"   => title,
-        "date"    => date.strftime("%d/%m/%Y"),
-        "notes"   => "",
+        "title" => title,
+        "date" => date.strftime("%d/%m/%Y"),
+        "notes" => "",
         "bunting" => bunting,
     }
     if substitute
@@ -158,7 +158,7 @@ private
     add_bank_holiday("bank_holidays.boxing_day", new_date, new_date != date)
   end
 
-  #Date utilities
+  # Date utilities
 
   def first_monday_of_month(year, month)
     Date.new(year, month, 1).upto(Date.new(year, month, -1)).find(&:monday?)
@@ -168,8 +168,8 @@ private
     Date.new(year, month, -1).downto(0).find(&:monday?)
   end
 
-  #The following code comes from:
-  #https://github.com/alexdunae/holidays
+  # The following code comes from:
+  # https://github.com/alexdunae/holidays
   def easter
     a = year % 19
     b = year / 100

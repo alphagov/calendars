@@ -16,7 +16,7 @@ RSpec.describe BankHolidayGenerator do
     expect(bank_holidays.fetch(nation).fetch(year.to_s)).to eq(translated_bank_holidays)
   end
 
-  %w(england-and-wales scotland northern-ireland).each do |nation|
+  %w[england-and-wales scotland northern-ireland].each do |nation|
     (2013..2016).each do |year|
       it "generates bank holidays correctly in #{nation} for year #{year}" do
         generates_correct_bank_holidays(nation, year, :en, "bank-holidays_translated.json")
@@ -26,7 +26,7 @@ RSpec.describe BankHolidayGenerator do
   end
 
   it "generates bank holidays in order" do
-    #In 2016 in England, Christmas (substitute day) is on the 27th and Boxing Day is the 26th.
+    # In 2016 in England, Christmas (substitute day) is on the 27th and Boxing Day is the 26th.
     # This is one example of why we need to reorder bank holidays by date.
     bank_holiday_generator = BankHolidayGenerator.new(2016, "england-and-wales")
     generated_bank_holidays = bank_holiday_generator.perform
@@ -36,7 +36,7 @@ RSpec.describe BankHolidayGenerator do
   end
 
   context "new year's day is on a Saturday" do
-    #In 2022 New Year's day is on a Saturday
+    # In 2022 New Year's day is on a Saturday
     let(:bank_holiday_generator) { BankHolidayGenerator.new(2022, "scotland") }
     let(:generated_bank_holidays) { bank_holiday_generator.perform }
 
@@ -53,7 +53,7 @@ RSpec.describe BankHolidayGenerator do
   end
 
   context "new year's day is on a Sunday" do
-    #In 2017 New Year's day is on a Sunday
+    # In 2017 New Year's day is on a Sunday
     let(:bank_holiday_generator) { BankHolidayGenerator.new(2017, "scotland") }
     let(:generated_bank_holidays) { bank_holiday_generator.perform }
 

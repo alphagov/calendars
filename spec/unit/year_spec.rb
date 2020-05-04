@@ -88,7 +88,7 @@ RSpec.describe Calendar::Year do
 
     it "returns all future events including today" do
       Timecop.travel("2012-08-27") do
-        expect(@year.upcoming_events.map(&:title)).to eq(%w(bar baz))
+        expect(@year.upcoming_events.map(&:title)).to eq(%w[bar baz])
       end
     end
 

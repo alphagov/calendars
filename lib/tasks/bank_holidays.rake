@@ -5,7 +5,7 @@ namespace :bank_holidays do
   task :generate_json, [:year] => :environment do |_t, args|
     year = args[:year].to_i
     if year != 0
-      nations = %w(england-and-wales scotland northern-ireland)
+      nations = %w[england-and-wales scotland northern-ireland]
       nations.each do |nation|
         generator = BankHolidayGenerator.new(year, nation)
         bank_holidays = generator.perform
